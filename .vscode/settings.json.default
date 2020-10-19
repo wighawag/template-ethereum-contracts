@@ -1,0 +1,24 @@
+{
+  "todo-tree.filtering.excludeGlobs": ["export"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[solidity]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "solidity.linter": "solhint",
+  "solidity.enableLocalNodeCompiler": false,
+  "solidity.compileUsingRemoteVersion": "0.7.3+commit.9bfce1f6.Emscripten.clang",
+  "solidity.packageDefaultDependenciesContractsDirectory": "src",
+  "solidity.packageDefaultDependenciesDirectory": "node_modules",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[json]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {}
+  },
+  "mochaExplorer.env": {
+    "BUIDLER_CONFIG": "buidler.config.ts"
+  },
+  "mochaExplorer.require": ["ts-node/register/transpile-only"]
+}
