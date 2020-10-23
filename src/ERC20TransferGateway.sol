@@ -2,11 +2,13 @@
 
 pragma solidity 0.7.3;
 
-import "@openzeppelin/contracts/token/erc20/IERC20.sol";
-import "@openzeppelin/contracts/token/erc20/SafeERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 
 /* TODO is MetaTransactionReceiver */
+
+///@notice Gateway that forwward payment information to the recipient.
 contract ERC20TransferGateway {
     using SafeERC20 for IERC20;
     using Address for address;

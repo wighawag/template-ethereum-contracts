@@ -3,9 +3,10 @@
 pragma solidity 0.7.3;
 
 import "../BaseERC20TransferRecipient.sol";
-import "@openzeppelin/contracts/token/erc20/IERC20.sol";
-import "@openzeppelin/contracts/token/erc20/SafeERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
+///@notice Can Receive ERC20 payment either from the transfer getaway or through the standard approval-based mechanism.
 contract ERC20Consumer is BaseERC20TransferRecipient {
     using SafeERC20 for IERC20;
 

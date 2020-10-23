@@ -1,5 +1,5 @@
 import {expect} from './chai-setup';
-import {ethers, deployments, getUnnamedAccounts} from '@nomiclabs/buidler';
+import {ethers, deployments, getUnnamedAccounts} from 'hardhat';
 
 const setup = deployments.createFixture(async () => {
   await deployments.fixture('ERC20Consumer');
@@ -7,14 +7,14 @@ const setup = deployments.createFixture(async () => {
   return {
     ERC20Consumer: await ethers.getContract('ERC20Consumer'),
     ERC20TransferGateway: await ethers.getContract('ERC20TransferGateway'),
-    ERC20Token: await ethers.getContract('TestERC20Token'),
-    others: others.map((acc) => {
+    ERC20Token: await ethers.getContract('ERC20Token'),
+    others: others.map((acc: string) => {
       return {address: acc};
     }),
   };
 });
 
-describe('ERC20TransferGateway', function () {
+describe('ERC20Consumer', function () {
   it('calling it directly without pre-approval result in Allowance error', async function () {
     const {ERC20Consumer} = await setup();
     await expect(ERC20Consumer.purchase(1)).to.be.revertedWith('NOT_ENOUGH_ALLOWANCE');

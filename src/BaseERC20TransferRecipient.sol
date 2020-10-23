@@ -3,8 +3,8 @@
 pragma solidity ^0.7.0;
 
 import "./ERC20TransferGateway.sol";
-import "@openzeppelin/contracts/token/erc20/IERC20.sol";
-import "@openzeppelin/contracts/token/erc20/SafeERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
 abstract contract BaseERC20TransferRecipient {
     ERC20TransferGateway internal immutable _erc20TransferGateway;
