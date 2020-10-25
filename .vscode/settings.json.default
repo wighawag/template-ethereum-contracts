@@ -17,7 +17,8 @@
     "editor.codeActionsOnSave": {}
   },
   "mochaExplorer.env": {
-    "HARDHAT_CONFIG": "hardhat.config.ts"
+    "HARDHAT_CONFIG": "hardhat.config.ts",
+    "HARDHAT_COMPILE": "true"
   },
   "mochaExplorer.require": ["ts-node/register/transpile-only"]
 }
