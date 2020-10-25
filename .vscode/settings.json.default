@@ -1,5 +1,4 @@
 {
-  "todo-tree.filtering.excludeGlobs": ["export"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "[solidity]": {
@@ -18,7 +17,7 @@
     "editor.codeActionsOnSave": {}
   },
   "mochaExplorer.env": {
-    "BUIDLER_CONFIG": "buidler.config.ts"
+    "HARDHAT_CONFIG": "hardhat.config.ts"
   },
   "mochaExplorer.require": ["ts-node/register/transpile-only"]
 }
