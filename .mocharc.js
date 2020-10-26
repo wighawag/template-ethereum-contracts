@@ -6,7 +6,7 @@ module.exports = {
   extension: ['ts'],
   recursive: true,
   reporter: 'spec',
-  require: ['ts-node/register', 'hardhat/register'],
+  require: ['ts-node/register', 'hardhat/register'], // ['ts-node/register/transpile-only'], (for yarn link <plugin>)
   slow: 300,
   spec: 'test/**/*.test.ts',
   timeout: 20000,

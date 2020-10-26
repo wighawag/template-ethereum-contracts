@@ -4261,10 +4261,10 @@ hardhat-deploy-ethers@^0.3.0-beta.5:
   resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.5.tgz#c365ebb5c29e7474b2b35912f27dc9699a0e63b3"
   integrity sha512-KoUswkCPSuARGjZQIf8kItL5rPFt6srgVj+q0B9YTQ7Vyw/k2N0R8u7aYWq4Piy9mjDKcEGQTPBXhaX02BMkVw==
 
-hardhat-deploy@^0.7.0-beta.14:
-  version "0.7.0-beta.14"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0-beta.14.tgz#fff37f64495f235bb651a43d7d7f9d78c9ffe880"
-  integrity sha512-E2F32p/Uc9GnCAebfI5wAQt7WdqaOPs6Y0CZ7XsA35DPkFHVIqEg/mBPS6kFEGUeAjXdDPtVJK2cmdGTR1WnOw==
+hardhat-deploy@^0.7.0-beta.17:
+  version "0.7.0-beta.17"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0-beta.17.tgz#92af2727600358712e8303b0fb256a0f1f30a85b"
+  integrity sha512-Kkbc3ETsBsmohHWdp3gfWyXnJZxgG1ldoeuGWklD5W08dR5rg3vNy+blixTVWwOkVzc2INHR8XEYUvp9qdaznw==
   dependencies:
     "@ethersproject/abi" "^5.0.2"
     "@ethersproject/abstract-signer" "^5.0.2"
