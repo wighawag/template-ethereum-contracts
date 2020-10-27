@@ -11,7 +11,11 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await deploy('ERC20Token', {
     from: deployer,
     contract: 'ERC20WithInitialBalance',
-    args: ['10000000000000000000', '1000000000000000000000000000', erc20TransferGateway.address],
+    args: [
+      '10000000000000000000',
+      '1000000000000000000000000000',
+      erc20TransferGateway.address,
+    ],
     log: true,
   });
 };

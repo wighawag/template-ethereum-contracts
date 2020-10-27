@@ -4,5 +4,4 @@ artifacts/
 cache/
 coverage/
 node_modules/
-*.yaml
-*.json
+package.json
