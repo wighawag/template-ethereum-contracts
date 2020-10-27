@@ -2,10 +2,19 @@
   "extends": "solhint:recommended",
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
-    "compiler-version": ["warn", "^0.7.0"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "code-complexity": ["error", 7],
+    "compiler-version": ["error", "^0.7.0"],
+    "const-name-snakecase": "off",
     "func-name-mixedcase": "off",
-    "not-rely-on-time": "warn",
-    "const-name-snakecase": "warn"
+    "constructor-syntax": "error",
+    "func-visibility": ["error", { "ignoreConstructors": true }],
+    "not-rely-on-time": "off",
+    "reason-string": ["warn", { "maxLength": 64 }]
   }
 }

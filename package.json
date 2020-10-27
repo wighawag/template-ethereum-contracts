@@ -46,8 +46,8 @@
   },
   "scripts": {
     "postinstall": "node ./.setup.js",
-    "lint": "eslint \"**/*.{js,ts}\"",
-    "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
+    "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
+    "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
     "format": "prettier --write \"**/*.{ts,js,sol}\"",
     "test": "cross-env HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test",
     "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat --network coverage coverage",
