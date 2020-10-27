@@ -8,6 +8,7 @@ coverage*
 #vscode
 .vscode/*
 !.vscode/settings.json.default
+!.vscode/extensions.json
 
 node_modules/
 .env
