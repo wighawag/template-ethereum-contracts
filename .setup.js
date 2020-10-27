@@ -1,6 +1,14 @@
 #!/usr/bin/env node
-const fs = require('fs-extra');
-
-if (!fs.existsSync('.vscode/settings.json')) {
-  fs.copyFileSync('.vscode/settings.json.default', '.vscode/settings.json');
+const fs = require('fs');
+function copyFromDefault(p) {
+  if (!fs.existsSync(p)) {
+    const defaultFile = `${p}.default`;
+    if (fs.existsSync(defaultFile)) {
+      fs.copyFileSync(`${p}.default`, p);
+    }
+  }
 }
+
+['.vscode/settings.json', '.vscode/extensions.json'].map(
+  copyFromDefault
+);
