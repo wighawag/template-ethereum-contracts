@@ -2,6 +2,4 @@ checks:
   - name: eth-gas-reporter/codechecks
 settings:
   branches:
-    - dev
-    - master
     - main
