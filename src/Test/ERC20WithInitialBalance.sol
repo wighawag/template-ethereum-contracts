@@ -13,7 +13,7 @@ contract ERC20WithInitialBalance is BaseERC20, ERC20With2612 {
     );
 
     function DOMAIN_SEPARATOR() external view override returns (bytes32) {
-        return _DOMAIN_SEPARATOR;
+        return _domainSeparator;
     }
 
     function nonces(address owner) external view override returns (uint256) {
@@ -35,7 +35,7 @@ contract ERC20WithInitialBalance is BaseERC20, ERC20With2612 {
         bytes32 digest = keccak256(
             abi.encodePacked(
                 "\x19\x01",
-                _DOMAIN_SEPARATOR,
+                _domainSeparator,
                 keccak256(abi.encode(PERMIT_TYPEHASH, owner, spender, value, currentNonce, deadline))
             )
         );
@@ -49,8 +49,7 @@ contract ERC20WithInitialBalance is BaseERC20, ERC20With2612 {
 
     // /////////////////////////////////// STORAGE SLOTS /////////////////////////////////////////
 
-    /*immutable*/
-    bytes32 internal _DOMAIN_SEPARATOR;
+    bytes32 internal immutable _domainSeparator;
     mapping(address => uint256) internal _nonces;
 
     // //////////////////////////////////// CONSTRUCTOR ///////////////////////////////////////////
@@ -61,7 +60,7 @@ contract ERC20WithInitialBalance is BaseERC20, ERC20With2612 {
         address gateway
     ) BaseERC20(supply, initialIndividualSupply, gateway) {
         // TODO chainId
-        _DOMAIN_SEPARATOR = keccak256(
+        _domainSeparator = keccak256(
             abi.encode(
                 keccak256("EIP712Domain(string name,string version,address verifyingContract)"),
                 keccak256(bytes(name)),

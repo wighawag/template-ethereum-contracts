@@ -38,6 +38,7 @@ abstract contract BaseERC20TransferRecipient {
         )
     {
         uint256 length = data.length;
+        // solhint-disable-next-line  no-inline-assembly
         assembly {
             sender := mload(sub(add(data, length), 0x0))
             amount := mload(sub(add(data, length), 0x20))
