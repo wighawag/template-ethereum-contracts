@@ -3,16 +3,7 @@ import {HardhatUserConfig} from 'hardhat/types';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import 'hardhat-gas-reporter';
-
-let mnemonic = process.env.MNEMONIC;
-if (!mnemonic) {
-  // FOR DEV ONLY, SET IT IN .env files if you want to keep it private
-  // (IT IS IMPORTANT TO HAVE A NON RANDOM MNEMONIC SO THAT SCRIPTS CAN ACT ON THE SAME ACCOUNTS)
-  mnemonic = 'test test test test test test test test test test test junk';
-}
-const accounts = {
-  mnemonic,
-};
+import {node_url, accounts} from './utils/network';
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -22,28 +13,28 @@ const config: HardhatUserConfig = {
     deployer: 0,
   },
   networks: {
-    coverage: {
-      url: 'http://localhost:5458',
-      accounts,
-    },
     hardhat: {
-      accounts,
+      accounts: accounts(),
     },
     localhost: {
       url: 'http://localhost:8545',
-      accounts,
+      accounts: accounts(),
+    },
+    mainnet: {
+      url: node_url('mainnet'),
+      accounts: accounts('mainnet'),
     },
     rinkeby: {
-      url: 'https://rinkeby.infura.io/v3/' + process.env.INFURA_TOKEN,
-      accounts,
+      url: node_url('rinkeby'),
+      accounts: accounts('rinkeby'),
     },
-    42: {
-      url: 'https://kovan.infura.io/v3/' + process.env.INFURA_TOKEN,
-      accounts,
+    kovan: {
+      url: node_url('kovan'),
+      accounts: accounts('kovan'),
     },
     staging: {
-      url: 'https://goerli.infura.io/v3/' + process.env.INFURA_TOKEN,
-      accounts,
+      url: node_url('kovan'),
+      accounts: accounts('kovan'),
     },
   },
   paths: {
