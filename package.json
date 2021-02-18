@@ -21,6 +21,7 @@
     "@ethereum-waffle/chai": "^3.0.2",
     "@ethersproject/wallet": "^5.0.5",
     "@openzeppelin/contracts": "^3.2.1-solc-0.7",
+    "@typechain/ethers-v5": "^5.0.0",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^8.0.2",
     "@types/node": "^14.10.2",
@@ -33,56 +34,49 @@
     "eslint-config-prettier": "^6.11.0",
     "ethers": "^5.0.17",
     "fs-extra": "^9.0.1",
-    "hardhat": "^2.0.4",
+    "hardhat": "^2.0.10",
     "hardhat-deploy": "^0.7.0-beta.33",
     "hardhat-deploy-ethers": "^0.3.0-beta.7",
     "hardhat-gas-reporter": "^1.0.1",
+    "hardhat-typechain": "^0.3.5",
     "mocha": "^8.1.1",
     "prettier": "^2.0.5",
     "prettier-plugin-solidity": "^1.0.0-alpha.57",
     "solhint": "^3.3.1",
     "solhint-plugin-prettier": "^0.0.5",
+    "ts-generator": "^0.1.1",
     "ts-node": "^9.0.0",
+    "typechain": "^4.0.1",
     "typescript": "^4.0.5"
   },
   "scripts": {
     "postinstall": "node ./.setup.js",
-
     "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
     "format": "prettier --check \"**/*.{ts,js,sol}\"",
     "format:fix": "prettier --write \"**/*.{ts,js,sol}\"",
-
     "compile": "hardhat compile",
     "void:deploy": "hardhat deploy",
-
     "test": "cross-env HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test",
     "gas": "cross-env REPORT_GAS=true hardhat test",
-
     "dev": "hardhat node --reset --watch --export contractsInfo.json",
-
     "local:dev": "hardhat --network localhost deploy --watch",
     "local:deploy": "hardhat --network localhost deploy",
     "local:run": "cross-env HARDHAT_NETWORK=localhost ts-node --files",
     "local:seed": "cross-env HARDHAT_NETWORK=localhost ts-node --files scripts/seed.ts",
     "local:export": "hardhat --network localhost export",
-
     "staging:deploy": "hardhat --network staging deploy",
     "staging:export": "hardhat --network staging export",
     "staging:run": "cross-env HARDHAT_NETWORK=staging ts-node --files",
-
     "rinkeby:deploy": "hardhat --network rinkeby deploy",
     "rinkeby:export": "hardhat --network rinkeby export",
     "rinkeby:run": "cross-env HARDHAT_NETWORK=rinkeby ts-node --files",
-
     "kovan:deploy": "hardhat --network kovan deploy",
     "kovan:export": "hardhat --network kovan export",
     "kovan:run": "cross-env HARDHAT_NETWORK=kovan ts-node --files",
-
     "goerli:deploy": "hardhat --network goerli deploy",
     "goerli:export": "hardhat --network goerli export",
     "goerli:run": "cross-env HARDHAT_NETWORK=goerli ts-node --files",
-
     "mainnet:deploy": "hardhat --network mainnet deploy",
     "mainnet:export": "hardhat --network mainnet export",
     "mainnet:run": "cross-env HARDHAT_NETWORK=mainnet ts-node --files"

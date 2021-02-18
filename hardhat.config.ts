@@ -3,6 +3,7 @@ import {HardhatUserConfig} from 'hardhat/types';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import 'hardhat-gas-reporter';
+import 'hardhat-typechain';
 import {node_url, accounts} from './utils/network';
 
 const config: HardhatUserConfig = {
@@ -46,6 +47,10 @@ const config: HardhatUserConfig = {
     enabled: process.env.REPORT_GAS ? true : false,
     coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     maxMethodDiff: 10,
+  },
+  typechain: {
+    outDir: 'typechain',
+    target: 'ethers-v5',
   },
   mocha: {
     timeout: 0,
