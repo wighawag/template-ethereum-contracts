@@ -51,7 +51,7 @@
     "typescript": "^4.0.5"
   },
   "scripts": {
-    "postinstall": "node ./.setup.js",
+    "postinstall": "node ./.setup.js && hardhat typechain",
     "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
     "format": "prettier --check \"**/*.{ts,js,sol}\"",
