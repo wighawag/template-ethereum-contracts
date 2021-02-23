@@ -60,6 +60,7 @@
     "void:deploy": "hardhat deploy",
     "test": "cross-env HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test",
     "gas": "cross-env REPORT_GAS=true hardhat test",
+    "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
     "dev": "hardhat node --reset --watch --export contractsInfo.json",
     "local:dev": "hardhat --network localhost deploy --watch",
     "local:deploy": "hardhat --network localhost deploy",
