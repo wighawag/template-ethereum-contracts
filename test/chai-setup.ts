@@ -1,4 +1,4 @@
 import chaiModule from 'chai';
-import {waffleChai} from '@ethereum-waffle/chai';
-chaiModule.use(waffleChai);
+import {chaiEthers} from 'chai-ethers';
+chaiModule.use(chaiEthers);
 export = chaiModule;
