@@ -12,6 +12,9 @@ export function node_url(networkName: string): string {
     uri = uri.replace('{{networkName}}', networkName);
   }
   if (!uri || uri === '') {
+    if (networkName === 'localhost') {
+      return 'http://localhost:8545';
+    }
     // throw new Error(`environment variable "ETH_NODE_URI" not configured `);
     return '';
   }
