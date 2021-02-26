@@ -1,10 +1,8 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-1.0
 
 pragma solidity 0.7.1;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-interface ERC20With2612 is IERC20 {
+interface IERC2612Standalone {
     function permit(
         address owner,
         address spender,
