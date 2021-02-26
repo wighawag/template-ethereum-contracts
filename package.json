@@ -17,7 +17,6 @@
     "websocket": "1.0.32"
   },
   "devDependencies": {
-    "@codechecks/client": "^0.1.10",
     "@ethersproject/wallet": "^5.0.5",
     "@openzeppelin/contracts": "^3.2.1-solc-0.7",
     "@typechain/ethers-v5": "^6.0.0",

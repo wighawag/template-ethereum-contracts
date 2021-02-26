@@ -35,10 +35,4 @@ jobs:
         run: yarn format
 
       - name: Running tests
-        run: yarn gas
-
-      - name: Codechecks
-        env:
-          CC_SECRET: ${{ secrets.CC_SECRET }}
-          COINMARKETCAP_API_KEY: ${{ secrets.COINMARKETCAP_API_KEY }}
-        run: npx codechecks
+        run: yarn test
