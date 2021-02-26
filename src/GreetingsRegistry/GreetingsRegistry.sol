@@ -8,25 +8,21 @@ contract GreetingsRegistry is Proxied {
     event MessageChanged(address indexed user, string message);
 
     mapping(address => string) internal _messages;
-    uint256 internal _id;
+    string internal _prefix;
 
-    function postUpgrade(uint256 id) public proxied {
-        _id = id;
+    function postUpgrade(string memory prefix) public proxied {
+        _prefix = prefix;
     }
 
-    constructor(uint256 id) {
-        postUpgrade(id); // the proxied modifier from `hardhat-deploy` ensure postUpgrade effect can only be used once when the contract is deployed without proxy
+    constructor(string memory prefix) {
+        // the proxied modifier from `hardhat-deploy` ensure postUpgrade effect can only be used once when the contract is deployed without proxy
+        // by calling that function in the constructor we ensure the contract behave the same whether it is deployed through a proxy or not.
+        postUpgrade(prefix);
     }
 
     function setMessage(string calldata message) external {
-        string memory actualMessage = string(abi.encodePacked("", message));
+        string memory actualMessage = string(abi.encodePacked(_prefix, message));
         _messages[msg.sender] = actualMessage;
         emit MessageChanged(msg.sender, actualMessage);
-    }
-
-    function fails(string calldata message) external {
-        console.log("it fails: '%s'", message);
-        emit MessageChanged(msg.sender, message);
-        revert("fails");
     }
 }

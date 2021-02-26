@@ -1,35 +1,27 @@
 import {expect} from './chai-setup';
 import {ethers, deployments, getUnnamedAccounts} from 'hardhat';
+import {GreetingsRegistry} from '../typechain';
+import {setupUsers} from './utils';
 
+const setup = deployments.createFixture(async () => {
+  await deployments.fixture('GreetingsRegistry');
+  const contracts = {
+    GreetingsRegistry: <GreetingsRegistry>(
+      await ethers.getContract('GreetingsRegistry')
+    ),
+  };
+  const users = await setupUsers(await getUnnamedAccounts(), contracts);
+  return {
+    ...contracts,
+    users,
+  };
+});
 describe('GreetingsRegistry', function () {
-  it('should work', async function () {
-    await deployments.fixture('GreetingsRegistry');
-    const greetingsRegistryContract = await ethers.getContract(
-      'GreetingsRegistry'
-    );
-    expect(greetingsRegistryContract.address).to.be.a('string');
-  });
-
-  it('should fails', async function () {
-    await deployments.fixture('GreetingsRegistry');
-    const greetingsRegistryContract = await ethers.getContract(
-      'GreetingsRegistry'
-    );
-    expect(greetingsRegistryContract.fails('testing')).to.be.revertedWith(
-      'fails'
-    );
-  });
-
   it('setMessage works', async function () {
-    await deployments.fixture('GreetingsRegistry');
-    const others = await getUnnamedAccounts();
-    const greetingsRegistryContract = await ethers.getContract(
-      'GreetingsRegistry',
-      others[0]
-    );
+    const {users, GreetingsRegistry} = await setup();
     const testMessage = 'Hello World';
-    await expect(greetingsRegistryContract.setMessage(testMessage))
-      .to.emit(greetingsRegistryContract, 'MessageChanged')
-      .withArgs(others[0], testMessage);
+    await expect(users[0].GreetingsRegistry.setMessage(testMessage))
+      .to.emit(GreetingsRegistry, 'MessageChanged')
+      .withArgs(users[0].address, testMessage);
   });
 });
