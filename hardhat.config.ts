@@ -17,7 +17,17 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
-      accounts: accounts(),
+      // process.env.HARDHAT_FORK will specify the network that the fork is made from.
+      // this line ensure the use of the corresponding accounts
+      accounts: accounts(process.env.HARDHAT_FORK),
+      forking: process.env.HARDHAT_FORK
+        ? {
+            url: node_url(process.env.HARDHAT_FORK),
+            blockNumber: process.env.HARDHAT_FORK_NUMBER
+              ? parseInt(process.env.HARDHAT_FORK_NUMBER)
+              : undefined,
+          }
+        : undefined,
     },
     localhost: {
       url: node_url('localhost'),
@@ -57,6 +67,15 @@ const config: HardhatUserConfig = {
   mocha: {
     timeout: 0,
   },
+  external: process.env.HARDHAT_FORK
+    ? {
+        deployments: {
+          // process.env.HARDHAT_FORK will specify the network that the fork is made from.
+          // this line allow it to fetch the deployments from the network being forked from
+          hardhat: ['deployments/' + process.env.HARDHAT_FORK],
+        },
+      }
+    : undefined,
 };
 
 export default config;
