@@ -35,12 +35,13 @@ These will compile your contracts
 <br/><br/>
 
 `yarn void:deploy`
-These will deploy your contract on the in-memory hardhat network and exit.
+
+This will deploy your contracts on the in-memory hardhat network and exit, leaving no trace. quick way to ensure deployments work as intended without consequences
 <br/><br/>
 
 `yarn test [mocha args...]`
 
-These will execute your tests.
+These will execute your tests using mocha. you can pass extra arguments to mocha
 <br/><br/>
 
 `yarn coverage`
