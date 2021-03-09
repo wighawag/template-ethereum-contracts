@@ -76,26 +76,26 @@ Behind the scene it uses `hardhat deploy` command so you can append any argument
 This will export the abi+address of deployed contract to `<file.json>`
 <br/><br/>
 
-`yarn fork:run <network> [--blockNumber=<blockNumber>] [--deploy] <file.ts> [args...]`
+`yarn fork:run <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
 
 This will execute the script `<file.ts>` against a temporary fork of the specified network
 
 if `--deploy` is used, deploy scripts will be executed
 <br/><br/>
 
-`yarn fork:deploy <network> [--blockNumber=<blockNumber>] [args...]`
+`yarn fork:deploy <network> [--blockNumber <blockNumber>] [args...]`
 
 This will deploy the contract against a temporary fork of the specified network.
 
 Behind the scene it uses `hardhat deploy` command so you can append any argument for it
 <br/><br/>
 
-`yarn fork:test <network> [--blockNumber=<blockNumber>] [mocha args...]`
+`yarn fork:test <network> [--blockNumber <blockNumber>] [mocha args...]`
 
 This will test the contract against a temporary fork of the specified network.
 <br/><br/>
 
-`yarn fork:dev <network> [--blockNumber=<blockNumber>] [args...]`
+`yarn fork:dev <network> [--blockNumber <blockNumber>] [args...]`
 
 This will deploy the contract against a fork of the specified network and it will keep running as a node.
 
