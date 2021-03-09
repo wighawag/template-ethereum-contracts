@@ -49,6 +49,11 @@ These will execute your tests using mocha. you can pass extra arguments to mocha
 These will produce a coverage report in the `coverage/` folder
 <br/><br/>
 
+`yarn gas`
+
+These will produce a gas report for function used in the tests
+<br/><br/>
+
 `yarn dev`
 
 These will run a local hardhat network on `localhost:8545` and deploy your contracts on it. Plus it will watch for any changes and redeploy them.

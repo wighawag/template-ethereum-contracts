@@ -35,7 +35,7 @@
     "ethers": "^5.0.17",
     "fs-extra": "^9.0.1",
     "hardhat": "^2.0.10",
-    "hardhat-deploy": "^0.7.0-beta.44",
+    "hardhat-deploy": "^0.7.0-beta.47",
     "hardhat-deploy-ethers": "^0.3.0-beta.7",
     "hardhat-gas-reporter": "^1.0.1",
     "hardhat-typechain": "^0.3.5",
@@ -61,10 +61,8 @@
     "test": "cross-env HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test",
     "gas": "cross-env REPORT_GAS=true hardhat test",
     "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
-
     "dev": "hardhat node --watch --export contractsInfo.json",
     "local:dev": "hardhat --network localhost deploy --watch",
-
     "exec": "node ./scripts.js run",
     "deploy": "node ./scripts.js deploy",
     "export": "node ./scripts.js export",
