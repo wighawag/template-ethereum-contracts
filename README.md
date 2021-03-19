@@ -81,7 +81,7 @@ Behind the scene it uses `hardhat deploy` command so you can append any argument
 This will export the abi+address of deployed contract to `<file.json>`
 <br/><br/>
 
-`yarn fork:run <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
+`yarn fork:exec <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
 
 This will execute the script `<file.ts>` against a temporary fork of the specified network
 

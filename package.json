@@ -66,7 +66,7 @@
     "exec": "node ./scripts.js run",
     "deploy": "node ./scripts.js deploy",
     "export": "node ./scripts.js export",
-    "fork:run": "node ./scripts.js fork:run",
+    "fork:exec": "node ./scripts.js fork:run",
     "fork:deploy": "node ./scripts.js fork:deploy",
     "fork:dev": "node ./scripts.js fork:dev",
     "fork:test": "node ./scripts.js fork:test"
