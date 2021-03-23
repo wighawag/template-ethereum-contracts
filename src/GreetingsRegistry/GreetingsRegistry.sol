@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.7.1;
+pragma solidity 0.8.2;
 
-import "hardhat-deploy/solc_0.7/proxy/Proxied.sol";
+import "hardhat-deploy/solc_0.8/proxy/Proxied.sol";
 import "hardhat/console.sol";
 
 contract GreetingsRegistry is Proxied {

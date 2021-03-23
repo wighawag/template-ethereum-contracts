@@ -769,10 +769,10 @@
     safe-buffer "^5.1.1"
     util.promisify "^1.0.0"
 
-"@openzeppelin/contracts@^3.2.1-solc-0.7":
-  version "3.2.1-solc-0.7"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.2.1-solc-0.7.tgz#067a60918b935d4733208edb3d7e35cd1d51026b"
-  integrity sha512-VfKZE9L2HNaZVBR7l5yHbRmap3EiVw9F5iVXRRDdgfnA9vQ1yFanrs0VYmdo2VIXC+EsI9wPPYZY9Ic7/qDBdw==
+"@openzeppelin/contracts@4.0.0-rc.0":
+  version "4.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.0.0-rc.0.tgz#daa9bb22dadf1d1434a96b7fa820c67357a1ac6f"
+  integrity sha512-206BCKet16fUrgYE2zP6L+wtMTbPjN3GmyqSJdRXeF0qw5MdUS0TIy/p3VHVX2+btSwslDyNrB70SN70RUDJQg==
 
 "@sentry/core@5.27.1":
   version "5.27.1"
@@ -3665,10 +3665,10 @@ hardhat-deploy-ethers@^0.3.0-beta.7:
   resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.7.tgz#860d86b84ed3c4fdef64283ccf1e8d5623454d02"
   integrity sha512-JKMNte6vudu9LSNqgmBtNxc1gfxp3NUcPKVAf/FANHfl9pa/mBGg6hpQO7tD8CLkAbe6f4K5BjyYIPWX3p7MKw==
 
-hardhat-deploy@^0.7.0-beta.47:
-  version "0.7.0-beta.47"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0-beta.47.tgz#974afd2c070e95437842b05bb24ade84962b4057"
-  integrity sha512-7YknSJ2o+ZsYMUtgNg1CW4pj++2cwOpDi4omyCXyktY9Plgudo9vNJwGHxgYU6bLQ6uhCGqICP4WL23beZGsZw==
+hardhat-deploy@^0.7.0-beta.50:
+  version "0.7.0-beta.50"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0-beta.50.tgz#e9e8ae0a6b566303f784aa74311d945cc109b857"
+  integrity sha512-WSt/wQYy4TLgwXZrvC4PNM+zpngX8nldhE8/pZ6B7JxovU9LwLhgqa9pvPST+sOhr7fTuBGrO7XyTVq2TgK6YQ==
   dependencies:
     "@ethersproject/abi" "^5.0.2"
     "@ethersproject/abstract-signer" "^5.0.2"
