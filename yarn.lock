@@ -769,10 +769,10 @@
     safe-buffer "^5.1.1"
     util.promisify "^1.0.0"
 
-"@openzeppelin/contracts@4.0.0-rc.0":
-  version "4.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.0.0-rc.0.tgz#daa9bb22dadf1d1434a96b7fa820c67357a1ac6f"
-  integrity sha512-206BCKet16fUrgYE2zP6L+wtMTbPjN3GmyqSJdRXeF0qw5MdUS0TIy/p3VHVX2+btSwslDyNrB70SN70RUDJQg==
+"@openzeppelin/contracts@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.4.1.tgz#03c891fec7f93be0ae44ed74e57a122a38732ce7"
+  integrity sha512-cUriqMauq1ylzP2TxePNdPqkwI7Le3Annh4K9rrpvKfSBB/bdW+Iu1ihBaTIABTAAJ85LmKL5SSPPL9ry8d1gQ==
 
 "@sentry/core@5.27.1":
   version "5.27.1"

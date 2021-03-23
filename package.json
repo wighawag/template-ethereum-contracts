@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@ethersproject/wallet": "^5.0.5",
-    "@openzeppelin/contracts": "4.0.0-rc.0",
+    "@openzeppelin/contracts": "^3.4.1",
     "@typechain/ethers-v5": "^6.0.0",
     "@typechain/hardhat": "^1.0.1",
     "@types/chai": "^4.2.11",
