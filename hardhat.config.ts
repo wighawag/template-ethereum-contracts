@@ -71,8 +71,9 @@ const config: HardhatUserConfig = {
     ? {
         deployments: {
           // process.env.HARDHAT_FORK will specify the network that the fork is made from.
-          // this line allow it to fetch the deployments from the network being forked from
+          // these lines allow it to fetch the deployments from the network being forked from both for node and deploy task
           hardhat: ['deployments/' + process.env.HARDHAT_FORK],
+          localhost: ['deployments/' + process.env.HARDHAT_FORK],
         },
       }
     : undefined,
