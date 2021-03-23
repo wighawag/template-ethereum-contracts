@@ -3,8 +3,51 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const {spawn} = require('child_process');
+require('dotenv').config();
 
-const program = require('commander');
+const rawArgs = process.argv.slice(2);
+
+function parseArgs(numFixedArgs, expectedOptions) {
+  const fixedArgs = [];
+  const options = {};
+  const extra = [];
+  const alreadyCounted = {};
+  for (let i = 0; i < rawArgs.length; i++) {
+    const rawArg = rawArgs[i];
+    if (rawArg.startsWith('--')) {
+      const optionName = rawArg.slice(2);
+      const optionDetected = expectedOptions[optionName];
+      if (!alreadyCounted[optionName] && optionDetected) {
+        alreadyCounted[optionName] = true;
+        if (optionDetected === 'boolean') {
+          options[optionName] = true;
+        } else {
+          i++;
+          options[optionName] = rawArgs[i];
+        }
+      } else {
+        if (fixedArgs.length < numFixedArgs) {
+          throw new Error(
+            `expected ${numFixedArgs} fied agrs, got only ${fixedCounter}`
+          );
+        } else {
+          extra.push(rawArg);
+        }
+      }
+    } else {
+      if (fixedArgs.length < numFixedArgs) {
+        fixedArgs.push(rawArg);
+      } else {
+        for (const opt of Object.keys(expectedOptions)) {
+          alreadyCounted[opt] = true;
+        }
+        extra.push(rawArg);
+      }
+    }
+  }
+  return {options, extra, fixedArgs};
+}
+
 function execute(command) {
   return new Promise((resolve, reject) => {
     const onExit = (error) => {
@@ -20,98 +63,92 @@ function execute(command) {
   });
 }
 
-program.version('0.0.1');
-
-program
-  .command('run <network> <file> [extra...]')
-  .description('run file against a network')
-  .action(async (network, file, extra) => {
+(async () => {
+  const firstArg = rawArgs[0];
+  if (firstArg === 'run') {
+    const {fixedArgs, extra} = parseArgs(3, {});
     await execute(
-      `cross-env HARDHAT_NETWORK=${network} ts-node --files ${file} ${
-        extra ? extra.join(' ') : ''
-      }`
+      `cross-env HARDHAT_NETWORK=${fixedArgs[1]} ts-node --files ${
+        fixedArgs[2]
+      } ${extra.join(' ')}`
     );
-  });
-
-program
-  .command('deploy <network> [extra...]')
-  .description('deploy to network')
-  .action(async (network, extra) => {
+  } else if (firstArg === 'deploy') {
+    const {fixedArgs, extra} = parseArgs(2, {});
     await execute(
-      `hardhat --network ${network} deploy ${extra ? extra.join(' ') : ''}`
+      `hardhat --network ${fixedArgs[1]} deploy ${extra.join(' ')}`
     );
-  });
-
-program
-  .command('export <network> <file>')
-  .description('export contracts for network')
-  .action(async (network, file) => {
-    await execute(`hardhat --network ${network} export --export ${file}`);
-  });
-
-program
-  .command('fork:run <network> <file> [extra...]')
-  .option('--blockNumber <blockNumber>')
-  .option('--deploy')
-  .description('run file against a fork')
-  .action(async (network, file, extra, options) => {
+  } else if (firstArg === 'export') {
+    const {fixedArgs} = parseArgs(3, {});
+    await execute(
+      `hardhat --network ${fixedArgs[1]} export --export ${fixedArgs[2]}`
+    );
+  } else if (firstArg === 'fork:run') {
+    const {fixedArgs, options, extra} = parseArgs(3, {
+      deploy: 'boolean',
+      blockNumber: 'string',
+      'no-impersonation': 'boolean',
+    });
     await execute(
       `cross-env ${
         options.deploy ? 'HARDHAT_DEPLOY_FIXTURE=true' : ''
-      } HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${network} HARDHAT_FORK=${network} ${
+      } HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
+        fixedArgs[1]
+      } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
-      } ts-node --files ${file} ${extra ? extra.join(' ') : ''}`
+      } ${
+        options['no-impersonation']
+          ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
+          : ''
+      } ts-node --files ${fixedArgs[2]} ${extra.join(' ')}`
     );
-  });
-
-program
-  .command('fork:deploy <network> [extra...]')
-  .option('--blockNumber <blockNumber>')
-  .description('deploy on a fork')
-  .action(async (network, extra, options) => {
-    // console.log({network, extra, options});
+  } else if (firstArg === 'fork:deploy') {
+    const {fixedArgs, options, extra} = parseArgs(2, {
+      blockNumber: 'string',
+      'no-impersonation': 'boolean',
+    });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${network} HARDHAT_FORK=${network} ${
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
+        fixedArgs[1]
+      } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
-      } hardhat deploy ${extra ? extra.join(' ') : ''}`
+      } ${
+        options['no-impersonation']
+          ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
+          : ''
+      } hardhat deploy ${extra.join(' ')}`
     );
-  });
-
-program
-  .command('fork:test <network> [extra...]')
-  .option('--blockNumber <blockNumber>')
-  .description('test on a fork')
-  .action(async (network, extra, options) => {
-    // console.log({network, extra, options});
+  } else if (firstArg === 'fork:test') {
+    const {fixedArgs, options, extra} = parseArgs(2, {
+      blockNumber: 'string',
+      'no-impersonation': 'boolean',
+    });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${network} HARDHAT_FORK=${network} ${
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
+        fixedArgs[1]
+      } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
-      }  HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test ${
-        extra ? extra.join(' ') : ''
-      }`
+      } ${
+        options['no-impersonation']
+          ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
+          : ''
+      } HARDHAT_DEPLOY_FIXTURE=true HARDHAT_COMPILE=true mocha --bail --recursive test ${extra.join(
+        ' '
+      )}`
     );
-  });
-
-program
-  .command('fork:dev <network> [extra...]')
-  .option('--blockNumber <blockNumber>')
-  .description('deploy on a fork and keep running')
-  .action(async (network, extra, options) => {
+  } else if (firstArg === 'fork:dev') {
+    const {fixedArgs, options, extra} = parseArgs(2, {
+      'no-impersonation': 'boolean',
+    });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${network} HARDHAT_FORK=${network} ${
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
+        fixedArgs[1]
+      } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
-      } hardhat node --watch --export contractsInfo.json ${
-        extra ? extra.join(' ') : ''
-      }`
+      } ${
+        options['no-impersonation']
+          ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
+          : ''
+      } hardhat node --watch --export contractsInfo.json ${extra.join(' ')}`
     );
-  });
-
-// program
-//   .command('exec <command>  [options...]')
-//   .description('exec program in PATH')
-//   .action(async (command, options) => {
-//     const actualCommand = command + ' ' + options ? options.join(' ') : '';
-//     await execute(actualCommand);
-//   });
-
-program.parse(process.argv);
+  }
+})();
