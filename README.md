@@ -64,7 +64,7 @@ These will run a local hardhat network on `localhost:8545` and deploy your contr
 This assumes a local node it running on `localhost:8545`. It will deploy your contracts on it. Plus it will watch for any changes and redeploy them.
 <br/><br/>
 
-`yarn exec <network> <file.ts> [args...]`
+`yarn execute <network> <file.ts> [args...]`
 
 This will execute the script `<file.ts>` against the specified network
 <br/><br/>
@@ -81,7 +81,7 @@ Behind the scene it uses `hardhat deploy` command so you can append any argument
 This will export the abi+address of deployed contract to `<file.json>`
 <br/><br/>
 
-`yarn fork:exec <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
+`yarn fork:execute <network> [--blockNumber <blockNumber>] [--deploy] <file.ts> [args...]`
 
 This will execute the script `<file.ts>` against a temporary fork of the specified network
 
