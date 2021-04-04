@@ -1208,6 +1208,11 @@
     safe-buffer "^5.1.1"
     util.promisify "^1.0.0"
 
+"@nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers":
+  version "0.3.0-beta.7"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.7.tgz#860d86b84ed3c4fdef64283ccf1e8d5623454d02"
+  integrity sha512-JKMNte6vudu9LSNqgmBtNxc1gfxp3NUcPKVAf/FANHfl9pa/mBGg6hpQO7tD8CLkAbe6f4K5BjyYIPWX3p7MKw==
+
 "@openzeppelin/contracts@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.4.1.tgz#03c891fec7f93be0ae44ed74e57a122a38732ce7"
@@ -4228,15 +4233,10 @@ har-validator@~5.1.3:
     ajv "^6.12.3"
     har-schema "^2.0.0"
 
-hardhat-deploy-ethers@^0.3.0-beta.7:
-  version "0.3.0-beta.7"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.7.tgz#860d86b84ed3c4fdef64283ccf1e8d5623454d02"
-  integrity sha512-JKMNte6vudu9LSNqgmBtNxc1gfxp3NUcPKVAf/FANHfl9pa/mBGg6hpQO7tD8CLkAbe6f4K5BjyYIPWX3p7MKw==
-
-hardhat-deploy@^0.7.0-beta.57:
-  version "0.7.0-beta.57"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0-beta.57.tgz#11e635c263d8b7b7469e5ec402f194cebc7a36c3"
-  integrity sha512-tNuNJ6U70L+LMnGttIHn/EIxdv25G/oxR/bVINEE6ORepmdPi0a8tlZahMmnpg0Hh3fn+lcnPZVws6gdl2eBAA==
+hardhat-deploy@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.7.0.tgz#553b7186b7b4656d3a9c064efa8bd0ef40a949bf"
+  integrity sha512-yjWnjXEhzCjKJoilg19g/13WV/zVTuvzzT3t6naRUY5LxX6Cz7/hfEJofevwSLsGxBWGAFjyM4XU+cPAepP/Dg==
   dependencies:
     "@ethersproject/abi" "^5.0.2"
     "@ethersproject/abstract-signer" "^5.0.2"
