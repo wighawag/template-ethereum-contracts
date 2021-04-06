@@ -31,7 +31,13 @@ describe('SimpleERC20', function () {
   });
 
   it('transfer succeed', async function () {
-    const {users, simpleERC20Beneficiary} = await setup();
+    const {users, simpleERC20Beneficiary, SimpleERC20} = await setup();
     await simpleERC20Beneficiary.SimpleERC20.transfer(users[1].address, 1);
+
+    await expect(
+      simpleERC20Beneficiary.SimpleERC20.transfer(users[1].address, 1)
+    )
+      .to.emit(SimpleERC20, 'Transfer')
+      .withArgs(simpleERC20Beneficiary.address, users[1].address, 1);
   });
 });
