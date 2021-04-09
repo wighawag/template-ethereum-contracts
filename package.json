@@ -38,7 +38,7 @@
     "ethers": "^5.1.0",
     "fs-extra": "^9.0.1",
     "hardhat": "^2.0.10",
-    "hardhat-deploy": "^0.7.3",
+    "hardhat-deploy": "^0.7.4",
     "hardhat-gas-reporter": "^1.0.4",
     "mocha": "^8.1.1",
     "prettier": "^2.0.5",
