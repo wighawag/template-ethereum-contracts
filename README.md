@@ -16,7 +16,7 @@ yarn test
 
 Here is the list of npm scripts you can execute:
 
-Some of them relies on [./scripts.js](./scripts.js) to allow parameterizing it via command line argument (have a look inside if you need modifications)
+Some of them relies on [./\_scripts.js](./_scripts.js) to allow parameterizing it via command line argument (have a look inside if you need modifications)
 <br/><br/>
 
 `yarn prepare`

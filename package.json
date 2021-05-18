@@ -61,12 +61,12 @@
     "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
     "dev": "hardhat node --watch --export contractsInfo.json",
     "local:dev": "hardhat --network localhost deploy --watch",
-    "execute": "node ./scripts.js run",
-    "deploy": "node ./scripts.js deploy",
-    "export": "node ./scripts.js export",
-    "fork:execute": "node ./scripts.js fork:run",
-    "fork:deploy": "node ./scripts.js fork:deploy",
-    "fork:dev": "node ./scripts.js fork:dev",
-    "fork:test": "node ./scripts.js fork:test"
+    "execute": "node ./_scripts.js run",
+    "deploy": "node ./_scripts.js deploy",
+    "export": "node ./_scripts.js export",
+    "fork:execute": "node ./_scripts.js fork:run",
+    "fork:deploy": "node ./_scripts.js fork:deploy",
+    "fork:dev": "node ./_scripts.js fork:dev",
+    "fork:test": "node ./_scripts.js fork:test"
   }
 }
