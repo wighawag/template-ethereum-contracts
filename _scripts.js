@@ -28,7 +28,7 @@ function parseArgs(numFixedArgs, expectedOptions) {
       } else {
         if (fixedArgs.length < numFixedArgs) {
           throw new Error(
-            `expected ${numFixedArgs} fied agrs, got only ${fixedArgs.length}`
+            `expected ${numFixedArgs} fixed args, got only ${fixedArgs.length}`
           );
         } else {
           extra.push(rawArg);
