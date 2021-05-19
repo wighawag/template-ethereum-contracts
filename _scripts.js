@@ -5,9 +5,9 @@
 const {spawn} = require('child_process');
 require('dotenv').config();
 
-const rawArgs = process.argv.slice(2);
+const commandlineArgs = process.argv.slice(2);
 
-function parseArgs(numFixedArgs, expectedOptions) {
+function parseArgs(rawArgs, numFixedArgs, expectedOptions) {
   const fixedArgs = [];
   const options = {};
   const extra = [];
@@ -63,27 +63,28 @@ function execute(command) {
   });
 }
 
-(async () => {
+async function performAction(rawArgs) {
   const firstArg = rawArgs[0];
+  const args = rawArgs.slice(1);
   if (firstArg === 'run') {
-    const {fixedArgs, extra} = parseArgs(3, {});
+    const {fixedArgs, extra} = parseArgs(args, 2, {});
     await execute(
       `cross-env HARDHAT_DEPLOY_LOG=true HARDHAT_NETWORK=${
-        fixedArgs[1]
-      } ts-node --files ${fixedArgs[2]} ${extra.join(' ')}`
+        fixedArgs[0]
+      } ts-node --files ${fixedArgs[1]} ${extra.join(' ')}`
     );
   } else if (firstArg === 'deploy') {
-    const {fixedArgs, extra} = parseArgs(2, {});
+    const {fixedArgs, extra} = parseArgs(args, 1, {});
     await execute(
-      `hardhat --network ${fixedArgs[1]} deploy ${extra.join(' ')}`
+      `hardhat --network ${fixedArgs[0]} deploy ${extra.join(' ')}`
     );
   } else if (firstArg === 'export') {
-    const {fixedArgs} = parseArgs(3, {});
+    const {fixedArgs} = parseArgs(args, 2, {});
     await execute(
-      `hardhat --network ${fixedArgs[1]} export --export ${fixedArgs[2]}`
+      `hardhat --network ${fixedArgs[0]} export --export ${fixedArgs[1]}`
     );
   } else if (firstArg === 'fork:run') {
-    const {fixedArgs, options, extra} = parseArgs(3, {
+    const {fixedArgs, options, extra} = parseArgs(args, 2, {
       deploy: 'boolean',
       blockNumber: 'string',
       'no-impersonation': 'boolean',
@@ -92,23 +93,23 @@ function execute(command) {
       `cross-env ${
         options.deploy ? 'HARDHAT_DEPLOY_FIXTURE=true' : ''
       } HARDHAT_DEPLOY_LOG=true HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${
-        fixedArgs[1]
-      } HARDHAT_FORK=${fixedArgs[1]} ${
+        fixedArgs[0]
+      } HARDHAT_FORK=${fixedArgs[0]} ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
       } ${
         options['no-impersonation']
           ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
           : ''
-      } ts-node --files ${fixedArgs[2]} ${extra.join(' ')}`
+      } ts-node --files ${fixedArgs[1]} ${extra.join(' ')}`
     );
   } else if (firstArg === 'fork:deploy') {
-    const {fixedArgs, options, extra} = parseArgs(2, {
+    const {fixedArgs, options, extra} = parseArgs(args, 1, {
       blockNumber: 'string',
       'no-impersonation': 'boolean',
     });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
-        fixedArgs[1]
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[0]} HARDHAT_FORK=${
+        fixedArgs[0]
       } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
       } ${
@@ -118,13 +119,13 @@ function execute(command) {
       } hardhat deploy ${extra.join(' ')}`
     );
   } else if (firstArg === 'fork:test') {
-    const {fixedArgs, options, extra} = parseArgs(2, {
+    const {fixedArgs, options, extra} = parseArgs(args, 1, {
       blockNumber: 'string',
       'no-impersonation': 'boolean',
     });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
-        fixedArgs[1]
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[0]} HARDHAT_FORK=${
+        fixedArgs[0]
       } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
       } ${
@@ -136,12 +137,12 @@ function execute(command) {
       )}`
     );
   } else if (firstArg === 'fork:dev') {
-    const {fixedArgs, options, extra} = parseArgs(2, {
+    const {fixedArgs, options, extra} = parseArgs(args, 1, {
       'no-impersonation': 'boolean',
     });
     await execute(
-      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
-        fixedArgs[1]
+      `cross-env HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[0]} HARDHAT_FORK=${
+        fixedArgs[0]
       } ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
       } ${
@@ -151,4 +152,6 @@ function execute(command) {
       } hardhat node --watch --export contractsInfo.json ${extra.join(' ')}`
     );
   }
-})();
+}
+
+performAction(commandlineArgs);
