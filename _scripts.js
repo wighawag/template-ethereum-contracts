@@ -68,9 +68,9 @@ function execute(command) {
   if (firstArg === 'run') {
     const {fixedArgs, extra} = parseArgs(3, {});
     await execute(
-      `cross-env HARDHAT_NETWORK=${fixedArgs[1]} ts-node --files ${
-        fixedArgs[2]
-      } ${extra.join(' ')}`
+      `cross-env HARDHAT_DEPLOY_LOG=true HARDHAT_NETWORK=${
+        fixedArgs[1]
+      } ts-node --files ${fixedArgs[2]} ${extra.join(' ')}`
     );
   } else if (firstArg === 'deploy') {
     const {fixedArgs, extra} = parseArgs(2, {});
@@ -91,9 +91,9 @@ function execute(command) {
     await execute(
       `cross-env ${
         options.deploy ? 'HARDHAT_DEPLOY_FIXTURE=true' : ''
-      } HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${fixedArgs[1]} HARDHAT_FORK=${
+      } HARDHAT_DEPLOY_LOG=true HARDHAT_DEPLOY_ACCOUNTS_NETWORK=${
         fixedArgs[1]
-      } ${
+      } HARDHAT_FORK=${fixedArgs[1]} ${
         options.blockNumber ? `HARDHAT_FORK_NUMBER=${options.blockNumber}` : ''
       } ${
         options['no-impersonation']

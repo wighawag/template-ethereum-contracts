@@ -1,5 +1,5 @@
-import {ethers, getUnnamedAccounts} from 'hardhat';
-
+import {deployments, getUnnamedAccounts} from 'hardhat';
+const {execute} = deployments;
 // example script
 
 const args = process.argv.slice(2);
@@ -11,14 +11,12 @@ async function main() {
     ? account
     : (await getUnnamedAccounts())[parseInt(account)];
 
-  console.log({accountAddress, message});
-  const GreetingsRegistry = await ethers.getContract(
+  await execute(
     'GreetingsRegistry',
-    accountAddress
+    {from: accountAddress, log: true},
+    'setMessage',
+    message || 'hello'
   );
-  const tx = await GreetingsRegistry.setMessage(message || 'hello');
-  console.log({tx: tx.hash});
-  await tx.wait();
 }
 
 main()
