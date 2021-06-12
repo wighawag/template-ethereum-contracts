@@ -27,14 +27,13 @@ abstract contract WithPermit is ERC20Internal, IERC2612Standalone {
         require(owner != address(0), "INVALID_ZERO_ADDRESS");
 
         uint256 currentNonce = _nonces[owner];
-        bytes32 digest =
-            keccak256(
-                abi.encodePacked(
-                    "\x19\x01",
-                    DOMAIN_SEPARATOR(),
-                    keccak256(abi.encode(PERMIT_TYPEHASH, owner, spender, value, currentNonce, deadline))
-                )
-            );
+        bytes32 digest = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                DOMAIN_SEPARATOR(),
+                keccak256(abi.encode(PERMIT_TYPEHASH, owner, spender, value, currentNonce, deadline))
+            )
+        );
         require(owner == ecrecover(digest, v, r, s), "INVALID_SIGNATURE");
         require(deadline == 0 || block.timestamp <= deadline, "TOO_LATE");
 
