@@ -8,7 +8,9 @@ import 'solidity-coverage';
 import {node_url, accounts} from './utils/network';
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
-process.env['HARDHAT_DEPLOY_FORK'] = process.env.HARDHAT_FORK;
+if (process.env.HARDHAT_FORK) {
+  process.env['HARDHAT_DEPLOY_FORK'] = process.env.HARDHAT_FORK;
+}
 
 const config: HardhatUserConfig = {
   solidity: {
