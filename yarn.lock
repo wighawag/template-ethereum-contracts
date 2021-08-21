@@ -859,10 +859,10 @@
   resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.10.tgz#bccfcf635d380bbab3638960f6739fe4d396fc5f"
   integrity sha512-TeyriUshRZ7XVHOjMsDtTozIrdwLf3Bw+oZRYNhXdG/eut5HeDhjUFPfRlG7TI1lSLvkcB5dt7OxOtPYKDOxTg==
 
-"@openzeppelin/contracts@^3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.4.1.tgz#03c891fec7f93be0ae44ed74e57a122a38732ce7"
-  integrity sha512-cUriqMauq1ylzP2TxePNdPqkwI7Le3Annh4K9rrpvKfSBB/bdW+Iu1ihBaTIABTAAJ85LmKL5SSPPL9ry8d1gQ==
+"@openzeppelin/contracts@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.0.tgz#345236d4ec73ef381ab4907c6ef66fd55e5dedad"
+  integrity sha512-+uBDl/TrmR0Kch6mq3tuxMex/fK7huR6+fQMae+zJk1K5T+dp0pFl12Hbc+1L6oYMXoyDSBJ8zqhRIntrREDFA==
 
 "@sentry/core@5.30.0":
   version "5.30.0"
