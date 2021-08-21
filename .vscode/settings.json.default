@@ -5,7 +5,7 @@
     "source.fixAll": true
   },
   "solidity.linter": "solhint",
-  "solidity.enableLocalNodeCompiler": false,
+  "solidity.defaultCompiler": "remote",
   "solidity.compileUsingRemoteVersion": "v0.8.7+commit.e28d00a7",
   "solidity.packageDefaultDependenciesContractsDirectory": "",
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
