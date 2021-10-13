@@ -3,6 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const {spawn} = require('child_process');
+const path = require('path');
 require('dotenv').config();
 
 const commandlineArgs = process.argv.slice(2);
@@ -68,10 +69,18 @@ async function performAction(rawArgs) {
   const args = rawArgs.slice(1);
   if (firstArg === 'run') {
     const {fixedArgs, extra} = parseArgs(args, 2, {});
+    let filepath = fixedArgs[1];
+    const folder = path.basename(__dirname);
+    if (
+      filepath.startsWith(folder + '/') ||
+      filepath.startsWith(folder + '\\')
+    ) {
+      filepath = filepath.slice(folder.length + 1);
+    }
     await execute(
       `cross-env HARDHAT_DEPLOY_LOG=true HARDHAT_NETWORK=${
         fixedArgs[0]
-      } ts-node --files ${fixedArgs[1]} ${extra.join(' ')}`
+      } ts-node --files ${filepath} ${extra.join(' ')}`
     );
   } else if (firstArg === 'deploy') {
     const {fixedArgs, extra} = parseArgs(args, 1, {});
@@ -89,6 +98,14 @@ async function performAction(rawArgs) {
       blockNumber: 'string',
       'no-impersonation': 'boolean',
     });
+    let filepath = fixedArgs[1];
+    const folder = path.basename(__dirname);
+    if (
+      filepath.startsWith(folder + '/') ||
+      filepath.startsWith(folder + '\\')
+    ) {
+      filepath = filepath.slice(folder.length + 1);
+    }
     await execute(
       `cross-env ${
         options.deploy ? 'HARDHAT_DEPLOY_FIXTURE=true' : ''
@@ -98,7 +115,7 @@ async function performAction(rawArgs) {
         options['no-impersonation']
           ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
           : ''
-      } ts-node --files ${fixedArgs[1]} ${extra.join(' ')}`
+      } ts-node --files ${filepath} ${extra.join(' ')}`
     );
   } else if (firstArg === 'fork:deploy') {
     const {fixedArgs, options, extra} = parseArgs(args, 1, {
@@ -126,7 +143,7 @@ async function performAction(rawArgs) {
         options['no-impersonation']
           ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
           : ''
-      } hardhat node ${extra.join(' ')}`
+      } hardhat node --hostname 0.0.0.0 ${extra.join(' ')}`
     );
   } else if (firstArg === 'fork:test') {
     const {fixedArgs, options, extra} = parseArgs(args, 1, {
@@ -156,7 +173,9 @@ async function performAction(rawArgs) {
         options['no-impersonation']
           ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
           : ''
-      } hardhat node --watch --export contractsInfo.json ${extra.join(' ')}`
+      } hardhat node --hostname 0.0.0.0 --watch --export contractsInfo.json ${extra.join(
+        ' '
+      )}`
     );
   }
 }

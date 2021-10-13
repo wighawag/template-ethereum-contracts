@@ -61,7 +61,7 @@
     "gas": "cross-env REPORT_GAS=true hardhat test",
     "coverage": "cross-env HARDHAT_DEPLOY_FIXTURE=true hardhat coverage",
     "dev:zero": "cross-env MINING_INTERVAL=\"3000,5000\" hardhat node --hostname 0.0.0.0 --no-deploy",
-    "dev": "hardhat node --hostname 0.0.0.0 --watch",
+    "dev": "cross-env MINING_INTERVAL=\"3000,5000\" hardhat node --hostname 0.0.0.0 --watch",
     "local:dev": "hardhat --network localhost deploy --watch",
     "execute": "node ./_scripts.js run",
     "deploy": "node ./_scripts.js deploy",
