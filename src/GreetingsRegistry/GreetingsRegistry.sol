@@ -7,7 +7,7 @@ import "hardhat/console.sol";
 contract GreetingsRegistry is Proxied {
     event MessageChanged(address indexed user, string message);
 
-    mapping(address => string) internal _messages;
+    mapping(address => string) public messages;
     string internal _prefix;
 
     function postUpgrade(string memory prefix) public proxied {
@@ -22,7 +22,7 @@ contract GreetingsRegistry is Proxied {
 
     function setMessage(string calldata message) external {
         string memory actualMessage = string(abi.encodePacked(_prefix, message));
-        _messages[msg.sender] = actualMessage;
+        messages[msg.sender] = actualMessage;
         emit MessageChanged(msg.sender, actualMessage);
     }
 }
