@@ -6,7 +6,7 @@
   },
   "solidity.linter": "solhint",
   "solidity.defaultCompiler": "remote",
-  "solidity.compileUsingRemoteVersion": "v0.8.7+commit.e28d00a7",
+  "solidity.compileUsingRemoteVersion": "v0.8.9+commit.e5eed63a",
   "solidity.packageDefaultDependenciesContractsDirectory": "",
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
   "solidity.validationDelay": 1500,

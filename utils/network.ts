@@ -21,9 +21,7 @@ export function node_url(networkName: string): string {
     return '';
   }
   if (uri.indexOf('{{') >= 0) {
-    throw new Error(
-      `invalid uri or network not supported by node provider : ${uri}`
-    );
+    throw new Error(`invalid uri or network not supported by node provider : ${uri}`);
   }
   return uri;
 }

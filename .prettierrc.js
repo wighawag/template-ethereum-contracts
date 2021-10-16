@@ -1,6 +1,7 @@
 module.exports = {
   singleQuote: true,
   bracketSpacing: false,
+  printWidth: 120,
   overrides: [
     {
       files: '*.sol',
@@ -12,4 +13,5 @@ module.exports = {
       },
     },
   ],
+  plugins: [require.resolve('prettier-plugin-solidity')],
 };

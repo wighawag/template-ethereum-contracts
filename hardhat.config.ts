@@ -14,7 +14,17 @@ if (process.env.HARDHAT_FORK) {
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: '0.8.7',
+    compilers: [
+      {
+        version: '0.8.9',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 2000,
+          },
+        },
+      },
+    ],
   },
   namedAccounts: {
     deployer: 0,
@@ -30,9 +40,13 @@ const config: HardhatUserConfig = {
         ? {
             // TODO once PR merged : network: process.env.HARDHAT_FORK,
             url: node_url(process.env.HARDHAT_FORK),
-            blockNumber: process.env.HARDHAT_FORK_NUMBER
-              ? parseInt(process.env.HARDHAT_FORK_NUMBER)
-              : undefined,
+            blockNumber: process.env.HARDHAT_FORK_NUMBER ? parseInt(process.env.HARDHAT_FORK_NUMBER) : undefined,
+          }
+        : undefined,
+      mining: process.env.MINING_INTERVAL
+        ? {
+            auto: false,
+            interval: process.env.MINING_INTERVAL.split(',').map((v) => parseInt(v)) as [number, number],
           }
         : undefined,
     },
@@ -82,6 +96,16 @@ const config: HardhatUserConfig = {
   mocha: {
     timeout: 0,
   },
+  external: process.env.HARDHAT_FORK
+    ? {
+        deployments: {
+          // process.env.HARDHAT_FORK will specify the network that the fork is made from.
+          // these lines allow it to fetch the deployments from the network being forked from both for node and deploy task
+          hardhat: ['deployments/' + process.env.HARDHAT_FORK],
+          localhost: ['deployments/' + process.env.HARDHAT_FORK],
+        },
+      }
+    : undefined,
 };
 
 export default config;

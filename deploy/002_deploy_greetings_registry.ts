@@ -13,6 +13,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     proxy: useProxy && 'postUpgrade',
     args: [2],
     log: true,
+    autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
 
   return !useProxy; // when live network, record the script as executed to prevent rexecution

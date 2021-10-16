@@ -9,6 +9,4 @@ function copyFromDefault(p) {
   }
 }
 
-['.vscode/settings.json', '.vscode/extensions.json', '.vscode/launch.json'].map(
-  copyFromDefault
-);
+['.vscode/settings.json', '.vscode/extensions.json', '.vscode/launch.json'].map(copyFromDefault);

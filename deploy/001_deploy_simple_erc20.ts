@@ -12,6 +12,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     from: deployer,
     args: [simpleERC20Beneficiary, parseEther('1000000000')],
     log: true,
+    autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
 };
 export default func;
