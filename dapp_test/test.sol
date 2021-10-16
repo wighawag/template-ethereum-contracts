@@ -13,8 +13,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity >=0.4.23;
+pragma solidity 0.8.7;
 
+// solhint-disable event-name-camelcase
+// solhint-disable var-name-mixedcase
+// solhint-disable quotes
+// solhint-disable state-visibility
 contract DSTest {
     event log                    (string);
     event logs                   (bytes);
