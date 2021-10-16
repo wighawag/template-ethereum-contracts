@@ -22,7 +22,7 @@ yarn test
 dapp test
 ```
 
-This require settin up your machine:
+The latter requires additional step to set up your machine:
 
 Install dapptools (Following instruction [here](https://github.com/dapphub/dapptools#installation)):
 
