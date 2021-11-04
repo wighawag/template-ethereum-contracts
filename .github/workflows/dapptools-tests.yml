@@ -3,7 +3,7 @@ name: dapptools-tests
 on: [push, pull_request]
 
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,11 +14,18 @@ jobs:
         with:
           name: dapp
 
-      - name: Install dependencies
-        run: nix-shell --run 'make'
+      - name: Install solc
+        run: nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
+
+      - name: npm install
+        run: npm install
+
+      - name: shell.nix
+        run: echo -n -e 'let pkgs = import (builtins.fetchGit rec { name = "dapptools-${rev}"; url = https://github.com/dapphub/dapptools; rev = "d7a23096d8ae8391e740f6bdc4e8b9b703ca4764";  }) {}; in pkgs.mkShell { src = null; name = "tests"; buildInputs = with pkgs; [ pkgs.dapp ]; }' > shell.nix
 
       - name: Run tests
         run: nix-shell --run 'dapp test'
+        # run: dapp test
         env:
           # Only fuzz deeply if we're pushing to main or this is a PR to main:
           DEEP_FUZZ: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
