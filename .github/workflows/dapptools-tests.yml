@@ -18,8 +18,8 @@ jobs:
         with:
           name: dapp
 
-      # - name: Install solc
-      # . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      - name: source nix
+        run: . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
       - name: Install dapptools
         run: curl https://dapp.tools/install | sh
