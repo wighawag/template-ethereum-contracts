@@ -20,6 +20,9 @@ jobs:
       - name: npm install
         run: npm install
 
+      - name: default.nix
+        run: echo -n -e "(import <nixpkgs> {}).mkShell {}" > default.nix
+
       - name: Run tests
         run: nix-shell --run 'dapp test'
         env:
