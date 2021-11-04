@@ -9,10 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: cachix/install-nix-action@v13
-      - uses: cachix/cachix-action@v10
+      - uses: cachix/install-nix-action@v14.1
         with:
-          name: dapp
+          nix_path: nixpkgs=channel:nixos-unstable
+      # - run: nix-build
+      # - uses: cachix/install-nix-action@v13
+      # - uses: cachix/cachix-action@v10
+      #   with:
+      #     name: dapp
 
       - name: Install solc
         run: nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
@@ -20,11 +24,12 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: default.nix
-        run: echo -n -e "" > default.nix
+      # - name: default.nix
+      #   run: echo -n -e "" > default.nix
 
       - name: Run tests
-        run: nix-shell --run 'dapp test'
+        # run: nix-shell --run 'dapp test'
+        run: dapp test
         env:
           # Only fuzz deeply if we're pushing to main or this is a PR to main:
           DEEP_FUZZ: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
