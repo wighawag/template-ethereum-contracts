@@ -15,13 +15,13 @@ jobs:
           name: dapp
 
       - name: Install solc
-        run: nix-shell --run 'nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9'
+        run: nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
 
       - name: npm install
-        run: nix-shell --run 'npm install'
+        run: npm install
 
       - name: Run tests
-        run: nix-shell --run 'dapp test'
+        run: dapp test
         env:
           # Only fuzz deeply if we're pushing to main or this is a PR to main:
           DEEP_FUZZ: ${{ github.ref == 'refs/heads/main' || github.base_ref == 'main' }}
