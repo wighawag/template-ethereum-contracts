@@ -145,6 +145,9 @@ async function performAction(rawArgs) {
         options['no-impersonation'] ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true` : ''
       } hardhat node --hostname 0.0.0.0 --watch --export contractsInfo.json ${extra.join(' ')}`
     );
+  } else if (firstArg === 'tenderly:push') {
+    const {fixedArgs} = parseArgs(args, 1, {});
+    await execute(`hardhat --network ${fixedArgs[0]} tenderly:push`);
   }
 }
 
