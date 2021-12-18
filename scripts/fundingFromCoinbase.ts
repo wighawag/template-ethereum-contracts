@@ -51,14 +51,18 @@ async function main() {
   if (coinbaseBalance.gt(0)) {
     const rawProvider = new JsonRpcProvider(network.config.url);
     const coinbaseSigner = rawProvider.getSigner(coinbase);
+    const txs: providers.TransactionResponse[] = [];
     for (let i = 0; i < accountsToFund.length; i++) {
+      const to = accountsToFund[i];
       const tx = await coinbaseSigner.sendTransaction({
-        to: accountsToFund[i],
+        to,
         value: amount.sub(21000).toHexString(),
         nonce: BigNumber.from(nonce + i).toHexString(),
       });
-      console.log(tx.hash);
+      console.log(`${to}: ${tx.hash}`);
+      txs.push(tx);
     }
+    await Promise.all(txs.map((tx) => tx.wait()));
   } else {
     console.log('coinbase has zero balance');
   }
