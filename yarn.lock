@@ -1636,6 +1636,13 @@ axios@^0.21.1:
   dependencies:
     follow-redirects "^1.10.0"
 
+axios@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
+  dependencies:
+    follow-redirects "^1.14.4"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -3491,6 +3498,11 @@ follow-redirects@^1.10.0, follow-redirects@^1.12.1:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
 
+follow-redirects@^1.14.4:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.6.tgz#8cfb281bbc035b3c067d6cd975b0f6ade6e855cd"
+  integrity sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==
+
 for-each@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/for-each/-/for-each-0.3.3.tgz#69b447e88a0a5d32c3e7084f3f1710034b21376e"
@@ -3899,16 +3911,23 @@ har-validator@~5.1.3:
     ajv "^6.12.3"
     har-schema "^2.0.0"
 
-hardhat-deploy@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.9.3.tgz#cf9a7806c0a86a6f7e9352fc558b26c079983496"
-  integrity sha512-0sxxQoxcA1+LSVmmLwp9empK4Pz5tjr92JvfcobojBz35DSpp0o3f0f/tXocYWaGbOrms3eQJ8OX5WVsmcnN4Q==
+hardhat-deploy-tenderly@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy-tenderly/-/hardhat-deploy-tenderly-0.0.2.tgz#232ab802fab1af363296db7226a7b25c0293f8af"
+  integrity sha512-f2jWtrmU3/EyyD4R5y1JRyXS26Cq7IcbQpTfn+qAW+G9r1JjDnij1NxhUC7BmFxjYlf+pw8Ez8ZH17ukJ1uSfg==
+  dependencies:
+    axios "^0.24.0"
+    js-yaml "^4.1.0"
+
+"hardhat-deploy@file:.yalc/hardhat-deploy":
+  version "0.9.12"
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/abstract-signer" "^5.4.1"
     "@ethersproject/address" "^5.4.0"
     "@ethersproject/bignumber" "^5.4.1"
     "@ethersproject/bytes" "^5.4.0"
+    "@ethersproject/constants" "^5.4.0"
     "@ethersproject/contracts" "^5.4.1"
     "@ethersproject/providers" "^5.4.4"
     "@ethersproject/solidity" "^5.4.0"
@@ -4500,7 +4519,7 @@ js-yaml@3.x, js-yaml@^3.12.0, js-yaml@^3.13.0, js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
-js-yaml@4.1.0:
+js-yaml@4.1.0, js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==

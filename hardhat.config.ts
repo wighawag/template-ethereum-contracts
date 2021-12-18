@@ -5,6 +5,7 @@ import '@nomiclabs/hardhat-ethers';
 import 'hardhat-gas-reporter';
 import '@typechain/hardhat';
 import 'solidity-coverage';
+import 'hardhat-deploy-tenderly';
 import {node_url, accounts} from './utils/network';
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
@@ -106,6 +107,11 @@ const config: HardhatUserConfig = {
         },
       }
     : undefined,
+
+  tenderly: {
+    project: 'template-ethereum-contracts',
+    username: process.env.TENDERLY_USERNAME as string,
+  },
 };
 
 export default config;
