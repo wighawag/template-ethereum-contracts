@@ -4168,10 +4168,10 @@ har-validator@~5.1.3:
     ajv "^6.12.3"
     har-schema "^2.0.0"
 
-hardhat-deploy-tenderly@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy-tenderly/-/hardhat-deploy-tenderly-0.0.2.tgz#232ab802fab1af363296db7226a7b25c0293f8af"
-  integrity sha512-f2jWtrmU3/EyyD4R5y1JRyXS26Cq7IcbQpTfn+qAW+G9r1JjDnij1NxhUC7BmFxjYlf+pw8Ez8ZH17ukJ1uSfg==
+hardhat-deploy-tenderly@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy-tenderly/-/hardhat-deploy-tenderly-0.0.6.tgz#f055d8889cbd549e6bd75acf23fb26b2d42e9f9e"
+  integrity sha512-oFZgnwum6OLPmpSDL/JArBYi5HQiAEz1/opAXjpeceTPKVDsB9EFOsOdWiTeLuXYhs+Ugz1IkWHljf/qw2I9Mw==
   dependencies:
     axios "^0.24.0"
     js-yaml "^4.1.0"
