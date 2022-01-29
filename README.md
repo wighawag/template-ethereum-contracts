@@ -8,7 +8,9 @@ yarn
 
 ## TEST
 
-There are 2 flavors of test
+There are 3 flavors of tests: hardhat, dapptools and forge
+
+### hardhat
 
 - One using hardhat that can leverage hardhat-deploy to reuse deployment procedures and named accounts:
 
@@ -16,7 +18,7 @@ There are 2 flavors of test
 yarn test
 ```
 
-- And another using [dapptools](https://dapp.tools)
+### [dapptools](https://dapp.tools)
 
 ```bash
 dapp test
@@ -41,6 +43,14 @@ Then install solc with the correct version:
 ```bash
 nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
 ```
+
+### forge
+
+```bash
+forge test
+```
+
+This require the installation of forge (see [foundry](https://github.com/gakonst/foundry))
 
 ## SCRIPTS
 
