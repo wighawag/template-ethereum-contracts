@@ -6,3 +6,8 @@ coverage/
 node_modules/
 package.json
 typechain/
+dapp_test/test.sol
+_lib/
+.dappp
+*.json
+.yalc
