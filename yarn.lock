@@ -4210,10 +4210,10 @@ hardhat-deploy-tenderly@^0.1.1:
     axios "^0.24.0"
     js-yaml "^4.1.0"
 
-hardhat-deploy@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.11.2.tgz#b47411bb171e4418d425c5ff2c9548baf7bfd434"
-  integrity sha512-7J6dhm3Y3ix63HU+oJJWwpcusdXZvs4fskyyU2YbNxPKBXFwfNl22dN5ckxTDWIoWpUeovI3HxUybps5VSsrCg==
+hardhat-deploy@^0.11.4:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.11.4.tgz#39b06d3b0ad25195071cc1f2f71649b1f9f030d0"
+  integrity sha512-BNMwWqaxrwb8XKrYzmCwnUzOSKzicUBk+fwd28doUNoAGFFh8kpoypkcHMzKDVdLhnamAardcfqJet73zrZoTA==
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/abstract-signer" "^5.4.1"
