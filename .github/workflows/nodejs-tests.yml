@@ -31,9 +31,6 @@ jobs:
       - name: Installing dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Linting
-        run: yarn lint
-
       - name: Formatting
         run: yarn format
 
