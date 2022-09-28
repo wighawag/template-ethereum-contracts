@@ -1,17 +1,19 @@
 module.exports = {
-  singleQuote: true,
-  bracketSpacing: false,
-  printWidth: 120,
-  overrides: [
-    {
-      files: '*.sol',
-      options: {
-        printWidth: 120,
-        tabWidth: 4,
-        singleQuote: false,
-        explicitTypes: 'always',
-      },
-    },
-  ],
-  plugins: [require.resolve('prettier-plugin-solidity')],
+	useTabs: true,
+	singleQuote: true,
+	trailingComma: 'none',
+	printWidth: 120,
+	bracketSpacing: false,
+	overrides: [
+		{
+			files: '*.sol',
+			options: {
+				printWidth: 120,
+				singleQuote: false,
+				explicitTypes: 'always',
+				parser: 'solidity-parse'
+			}
+		}
+	],
+	plugins: [require('prettier-plugin-solidity')]
 };
