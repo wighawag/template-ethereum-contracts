@@ -6,7 +6,7 @@ specifiers:
   '@typechain/ethers-v5': ^10.1.0
   '@typechain/hardhat': ^6.1.2
   '@types/chai': ^4.3.3
-  '@types/mocha': ^9.1.1
+  '@types/mocha': ^10.0.0
   '@types/node': ^18.7.15
   chai: ^4.3.6
   chai-ethers: ^0.0.1
@@ -33,7 +33,7 @@ devDependencies:
   '@typechain/ethers-v5': 10.1.0_b42bmp5j6zz2scno5iycet6txe
   '@typechain/hardhat': 6.1.3_kfdcpgjugygj6jn4axyder6ikm
   '@types/chai': 4.3.3
-  '@types/mocha': 9.1.1
+  '@types/mocha': 10.0.0
   '@types/node': 18.7.23
   chai: 4.3.6
   chai-ethers: 0.0.1
@@ -881,8 +881,8 @@ packages:
       '@types/node': 18.7.23
     dev: true
 
-  /@types/mocha/9.1.1:
-    resolution: {integrity: sha512-Z61JK7DKDtdKTWwLeElSEBcWGRLY8g95ic5FoQqI9CMx0ns/Ghep3B4DfcEimiKMvtamNVULVNKEsiwV3aQmXw==}
+  /@types/mocha/10.0.0:
+    resolution: {integrity: sha512-rADY+HtTOA52l9VZWtgQfn4p+UDVM2eDVkMZT1I6syp0YKxW2F9v+0pbRZLsvskhQv/vMb6ZfCay81GHbz5SHg==}
     dev: true
 
   /@types/node/10.17.60:
