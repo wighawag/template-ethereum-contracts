@@ -57,7 +57,7 @@ async function main() {
 			const tx = await coinbaseSigner.sendTransaction({
 				to,
 				value: amount.sub(21000).toHexString(),
-				nonce: BigNumber.from(nonce + i).toHexString()
+				nonce: BigNumber.from(nonce + i).toHexString(),
 			});
 			console.log(`${to}: ${tx.hash}`);
 			txs.push(tx);

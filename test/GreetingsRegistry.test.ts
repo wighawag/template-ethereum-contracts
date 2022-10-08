@@ -6,12 +6,12 @@ import {setupUsers} from './utils';
 const setup = deployments.createFixture(async () => {
 	await deployments.fixture('GreetingsRegistry');
 	const contracts = {
-		GreetingsRegistry: <GreetingsRegistry>await ethers.getContract('GreetingsRegistry')
+		GreetingsRegistry: <GreetingsRegistry>await ethers.getContract('GreetingsRegistry'),
 	};
 	const users = await setupUsers(await getUnnamedAccounts(), contracts);
 	return {
 		...contracts,
-		users
+		users,
 	};
 });
 describe('GreetingsRegistry', function () {

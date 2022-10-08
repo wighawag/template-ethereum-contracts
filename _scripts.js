@@ -57,7 +57,7 @@ function execute(command) {
 		};
 		spawn(command.split(' ')[0], command.split(' ').slice(1), {
 			stdio: 'inherit',
-			shell: true
+			shell: true,
 		}).on('exit', onExit);
 	});
 }
@@ -95,7 +95,7 @@ async function performAction(rawArgs) {
 		const {fixedArgs, options, extra} = parseArgs(args, 2, {
 			deploy: 'boolean',
 			blockNumber: 'string',
-			'no-impersonation': 'boolean'
+			'no-impersonation': 'boolean',
 		});
 		let filepath = fixedArgs[1];
 		const folder = path.basename(__dirname);
@@ -112,7 +112,7 @@ async function performAction(rawArgs) {
 	} else if (firstArg === 'fork:deploy') {
 		const {fixedArgs, options, extra} = parseArgs(args, 1, {
 			blockNumber: 'string',
-			'no-impersonation': 'boolean'
+			'no-impersonation': 'boolean',
 		});
 		await execute(
 			`cross-env HARDHAT_FORK=${fixedArgs[0]} ${
@@ -124,7 +124,7 @@ async function performAction(rawArgs) {
 	} else if (firstArg === 'fork:node') {
 		const {fixedArgs, options, extra} = parseArgs(args, 1, {
 			blockNumber: 'string',
-			'no-impersonation': 'boolean'
+			'no-impersonation': 'boolean',
 		});
 		await execute(
 			`cross-env HARDHAT_FORK=${fixedArgs[0]} ${
@@ -136,7 +136,7 @@ async function performAction(rawArgs) {
 	} else if (firstArg === 'fork:test') {
 		const {fixedArgs, options, extra} = parseArgs(args, 1, {
 			blockNumber: 'string',
-			'no-impersonation': 'boolean'
+			'no-impersonation': 'boolean',
 		});
 		await execute(
 			`cross-env HARDHAT_FORK=${fixedArgs[0]} ${
@@ -148,7 +148,7 @@ async function performAction(rawArgs) {
 	} else if (firstArg === 'fork:dev') {
 		const {fixedArgs, options, extra} = parseArgs(args, 1, {
 			blockNumber: 'string',
-			'no-impersonation': 'boolean'
+			'no-impersonation': 'boolean',
 		});
 		await execute(
 			`cross-env HARDHAT_FORK=${fixedArgs[0]} ${

@@ -7,13 +7,13 @@ const setup = deployments.createFixture(async () => {
 	await deployments.fixture('SimpleERC20');
 	const {simpleERC20Beneficiary} = await getNamedAccounts();
 	const contracts = {
-		SimpleERC20: <IERC20>await ethers.getContract('SimpleERC20')
+		SimpleERC20: <IERC20>await ethers.getContract('SimpleERC20'),
 	};
 	const users = await setupUsers(await getUnnamedAccounts(), contracts);
 	return {
 		...contracts,
 		users,
-		simpleERC20Beneficiary: await setupUser(simpleERC20Beneficiary, contracts)
+		simpleERC20Beneficiary: await setupUser(simpleERC20Beneficiary, contracts),
 	};
 });
 
