@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-1.0
-pragma solidity 0.8.9;
+pragma solidity 0.8.17;
 
 abstract contract ERC20Internal {
 	function _approveFor(

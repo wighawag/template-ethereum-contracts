@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-1.0
-pragma solidity 0.8.9;
+pragma solidity 0.8.17;
 
 import "./ERC20Internal.sol";
 import "../Interfaces/IERC2612Standalone.sol";
