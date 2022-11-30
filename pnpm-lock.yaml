@@ -15,7 +15,7 @@ specifiers:
   ethers: ^5.7.0
   fs-extra: ^10.1.0
   hardhat: ^2.11.1
-  hardhat-deploy: ^0.11.18
+  hardhat-deploy: ^0.11.21
   hardhat-deploy-tenderly: ^0.2.0
   hardhat-gas-reporter: ^1.0.9
   mocha: ^10.0.0
@@ -42,8 +42,8 @@ devDependencies:
   ethers: 5.7.1
   fs-extra: 10.1.0
   hardhat: 2.11.2_mwhvu7sfp6vq5ryuwb6hlbjfka
-  hardhat-deploy: 0.11.18
-  hardhat-deploy-tenderly: 0.2.0_eue7i7moqww4gcjxgh6dexekxe
+  hardhat-deploy: 0.11.21
+  hardhat-deploy-tenderly: 0.2.0_4hwfq5rzmecnk5lzqhieshfub4
   hardhat-gas-reporter: 1.0.9_hardhat@2.11.2
   mocha: 10.0.0
   prettier: 2.7.1
@@ -2479,7 +2479,7 @@ packages:
       hardhat: 2.11.2_mwhvu7sfp6vq5ryuwb6hlbjfka
     dev: true
 
-  /hardhat-deploy-tenderly/0.2.0_eue7i7moqww4gcjxgh6dexekxe:
+  /hardhat-deploy-tenderly/0.2.0_4hwfq5rzmecnk5lzqhieshfub4:
     resolution: {integrity: sha512-obJm+Wh7tRsLRFgmZkkUGC1/RU37J2gHQfCt+ndbSswW5XCjSOIu6tkShhYp147HqOPml84X2qX6qZku1ykIZQ==}
     peerDependencies:
       hardhat: ^2.0.0
@@ -2487,14 +2487,14 @@ packages:
     dependencies:
       axios: 0.24.0
       hardhat: 2.11.2_mwhvu7sfp6vq5ryuwb6hlbjfka
-      hardhat-deploy: 0.11.18
+      hardhat-deploy: 0.11.21
       js-yaml: 4.1.0
     transitivePeerDependencies:
       - debug
     dev: true
 
-  /hardhat-deploy/0.11.18:
-    resolution: {integrity: sha512-Zs5Gr23/HEcYPjQgcSJLlXkR2/WOp24O9Af+7qA540sCDvHjuQ7WhHG/fB2cjPel0Ajf0TzXx1uVViWtbKLqTg==}
+  /hardhat-deploy/0.11.21:
+    resolution: {integrity: sha512-cSFZ+CgFdN012+ysckSiEfiD6u5fFpYmdadj2kG5BnkU0adJZtzGNtbVp/GrOt6sj73pIScWpWwMtkCLaxk+gg==}
     dependencies:
       '@types/qs': 6.9.7
       axios: 0.21.4_debug@4.3.4
