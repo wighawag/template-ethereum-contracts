@@ -47,7 +47,7 @@ abstract contract ERC20Base is IERC20, ERC20Internal {
 		return _totalSupply;
 	}
 
-	function totalSupply() external view override returns (uint256) {
+	function totalSupply() public view override returns (uint256) {
 		return _internal_totalSupply();
 	}
 
