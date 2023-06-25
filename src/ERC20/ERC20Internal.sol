@@ -2,11 +2,7 @@
 pragma solidity 0.8.17;
 
 abstract contract ERC20Internal {
-	function _approveFor(
-		address owner,
-		address target,
-		uint256 amount
-	) internal virtual;
+	function _approveFor(address owner, address target, uint256 amount) internal virtual;
 
 	function name() public virtual returns (string memory);
 

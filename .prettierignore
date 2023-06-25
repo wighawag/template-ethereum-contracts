@@ -5,9 +5,13 @@ cache/
 coverage/
 node_modules/
 package.json
-typechain/
+typechain-types/
 dapp_test/test.sol
 _lib/
 .dappp
 *.json
 .yalc
+
+.prettierrc.js
+pnpm-lock.yaml
+package.json

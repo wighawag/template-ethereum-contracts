@@ -7,11 +7,7 @@ import "./ERC20Internal.sol";
 import "../Libraries/Constants.sol";
 
 interface ITransferReceiver {
-	function onTokenTransfer(
-		address,
-		uint256,
-		bytes calldata
-	) external returns (bool);
+	function onTokenTransfer(address, uint256, bytes calldata) external returns (bool);
 }
 
 interface IPaidForReceiver {
@@ -24,11 +20,7 @@ interface IPaidForReceiver {
 }
 
 interface IApprovalReceiver {
-	function onTokenApproval(
-		address,
-		uint256,
-		bytes calldata
-	) external returns (bool);
+	function onTokenApproval(address, uint256, bytes calldata) external returns (bool);
 }
 
 abstract contract ERC20Base is IERC20, ERC20Internal {
@@ -90,11 +82,7 @@ abstract contract ERC20Base is IERC20, ERC20Internal {
 		return true;
 	}
 
-	function transferAndCall(
-		address to,
-		uint256 amount,
-		bytes calldata data
-	) external returns (bool) {
+	function transferAndCall(address to, uint256 amount, bytes calldata data) external returns (bool) {
 		_transfer(msg.sender, to, amount);
 		return ITransferReceiver(to).onTokenTransfer(msg.sender, amount, data);
 	}
@@ -119,11 +107,7 @@ abstract contract ERC20Base is IERC20, ERC20Internal {
 		return IPaidForReceiver(to).onTokenPaidFor(msg.sender, forAddress, amount, data);
 	}
 
-	function transferFrom(
-		address from,
-		address to,
-		uint256 amount
-	) external override returns (bool) {
+	function transferFrom(address from, address to, uint256 amount) external override returns (bool) {
 		_transferFrom(from, to, amount);
 		return true;
 	}
@@ -133,30 +117,18 @@ abstract contract ERC20Base is IERC20, ERC20Internal {
 		return true;
 	}
 
-	function approveAndCall(
-		address spender,
-		uint256 amount,
-		bytes calldata data
-	) external returns (bool) {
+	function approveAndCall(address spender, uint256 amount, bytes calldata data) external returns (bool) {
 		_approveFor(msg.sender, spender, amount);
 		return IApprovalReceiver(spender).onTokenApproval(msg.sender, amount, data);
 	}
 
-	function _approveFor(
-		address owner,
-		address spender,
-		uint256 amount
-	) internal override {
+	function _approveFor(address owner, address spender, uint256 amount) internal override {
 		require(owner != address(0) && spender != address(0), "INVALID_ZERO_ADDRESS");
 		_allowances[owner][spender] = amount;
 		emit Approval(owner, spender, amount);
 	}
 
-	function _transferFrom(
-		address from,
-		address to,
-		uint256 amount
-	) internal {
+	function _transferFrom(address from, address to, uint256 amount) internal {
 		// anybody can transfer from this
 		// this allow mintAndApprovedCall without gas overhead
 		if (msg.sender != from && from != address(this)) {
@@ -170,11 +142,7 @@ abstract contract ERC20Base is IERC20, ERC20Internal {
 		_transfer(from, to, amount);
 	}
 
-	function _transfer(
-		address from,
-		address to,
-		uint256 amount
-	) internal {
+	function _transfer(address from, address to, uint256 amount) internal {
 		require(to != address(0), "INVALID_ZERO_ADDRESS");
 		require(to != address(this), "INVALID_THIS_ADDRESS");
 		uint256 currentBalance = _balances[from];

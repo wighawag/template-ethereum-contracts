@@ -9,7 +9,6 @@ module.exports = {
 			options: {
 				printWidth: 120,
 				singleQuote: false,
-				explicitTypes: 'always',
 				parser: 'solidity-parse'
 			}
 		}

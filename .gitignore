@@ -12,8 +12,9 @@ typechain-types/
 node_modules/
 .env
 
-.yalc
-yalc.lock
+.prettierrc.js
+pnpm-lock.yaml
+package.json
 
 contractsInfo.json
 deployments/hardhat
