@@ -1,12 +1,16 @@
 import 'dotenv/config';
 import {HardhatUserConfig} from 'hardhat/types';
-import 'hardhat-deploy';
-import '@nomiclabs/hardhat-ethers';
-import 'hardhat-deploy-ethers';
-import 'hardhat-gas-reporter';
+
+import '@nomicfoundation/hardhat-chai-matchers';
+import '@nomicfoundation/hardhat-ethers';
 import '@typechain/hardhat';
+import 'hardhat-gas-reporter';
 import 'solidity-coverage';
+
+import 'hardhat-deploy';
+import 'hardhat-deploy-ethers';
 import 'hardhat-deploy-tenderly';
+
 import {node_url, accounts, addForkConfiguration} from './utils/network';
 
 const config: HardhatUserConfig = {
@@ -69,10 +73,6 @@ const config: HardhatUserConfig = {
 		enabled: process.env.REPORT_GAS ? true : false,
 		coinmarketcap: process.env.COINMARKETCAP_API_KEY,
 		maxMethodDiff: 10,
-	},
-	typechain: {
-		outDir: 'typechain',
-		target: 'ethers-v5',
 	},
 	mocha: {
 		timeout: 0,

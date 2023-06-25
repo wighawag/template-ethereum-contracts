@@ -1,7 +1,7 @@
-import {Contract} from 'ethers';
+import {BaseContract} from 'ethers';
 import {ethers} from 'hardhat';
 
-export async function setupUsers<T extends {[contractName: string]: Contract}>(
+export async function setupUsers<T extends {[contractName: string]: BaseContract}>(
 	addresses: string[],
 	contracts: T
 ): Promise<({address: string} & T)[]> {
@@ -12,7 +12,7 @@ export async function setupUsers<T extends {[contractName: string]: Contract}>(
 	return users;
 }
 
-export async function setupUser<T extends {[contractName: string]: Contract}>(
+export async function setupUser<T extends {[contractName: string]: BaseContract}>(
 	address: string,
 	contracts: T
 ): Promise<{address: string} & T> {
