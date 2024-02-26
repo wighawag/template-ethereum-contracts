@@ -6,6 +6,25 @@ const {spawn} = require('child_process');
 const path = require('path');
 require('dotenv').config();
 
+function stringToBoolean(val, defaultVal) {
+	const strValue = String(val).toLowerCase();
+	switch (strValue) {
+		case 'true':
+		case '1':
+			return true;
+		case 'false':
+		case '0':
+			return false;
+		default:
+			return defaultVal; // Default to 'defaultVal' if the value is not recognized
+	}
+}
+
+// Conditionally set NODE_OPTIONS based on HARDHAT_TYPECHECK
+const nodeOptions = `--loader ts-node/esm${
+	stringToBoolean(process.env.HARDHAT_TYPECHECK, false) ? '' : '/transpile-only'
+} --no-warnings=ExperimentalWarning`;
+
 const commandlineArgs = process.argv.slice(2);
 
 function parseArgs(rawArgs, numFixedArgs, expectedOptions) {
@@ -57,6 +76,10 @@ function execute(command) {
 		};
 		spawn(command.split(' ')[0], command.split(' ').slice(1), {
 			stdio: 'inherit',
+			env: {
+				...process.env,
+				NODE_OPTIONS: nodeOptions,
+			},
 			shell: true,
 		}).on('exit', onExit);
 	});

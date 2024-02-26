@@ -1,5 +1,6 @@
 import {BaseContract} from 'ethers';
-import {ethers} from 'hardhat';
+import hre from 'hardhat';
+const {ethers} = hre;
 
 export async function setupUsers<T extends {[contractName: string]: BaseContract}>(
 	addresses: string[],

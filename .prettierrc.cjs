@@ -9,9 +9,9 @@ module.exports = {
 			options: {
 				printWidth: 120,
 				singleQuote: false,
-				parser: 'solidity-parse'
-			}
-		}
+				parser: 'solidity-parse',
+			},
+		},
 	],
-	plugins: [require('prettier-plugin-solidity')]
+	plugins: [require('prettier-plugin-solidity')],
 };

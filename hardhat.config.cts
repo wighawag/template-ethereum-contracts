@@ -1,6 +1,11 @@
 import 'dotenv/config';
 import {HardhatUserConfig} from 'hardhat/types';
 
+import {join} from 'path';
+import {writeFile} from 'fs/promises';
+import {subtask} from 'hardhat/config';
+import {TASK_COMPILE_SOLIDITY} from 'hardhat/builtin-tasks/task-names';
+
 import '@nomicfoundation/hardhat-chai-matchers';
 import '@nomicfoundation/hardhat-ethers';
 import '@typechain/hardhat';
@@ -11,7 +16,30 @@ import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import 'hardhat-deploy-tenderly';
 
-import {node_url, accounts, addForkConfiguration} from './utils/network';
+import {node_url, accounts, addForkConfiguration} from './utils/network.cjs';
+
+// overriding 'hardhat' compile solidity task to generate "commonjs" 'package.json' for typechain after compilation
+// see: https://github.com/NomicFoundation/hardhat/issues/3385#issuecomment-1841380253
+
+subtask(TASK_COMPILE_SOLIDITY).setAction(async (_, {config}, runSuper) => {
+	const superRes = await runSuper();
+	const basePath = config.paths.root;
+	const packageJsonContent = '{ "type": "commonjs" }';
+	const paths = ['typechain-types'];
+
+	const writePackageJson = async (path: string) => {
+		const fullPath = join(basePath, path, 'package.json');
+		try {
+			await writeFile(fullPath, packageJsonContent);
+		} catch (error) {
+			console.error(`Error writing package.json at ${path}: `, error);
+		}
+	};
+
+	await Promise.all(paths.map(writePackageJson));
+
+	return superRes;
+});
 
 const config: HardhatUserConfig = {
 	solidity: {
