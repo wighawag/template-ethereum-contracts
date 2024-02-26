@@ -1,4 +1,6 @@
-import {getUnnamedAccounts, ethers} from 'hardhat';
+import hre from 'hardhat';
+import type {GreetingsRegistry} from '../typechain-types/index.js';
+const {getUnnamedAccounts, ethers} = hre;
 
 const messages = ['Hello', '你好', 'سلام', 'здравствуйте', 'Habari', 'Bonjour', 'नमस्ते'];
 
@@ -15,7 +17,7 @@ async function main() {
 	for (let i = 0; i < messages.length; i++) {
 		const sender = others[i];
 		if (sender) {
-			const greetingsRegistryContract = await ethers.getContract('GreetingsRegistry', sender);
+			const greetingsRegistryContract = await ethers.getContract<GreetingsRegistry>('GreetingsRegistry', sender);
 			await waitFor(greetingsRegistryContract.setMessage(messages[i]));
 		}
 	}

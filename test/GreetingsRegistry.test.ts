@@ -1,7 +1,9 @@
 import {expect} from 'chai';
-import {ethers, deployments, getUnnamedAccounts} from 'hardhat';
-import {GreetingsRegistry} from '../typechain-types';
-import {setupUsers} from './utils';
+import hre from 'hardhat';
+const {ethers, deployments, getUnnamedAccounts} = hre;
+import {GreetingsRegistry} from '../typechain-types/index.js';
+import UtilsModule from './utils/index.cjs';
+const {setupUsers} = UtilsModule;
 
 const setup = deployments.createFixture(async () => {
 	await deployments.fixture('GreetingsRegistry');

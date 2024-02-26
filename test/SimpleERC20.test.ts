@@ -1,7 +1,9 @@
 import {expect} from 'chai';
-import {ethers, deployments, getUnnamedAccounts, getNamedAccounts} from 'hardhat';
-import {IERC20} from '../typechain-types';
-import {setupUser, setupUsers} from './utils';
+import hre from 'hardhat';
+const {ethers, deployments, getUnnamedAccounts, getNamedAccounts} = hre;
+import {IERC20} from '../typechain-types/index.js';
+import UtilsModule from './utils/index.cjs';
+const {setupUser, setupUsers} = UtilsModule;
 
 const setup = deployments.createFixture(async () => {
 	await deployments.fixture('SimpleERC20');

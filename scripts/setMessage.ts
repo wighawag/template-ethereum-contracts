@@ -1,4 +1,5 @@
-import {deployments, getUnnamedAccounts} from 'hardhat';
+import hre from 'hardhat';
+const {deployments, getUnnamedAccounts} = hre;
 const {execute} = deployments;
 // example script
 
