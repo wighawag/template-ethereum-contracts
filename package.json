@@ -51,5 +51,10 @@
     "fork:node": "node ./_scripts.cjs fork:node",
     "fork:test": "node ./_scripts.cjs fork:test",
     "tenderly:push": "node ./_scripts.cjs tenderly:push"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "hardhat-deploy@0.11.34": "patches/hardhat-deploy@0.11.34.patch"
+    }
   }
 }

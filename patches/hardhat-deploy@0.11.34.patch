@@ -1,0 +1,48 @@
+diff --git a/dist/src/DeploymentsManager.js b/dist/src/DeploymentsManager.js
+index 9a0de00de387641947da608bef1184c6b185a072..d3e76ff1269e3c01e3c2901147f8086f577cbdc6 100644
+--- a/dist/src/DeploymentsManager.js
++++ b/dist/src/DeploymentsManager.js
+@@ -733,10 +733,7 @@ class DeploymentsManager {
+             // console.log("fetching " + scriptFilePath);
+             try {
+                 delete require.cache[scriptFilePath]; // ensure we reload it every time, so changes are taken in consideration
+-                deployFunc = require(scriptFilePath);
+-                if (deployFunc.default) {
+-                    deployFunc = deployFunc.default;
+-                }
++                deployFunc = await dynamicImportModule(scriptFilePath);
+                 funcByFilePath[scriptFilePath] = deployFunc;
+             }
+             catch (e) {
+@@ -1104,5 +1101,31 @@ class DeploymentsManager {
+         };
+     }
+ }
++async function dynamicImportModule(path) {
++  // Adjust the function to handle both ESM and CJS modules uniformly
++  let module;
++  try {
++    module = await import(path);
++  } catch (error) {
++    if (error.code === 'ERR_REQUIRE_ESM') {
++        // The error indicates that the module is an ESM
++        throw error;
++    } else {
++        // Fallback to CommonJS require
++        module = require(path);
++    }
++  }
++  // Check if the module has a 'default' property and if it looks like a wrapped CJS module
++  if (module.default && typeof module.default === 'object' && 'default' in module.default) {
++      // This is a workaround for the double 'default' wrapping issue
++      return module.default.default;
++  } else if (module.default) {
++      // Handle normal ESM default export
++      return module.default;
++  } else {
++      // Return the module directly if it's not using ESM default export
++      return module;
++  }
++}
+ exports.DeploymentsManager = DeploymentsManager;
+ //# sourceMappingURL=DeploymentsManager.js.map
