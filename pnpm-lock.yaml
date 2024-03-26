@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 devDependencies:
   '@nomicfoundation/hardhat-chai-matchers':
     specifier: ^2.0.1
@@ -8,8 +12,8 @@ devDependencies:
     specifier: ^3.0.2
     version: 3.0.2(ethers@6.6.1)(hardhat@2.16.0)
   '@openzeppelin/contracts':
-    specifier: ^4.9.2
-    version: 4.9.2
+    specifier: ^4.9.6
+    version: 4.9.6
   '@typechain/hardhat':
     specifier: ^8.0.0
     version: 8.0.0(@typechain/ethers-v6@0.4.0)(ethers@6.6.1)(hardhat@2.16.0)(typechain@8.2.0)
@@ -789,8 +793,8 @@ packages:
       '@nomicfoundation/solidity-analyzer-win32-x64-msvc': 0.1.1
     dev: true
 
-  /@openzeppelin/contracts@4.9.2:
-    resolution: {integrity: sha512-mO+y6JaqXjWeMh9glYVzVu8HYPGknAAnWyxTRhGeckOruyXQMNnlcW6w/Dx9ftLeIQk6N+ZJFuVmTwF7lEIFrg==}
+  /@openzeppelin/contracts@4.9.6:
+    resolution: {integrity: sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA==}
     dev: true
 
   /@scure/base@1.1.1:
@@ -1132,6 +1136,7 @@ packages:
   /amdefine@1.0.1:
     resolution: {integrity: sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==}
     engines: {node: '>=0.4.2'}
+    requiresBuild: true
     dev: true
     optional: true
 
