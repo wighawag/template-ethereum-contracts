@@ -72,13 +72,13 @@ pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
 
 [zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
 
-Once installed simply run the following to get test and a local node running
+Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
 
 ```bash
 pnpm start
 ```
 
-if you want to try zellij without installing it, try this :
+if you want to try Zellij without installing it, try this :
 
 ```bash
 bash <(curl -L zellij.dev/launch) --layout zellij.kdl
@@ -108,4 +108,4 @@ Then you need to install the local dependencies with the following command:
 pnpm i
 ```
 
-We also recommend to install [zellij](https://zellij.dev/) to have your dev env setup in one go via `pnpm start`
+We also recommend installing [Zellij](https://zellij.dev/) to have your dev env setup in one go via `pnpm start`
