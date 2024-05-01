@@ -4,6 +4,14 @@ layout {
 			args "-c" "${SHELL-bash}"
 		}
 		pane split_direction="vertical" {
+			pane name="watch and compile" command="pnpm"  {
+				args "compile:watch"
+			}
+			pane name="watch and deploy" command="pnpm"  {
+				args "deploy:watch"
+			}
+		}
+		pane split_direction="vertical" {
 			pane name="live test" command="pnpm" {
 				args "test"
 			}

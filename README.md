@@ -1,4 +1,6 @@
-## How to use?
+# A template for EVM-based smart contract development
+
+## How to use it?
 
 ### Compile your contracts
 
@@ -8,7 +10,7 @@ pnpm compile
 
 ### Test your contracts
 
-There is 2 flavors of test
+There are 2 flavors of tests
 
 1. Using hardhat
 
@@ -28,19 +30,19 @@ This assumes you have `forge` installed and that you added forge-std in via the 
 git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std
 ```
 
-You can also add it as a submodule if you prefers
+> (You can also add it as a submodule if you prefer)
 
 ### watch for changes and rebuild automatically
 
 ```bash
-pnpm watch_compile
+pnpm compile:watch
 ```
 
 ### deploy your contract
 
 - on localhost
 
-  This assume you have a local node running : `pnpm local_node`
+  This assumes you have a local node running: `pnpm local_node`
 
   ```bash
   pnpm run deploy localhost
@@ -56,38 +58,36 @@ pnpm watch_compile
 
 ### execute scripts
 
-The setup currently use hardhat run and so to pass argument we use env variables
-
 ```bash
-MESSAGE="hello earth" pnpm hardhat --network localhost run scripts/setMessage.ts
+pnpm execute <network name> scripts/setMessage.ts
 ```
 
+or if you want to execute in a forked environment :
+
 ```bash
-ACCOUNT=0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 pnpm hardhat --network localhost run scripts/readMessage.ts
+pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
 ```
 
 ### zellij
 
 [zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
 
-Once installed simply run
+Once installed simply run the following to get test and a local node running
 
 ```bash
 pnpm start
 ```
 
-And you'll have anvil running as well as watch process executing tests on changes
-
-if you want to try zellij without install try this :
+if you want to try zellij without installing it, try this :
 
 ```bash
 bash <(curl -L zellij.dev/launch) --layout zellij.kdl
 ```
 
-In the shell in the upper pane, you can deploy your contract via
+In the shell in the upper pane, you execute the script as mentioned above
 
 ```bash
-pnpm run deploy
+pnpm execute localhost scripts/setMessage.ts "Hello everyone"
 ```
 
 ## Initial Setup
