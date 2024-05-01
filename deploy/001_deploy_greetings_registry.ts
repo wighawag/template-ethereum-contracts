@@ -10,7 +10,7 @@ export default execute(
 		await deploy('GreetingsRegistry', {
 			account: deployer,
 			artifact: artifacts.GreetingsRegistry,
-			args: [""],
+			args: [''],
 		});
 	},
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},

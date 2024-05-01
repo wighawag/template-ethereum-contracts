@@ -51,7 +51,7 @@ const config = {
 		),
 	paths: {
 		sources: 'src',
-	}
+	},
 };
 
 module.exports = config;

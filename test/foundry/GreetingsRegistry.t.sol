@@ -14,14 +14,14 @@ contract GreetingsRegistryTest is Test {
 
     function test_setMessageWorks() public {
         string memory message = registry.messages(address(this));
-        assertEq(message, "");   
-        registry.setMessage('hello');
+        assertEq(message, "");
+        registry.setMessage("hello");
         string memory messageAfter = registry.messages(address(this));
-        assertEq(messageAfter, "hello");   
+        assertEq(messageAfter, "hello");
     }
 
     function testFail_Hello() public view {
         string memory message = registry.messages(msg.sender);
-        assertEq(message, "hello");   
+        assertEq(message, "hello");
     }
 }

@@ -32,7 +32,7 @@
     "vitest": "^1.5.3"
   },
   "scripts": {
-    "prepare": "pnpm compile",
+    "prepare": "set-defaults .vscode && pnpm compile",
     "docgen": "ldenv -m hardhat pnpm run deploy hardhat --save-deployments true --skip-prompts ~~ pnpm rocketh-doc -n @@MODE --except-suffix _Implementation,_Proxy,_Router,_Route ~~ @@",
     "local_node": "hardhat node",
     "compile": "hardhat compile",

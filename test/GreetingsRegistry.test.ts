@@ -1,7 +1,6 @@
-import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
+import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
 import {expect, describe, it} from 'vitest';
-import { deployAll } from './utils';
-
+import {deployAll} from './utils';
 
 describe('GreetingsRegistry', function () {
 	it('basic test', async function () {
@@ -11,7 +10,7 @@ describe('GreetingsRegistry', function () {
 		await expect(
 			await env.read(GreetingsRegistry, {
 				functionName: 'messages',
-				args: [greeter]
+				args: [greeter],
 			}),
 		).to.equal('');
 
@@ -20,9 +19,8 @@ describe('GreetingsRegistry', function () {
 		await expect(
 			await env.read(GreetingsRegistry, {
 				functionName: 'messages',
-				args: [greeter]
+				args: [greeter],
 			}),
 		).to.equal(greetingToSet);
 	});
-
 });
