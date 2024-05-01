@@ -1,20 +1,25 @@
-import {deployments, getUnnamedAccounts} from 'hardhat';
-const {execute} = deployments;
-// example script
-
-const args = process.argv.slice(2);
-const account = args[0];
-const message = args[1];
+import {loadEnvironment} from 'rocketh';
+import {context} from '../deploy/_context';
+import hre from 'hardhat';
+import { EIP1193GenericRequestProvider } from 'eip-1193';
+import "@rocketh/deploy";
 
 async function main() {
-	const accountAddress = isNaN(parseInt(account)) ? account : (await getUnnamedAccounts())[parseInt(account)];
+	const env = await loadEnvironment(
+		{
+			provider: hre.network.provider as EIP1193GenericRequestProvider,
+			network: hre.network.name,
+		},
+		context,
+	);
 
-	await execute('GreetingsRegistry', {from: accountAddress, log: true}, 'setMessage', message || 'hello');
-}
-
-main()
-	.then(() => process.exit(0))
-	.catch((error) => {
-		console.error(error);
-		process.exit(1);
+	const GreetingsRegistry = env.get<typeof context.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
+	
+	const tx = await env.execute(GreetingsRegistry, {
+		functionName: 'setMessage',
+		args: ["hello"],
+		account: env.namedAccounts.deployer,
 	});
+	console.log(tx);
+}
+main();

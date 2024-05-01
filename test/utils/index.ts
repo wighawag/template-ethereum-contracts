@@ -1,25 +1,20 @@
-import {BaseContract} from 'ethers';
-import {ethers} from 'hardhat';
+import {EIP1193GenericRequestProvider} from 'eip-1193';
+import hre from 'hardhat';
+import {loadAndExecuteDeployments} from 'rocketh';
+import '@rocketh/deploy';
+import {context} from '../../deploy/_context';
 
-export async function setupUsers<T extends {[contractName: string]: BaseContract}>(
-	addresses: string[],
-	contracts: T
-): Promise<({address: string} & T)[]> {
-	const users: ({address: string} & T)[] = [];
-	for (const address of addresses) {
-		users.push(await setupUser(address, contracts));
-	}
-	return users;
-}
+export async function deployAll() {
+	const provider = hre.network.provider as EIP1193GenericRequestProvider;
+	const env = await loadAndExecuteDeployments(
+		{
+			provider,
+		},
+		context,
+	);
 
-export async function setupUser<T extends {[contractName: string]: BaseContract}>(
-	address: string,
-	contracts: T
-): Promise<{address: string} & T> {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const user: any = {address};
-	for (const key of Object.keys(contracts)) {
-		user[key] = contracts[key].connect(await ethers.getSigner(address));
-	}
-	return user as {address: string} & T;
+	const GreetingsRegistry = env.get<typeof env.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
+	const deployer = env.namedAccounts.deployer;
+
+	return {env, GreetingsRegistry, deployer, otherAccounts: env.unnamedAccounts};
 }
