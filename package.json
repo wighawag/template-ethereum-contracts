@@ -5,15 +5,15 @@
   "type": "module",
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
-    "@rocketh/deploy": "^0.10.5",
-    "@rocketh/deploy-proxy": "^0.10.5",
-    "@rocketh/deploy-router": "^0.10.5",
+    "@rocketh/deploy": "0.10.6",
+    "@rocketh/deploy-proxy": "^0.10.6",
+    "@rocketh/deploy-router": "^0.10.6",
     "@rocketh/doc": "^0.10.3",
     "@rocketh/export": "^0.10.7",
     "@rocketh/signer": "^0.10.5",
     "@rocketh/verifier": "^0.10.7",
     "@types/fs-extra": "^11.0.4",
-    "as-soon": "^0.0.8",
+    "as-soon": "^0.0.9",
     "eip-1193": "^0.5.0",
     "fs-extra": "^11.2.0",
     "hardhat": "^2.22.3",
@@ -28,7 +28,7 @@
     "solidity-proxy": "^0.4.0",
     "tsx": "^4.8.2",
     "typescript": "^5.4.5",
-    "viem": "^2.9.29",
+    "viem": "^2.9.31",
     "vitest": "^1.5.3"
   },
   "scripts": {

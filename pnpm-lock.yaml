@@ -9,14 +9,14 @@ devDependencies:
     specifier: ^1.0.10
     version: 1.0.10(hardhat@2.22.3)
   '@rocketh/deploy':
-    specifier: ^0.10.5
-    version: 0.10.5(rocketh@0.10.13)(typescript@5.4.5)
+    specifier: 0.10.6
+    version: 0.10.6(rocketh@0.10.13)(typescript@5.4.5)
   '@rocketh/deploy-proxy':
-    specifier: ^0.10.5
-    version: 0.10.5(rocketh@0.10.13)(typescript@5.4.5)
+    specifier: ^0.10.6
+    version: 0.10.6(rocketh@0.10.13)(typescript@5.4.5)
   '@rocketh/deploy-router':
-    specifier: ^0.10.5
-    version: 0.10.5(rocketh@0.10.13)(typescript@5.4.5)
+    specifier: ^0.10.6
+    version: 0.10.6(rocketh@0.10.13)(typescript@5.4.5)
   '@rocketh/doc':
     specifier: ^0.10.3
     version: 0.10.6(rocketh@0.10.13)
@@ -33,8 +33,8 @@ devDependencies:
     specifier: ^11.0.4
     version: 11.0.4
   as-soon:
-    specifier: ^0.0.8
-    version: 0.0.8
+    specifier: ^0.0.9
+    version: 0.0.9
   eip-1193:
     specifier: ^0.5.0
     version: 0.5.0
@@ -78,8 +78,8 @@ devDependencies:
     specifier: ^5.4.5
     version: 5.4.5
   viem:
-    specifier: ^2.9.29
-    version: 2.9.29(typescript@5.4.5)
+    specifier: ^2.9.31
+    version: 2.9.31(typescript@5.4.5)
   vitest:
     specifier: ^1.5.3
     version: 1.5.3
@@ -870,16 +870,16 @@ packages:
       '@parcel/watcher-win32-x64': 2.4.1
     dev: true
 
-  /@rocketh/deploy-proxy@0.10.5(rocketh@0.10.13)(typescript@5.4.5):
-    resolution: {integrity: sha512-KWgUI5BmUDqHXsf1GQJY5pcWemhJ3mnufgppo9dPocyO8Qu/N74jYL/zHJl52T/Cd3zWux/k9IuTu/1JEQmFEw==}
+  /@rocketh/deploy-proxy@0.10.6(rocketh@0.10.13)(typescript@5.4.5):
+    resolution: {integrity: sha512-FZd4iYHHCapD1VOB10ecaONL0c7b8NbihF1wcLudImnLr4h9QpxpEd6IQ7STeB7cYTJRUnW/Aa6YDk4YQ9Ltug==}
     peerDependencies:
       rocketh: 0.10.13
     dependencies:
-      '@rocketh/deploy': 0.10.5(rocketh@0.10.13)(typescript@5.4.5)
+      '@rocketh/deploy': 0.10.6(rocketh@0.10.13)(typescript@5.4.5)
       named-logs: 0.2.4
       rocketh: 0.10.13(typescript@5.4.5)
       solidity-proxy: 0.4.0
-      viem: 2.9.29(typescript@5.4.5)
+      viem: 2.9.31(typescript@5.4.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -887,17 +887,17 @@ packages:
       - zod
     dev: true
 
-  /@rocketh/deploy-router@0.10.5(rocketh@0.10.13)(typescript@5.4.5):
-    resolution: {integrity: sha512-YU7jgS3vC/O0Y3pRWVJPwy5DxI1YcP6TjkxpsXB78U03PvsMI5KLXMEbGC6MUP66ynQoYjFRP6tExF+E2QN/yQ==}
+  /@rocketh/deploy-router@0.10.6(rocketh@0.10.13)(typescript@5.4.5):
+    resolution: {integrity: sha512-NkU7RtEV6LXAHyH/Vv4VaPQOv1+D9nYZZ+6UuX8yKohrYUP4zugsBo9evqf7IKLFuKAY40PqodFIABfZB//4gA==}
     peerDependencies:
       rocketh: 0.10.13
     dependencies:
-      '@rocketh/deploy': 0.10.5(rocketh@0.10.13)(typescript@5.4.5)
-      ethers: 6.12.0
+      '@rocketh/deploy': 0.10.6(rocketh@0.10.13)(typescript@5.4.5)
+      ethers: 6.12.1
       named-logs: 0.2.4
       rocketh: 0.10.13(typescript@5.4.5)
       solidity-proxy: 0.4.0
-      viem: 2.9.29(typescript@5.4.5)
+      viem: 2.9.31(typescript@5.4.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -905,14 +905,14 @@ packages:
       - zod
     dev: true
 
-  /@rocketh/deploy@0.10.5(rocketh@0.10.13)(typescript@5.4.5):
-    resolution: {integrity: sha512-6uFg/Mir30HmQuOEhB6gosxzfroQrGkT/Pp56eqn42inT9SnC7Nb3V11r++XZMuwpK9RkCmVOI8RV5YQYbfTpg==}
+  /@rocketh/deploy@0.10.6(rocketh@0.10.13)(typescript@5.4.5):
+    resolution: {integrity: sha512-VhD3QPotssfD5/UqbHJy/UfwR3VIkvok5cUcNSa5zc/f+zajxNEzjZrA0bmKnOx0cIAZkQAaI27JkdqWPbFkag==}
     peerDependencies:
       rocketh: 0.10.13
     dependencies:
       named-logs: 0.2.4
       rocketh: 0.10.13(typescript@5.4.5)
-      viem: 2.9.29(typescript@5.4.5)
+      viem: 2.9.31(typescript@5.4.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -1449,8 +1449,8 @@ packages:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
 
-  /as-soon@0.0.8:
-    resolution: {integrity: sha512-njYeiaxylMdJjI8xM1v6RXFZWX87g4Q+SeGjvUfS4jB3ufqzGveMUoP/P6ne5f+4b/b5gnjN79nITRxbN2f1Jg==}
+  /as-soon@0.0.9:
+    resolution: {integrity: sha512-Z2gXcjQ8HE0uaAPzRe4trv2HjSO0bQQc3dkePP8wzRSYLJvQ1iUJomNUBN4tqfML+Fe2ulQ2WAoj+TuGfI3FKw==}
     hasBin: true
     dependencies:
       '@parcel/watcher': 2.4.1
@@ -2156,6 +2156,22 @@ packages:
 
   /ethers@6.12.0:
     resolution: {integrity: sha512-zL5NlOTjML239gIvtVJuaSk0N9GQLi1Hom3ZWUszE5lDTQE/IVB62mrPkQ2W1bGcZwVGSLaetQbWNQSvI4rGDQ==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.10.1
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@types/node': 18.15.13
+      aes-js: 4.0.0-beta.5
+      tslib: 2.4.0
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: true
+
+  /ethers@6.12.1:
+    resolution: {integrity: sha512-j6wcVoZf06nqEcBbDWkKg8Fp895SS96dSnTCjiXT+8vt2o02raTn4Lo9ERUuIVU5bAjoPYeA+7ytQFexFmLuVw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@adraffy/ens-normalize': 1.10.1
@@ -3419,7 +3435,7 @@ packages:
       named-logs: 0.2.4
       named-logs-console: 0.3.1
       prompts: 2.4.2
-      viem: 2.9.29(typescript@5.4.5)
+      viem: 2.9.31(typescript@5.4.5)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -3880,8 +3896,8 @@ packages:
     hasBin: true
     dev: true
 
-  /viem@2.9.29(typescript@5.4.5):
-    resolution: {integrity: sha512-LWvDSyB2tftKuSMAyZTXk3pDYj3c0aaOdr2JbDZEsPJw5zVbqg3FpoPHnUkHai8KcZI8aPWRKV31TYV1cBse9A==}
+  /viem@2.9.31(typescript@5.4.5):
+    resolution: {integrity: sha512-8aJ8Dm/591Czwb/nRayo0z8Ls5KxqC4QYE33fmHwhx2tDUWC/hHcPZqjLRSTWFtAfi0aZKvP7BeB6UZ3ZkTRhQ==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:

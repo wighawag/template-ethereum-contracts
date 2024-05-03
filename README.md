@@ -30,7 +30,7 @@ This assumes you have `forge` installed and that you added forge-std in via the 
 git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std
 ```
 
-> (You can also add it as a submodule if you prefer)
+> (You can also add it as a submodule if you prefer, just remove the `lib/forge-std` line in .gitignore first)
 
 ### watch for changes and rebuild automatically
 

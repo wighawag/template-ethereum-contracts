@@ -1,4 +1,5 @@
 [profile.default]
+solc = "0.8.25"
 src = "src"
 out = "forge-artifacts"
 libs = ["node_modules", "lib"]
@@ -8,5 +9,6 @@ remappings = [
 ]
 test = 'test/foundry'
 cache_path  = 'forge-cache'
+
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

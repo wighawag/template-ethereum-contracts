@@ -15,7 +15,7 @@ task('node').setAction(async (args, hre, runSuper) => {
 	return runSuper(args);
 });
 
-const defaultVersion = '0.8.24';
+const defaultVersion = '0.8.25';
 const defaultSettings = {
 	optimizer: {
 		enabled: true,
