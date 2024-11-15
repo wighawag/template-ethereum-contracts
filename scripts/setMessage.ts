@@ -1,20 +1,24 @@
-import {deployments, getUnnamedAccounts} from 'hardhat';
-const {execute} = deployments;
-// example script
-
-const args = process.argv.slice(2);
-const account = args[0];
-const message = args[1];
+import {loadEnvironmentFromHardhat} from 'hardhat-rocketh/helpers';
+import {context} from '../deploy/_context';
+import hre from 'hardhat';
+import '@rocketh/deploy';
 
 async function main() {
-	const accountAddress = isNaN(parseInt(account)) ? account : (await getUnnamedAccounts())[parseInt(account)];
+	const args = process.argv.slice(2);
+	const greeting = args[0] || 'hello';
 
-	await execute('GreetingsRegistry', {from: accountAddress, log: true}, 'setMessage', message || 'hello');
-}
-
-main()
-	.then(() => process.exit(0))
-	.catch((error) => {
-		console.error(error);
-		process.exit(1);
+	const env = await loadEnvironmentFromHardhat({
+		hre,
+		context,
 	});
+
+	const GreetingsRegistry = env.get<typeof context.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
+
+	const tx = await env.execute(GreetingsRegistry, {
+		functionName: 'setMessage',
+		args: [greeting],
+		account: env.namedAccounts.deployer,
+	});
+	console.log(tx);
+}
+main();

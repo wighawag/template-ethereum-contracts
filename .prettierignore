@@ -1,17 +1,26 @@
-export/
-deployments/
-artifacts/
-cache/
-coverage/
-node_modules/
-package.json
-typechain-types/
-dapp_test/test.sol
-_lib/
-.dappp
-*.json
-.yalc
+############################################
+# .gitignore
+#############################################
+node_modules
+.vscode/*
+!*.default
+*.local
 
-.prettierrc.js
-pnpm-lock.yaml
+# rocketh
+generated
+deployments/localhost
+
+# hardhat
+/coverage
+/coverage.json
+/coverage-data.json
+cache
+artifacts
+
+docs
+*.hbs
+
+#############################################
+deployments
 package.json
+pnpm-lock.yaml
