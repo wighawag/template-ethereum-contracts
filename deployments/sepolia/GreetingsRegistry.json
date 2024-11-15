@@ -1,0 +1,176 @@
+{
+  "address": "0x39ec93d8f7e9e8127a6d05625557b5a3a50bfa65",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "prefix",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "name": "MessageChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "messages",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "name": "setMessage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "contractName": "GreetingsRegistry",
+  "sourceName": "src/GreetingsRegistry/GreetingsRegistry.sol",
+  "bytecode": "0x6080604052346101f55761083a80380380610019816101fa565b928339810190602080828403126101f55781516001600160401b03928382116101f5570192601f908082860112156101f55784518481116101cb57601f1995610067828501881686016101fa565b928284528583830101116101f557849060005b8381106101e15750506000918301015280519384116101cb57600054926001938481811c911680156101c1575b828210146101ab57838111610165575b50809285116001146101005750839450908392916000946100f5575b50501b916000199060031b1c1916176000555b60405161061a90816102208239f35b0151925038806100d3565b9294849081166000805284600020946000905b8883831061014b5750505010610132575b505050811b016000556100e6565b015160001960f88460031b161c19169055388080610124565b858701518855909601959485019487935090810190610113565b60008052816000208480880160051c8201928489106101a2575b0160051c019085905b8281106101965750506100b7565b60008155018590610188565b9250819261017f565b634e487b7160e01b600052602260045260246000fd5b90607f16906100a7565b634e487b7160e01b600052604160045260246000fd5b81810183015185820184015286920161007a565b600080fd5b6040519190601f01601f191682016001600160401b038111838210176101cb5760405256fe60806040818152600436101561001457600080fd5b600091823560e01c908163368b8772146101665750635fdd59f81461003857600080fd5b3461016257602090817ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261015e5760043573ffffffffffffffffffffffffffffffffffffffff811680910361015a57835260019160018152818420825193858254926100a6846104bb565b808852936001811690811561011857506001146100dd575b6100d987876100cf828c038361050e565b519182918261057e565b0390f35b9080949750528583205b82841061010557505050826100d9946100cf928201019438806100be565b80548685018801529286019281016100e7565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00168887015250505050151560051b83010192506100cf826100d938806100be565b8380fd5b8280fd5b5080fd5b8391503461016257602092837ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261015e576004359367ffffffffffffffff8086116104b757366023870112156104b75785600401358181116104b35736602482890101116104b3578490868754986101e08a6104bb565b60019a84888d831692836000146104755750505060011461041b575b506024839101823701868152039561023a7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe09788810187528661050e565b3386528083528386209285519283116103ee5761025784546104bb565b601f81116103a8575b508097601f841160011461030b575050818087987f5de788bae851e5b8df641f15cc3e7e401946111d99b835b0e3f619b04f8ce68f9798926102e0575b507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff91921b9260031b1c19161790555b51806102da33948261057e565b0390a280f35b88015191507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff61029d565b83929316978488528188209188905b8a8210610391575050827f5de788bae851e5b8df641f15cc3e7e401946111d99b835b0e3f619b04f8ce68f9798991061035a575b5050811b0190556102cd565b8701517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff60f88460031b161c19169055878061034e565b808684958294958c0151815501940192019061031a565b848852818820601f850160051c8101918386106103e4575b601f0160051c019083905b8281106103d9575050610260565b8981550183906103cb565b90915081906103c0565b6024877f4e487b710000000000000000000000000000000000000000000000000000000081526041600452fd5b869192508980527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5638b8b915b83831061045c575050508401019060246101fc565b80548c84018601528b97508994909201918d9101610447565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00168882015283151590930287019092019350602491506101fc9050565b8580fd5b8480fd5b90600182811c92168015610504575b60208310146104d557565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b91607f16916104ca565b90601f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0910116810190811067ffffffffffffffff82111761054f57604052565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b60208082528251818301819052939260005b8581106105d0575050507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f8460006040809697860101520116010190565b81810183015184820160400152820161059056fea26469706673582212207bf6dbfa83ef6f4749f569685afaa605b901d24a17c6489d0909fb6d2a56b62764736f6c63430008190033",
+  "deployedBytecode": "0x60806040818152600436101561001457600080fd5b600091823560e01c908163368b8772146101665750635fdd59f81461003857600080fd5b3461016257602090817ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261015e5760043573ffffffffffffffffffffffffffffffffffffffff811680910361015a57835260019160018152818420825193858254926100a6846104bb565b808852936001811690811561011857506001146100dd575b6100d987876100cf828c038361050e565b519182918261057e565b0390f35b9080949750528583205b82841061010557505050826100d9946100cf928201019438806100be565b80548685018801529286019281016100e7565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00168887015250505050151560051b83010192506100cf826100d938806100be565b8380fd5b8280fd5b5080fd5b8391503461016257602092837ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261015e576004359367ffffffffffffffff8086116104b757366023870112156104b75785600401358181116104b35736602482890101116104b3578490868754986101e08a6104bb565b60019a84888d831692836000146104755750505060011461041b575b506024839101823701868152039561023a7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe09788810187528661050e565b3386528083528386209285519283116103ee5761025784546104bb565b601f81116103a8575b508097601f841160011461030b575050818087987f5de788bae851e5b8df641f15cc3e7e401946111d99b835b0e3f619b04f8ce68f9798926102e0575b507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff91921b9260031b1c19161790555b51806102da33948261057e565b0390a280f35b88015191507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff61029d565b83929316978488528188209188905b8a8210610391575050827f5de788bae851e5b8df641f15cc3e7e401946111d99b835b0e3f619b04f8ce68f9798991061035a575b5050811b0190556102cd565b8701517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff60f88460031b161c19169055878061034e565b808684958294958c0151815501940192019061031a565b848852818820601f850160051c8101918386106103e4575b601f0160051c019083905b8281106103d9575050610260565b8981550183906103cb565b90915081906103c0565b6024877f4e487b710000000000000000000000000000000000000000000000000000000081526041600452fd5b869192508980527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5638b8b915b83831061045c575050508401019060246101fc565b80548c84018601528b97508994909201918d9101610447565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00168882015283151590930287019092019350602491506101fc9050565b8580fd5b8480fd5b90600182811c92168015610504575b60208310146104d557565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b91607f16916104ca565b90601f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0910116810190811067ffffffffffffffff82111761054f57604052565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b60208082528251818301819052939260005b8581106105d0575050507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f8460006040809697860101520116010190565b81810183015184820160400152820161059056fea26469706673582212207bf6dbfa83ef6f4749f569685afaa605b901d24a17c6489d0909fb6d2a56b62764736f6c63430008190033",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "devdoc": {
+    "events": {
+      "MessageChanged(address,string)": {
+        "params": {
+          "message": "the new greeting",
+          "user": "the account whose greeting was updated"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "setMessage(string)": {
+        "params": {
+          "message": "the new greeting"
+        }
+      }
+    },
+    "title": "Greetings Registry",
+    "version": 1
+  },
+  "evm": {
+    "gasEstimates": {
+      "creation": {
+        "codeDepositCost": "312400",
+        "executionCost": "infinite",
+        "totalCost": "infinite"
+      },
+      "external": {
+        "messages(address)": "infinite",
+        "setMessage(string)": "infinite"
+      }
+    }
+  },
+  "metadata": "{\"compiler\":{\"version\":\"0.8.25+commit.b61c2a91\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"prefix\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\"}],\"name\":\"MessageChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"messages\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\"}],\"name\":\"setMessage\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"MessageChanged(address,string)\":{\"params\":{\"message\":\"the new greeting\",\"user\":\"the account whose greeting was updated\"}}},\"kind\":\"dev\",\"methods\":{\"setMessage(string)\":{\"params\":{\"message\":\"the new greeting\"}}},\"title\":\"Greetings Registry\",\"version\":1},\"userdoc\":{\"events\":{\"MessageChanged(address,string)\":{\"notice\":\"emitted whemever a user update its greeting\"}},\"kind\":\"user\",\"methods\":{\"messages(address)\":{\"notice\":\"the greeting for each account\"},\"setMessage(string)\":{\"notice\":\"called to set your own greeting\"}},\"notice\":\"let user set a greeting\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/GreetingsRegistry/GreetingsRegistry.sol\":\"GreetingsRegistry\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[],\"viaIR\":true},\"sources\":{\"src/GreetingsRegistry/GreetingsRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/// @title Greetings Registry\\n/// @notice let user set a greeting\\ncontract GreetingsRegistry {\\n    /// @notice emitted whemever a user update its greeting\\n    /// @param user the account whose greeting was updated\\n    /// @param message the new greeting\\n    event MessageChanged(address indexed user, string message);\\n\\n    string internal _prefix;\\n\\n    /// @notice the greeting for each account\\n    mapping(address => string) public messages;\\n\\n    constructor(string memory prefix) {\\n        _prefix = prefix;\\n    }\\n\\n    /// @notice called to set your own greeting\\n    /// @param message the new greeting\\n    function setMessage(string calldata message) external {\\n        string memory actualMessage = string(abi.encodePacked(_prefix, message));\\n        messages[msg.sender] = actualMessage;\\n        emit MessageChanged(msg.sender, actualMessage);\\n    }\\n}\\n\",\"keccak256\":\"0xa08fd2a54584c33e4b245d9bbfd6ad343a08e8e743cca706ed1027b03f6684fe\",\"license\":\"MIT\"}},\"version\":1}",
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 11,
+        "contract": "src/GreetingsRegistry/GreetingsRegistry.sol:GreetingsRegistry",
+        "label": "_prefix",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 16,
+        "contract": "src/GreetingsRegistry/GreetingsRegistry.sol:GreetingsRegistry",
+        "label": "messages",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_string_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_string_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => string)",
+        "numberOfBytes": "32",
+        "value": "t_string_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  "userdoc": {
+    "events": {
+      "MessageChanged(address,string)": {
+        "notice": "emitted whemever a user update its greeting"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "messages(address)": {
+        "notice": "the greeting for each account"
+      },
+      "setMessage(string)": {
+        "notice": "called to set your own greeting"
+      }
+    },
+    "notice": "let user set a greeting",
+    "version": 1
+  },
+  "argsData": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000",
+  "transaction": {
+    "hash": "0xfd40d24c2c3dc7d1a016b7cf8cdaa3e96220784b7205b156c80f808679f98166",
+    "nonce": "0x1d1",
+    "origin": "0x61c461ecc993aadeb7e4b47e96d1b8cc37314b20"
+  },
+  "receipt": {
+    "confirmations": 0,
+    "blockHash": "0x53645f18d98548c8d2ae31250cfe31002356d0b1d3f31d94ffa2a329f59c0b25",
+    "blockNumber": "0x5e6280",
+    "transactionIndex": "0x22"
+  }
+}

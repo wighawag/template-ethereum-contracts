@@ -1,25 +1,26 @@
-import {expect} from 'chai';
-import {ethers, deployments, getUnnamedAccounts} from 'hardhat';
-import {GreetingsRegistry} from '../typechain-types';
-import {setupUsers} from './utils';
+import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
+import {expect, describe, it} from 'vitest';
+import {deployAll} from './utils';
 
-const setup = deployments.createFixture(async () => {
-	await deployments.fixture('GreetingsRegistry');
-	const contracts = {
-		GreetingsRegistry: await ethers.getContract<GreetingsRegistry>('GreetingsRegistry'),
-	};
-	const users = await setupUsers(await getUnnamedAccounts(), contracts);
-	return {
-		...contracts,
-		users,
-	};
-});
 describe('GreetingsRegistry', function () {
-	it('setMessage works', async function () {
-		const {users, GreetingsRegistry} = await setup();
-		const testMessage = 'Hello World';
-		await expect(users[0].GreetingsRegistry.setMessage(testMessage))
-			.to.emit(GreetingsRegistry, 'MessageChanged')
-			.withArgs(users[0].address, testMessage);
+	it('basic test', async function () {
+		const {env, GreetingsRegistry, otherAccounts} = await loadFixture(deployAll);
+		const greetingToSet = 'hello world';
+		const greeter = otherAccounts[0];
+		await expect(
+			await env.read(GreetingsRegistry, {
+				functionName: 'messages',
+				args: [greeter],
+			}),
+		).to.equal('');
+
+		await env.execute(GreetingsRegistry, {functionName: 'setMessage', args: [greetingToSet], account: greeter});
+
+		await expect(
+			await env.read(GreetingsRegistry, {
+				functionName: 'messages',
+				args: [greeter],
+			}),
+		).to.equal(greetingToSet);
 	});
 });
