@@ -1,23 +1,32 @@
-cache/
-artifacts/
-
-coverage*
-typechain-types/
+/node_modules
 
 .vscode/*
-!.vscode/settings.json.default
-!.vscode/launch.json.default
-!.vscode/extensions.json.default
+!*.default
+*.local
 
-node_modules/
-.env
-
-.prettierrc.js
-pnpm-lock.yaml
-package.json
-
-contractsInfo.json
-deployments/hardhat
+# rocketh
+generated
 deployments/localhost
+deployments/hardhat
+deployments/lan
+_metadata
 
-/.dapp
+# hardhat
+/coverage
+/coverage.json
+/.coverage-config.json
+/.coverage-data.json
+cache
+artifacts
+docs
+
+# foundry
+forge-cache/
+forge-artifacts/
+
+# Note: by default we ignore lib/forge-std as we do not use submodules
+# install it via `git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std`
+lib/forge-std
+
+.vscode/*
+!*.default
