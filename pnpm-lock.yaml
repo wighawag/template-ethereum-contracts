@@ -1323,7 +1323,8 @@ packages:
   /ansi-align@3.0.1:
     resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
     dependencies:
-      string-width: 4.2.3
+    
+  /string-width: 4.2.3
     dev: true
 
   /ansi-colors@4.1.1:
