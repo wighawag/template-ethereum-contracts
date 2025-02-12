@@ -1,6 +1,6 @@
 import {execute} from 'rocketh';
 import '@rocketh/deploy';
-import {context} from './_context';
+import {context} from './_context.js';
 
 export default execute(
 	context,
