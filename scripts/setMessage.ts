@@ -1,5 +1,5 @@
 import {loadEnvironmentFromHardhat} from 'hardhat-rocketh/helpers';
-import {context} from '../deploy/_context';
+import {context} from '../deploy/_context.js';
 import hre from 'hardhat';
 import '@rocketh/deploy';
 
