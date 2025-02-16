@@ -98,6 +98,9 @@ importers:
       vitest:
         specifier: ^3.0.5
         version: 3.0.5(@types/node@22.13.4)
+      zellij-launcher:
+        specifier: ^0.0.1
+        version: 0.0.1
 
 packages:
 
@@ -1518,6 +1521,10 @@ packages:
       utf-8-validate:
         optional: true
 
+  zellij-launcher@0.0.1:
+    resolution: {integrity: sha512-IJLqHkAFp6NvSUlYZLeVua8tCZ0OT4do+pBQjv/QLLP/TrHgHp2g4i93fd5N4F4DsklTyj24xBwvmVaBaMSuKQ==}
+    hasBin: true
+
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
 
@@ -2876,5 +2883,7 @@ snapshots:
   ws@8.17.1: {}
 
   ws@8.18.0: {}
+
+  zellij-launcher@0.0.1: {}
 
   zod@3.24.2: {}
