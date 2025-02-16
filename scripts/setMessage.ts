@@ -1,23 +1,13 @@
 import {context} from '../deploy/_context.js';
 import '@rocketh/deploy';
-import {network} from '@ignored/hardhat-vnext';
-import {loadEnvironment} from 'rocketh';
-
-// We connect to the default network (which can be controlled with `--network`),
-// and use the `optimism` chain type, so that we get the right viem extensions.
-const {provider} = await network.connect();
+import hre from '@ignored/hardhat-vnext';
+import {loadEnvironmentFromHardhat} from 'hardhat3-rocketh/helpers';
 
 async function main() {
 	const args = process.argv.slice(2);
 	const greeting = args[0] || 'hello';
 
-	const env = await loadEnvironment(
-		{
-			provider: provider as any,
-			network: process.env.HARDHAT_NETWORK, // TODO loadEnvironmentFromHardhat
-		},
-		context,
-	);
+	const env = await loadEnvironmentFromHardhat({hre, context});
 
 	const GreetingsRegistry = env.get<typeof context.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
 

@@ -22,7 +22,7 @@
     "eip-1193": "^0.6.1",
     "forge-std": "github:foundry-rs/forge-std#v1.9.4",
     "fs-extra": "^11.3.0",
-    "hardhat3-rocketh": "^0.0.3",
+    "hardhat3-rocketh": "^0.0.4",
     "ldenv": "^0.3.12",
     "prettier": "^3.5.1",
     "prettier-plugin-solidity": "^1.4.2",

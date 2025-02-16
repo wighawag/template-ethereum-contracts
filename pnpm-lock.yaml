@@ -63,8 +63,8 @@ importers:
         specifier: ^11.3.0
         version: 11.3.0
       hardhat3-rocketh:
-        specifier: ^0.0.3
-        version: 0.0.3(@ignored/hardhat-vnext@3.0.0-next.17)(rocketh@0.10.18(typescript@5.7.3)(zod@3.24.2))
+        specifier: ^0.0.4
+        version: 0.0.4(@ignored/hardhat-vnext@3.0.0-next.17)(rocketh@0.10.18(typescript@5.7.3)(zod@3.24.2))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -1108,8 +1108,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat3-rocketh@0.0.3:
-    resolution: {integrity: sha512-2wQVNxaeNRkaXxFfXi78Bm6btY+tleULjbzLxT6MxYtpJBcqKJhBHeo7Gl5ps9ZiGWAor8DDm+WI/+XntZvVXw==}
+  hardhat3-rocketh@0.0.4:
+    resolution: {integrity: sha512-g7zL+Ekv+ozkjWTPI+aVPcnotPMw6EESE/ZpaOOZkNXX4J1YnUmTjZV0J+z8Of2Uu1vZd58kh7qWKlusungBjA==}
     peerDependencies:
       '@ignored/hardhat-vnext': 3.0.0-next.17
       rocketh: 0.10.18
@@ -2496,7 +2496,7 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.18.0
 
-  hardhat3-rocketh@0.0.3(@ignored/hardhat-vnext@3.0.0-next.17)(rocketh@0.10.18(typescript@5.7.3)(zod@3.24.2)):
+  hardhat3-rocketh@0.0.4(@ignored/hardhat-vnext@3.0.0-next.17)(rocketh@0.10.18(typescript@5.7.3)(zod@3.24.2)):
     dependencies:
       '@ignored/hardhat-vnext': 3.0.0-next.17
       rocketh: 0.10.18(typescript@5.7.3)(zod@3.24.2)
