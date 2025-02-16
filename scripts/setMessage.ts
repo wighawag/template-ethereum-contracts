@@ -14,6 +14,7 @@ async function main() {
 	const env = await loadEnvironment(
 		{
 			provider: provider as any,
+			network: process.env.HARDHAT_NETWORK, // TODO loadEnvironmentFromHardhat
 		},
 		context,
 	);
