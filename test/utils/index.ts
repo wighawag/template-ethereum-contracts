@@ -1,14 +1,15 @@
 import {EIP1193GenericRequestProvider} from 'eip-1193';
-import hre from 'hardhat';
 import {loadAndExecuteDeployments} from 'rocketh';
 import '@rocketh/deploy';
-import {context} from '../../deploy/_context';
+import {context} from '../../deploy/_context.js';
+import {network} from '@ignored/hardhat-vnext';
 
 export async function deployAll() {
-	const provider = hre.network.provider as EIP1193GenericRequestProvider;
+	const {provider} = await network.connect();
+
 	const env = await loadAndExecuteDeployments(
 		{
-			provider,
+			provider: provider as EIP1193GenericRequestProvider,
 		},
 		context,
 	);

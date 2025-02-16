@@ -1,10 +1,10 @@
-import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
+// import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
 import {expect, describe, it} from 'vitest';
-import {deployAll} from './utils';
+import {deployAll} from './utils/index.js';
 
 describe('GreetingsRegistry', function () {
 	it('basic test', async function () {
-		const {env, GreetingsRegistry, otherAccounts} = await loadFixture(deployAll);
+		const {env, GreetingsRegistry, otherAccounts} = await deployAll(); // await loadFixture(deployAll);
 		const greetingToSet = 'hello world';
 		const greeter = otherAccounts[0];
 		await expect(
