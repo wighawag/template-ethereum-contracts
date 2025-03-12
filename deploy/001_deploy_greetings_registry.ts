@@ -19,6 +19,6 @@ export default execute(
 			args: [''],
 		});
 	},
-	// finally you can pass tags and dependencies (no dependencies here)
+	// finally you can pass tags and dependencies
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
 );

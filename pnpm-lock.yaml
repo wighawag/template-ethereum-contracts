@@ -66,8 +66,8 @@ importers:
         specifier: ^3.0.0-next.1
         version: 3.0.0-next.1
       hardhat3-rocketh:
-        specifier: ^0.0.7
-        version: 0.0.7(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2))
+        specifier: ^0.0.8
+        version: 0.0.8(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -839,8 +839,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat3-rocketh@0.0.7:
-    resolution: {integrity: sha512-7339GfrS0qgk4ljB00KvG8h335ODi8bR25SIA5MRaLmt19/QDvLV7fUcbS2xrxrgcgVq8DV83K3Whmo7MMNk5g==}
+  hardhat3-rocketh@0.0.8:
+    resolution: {integrity: sha512-YXbb/UE97YJZ7gmXyz5rV2twp/ftWRB/dhWCLjriNVHI2M6/FI86qmCYPII9AFfTv7JWNwpjl/KzODuN+vqvOA==}
     peerDependencies:
       hardhat: ^3.0.0-next.1
       rocketh: 0.10.18
@@ -1919,7 +1919,7 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.18.0
 
-  hardhat3-rocketh@0.0.7(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2)):
+  hardhat3-rocketh@0.0.8(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2)):
     dependencies:
       '@nomicfoundation/hardhat-errors': 3.0.0-next.0
       '@nomicfoundation/hardhat-zod-utils': 3.0.0-next.0(zod@3.24.2)

@@ -13,10 +13,11 @@ export function setupFixtures(provider: EthereumProvider) {
 				context,
 			);
 
+			// Deployment are inherently untyped since they can vary from network or even before different from current artifacts
+			// so here we type them manually
 			const GreetingsRegistry = env.get<typeof env.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
-			const deployer = env.namedAccounts.deployer;
 
-			return {env, GreetingsRegistry, deployer, otherAccounts: env.unnamedAccounts};
+			return {env, GreetingsRegistry, namedAccounts: env.namedAccounts, unnamedAccounts: env.unnamedAccounts};
 		},
 	};
 }

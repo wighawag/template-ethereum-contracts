@@ -1,4 +1,3 @@
-// import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
 import {expect} from 'earl';
 import {describe, it} from 'node:test'; // using node:test as hardhat v3 do not support vitest
 import {network} from 'hardhat';
@@ -9,9 +8,9 @@ const {deployAll} = setupFixtures(provider);
 
 describe('GreetingsRegistry', function () {
 	it('basic test', async function () {
-		const {env, GreetingsRegistry, otherAccounts} = await networkHelpers.loadFixture(deployAll);
+		const {env, GreetingsRegistry, unnamedAccounts} = await networkHelpers.loadFixture(deployAll);
 		const greetingToSet = 'hello world';
-		const greeter = otherAccounts[0];
+		const greeter = unnamedAccounts[0];
 		await expect(
 			await env.read(GreetingsRegistry, {
 				functionName: 'messages',
@@ -30,9 +29,9 @@ describe('GreetingsRegistry', function () {
 	});
 
 	it('basic test 2', async function () {
-		const {env, GreetingsRegistry, otherAccounts} = await networkHelpers.loadFixture(deployAll);
+		const {env, GreetingsRegistry, unnamedAccounts} = await networkHelpers.loadFixture(deployAll);
 		const greetingToSet = 'hello world';
-		const greeter = otherAccounts[0];
+		const greeter = unnamedAccounts[0];
 		await expect(
 			await env.read(GreetingsRegistry, {
 				functionName: 'messages',
