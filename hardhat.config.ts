@@ -5,7 +5,7 @@ import HardhatViem from '@nomicfoundation/hardhat-viem';
 import HardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
 import HardhatKeystore from '@nomicfoundation/hardhat-keystore';
 
-import Rocketh from 'hardhat3-rocketh';
+import Rocketh from 'hardhat-deploy';
 
 const config: HardhatUserConfig = {
 	/*
