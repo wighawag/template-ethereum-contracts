@@ -1,9 +1,10 @@
-import {configVariable, HardhatUserConfig} from '@ignored/hardhat-vnext/config';
+import {HardhatUserConfig, configVariable} from 'hardhat/config';
 
-import HardhatNodeTestRunner from '@ignored/hardhat-vnext-node-test-runner';
-import HardhatViem from '@ignored/hardhat-vnext-viem';
-import HardhatNetworkHelpers from '@ignored/hardhat-vnext-network-helpers';
-import HardhatKeystore from '@ignored/hardhat-vnext-keystore';
+import HardhatNodeTestRunner from '@nomicfoundation/hardhat-node-test-runner';
+import HardhatViem from '@nomicfoundation/hardhat-viem';
+import HardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
+import HardhatKeystore from '@nomicfoundation/hardhat-keystore';
+
 import Rocketh from 'hardhat3-rocketh';
 
 const config: HardhatUserConfig = {
@@ -29,7 +30,7 @@ const config: HardhatUserConfig = {
 			 * in the CLI or by the tasks you are running.
 			 */
 			default: {
-				version: '0.8.24',
+				version: '0.8.28',
 			},
 			/*
 			 * The production profile is meant to be used for deployments, providing
@@ -37,11 +38,11 @@ const config: HardhatUserConfig = {
 			 * steps to simplify the process of verifying your contracts.
 			 */
 			production: {
-				version: '0.8.24',
+				version: '0.8.28',
 				settings: {
 					optimizer: {
 						enabled: true,
-						runs: 200,
+						runs: 999999,
 					},
 				},
 			},
@@ -67,7 +68,7 @@ const config: HardhatUserConfig = {
 	 * The `networks` configuration is mostly compatible with Hardhat 2.
 	 * The key differences right now are:
 	 *
-	 * - You must set a `type` for each network, which is either `http` or `edr`,
+	 * - You must set a `type` for each network, which is either `edr` or `http`,
 	 *   allowing you to have multiple simulated networks.
 	 *
 	 * - You can set a `chainType` for each network, which is either `generic`,
@@ -83,21 +84,21 @@ const config: HardhatUserConfig = {
 	 *   found in the "Sending a Transaction to Optimism Sepolia" of the README.
 	 */
 	networks: {
-		opSepolia: {
-			type: 'http',
-			chainType: 'optimism',
-			url: 'https://sepolia.optimism.io/',
-			accounts: [configVariable('OPTIMISM_SEPOLIA_PRIVATE_KEY')],
+		hardhatMainnet: {
+			type: 'edr',
+			chainType: 'l1',
 		},
-		edrOpSepolia: {
+		hardhatOp: {
 			type: 'edr',
 			chainType: 'optimism',
-			forking: {
-				url: 'https://sepolia.optimism.io',
-			},
+		},
+		sepolia: {
+			type: 'http',
+			chainType: 'l1',
+			url: configVariable('SEPOLIA_RPC_URL'),
+			accounts: [configVariable('SEPOLIA_PRIVATE_KEY')],
 		},
 	},
-
 	paths: {
 		sources: ['src'],
 	},

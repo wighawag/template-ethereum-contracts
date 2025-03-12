@@ -1,5 +1,7 @@
 // import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
-import {expect, describe, it} from 'vitest';
+import {expect} from 'earl';
+import {describe, it} from 'node:test'; // using node:test as hardhat v3 do not support vitest
+
 import {deployAll} from './utils/index.js';
 
 describe('GreetingsRegistry', function () {
@@ -12,7 +14,7 @@ describe('GreetingsRegistry', function () {
 				functionName: 'messages',
 				args: [greeter],
 			}),
-		).to.equal('');
+		).toEqual('');
 
 		await env.execute(GreetingsRegistry, {functionName: 'setMessage', args: [greetingToSet], account: greeter});
 
@@ -21,6 +23,6 @@ describe('GreetingsRegistry', function () {
 				functionName: 'messages',
 				args: [greeter],
 			}),
-		).to.equal(greetingToSet);
+		).toEqual(greetingToSet);
 	});
 });

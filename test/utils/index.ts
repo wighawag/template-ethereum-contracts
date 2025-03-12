@@ -2,7 +2,7 @@ import {EIP1193GenericRequestProvider} from 'eip-1193';
 import {loadAndExecuteDeployments} from 'rocketh';
 import '@rocketh/deploy';
 import {context} from '../../deploy/_context.js';
-import {network} from '@ignored/hardhat-vnext';
+import {network} from 'hardhat';
 // import '@rocketh/deploy';
 // import {context} from '../../deploy/_context.js';
 // import hre from '@ignored/hardhat-vnext';
