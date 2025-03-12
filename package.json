@@ -23,7 +23,7 @@
     "forge-std": "github:foundry-rs/forge-std#v1.9.4",
     "fs-extra": "^11.3.0",
     "hardhat": "^3.0.0-next.1",
-    "hardhat3-rocketh": "^0.0.5",
+    "hardhat3-rocketh": "^0.0.7",
     "ldenv": "^0.3.12",
     "prettier": "^3.5.3",
     "prettier-plugin-solidity": "^1.4.2",
@@ -56,10 +56,5 @@
     "stop": "zellij kill-session $npm_package_name",
     "format:check": "prettier --check .",
     "format": "prettier --write ."
-  },
-  "pnpm": {
-    "overrides": {
-      "hardhat3-rocketh": "link:../rocketh/packages/hardhat-deploy"
-    }
   }
 }

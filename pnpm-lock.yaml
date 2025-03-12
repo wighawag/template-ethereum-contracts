@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  hardhat3-rocketh: link:../rocketh/packages/hardhat-deploy
-
 importers:
 
   .:
@@ -69,8 +66,8 @@ importers:
         specifier: ^3.0.0-next.1
         version: 3.0.0-next.1
       hardhat3-rocketh:
-        specifier: ^0.0.5
-        version: 0.0.5(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2))
+        specifier: ^0.0.7
+        version: 0.0.7(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -373,6 +370,9 @@ packages:
     resolution: {integrity: sha512-B8XBPsn4vT/KJAGqDzbwztd+6Yte3P4V7iafm24bxgDe/mlRuK6xmWPuCNrKt2vDafZ8MfJLlchDG/vYafQEjQ==}
     engines: {node: ^14.21.3 || >=16}
 
+  '@nomicfoundation/hardhat-errors@3.0.0-next.0':
+    resolution: {integrity: sha512-RAOAr1mNhxGFhuaAw7EGlUeUe1rL6gXR1uicPLTrlfBaYaWwwRdQ49sQ5D4ElmePEcYuMGPVfByBB6lxhjbI7A==}
+
   '@nomicfoundation/hardhat-errors@3.0.0-next.1':
     resolution: {integrity: sha512-+QR0JTAgOtJDeB7xgbme75N32H7fwGDCE7BuIcC012WwgaPURQlp0kPdz518mPMAIbzke2mEnD43lEwAlvo2GA==}
 
@@ -394,6 +394,9 @@ packages:
     peerDependencies:
       hardhat: ^3.0.0-next.1
 
+  '@nomicfoundation/hardhat-utils@3.0.0-next.0':
+    resolution: {integrity: sha512-TTtozMpepsyQfSLjV+L+JgaM+wblQ1XQSJjjiBUBHaJYhB+q7ZVuC3ekNNCNY6jdj9Wx6soGCaGXdsPtnjcb9Q==}
+
   '@nomicfoundation/hardhat-utils@3.0.0-next.1':
     resolution: {integrity: sha512-4QOorD+9cciveJ0GY3V5v7a1N2M0F64AC51DVlRwywU8W8FomFu8qA1J3xTw0DEvF7ekERUbQH1GvFwrQUoGlg==}
 
@@ -402,6 +405,11 @@ packages:
     peerDependencies:
       hardhat: ^3.0.0-next.1
       viem: ^2.21.42
+
+  '@nomicfoundation/hardhat-zod-utils@3.0.0-next.0':
+    resolution: {integrity: sha512-l2ZQwV8nyibt4oAvVE3r0B2H1L1I/zIpD3ixZLMP0jjuG0qpWKBZTwJcRteO/3bdGGsYI5NAVQQ40hFpPJX9wg==}
+    peerDependencies:
+      zod: ^3.23.8
 
   '@nomicfoundation/hardhat-zod-utils@3.0.0-next.1':
     resolution: {integrity: sha512-wanPjCYEiK4Fi2Z0z6bwZROewE5ezRoKAVL2C0t+f5E2oM8B1b1Qw4xzgRZdQem1Vczeh0CSVZuo3ltxW99mOw==}
@@ -604,6 +612,9 @@ packages:
   '@solidity-parser/parser@0.19.0':
     resolution: {integrity: sha512-RV16k/qIxW/wWc+mLzV3ARyKUaMUTBy9tOLMzFhtNSKYeTAanQ3a5MudJKf/8arIFnA2L27SNjarQKmFg0w/jA==}
 
+  '@types/debug@4.1.12':
+    resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
+
   '@types/figlet@1.5.8':
     resolution: {integrity: sha512-G22AUvy4Tl95XLE7jmUM8s8mKcoz+Hr+Xm9W90gJsppJq9f9tHvOGkrpn4gRX0q/cLtBdNkWtWCKDg2UDZoZvQ==}
 
@@ -612,6 +623,9 @@ packages:
 
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
+
+  '@types/ms@2.1.0':
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
   '@types/node@18.15.13':
     resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
@@ -825,8 +839,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat3-rocketh@0.0.5:
-    resolution: {integrity: sha512-3nj9T+dhrKtARSgHVG2SR6tD5IcSaleKTxCrkkVb2dN8szdsqDU2YgevxJanNA9nf/+/qImA3l2LifunxJf48A==}
+  hardhat3-rocketh@0.0.7:
+    resolution: {integrity: sha512-7339GfrS0qgk4ljB00KvG8h335ODi8bR25SIA5MRaLmt19/QDvLV7fUcbS2xrxrgcgVq8DV83K3Whmo7MMNk5g==}
     peerDependencies:
       hardhat: ^3.0.0-next.1
       rocketh: 0.10.18
@@ -1312,6 +1326,12 @@ snapshots:
 
   '@noble/hashes@1.7.1': {}
 
+  '@nomicfoundation/hardhat-errors@3.0.0-next.0':
+    dependencies:
+      '@nomicfoundation/hardhat-utils': 3.0.0-next.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@nomicfoundation/hardhat-errors@3.0.0-next.1':
     dependencies:
       '@nomicfoundation/hardhat-utils': 3.0.0-next.1
@@ -1358,6 +1378,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@nomicfoundation/hardhat-utils@3.0.0-next.0':
+    dependencies:
+      debug: 4.4.0
+      env-paths: 2.2.1
+      ethereum-cryptography: 2.2.1
+      fast-equals: 5.2.2
+      rfdc: 1.4.1
+      undici: 6.21.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@nomicfoundation/hardhat-utils@3.0.0-next.1':
     dependencies:
       debug: 4.4.0
@@ -1375,6 +1406,13 @@ snapshots:
       '@nomicfoundation/hardhat-utils': 3.0.0-next.1
       hardhat: 3.0.0-next.1
       viem: 2.23.10(typescript@5.8.2)(zod@3.24.2)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@nomicfoundation/hardhat-zod-utils@3.0.0-next.0(zod@3.24.2)':
+    dependencies:
+      '@nomicfoundation/hardhat-utils': 3.0.0-next.0
+      zod: 3.24.2
     transitivePeerDependencies:
       - supports-color
 
@@ -1635,6 +1673,10 @@ snapshots:
 
   '@solidity-parser/parser@0.19.0': {}
 
+  '@types/debug@4.1.12':
+    dependencies:
+      '@types/ms': 2.1.0
+
   '@types/figlet@1.5.8': {}
 
   '@types/fs-extra@11.0.4':
@@ -1645,6 +1687,8 @@ snapshots:
   '@types/jsonfile@6.1.4':
     dependencies:
       '@types/node': 22.13.10
+
+  '@types/ms@2.1.0': {}
 
   '@types/node@18.15.13': {}
 
@@ -1875,10 +1919,17 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.18.0
 
-  hardhat3-rocketh@0.0.5(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2)):
+  hardhat3-rocketh@0.0.7(hardhat@3.0.0-next.1)(rocketh@0.10.18(typescript@5.8.2)(zod@3.24.2)):
     dependencies:
+      '@nomicfoundation/hardhat-errors': 3.0.0-next.0
+      '@nomicfoundation/hardhat-zod-utils': 3.0.0-next.0(zod@3.24.2)
+      '@types/debug': 4.1.12
+      debug: 4.4.0
       hardhat: 3.0.0-next.1
       rocketh: 0.10.18(typescript@5.8.2)(zod@3.24.2)
+      zod: 3.24.2
+    transitivePeerDependencies:
+      - supports-color
 
   hardhat@3.0.0-next.1:
     dependencies:
