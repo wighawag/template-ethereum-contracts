@@ -66,8 +66,8 @@ importers:
         specifier: ^3.0.0-next.1
         version: 3.0.0-next.1
       hardhat-deploy:
-        specifier: ^2.0.0-next.2
-        version: 2.0.0-next.2(hardhat@3.0.0-next.1)(rocketh@1.0.0-next.0(typescript@5.8.2)(zod@3.24.2))
+        specifier: ^2.0.0-next.4
+        version: 2.0.0-next.4(hardhat@3.0.0-next.1)(rocketh@1.0.0-next.0(typescript@5.8.2)(zod@3.24.2))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -393,9 +393,6 @@ packages:
     resolution: {integrity: sha512-YSwhw7dq7iax4F4fbGQdlfGCtpmxnE7dnl2DsYmdYeP13M1EP3C4a+MXabHqiUWcRQ/t7gK+VHo3abLyOfsBew==}
     peerDependencies:
       hardhat: ^3.0.0-next.1
-
-  '@nomicfoundation/hardhat-utils@3.0.0-next.0':
-    resolution: {integrity: sha512-TTtozMpepsyQfSLjV+L+JgaM+wblQ1XQSJjjiBUBHaJYhB+q7ZVuC3ekNNCNY6jdj9Wx6soGCaGXdsPtnjcb9Q==}
 
   '@nomicfoundation/hardhat-utils@3.0.0-next.1':
     resolution: {integrity: sha512-4QOorD+9cciveJ0GY3V5v7a1N2M0F64AC51DVlRwywU8W8FomFu8qA1J3xTw0DEvF7ekERUbQH1GvFwrQUoGlg==}
@@ -852,8 +849,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat-deploy@2.0.0-next.2:
-    resolution: {integrity: sha512-hXgFfrc3zXsPCm84+siGKIVLqaF1M99jiQDr/eb1e6eSTYg0QC2nPvXibOrcrsBUir4YuyKMxUhX3Tu2HEF0VQ==}
+  hardhat-deploy@2.0.0-next.4:
+    resolution: {integrity: sha512-KAvayn31r/dKrXwRNXvkhvO1kVqR5JygByXTwJH6BwisylYKzwsyXC489YsGqL6zwgV6orvng2fR/sHQijd9MQ==}
     peerDependencies:
       hardhat: ^3.0.0-next.1
       rocketh: 1.0.0-next.0
@@ -1346,7 +1343,7 @@ snapshots:
 
   '@nomicfoundation/hardhat-errors@3.0.0-next.0':
     dependencies:
-      '@nomicfoundation/hardhat-utils': 3.0.0-next.0
+      '@nomicfoundation/hardhat-utils': 3.0.0-next.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1396,17 +1393,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nomicfoundation/hardhat-utils@3.0.0-next.0':
-    dependencies:
-      debug: 4.4.0
-      env-paths: 2.2.1
-      ethereum-cryptography: 2.2.1
-      fast-equals: 5.2.2
-      rfdc: 1.4.1
-      undici: 6.21.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@nomicfoundation/hardhat-utils@3.0.0-next.1':
     dependencies:
       debug: 4.4.0
@@ -1429,7 +1415,7 @@ snapshots:
 
   '@nomicfoundation/hardhat-zod-utils@3.0.0-next.0(zod@3.24.2)':
     dependencies:
-      '@nomicfoundation/hardhat-utils': 3.0.0-next.0
+      '@nomicfoundation/hardhat-utils': 3.0.0-next.1
       zod: 3.24.2
     transitivePeerDependencies:
       - supports-color
@@ -1949,7 +1935,7 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.18.0
 
-  hardhat-deploy@2.0.0-next.2(hardhat@3.0.0-next.1)(rocketh@1.0.0-next.0(typescript@5.8.2)(zod@3.24.2)):
+  hardhat-deploy@2.0.0-next.4(hardhat@3.0.0-next.1)(rocketh@1.0.0-next.0(typescript@5.8.2)(zod@3.24.2)):
     dependencies:
       '@nomicfoundation/hardhat-errors': 3.0.0-next.0
       '@nomicfoundation/hardhat-zod-utils': 3.0.0-next.0(zod@3.24.2)
