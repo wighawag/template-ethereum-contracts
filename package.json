@@ -14,7 +14,7 @@
     "@rocketh/doc": "^0.10.12",
     "@rocketh/export": "^0.10.15",
     "@rocketh/signer": "^0.10.12",
-    "@rocketh/verifier": "^0.10.14",
+    "@rocketh/verifier": "^0.10.15",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.13.10",
     "as-soon": "^0.0.11",
