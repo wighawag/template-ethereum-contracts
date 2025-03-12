@@ -7,7 +7,7 @@
 # rocketh
 generated
 deployments/localhost
-deployments/hardhat
+deployments/hardhat*
 deployments/lan
 _metadata
 
