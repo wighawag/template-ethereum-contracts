@@ -1,6 +1,6 @@
 import {context} from '../deploy/_context.js';
 import '@rocketh/deploy';
-import hre from '@ignored/hardhat-vnext';
+import hre from 'hardhat';
 import {loadEnvironmentFromHardhat} from 'hardhat3-rocketh/helpers';
 
 async function main() {

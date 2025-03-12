@@ -1,5 +1,7 @@
 # A template for EVM-based smart contract development
 
+A template for developing EVM smart contract using hardhat (v3) and hardhat-deploy (v2)
+
 ## How to use it?
 
 ### Compile your contracts
@@ -10,27 +12,11 @@ pnpm compile
 
 ### Test your contracts
 
-There are 2 flavors of tests
-
-1. Using hardhat
-
 ```bash
 pnpm test
 ```
 
-2. Using foundry
-
-```bash
-forge test
-```
-
-This assumes you have `forge` installed and that you added forge-std in via the following command
-
-```bash
-git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std
-```
-
-> (You can also add it as a submodule if you prefer, just remove the `lib/forge-std` line in .gitignore first)
+This will test both solidity and node test (as hardhat v3 does)
 
 ### watch for changes and rebuild automatically
 
@@ -50,7 +36,7 @@ pnpm compile:watch
 
 - on a network of your choice
 
-  Just make sure you have your .env.local setup, see [.env](.env)
+  Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it
 
   ```bash
   pnpm run deploy <network>
