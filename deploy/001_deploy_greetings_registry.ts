@@ -8,14 +8,25 @@ export default execute(
 	// it will transform it while keeping type safety (in particular namedAccounts)
 	context,
 	// then you pass in your function that can do whatever it wants
-	async ({deploy, namedAccounts, artifacts}) => {
-		const {deployer} = namedAccounts;
+	async ({deployViaProxy, namedAccounts, artifacts}) => {
+		const {deployer, admin} = namedAccounts;
 
-		await deploy('GreetingsRegistry', {
-			account: deployer,
-			artifact: artifacts.GreetingsRegistry,
-			args: [''],
-		});
+		const prefix = 'proxy:';
+		await deployViaProxy(
+			'GreetingsRegistry',
+			{
+				account: deployer,
+				artifact: artifacts.GreetingsRegistry,
+				args: [prefix],
+			},
+			{
+				owner: admin,
+				linkedData: {
+					prefix,
+					admin,
+				},
+			},
+		);
 	},
 	// finally you can pass tags and dependencies
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
