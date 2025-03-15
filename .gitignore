@@ -12,6 +12,9 @@ typechain-types/
 node_modules/
 .env
 
+*.local
+generated/
+
 .prettierrc.js
 pnpm-lock.yaml
 package.json
