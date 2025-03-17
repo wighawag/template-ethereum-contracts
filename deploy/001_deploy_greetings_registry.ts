@@ -1,14 +1,9 @@
-// execute is needed to register your script
-import {execute} from 'rocketh';
-// here we import the context, the convention is to import it from a file named `_context.ts`
-import {context} from './_context.js';
+// we import the context that set all that is needed (see ../context.ts)
+import {execute, artifacts} from '@rocketh';
 
 export default execute(
-	// we pass the context to the "execute" function
-	// it will transform it while keeping type safety (in particular namedAccounts)
-	context,
-	// then you pass in your function that can do whatever it wants
-	async ({deployViaProxy, namedAccounts, artifacts}) => {
+	async ({deployViaProxy, namedAccounts}) => {
+		console.log('deploying GreetingsRegistry...');
 		const {deployer, admin} = namedAccounts;
 
 		const prefix = 'proxy:';
