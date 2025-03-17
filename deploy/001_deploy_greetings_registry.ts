@@ -1,12 +1,15 @@
-// we import the context that set all that is needed (see ../context.ts)
+// we import what we need from the @rocketh alias, see ../rocketh.ts
 import {execute, artifacts} from '@rocketh';
 
 export default execute(
+	// this allow us to define a functiong which takes as first argument an environment object
 	async ({deployViaProxy, namedAccounts}) => {
-		console.log('deploying GreetingsRegistry...');
+		// you can get named accounts from the environment object
 		const {deployer, admin} = namedAccounts;
 
 		const prefix = 'proxy:';
+		// you can use the deployViaProxy function to deploy a contract via a proxy
+		// see `import "@rocketh/proxy"` in ../rocketh.ts
 		await deployViaProxy(
 			'GreetingsRegistry',
 			{
