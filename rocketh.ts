@@ -2,7 +2,22 @@
 // Typed Config
 // ------------------------------------------------------------------------------------------------
 import {UserConfig} from 'rocketh';
+
 export const config = {
+	networks: {
+		hardhat: {
+			tags: ['local', 'memory', 'testnet'],
+		},
+		localhost: {
+			tags: ['local', 'testnet'],
+		},
+		sepolia: {
+			tags: ['live', 'testner'],
+		},
+		default: {
+			tags: ['live'],
+		},
+	},
 	accounts: {
 		deployer: {
 			default: 0,
