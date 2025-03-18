@@ -2,14 +2,13 @@
 import {execute, artifacts} from '@rocketh';
 
 export default execute(
-	// this allow us to define a functiong which takes as first argument an environment object
+	// this allow us to define our deploy function which takes as first argument an environment object
+	// This contaisn the function provided by the modules imported in 'rocketh.ts'
+	// along with other built-in functions and the named accounts
 	async ({deployViaProxy, namedAccounts}) => {
-		// you can get named accounts from the environment object
 		const {deployer, admin} = namedAccounts;
 
 		const prefix = 'proxy:';
-		// you can use the deployViaProxy function to deploy a contract via a proxy
-		// see `import "@rocketh/proxy"` in ../rocketh.ts
 		await deployViaProxy(
 			'GreetingsRegistry',
 			{
@@ -26,6 +25,6 @@ export default execute(
 			},
 		);
 	},
-	// finally you can pass tags and dependencies
+	// execute takes as a second argument an options object where you can specify tags and dependencies
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
 );
