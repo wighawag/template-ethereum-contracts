@@ -26,6 +26,7 @@ export const config = {
 			default: 1,
 		},
 	},
+	data: {},
 } as const satisfies UserConfig;
 
 // ------------------------------------------------------------------------------------------------
@@ -49,5 +50,5 @@ export {artifacts};
 // while not necessary, we also converted the execution function type to know about the named accounts
 // this way you get type safe accounts
 import {execute as _execute, loadAndExecuteDeployments, type NamedAccountExecuteFunction} from 'rocketh';
-const execute = _execute as NamedAccountExecuteFunction<typeof config.accounts>;
+const execute = _execute as NamedAccountExecuteFunction<typeof config.accounts, typeof config.data>;
 export {execute, loadAndExecuteDeployments};
