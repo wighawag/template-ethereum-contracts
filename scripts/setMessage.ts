@@ -1,10 +1,10 @@
-import {artifacts} from '@rocketh';
 import hre from 'hardhat';
 import {loadEnvironmentFromHardhat} from 'hardhat-deploy/helpers';
+import {Abi_GreetingsRegistry} from '@generated/types/GreetingsRegistry.js';
 
 async function main() {
 	const env = await loadEnvironmentFromHardhat({hre});
-	const GreetingsRegistry = env.get<typeof artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
+	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
 	const before_messages = await env.read(GreetingsRegistry, {
 		functionName: 'messages',

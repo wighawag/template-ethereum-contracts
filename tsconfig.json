@@ -10,7 +10,8 @@
 		"moduleResolution": "node16",
 		"outDir": "dist",
 		"paths": {
-			"@rocketh": ["./rocketh.ts"]
+			"@rocketh": ["./rocketh.ts"],
+			"@generated/*": ["./generated/*"]
 		}
 	}
 }
