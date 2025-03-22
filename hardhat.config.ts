@@ -41,8 +41,8 @@ const config: HardhatUserConfig = {
 		// this add network for each respective env var found (ETH_NODE_URI_<network>)
 		// it will also read MNEMONIC_<network> to populate the accounts
 		// Note that if you set these env to be "SECRET" it will be like using:
-		//  configVariable('ETH_NODE_URI_<network>')
-		//  configVariable('MNEMONIC_<network>')
+		//  configVariable('SECRET_ETH_NODE_URI_<network>')
+		//  configVariable('SECRET_MNEMONIC_<network>')
 		addNetworksFromEnv({
 			hardhatMainnet: {
 				type: 'edr',
