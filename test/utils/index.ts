@@ -1,19 +1,16 @@
+import type {EIP1193GenericRequestProvider} from 'eip-1193';
+import hre from 'hardhat';
 import {Abi_GreetingsRegistry} from '@generated/types/GreetingsRegistry.js';
 import {loadAndExecuteDeployments} from '@rocketh';
-import {EthereumProvider} from 'hardhat/types/providers';
 
-export function setupFixtures(provider: EthereumProvider) {
-	return {
-		async deployAll() {
-			const env = await loadAndExecuteDeployments({
-				provider: provider,
-			});
+export async function deployAll() {
+	const provider = hre.network.provider as EIP1193GenericRequestProvider;
+	const env = await loadAndExecuteDeployments({
+		provider,
+	});
 
-			// Deployment are inherently untyped since they can vary from network or even before different from current artifacts
-			// so here we type them manually assuming the artifact is still matching
-			const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
+	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
+	const deployer = env.namedAccounts.deployer;
 
-			return {env, GreetingsRegistry, namedAccounts: env.namedAccounts, unnamedAccounts: env.unnamedAccounts};
-		},
-	};
+	return {env, GreetingsRegistry, deployer, unnamedAccounts: env.unnamedAccounts};
 }
