@@ -9,7 +9,7 @@
     "@rocketh/deploy-proxy": "^0.10.8",
     "@rocketh/deploy-router": "^0.10.7",
     "@rocketh/doc": "^0.10.7",
-    "@rocketh/export": "^0.10.8",
+    "@rocketh/export": "^0.11.17",
     "@rocketh/signer": "^0.10.6",
     "@rocketh/verifier": "^0.10.9",
     "@types/fs-extra": "^11.0.4",
