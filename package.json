@@ -29,7 +29,7 @@
     "tsx": "^4.15.7",
     "typescript": "^5.5.2",
     "viem": "^2.16.2",
-    "vitest": "^1.6.0"
+    "vitest": "^3.1.1"
   },
   "scripts": {
     "prepare": "set-defaults .vscode && pnpm compile",
