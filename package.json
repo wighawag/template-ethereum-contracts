@@ -14,7 +14,7 @@
     "@rocketh/verifier": "^0.10.9",
     "@types/fs-extra": "^11.0.4",
     "as-soon": "^0.0.9",
-    "eip-1193": "^0.5.0",
+    "eip-1193": "^0.6.3",
     "fs-extra": "^11.2.0",
     "hardhat": "^2.22.5",
     "hardhat-rocketh": "^4.0.19",
