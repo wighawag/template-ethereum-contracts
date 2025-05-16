@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      tsc-alias:
-        specifier: ^1.8.16
-        version: 1.8.16
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.0.0-next.8
@@ -75,6 +71,9 @@ importers:
       set-defaults:
         specifier: ^0.0.5
         version: 0.0.5
+      tsc-alias:
+        specifier: ^1.8.16
+        version: 1.8.16
       tsx:
         specifier: ^4.19.4
         version: 4.19.4
