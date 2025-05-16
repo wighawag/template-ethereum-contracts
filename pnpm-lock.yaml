@@ -4,9 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  template-ethereum-contracts: link:../template-ethereum-contracts
+
 importers:
 
   .:
+    dependencies:
+      template-ethereum-contracts-deploy-export:
+        specifier: link:../template-ethereum-contracts
+        version: link:../template-ethereum-contracts
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.0.0-next.8

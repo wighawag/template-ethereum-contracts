@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 /// @title Greetings Registry
-/// @notice let user set a greeting 1
-contract GreetingsRegistry {
+/// @notice let user set a greeting
+contract DuplicateGreetingsRegistry {
     /// @notice emitted whemever a user update its greeting
     /// @param user the account whose greeting was updated
     /// @param message the new greeting

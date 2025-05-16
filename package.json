@@ -1,5 +1,5 @@
 {
-	"name": "template-ethereum-contracts",
+	"name": "template-ethereum-contracts-deploy-import",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
@@ -53,5 +53,8 @@
 		"stop": "zellij kill-session $npm_package_name",
 		"format:check": "prettier --check .",
 		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"template-ethereum-contracts-deploy-export": "link:../template-ethereum-contracts"
 	}
 }

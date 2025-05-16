@@ -1,16 +1,18 @@
 // we import what we need from the @rocketh alias, see ../rocketh.ts
-import {execute, artifacts} from '@rocketh';
+import {execute} from '@rocketh';
+import artifacts from 'template-ethereum-contracts-deploy-export/artifacts';
 
 export default execute(
 	// this allow us to define our deploy function which takes as first argument an environment object
 	// This contaisn the function provided by the modules imported in 'rocketh.ts'
 	// along with other built-in functions and the named accounts
 	async ({deployViaProxy, namedAccounts}) => {
+		console.log(`from project itself`);
 		const {deployer, admin} = namedAccounts;
 
 		const prefix = 'proxy:';
 		await deployViaProxy(
-			'GreetingsRegistry',
+			'GreetingsRegistryFromImport',
 			{
 				account: deployer,
 				artifact: artifacts.GreetingsRegistry,
@@ -26,5 +28,5 @@ export default execute(
 		);
 	},
 	// execute takes as a second argument an options object where you can specify tags and dependencies
-	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
+	{tags: ['GreetingsRegistryFromImport', 'GreetingsRegistryFromImport_deploy']},
 );

@@ -2,14 +2,14 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "src/GreetingsRegistry/GreetingsRegistry.sol";
+import "src/DuplicateGreetingsRegistry/DuplicateGreetingsRegistry.sol";
 
-contract GreetingsRegistryTest is Test {
+contract DuplicateGreetingsRegistryTest is Test {
     uint256 testNumber;
-    GreetingsRegistry registry;
+    DuplicateGreetingsRegistry registry;
 
     function setUp() public {
-        registry = new GreetingsRegistry("");
+        registry = new DuplicateGreetingsRegistry("");
     }
 
     function test_setMessageWorks() public {

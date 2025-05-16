@@ -5,7 +5,7 @@ import {UserConfig} from 'rocketh';
 
 export const config = {
 	networks: {
-		hardhat: {
+		memory: {
 			tags: ['local', 'memory', 'testnet'],
 		},
 		localhost: {
@@ -26,6 +26,7 @@ export const config = {
 			default: 1,
 		},
 	},
+	scripts: ['node_modules/template-ethereum-contracts-deploy-export/dist/deploy', 'deploy'],
 	data: {},
 } as const satisfies UserConfig;
 
