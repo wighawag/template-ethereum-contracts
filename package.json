@@ -7,6 +7,12 @@
 		"./contracts/*": {
 			"default": "./src/*"
 		},
+		"./artifacts": {
+			"default": "./generated/artifacts.ts"
+		},
+		"./abis/*": {
+			"default": "./generated/types/*"
+		},
 		"./deployments/*": {
 			"default": "./deployments/*"
 		},
