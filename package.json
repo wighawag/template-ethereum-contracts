@@ -1,8 +1,20 @@
 {
-	"name": "template-ethereum-contracts",
+	"name": "template-ethereum-contracts-deploy-export",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"exports": {
+		"./contracts/*": {
+			"default": "./src/*"
+		},
+		"./deployments/*": {
+			"default": "./deployments/*"
+		},
+		"./deploy/*": {
+			"default": "./dist/deploy/*"
+		}
+	},
+	"files": ["dist", "deploy", "src", "deployments"],
 	"devDependencies": {
 		"@nomicfoundation/hardhat-keystore": "^3.0.0-next.8",
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.0-next.8",
@@ -25,11 +37,18 @@
 		"prettier-plugin-solidity": "^2.0.0",
 		"rocketh": "^0.11.20",
 		"set-defaults": "^0.0.5",
+		"tsc-alias": "^1.8.16",
 		"tsx": "^4.19.4",
 		"typescript": "^5.8.3",
 		"viem": "^2.29.3",
 		"wait-on": "^8.0.3",
 		"zellij-launcher": "^0.0.1"
+	},
+	"peerDependencies": {
+		"@rocketh/deploy": "^0.11.20",
+		"@rocketh/proxy": "^0.11.24",
+		"@rocketh/read-execute": "^0.11.21",
+		"rocketh": "^0.11.20"
 	},
 	"scripts": {
 		"prepare": "set-defaults .vscode && pnpm compile",
@@ -49,6 +68,7 @@
 		"export": "ldenv rocketh-export -n @@MODE @@",
 		"export:ts": "ldenv rocketh-export -n @@MODE --ts @@",
 		"export-script-data": "ldenv rocketh-export -n @@MODE --ts ./scripts/data/contracts.ts @@",
+		"export-deploy-functions": "pnpm tsc && pnpm tsc-alias",
 		"start": "zellij-launcher --layout zellij.kdl a $npm_package_name || zellij --layout zellij.kdl -s $npm_package_name",
 		"stop": "zellij kill-session $npm_package_name",
 		"format:check": "prettier --check .",
