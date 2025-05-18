@@ -11,7 +11,7 @@
     "@rocketh/doc": "^0.10.7",
     "@rocketh/export": "^0.11.17",
     "@rocketh/signer": "^0.10.6",
-    "@rocketh/verifier": "^0.10.9",
+    "@rocketh/verifier": "^0.11.17",
     "@types/fs-extra": "^11.0.4",
     "as-soon": "^0.0.9",
     "eip-1193": "^0.6.3",
