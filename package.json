@@ -6,7 +6,7 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.11",
     "@rocketh/deploy": "0.11.17",
-    "@rocketh/deploy-proxy": "^0.10.8",
+    "@rocketh/deploy-proxy": "^0.11.1",
     "@rocketh/deploy-router": "^0.10.7",
     "@rocketh/doc": "^0.10.7",
     "@rocketh/export": "^0.11.17",
