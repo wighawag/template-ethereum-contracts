@@ -20,7 +20,7 @@
     "hardhat-rocketh": "^4.0.19",
     "ldenv": "^0.3.10",
     "prettier": "^3.3.2",
-    "prettier-plugin-solidity": "^1.3.1",
+    "prettier-plugin-solidity": "^2.0.0",
     "rocketh": "^0.11.17",
     "rollup-plugin-node-builtins": "^2.1.2",
     "set-defaults": "^0.0.5",
