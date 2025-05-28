@@ -1,6 +1,6 @@
 // we import what we need from the @rocketh alias, see ../rocketh.ts
 import {execute} from '@rocketh';
-import artifacts from 'template-ethereum-contracts-deploy-export/artifacts';
+// import artifacts from '@ensdomains/ens-contracts/artifacts/artifacts.js';
 
 export default execute(
 	// this allow us to define our deploy function which takes as first argument an environment object
@@ -15,8 +15,8 @@ export default execute(
 			'GreetingsRegistryFromImport',
 			{
 				account: deployer,
-				artifact: artifacts.GreetingsRegistry,
-				args: [prefix],
+				artifact: artifacts.UniversalResolver,
+				args: [`0x${'00'.repeat(20)}`, []],
 			},
 			{
 				owner: admin,

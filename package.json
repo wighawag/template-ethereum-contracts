@@ -4,6 +4,7 @@
 	"private": true,
 	"type": "module",
 	"devDependencies": {
+		"@ensdomains/ens-contracts": "^1.4.0",
 		"@nomicfoundation/hardhat-keystore": "^3.0.0-next.8",
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.0-next.8",
 		"@nomicfoundation/hardhat-node-test-runner": "^3.0.0-next.8",
@@ -53,8 +54,5 @@
 		"stop": "zellij kill-session $npm_package_name",
 		"format:check": "prettier --check .",
 		"format": "prettier --write ."
-	},
-	"dependencies": {
-		"template-ethereum-contracts-deploy-export": "link:../template-ethereum-contracts"
 	}
 }
