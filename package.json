@@ -5,31 +5,31 @@
   "type": "module",
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.11",
-    "@rocketh/deploy": "0.11.18",
+    "@rocketh/deploy": "0.10.7",
     "@rocketh/deploy-proxy": "^0.10.8",
     "@rocketh/deploy-router": "^0.10.7",
     "@rocketh/doc": "^0.10.7",
-    "@rocketh/export": "^0.11.17",
+    "@rocketh/export": "^0.10.8",
     "@rocketh/signer": "^0.10.6",
-    "@rocketh/verifier": "^0.11.17",
+    "@rocketh/verifier": "^0.10.9",
     "@types/fs-extra": "^11.0.4",
     "as-soon": "^0.0.9",
-    "eip-1193": "^0.6.3",
+    "eip-1193": "^0.5.0",
     "fs-extra": "^11.2.0",
     "hardhat": "^2.22.5",
     "hardhat-rocketh": "^4.0.19",
     "ldenv": "^0.3.10",
     "prettier": "^3.3.2",
     "prettier-plugin-solidity": "^1.3.1",
-    "rocketh": "^0.11.17",
+    "rocketh": "^0.10.14",
     "rollup-plugin-node-builtins": "^2.1.2",
-    "set-defaults": "^0.0.5",
+    "set-defaults": "^0.0.2",
     "solidity-kit": "^0.5.1",
     "solidity-proxy": "^0.4.0",
     "tsx": "^4.15.7",
     "typescript": "^5.5.2",
-    "viem": "^2.16.2",
-    "vitest": "^3.1.1"
+    "viem": "^2.21.53",
+    "vitest": "^1.6.0"
   },
   "scripts": {
     "prepare": "set-defaults .vscode && pnpm compile",
@@ -51,5 +51,16 @@
     "stop": "zellij kill-session $npm_package_name",
     "format:check": "prettier --check .",
     "format": "prettier --write ."
+  },
+  "dependencies": {
+    "0xsequence": "^2.1.3",
+    "@0xsequence/cross-app-embedded-wallet-connector": "^0.0.3",
+    "@0xsequence/ethauth": "^1.0.0",
+    "@0xsequence/kit": "^4.4.5",
+    "@0xsequence/network": "^2.0.0",
+    "@tanstack/react-query": "^5.62.0",
+    "ethers": "^6.13.0",
+    "thirdweb": "^5.71.0",
+    "wagmi": "^2.13.2"
   }
 }
