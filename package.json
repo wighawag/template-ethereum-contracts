@@ -5,11 +5,11 @@
   "type": "module",
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.11",
-    "@rocketh/deploy": "0.11.20",
+    "@rocketh/deploy": "0.11.17",
     "@rocketh/deploy-proxy": "^0.10.8",
     "@rocketh/deploy-router": "^0.10.7",
-    "@rocketh/doc": "^0.11.17",
-    "@rocketh/export": "^0.10.8",
+    "@rocketh/doc": "^0.10.7",
+    "@rocketh/export": "^0.11.17",
     "@rocketh/signer": "^0.10.6",
     "@rocketh/verifier": "^0.10.9",
     "@types/fs-extra": "^11.0.4",
@@ -21,18 +21,18 @@
     "ldenv": "^0.3.10",
     "prettier": "^3.3.2",
     "prettier-plugin-solidity": "^1.3.1",
-    "rocketh": "^0.10.14",
+    "rocketh": "^0.11.17",
     "rollup-plugin-node-builtins": "^2.1.2",
-    "set-defaults": "^0.0.2",
+    "set-defaults": "^0.0.5",
     "solidity-kit": "^0.5.1",
     "solidity-proxy": "^0.4.0",
     "tsx": "^4.15.7",
     "typescript": "^5.5.2",
-    "viem": "^2.21.53",
-    "vitest": "^3.1.3"
+    "viem": "^2.16.2",
+    "vitest": "^3.1.1"
   },
   "scripts": {
-    "prepare": "npm run snyk-protect && set-defaults .vscode && pnpm compile",
+    "prepare": "set-defaults .vscode && pnpm compile",
     "docgen": "ldenv -m hardhat pnpm run deploy hardhat --save-deployments true --skip-prompts ~~ pnpm rocketh-doc -n @@MODE --except-suffix _Implementation,_Proxy,_Router,_Route ~~ @@",
     "local_node": "hardhat node",
     "compile": "hardhat compile",
@@ -50,20 +50,6 @@
     "start": "zellij --layout zellij.kdl a $npm_package_name || zellij --layout zellij.kdl -s $npm_package_name",
     "stop": "zellij kill-session $npm_package_name",
     "format:check": "prettier --check .",
-    "format": "prettier --write .",
-    "snyk-protect": "snyk-protect"
-  },
-  "dependencies": {
-    "0xsequence": "^2.1.3",
-    "@0xsequence/cross-app-embedded-wallet-connector": "^0.0.3",
-    "@0xsequence/ethauth": "^1.0.0",
-    "@0xsequence/kit": "^4.4.5",
-    "@0xsequence/network": "^2.0.0",
-    "@tanstack/react-query": "^5.62.0",
-    "ethers": "^6.13.0",
-    "thirdweb": "^5.71.0",
-    "wagmi": "^2.13.2",
-    "@snyk/protect": "latest"
-  },
-  "snyk": true
+    "format": "prettier --write ."
+  }
 }
