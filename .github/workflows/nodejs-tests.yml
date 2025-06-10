@@ -9,19 +9,23 @@ jobs:
             matrix:
                 node-version: [15]
         steps:
-            - uses: actions/checkout@v2
-            - uses: pnpm/action-setup@v2.2.2
-              with:
-                  version: 7
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
-            - name: Install dependencies
-              run: pnpm install
-            # -------------------------------------------------------------------------
-            - name: Formatting
-              run: pnpm format
-            - name: Running tests
-              run: pnpm test
+        - uses: actions/checkout@v2
+        - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8
+        - name: Configure pnpm registry
+           run: pnpm config set registry https://registry.npmjs.org/
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v2
+      with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+        - name: Install dependencies
+    run: |
+      for i in {1..3}; do
+        pnpm install && break || sleep 10;
+      done
+  - name: Formatting
+    run: pnpm format
+  - name: Running tests
+    run: pnpm test
