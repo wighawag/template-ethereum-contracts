@@ -1,0 +1,8 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+ 
+jobs:
+  image: ghcr.io/foundry-rs/foundry
+  script:
+    - forge install
+    - forge test -vvv
