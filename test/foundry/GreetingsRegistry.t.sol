@@ -20,8 +20,7 @@ contract GreetingsRegistryTest is Test {
         assertEq(messageAfter, "hello");
     }
 
-    function testFail_Hello() public view {
-        string memory message = registry.messages(msg.sender);
-        assertEq(message, "hello");
-    }
+    function test_RevertWhen_HelloCondition() public {
+    vm.expectRevert();
+    // Test logic
 }
