@@ -1,0 +1,13 @@
+language: rust
+cache:
+  cargo: true
+  directories:
+    - $HOME/.foundry
+ 
+install:
+  - curl -L https://foundry.paradigm.xyz | bash
+  - export PATH=$PATH:$HOME/.foundry/bin
+  - foundryup -b master
+ 
+script:
+  - forge test -vvv
