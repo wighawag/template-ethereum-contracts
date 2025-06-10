@@ -1,4 +1,6 @@
 name: pnpm test
+permissions:
+  contents: read
 on: [push, pull_request]
 jobs:
     build:
