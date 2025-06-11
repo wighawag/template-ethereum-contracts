@@ -1,18 +1,22 @@
-import {loadFixture} from '@nomicfoundation/hardhat-network-helpers';
-import {expect, describe, it} from 'vitest';
-import {deployAll} from './utils';
+import {expect} from 'earl';
+import {describe, it} from 'node:test'; // using node:test as hardhat v3 do not support vitest
+import {network} from 'hardhat';
+import {setupFixtures} from './utils/index.js';
+
+const {provider, networkHelpers} = await network.connect();
+const {deployAll} = setupFixtures(provider);
 
 describe('GreetingsRegistry', function () {
 	it('basic test', async function () {
-		const {env, GreetingsRegistry, otherAccounts} = await loadFixture(deployAll);
+		const {env, GreetingsRegistry, unnamedAccounts} = await networkHelpers.loadFixture(deployAll);
 		const greetingToSet = 'hello world';
-		const greeter = otherAccounts[0];
+		const greeter = unnamedAccounts[0];
 		await expect(
 			await env.read(GreetingsRegistry, {
 				functionName: 'messages',
 				args: [greeter],
 			}),
-		).to.equal('');
+		).toEqual('');
 
 		await env.execute(GreetingsRegistry, {functionName: 'setMessage', args: [greetingToSet], account: greeter});
 
@@ -21,6 +25,27 @@ describe('GreetingsRegistry', function () {
 				functionName: 'messages',
 				args: [greeter],
 			}),
-		).to.equal(greetingToSet);
+		).toEqual(greetingToSet);
+	});
+
+	it('basic test 2', async function () {
+		const {env, GreetingsRegistry, unnamedAccounts} = await networkHelpers.loadFixture(deployAll);
+		const greetingToSet = 'hello world';
+		const greeter = unnamedAccounts[0];
+		await expect(
+			await env.read(GreetingsRegistry, {
+				functionName: 'messages',
+				args: [greeter],
+			}),
+		).toEqual('');
+
+		await env.execute(GreetingsRegistry, {functionName: 'setMessage', args: [greetingToSet], account: greeter});
+
+		await expect(
+			await env.read(GreetingsRegistry, {
+				functionName: 'messages',
+				args: [greeter],
+			}),
+		).toEqual(greetingToSet);
 	});
 });

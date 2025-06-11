@@ -20,8 +20,5 @@ contract GreetingsRegistryTest is Test {
         assertEq(messageAfter, "hello");
     }
 
-    function test_RevertWhen_HelloCondition() public {
-    vm.expectRevert();
-    // Test logic
-    }
+
 }

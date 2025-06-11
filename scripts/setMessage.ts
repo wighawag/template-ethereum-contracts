@@ -1,24 +1,28 @@
-import {loadEnvironmentFromHardhat} from 'hardhat-rocketh/helpers';
-import {context} from '../deploy/_context';
 import hre from 'hardhat';
-import '@rocketh/deploy';
+import {loadEnvironmentFromHardhat} from 'hardhat-deploy/helpers';
+import {Abi_GreetingsRegistry} from '@generated/types/GreetingsRegistry.js';
 
 async function main() {
-	const args = process.argv.slice(2);
-	const greeting = args[0] || 'hello';
+	const env = await loadEnvironmentFromHardhat({hre});
+	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
-	const env = await loadEnvironmentFromHardhat({
-		hre,
-		context,
+	const before_messages = await env.read(GreetingsRegistry, {
+		functionName: 'messages',
+		args: [env.namedAccounts.deployer],
 	});
 
-	const GreetingsRegistry = env.get<typeof context.artifacts.GreetingsRegistry.abi>('GreetingsRegistry');
+	console.log(before_messages);
 
-	const tx = await env.execute(GreetingsRegistry, {
-		functionName: 'setMessage',
-		args: [greeting],
+	await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
+		functionName: 'setMessage',
+		args: ['hello'],
 	});
-	console.log(tx);
+
+	const after_messages = await env.read(GreetingsRegistry, {
+		functionName: 'messages',
+		args: [env.namedAccounts.deployer],
+	});
+	console.log(after_messages);
 }
 main();

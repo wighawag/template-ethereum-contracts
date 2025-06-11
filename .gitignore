@@ -7,7 +7,7 @@
 # rocketh
 generated
 deployments/localhost
-deployments/hardhat
+deployments/hardhat*
 deployments/lan
 _metadata
 
@@ -19,14 +19,6 @@ _metadata
 cache
 artifacts
 docs
-
-# foundry
-forge-cache/
-forge-artifacts/
-
-# Note: by default we ignore lib/forge-std as we do not use submodules
-# install it via `git clone --recursive https://github.com/foundry-rs/forge-std.git lib/forge-std`
-lib/forge-std
 
 .vscode/*
 !*.default
