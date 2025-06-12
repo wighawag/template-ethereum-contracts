@@ -1,0 +1,5 @@
+{
+    "filter_paths": "(mocks/|test/|@openzeppelin/)",
+    "solc_remaps": "@=node_modules/@",
+    "solc_args": "optimize optimize-runs=200 --via-ir"
+}

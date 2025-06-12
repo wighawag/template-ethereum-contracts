@@ -1,28 +1,28 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.17;
 
-/// @title Greetings Registry
-/// @notice let user set a greeting 1
-contract GreetingsRegistry {
-    /// @notice emitted whemever a user update its greeting
-    /// @param user the account whose greeting was updated
-    /// @param message the new greeting
-    event MessageChanged(address indexed user, string message);
+import "hardhat-deploy/solc_0.8/proxy/Proxied.sol";
+import "hardhat/console.sol";
 
-    string internal _prefix;
+contract GreetingsRegistry is Proxied {
+	event MessageChanged(address indexed user, string message);
 
-    /// @notice the greeting for each account
-    mapping(address => string) public messages;
+	mapping(address => string) public messages;
+	string internal _prefix;
 
-    constructor(string memory prefix) {
-        _prefix = prefix;
-    }
+	function postUpgrade(string memory prefix) public proxied {
+		_prefix = prefix;
+	}
 
-    /// @notice called to set your own greeting
-    /// @param message the new greeting
-    function setMessage(string calldata message) external {
-        string memory actualMessage = string(abi.encodePacked(_prefix, message));
-        messages[msg.sender] = actualMessage;
-        emit MessageChanged(msg.sender, actualMessage);
-    }
+	constructor(string memory prefix) {
+		// the proxied modifier from `hardhat-deploy` ensure postUpgrade effect can only be used once when the contract is deployed without proxy
+		// by calling that function in the constructor we ensure the contract behave the same whether it is deployed through a proxy or not.
+		postUpgrade(prefix);
+	}
+
+	function setMessage(string calldata message) external {
+		string memory actualMessage = string(abi.encodePacked(_prefix, message));
+		messages[msg.sender] = actualMessage;
+		emit MessageChanged(msg.sender, actualMessage);
+	}
 }
