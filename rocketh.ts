@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------------------
 import type {UserConfig} from 'rocketh';
 
-import {privateKey} from '@rocketh/signer'; // this one provide functions to sign and verify messages
+import {privateKey} from '@rocketh/signer'; // this one provide a protocol too supporting private key as account
 
 export const config = {
 	networks: {
