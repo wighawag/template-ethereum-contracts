@@ -33,6 +33,11 @@ const config: HardhatUserConfig = {
 		//  configVariable('SECRET_ETH_NODE_URI_<network>')
 		//  configVariable('SECRET_MNEMONIC_<network>')
 		addNetworksFromEnv({
+			hardhat: {
+				type: 'edr-simulated',
+				chainType: 'l1',
+				initialBaseFeePerGas: 0,
+			},
 			hardhatMainnet: {
 				type: 'edr-simulated',
 				chainType: 'l1',

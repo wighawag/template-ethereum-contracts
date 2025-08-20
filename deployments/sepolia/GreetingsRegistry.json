@@ -8353,9 +8353,9 @@
   },
   "receipt": {
     "confirmations": 0,
-    "blockHash": "0x8dd73cfbb7cb418157e03ac942a3fee314d7c727e51282d02201075b6b1d2b98",
-    "blockNumber": "0x78777d",
-    "transactionIndex": "0x42"
+    "blockHash": "0x3a049fc90301ae5b83952bfec05ecf003e86cd438f5f450242281902342add45",
+    "blockNumber": "0x78777c",
+    "transactionIndex": "0x84"
   },
   "immutableReferences": {},
   "inputSourceName": "src/GreetingsRegistry/GreetingsRegistry.sol",
