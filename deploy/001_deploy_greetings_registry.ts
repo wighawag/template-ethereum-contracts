@@ -1,5 +1,6 @@
 // we import what we need from the @rocketh alias, see ../rocketh.ts
 import {deployScript, artifacts} from '@rocketh';
+// import {createPublicClient, custom} from 'viem';
 
 export default deployScript(
 	// this allow us to define our deploy function which takes as first argument an environment object
@@ -7,6 +8,17 @@ export default deployScript(
 	// along with other built-in functions and the named accounts
 	async (env, data) => {
 		const {deployer, admin} = env.namedAccounts;
+
+		// const viemClient = createPublicClient({
+		// 	chain: env.network.chain,
+		// 	transport: custom(env.network.provider),
+		// });
+		// console.log(await viemClient.getChainId());
+
+		// const connection = env.getHardhatConnection();
+		// console.log(connection.networkName);
+		// const client = await connection.viem.getPublicClient();
+		// console.log(await client.getChainId());
 
 		const prefix = 'proxy:';
 		await env.deployViaProxy(

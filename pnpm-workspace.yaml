@@ -1,0 +1,3 @@
+overrides:
+  hardhat-deploy-monorepo: link:../hardhat-deploy
+  hardhat-deploy: link:../hardhat-deploy/packages/hardhat-deploy

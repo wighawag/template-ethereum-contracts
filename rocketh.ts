@@ -47,14 +47,14 @@ export const config = {
 import * as deployFunctions from '@rocketh/deploy'; // this one provide a deploy function
 import * as readExecuteFunctions from '@rocketh/read-execute'; // this one provide read,execute functions
 import * as deployProxyFunctions from '@rocketh/proxy'; // this one provide a deployViaProxy function that let you declaratively deploy proxy based contracts
-const functions = {...deployFunctions, ...readExecuteFunctions, ...deployProxyFunctions};
+import {getHardhatConnection} from 'hardhat-deploy';
+const functions = {...deployFunctions, ...readExecuteFunctions, ...deployProxyFunctions, getHardhatConnection};
 // ------------------------------------------------------------------------------------------------
 // we re-export the artifacts, so they are easily available from the alias
 import artifacts from './generated/artifacts.js';
 export {artifacts};
 // ------------------------------------------------------------------------------------------------
-// while not necessary, we also converted the execution function type to know about the named accounts
-// this way you get type safe accounts
+
 import {setup, loadAndExecuteDeployments} from 'rocketh';
 const deployScript = setup<typeof functions, typeof config.accounts, typeof config.data>(functions);
 
