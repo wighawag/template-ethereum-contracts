@@ -15,11 +15,6 @@ export default deployScript(
 		// });
 		// console.log(await viemClient.getChainId());
 
-		// const connection = env.getHardhatConnection();
-		// console.log(connection.networkName);
-		// const client = await connection.viem.getPublicClient();
-		// console.log(await client.getChainId());
-
 		const prefix = 'proxy:';
 		await env.deployViaProxy(
 			'GreetingsRegistry',
