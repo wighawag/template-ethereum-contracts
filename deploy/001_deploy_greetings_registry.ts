@@ -1,4 +1,5 @@
 // we import what we need from the @rocketh alias, see ../rocketh.ts
+import {Abi_GreetingsRegistry} from '@generated/types/GreetingsRegistry.js';
 import {deployScript, artifacts} from '@rocketh';
 // import {createPublicClient, custom} from 'viem';
 
@@ -9,14 +10,10 @@ export default deployScript(
 	async (env, data) => {
 		const {deployer, admin} = env.namedAccounts;
 
-		// const viemClient = createPublicClient({
-		// 	chain: env.network.chain,
-		// 	transport: custom(env.network.provider),
-		// });
-		// console.log(await viemClient.getChainId());
+		// const client = env.viem.publicClient;
 
 		const prefix = 'proxy:';
-		await env.deployViaProxy(
+		const deployment = await env.deployViaProxy(
 			'GreetingsRegistry',
 			{
 				account: deployer,
@@ -31,6 +28,10 @@ export default deployScript(
 				},
 			},
 		);
+
+		const contract = env.viem.getContract(deployment);
+		const message = await contract.read.messages([deployer]);
+		console.log(message);
 	},
 	// execute takes as a second argument an options object where you can specify tags and dependencies
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
