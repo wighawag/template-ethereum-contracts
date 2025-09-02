@@ -19,31 +19,31 @@ importers:
         version: 3.0.2(hardhat@3.0.3)
       '@nomicfoundation/hardhat-viem':
         specifier: ^3.0.0
-        version: 3.0.0(hardhat@3.0.3)(viem@2.37.0(typescript@5.9.2)(zod@4.0.17))
+        version: 3.0.0(hardhat@3.0.3)(viem@2.37.0(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/deploy':
         specifier: ^0.14.0
-        version: 0.14.0(typescript@5.9.2)(zod@4.0.17)
+        version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/doc':
         specifier: ^0.14.1
-        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))
+        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/export':
         specifier: ^0.14.1
-        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))
+        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/proxy':
         specifier: ^0.14.0
-        version: 0.14.0(typescript@5.9.2)(zod@4.0.17)
+        version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/read-execute':
         specifier: ^0.14.0
-        version: 0.14.0(typescript@5.9.2)(zod@4.0.17)
+        version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/signer':
         specifier: ^0.14.0
-        version: 0.14.0(typescript@5.9.2)(zod@4.0.17)
+        version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/verifier':
         specifier: ^0.14.1
-        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))
+        version: 0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/viem':
         specifier: ^0.14.0
-        version: 0.14.0(viem@2.37.0(typescript@5.9.2)(zod@4.0.17))
+        version: 0.14.0(viem@2.37.0(typescript@5.9.2)(zod@4.1.5))
       '@types/node':
         specifier: ^24.3.0
         version: 24.3.0
@@ -60,8 +60,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       hardhat-deploy:
-        specifier: ^2.0.0-next.35
-        version: 2.0.0-next.35(hardhat@3.0.3)(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))
+        specifier: ^2.0.0-next.37
+        version: 2.0.0-next.37(hardhat@3.0.3)(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -73,7 +73,7 @@ importers:
         version: 2.1.0(prettier@3.6.2)
       rocketh:
         specifier: ^0.14.1
-        version: 0.14.1(typescript@5.9.2)(zod@4.0.17)
+        version: 0.14.1(typescript@5.9.2)(zod@4.1.5)
       set-defaults:
         specifier: ^0.0.5
         version: 0.0.5
@@ -85,7 +85,7 @@ importers:
         version: 5.9.2
       viem:
         specifier: ^2.37.0
-        version: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+        version: 2.37.0(typescript@5.9.2)(zod@4.1.5)
       wait-on:
         specifier: ^8.0.4
         version: 8.0.4
@@ -861,11 +861,11 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat-deploy@2.0.0-next.35:
-    resolution: {integrity: sha512-EIs76j3iKHZIPlw+yXjbR033dNZv2KZGcDmOhgUG4bAOuPLHC2XFb4XrTBf1bV7tm+AAMDFmJ+KEYlYp87Re0w==}
+  hardhat-deploy@2.0.0-next.37:
+    resolution: {integrity: sha512-kBAu0h9AK6bzC9xZvbk1DUkWSZzsToyxPhTcW7H/REsEkdLAeKsZSWmwtX0vPEDX/Ap1jhCzUKa80boiBPdiBQ==}
     peerDependencies:
       hardhat: ^3.0.0
-      rocketh: ^0.12.1
+      rocketh: ^0.14.1
 
   hardhat@3.0.3:
     resolution: {integrity: sha512-QQwkjc0xO+sXygcjAiwwBQAqXdhU5/FBPlXtb/DB5CuQQ60fHHbLwBK2axrwwoJcmDSEoifyXi9S+46Nw14hDg==}
@@ -1168,8 +1168,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.0.17:
-    resolution: {integrity: sha512-1PHjlYRevNxxdy2JZ8JcNAw7rX8V9P1AKkP+x/xZfxB0K5FYfuV+Ug6P/6NVSR2jHQ+FzDDoDHS04nYUsOIyLQ==}
+  zod@4.1.5:
+    resolution: {integrity: sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==}
 
 snapshots:
 
@@ -1405,12 +1405,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nomicfoundation/hardhat-viem@3.0.0(hardhat@3.0.3)(viem@2.37.0(typescript@5.9.2)(zod@4.0.17))':
+  '@nomicfoundation/hardhat-viem@3.0.0(hardhat@3.0.3)(viem@2.37.0(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@nomicfoundation/hardhat-errors': 3.0.0
       '@nomicfoundation/hardhat-utils': 3.0.0
       hardhat: 3.0.3
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -1421,10 +1421,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nomicfoundation/hardhat-zod-utils@3.0.0(zod@4.0.17)':
+  '@nomicfoundation/hardhat-zod-utils@3.0.0(zod@4.1.5)':
     dependencies:
       '@nomicfoundation/hardhat-utils': 3.0.0
-      zod: 4.0.17
+      zod: 4.1.5
     transitivePeerDependencies:
       - supports-color
 
@@ -1523,68 +1523,68 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.1
       '@parcel/watcher-win32-x64': 2.5.1
 
-  '@rocketh/deploy@0.14.0(typescript@5.9.2)(zod@4.0.17)':
+  '@rocketh/deploy@0.14.0(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
       named-logs: 0.3.2
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
       - utf-8-validate
       - zod
 
-  '@rocketh/doc@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))':
+  '@rocketh/doc@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       commander: 13.1.0
       ethers: 6.15.0
       fs-extra: 11.3.1
       handlebars: 4.7.8
-      rocketh: 0.14.1(typescript@5.9.2)(zod@4.0.17)
+      rocketh: 0.14.1(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@rocketh/export@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))':
+  '@rocketh/export@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       chalk: 5.4.1
       commander: 13.1.0
       fs-extra: 11.3.1
-      rocketh: 0.14.1(typescript@5.9.2)(zod@4.0.17)
+      rocketh: 0.14.1(typescript@5.9.2)(zod@4.1.5)
 
-  '@rocketh/proxy@0.14.0(typescript@5.9.2)(zod@4.0.17)':
+  '@rocketh/proxy@0.14.0(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
-      '@rocketh/deploy': 0.14.0(typescript@5.9.2)(zod@4.0.17)
-      '@rocketh/read-execute': 0.14.0(typescript@5.9.2)(zod@4.0.17)
+      '@rocketh/deploy': 0.14.0(typescript@5.9.2)(zod@4.1.5)
+      '@rocketh/read-execute': 0.14.0(typescript@5.9.2)(zod@4.1.5)
       named-logs: 0.3.2
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
       - utf-8-validate
       - zod
 
-  '@rocketh/read-execute@0.14.0(typescript@5.9.2)(zod@4.0.17)':
+  '@rocketh/read-execute@0.14.0(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
       named-logs: 0.3.2
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
       - utf-8-validate
       - zod
 
-  '@rocketh/signer@0.14.0(typescript@5.9.2)(zod@4.0.17)':
+  '@rocketh/signer@0.14.0(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
-      eip-1193-signer: 0.1.1(typescript@5.9.2)(zod@4.0.17)
+      eip-1193-signer: 0.1.1(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
       - utf-8-validate
       - zod
 
-  '@rocketh/verifier@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17))':
+  '@rocketh/verifier@0.14.1(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       '@types/qs': 6.14.0
@@ -1593,12 +1593,12 @@ snapshots:
       fs-extra: 11.3.1
       ldenv: 0.3.12
       neoqs: 6.13.0
-      rocketh: 0.14.1(typescript@5.9.2)(zod@4.0.17)
+      rocketh: 0.14.1(typescript@5.9.2)(zod@4.1.5)
 
-  '@rocketh/viem@0.14.0(viem@2.37.0(typescript@5.9.2)(zod@4.0.17))':
+  '@rocketh/viem@0.14.0(viem@2.37.0(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       named-logs: 0.3.2
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
 
   '@scure/base@1.1.9': {}
 
@@ -1678,15 +1678,15 @@ snapshots:
 
   '@types/qs@6.14.0': {}
 
-  abitype@1.0.8(typescript@5.9.2)(zod@4.0.17):
+  abitype@1.0.8(typescript@5.9.2)(zod@4.1.5):
     optionalDependencies:
       typescript: 5.9.2
-      zod: 4.0.17
+      zod: 4.1.5
 
-  abitype@1.0.9(typescript@5.9.2)(zod@4.0.17):
+  abitype@1.0.9(typescript@5.9.2)(zod@4.1.5):
     optionalDependencies:
       typescript: 5.9.2
-      zod: 4.0.17
+      zod: 4.1.5
 
   adm-zip@0.4.16: {}
 
@@ -1780,9 +1780,9 @@ snapshots:
       named-logs: 0.3.2
       promise-throttle: 1.1.2
 
-  eip-1193-signer@0.1.1(typescript@5.9.2)(zod@4.0.17):
+  eip-1193-signer@0.1.1(typescript@5.9.2)(zod@4.1.5):
     dependencies:
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -1932,15 +1932,15 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.19.3
 
-  hardhat-deploy@2.0.0-next.35(hardhat@3.0.3)(rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17)):
+  hardhat-deploy@2.0.0-next.37(hardhat@3.0.3)(rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5)):
     dependencies:
-      '@nomicfoundation/hardhat-zod-utils': 3.0.0(zod@4.0.17)
+      '@nomicfoundation/hardhat-zod-utils': 3.0.0(zod@4.1.5)
       '@types/debug': 4.1.12
       debug: 4.4.1
       hardhat: 3.0.3
-      rocketh: 0.14.1(typescript@5.9.2)(zod@4.0.17)
+      rocketh: 0.14.1(typescript@5.9.2)(zod@4.1.5)
       slash: 5.1.0
-      zod: 4.0.17
+      zod: 4.1.5
     transitivePeerDependencies:
       - supports-color
 
@@ -2070,7 +2070,7 @@ snapshots:
 
   node-addon-api@7.1.1: {}
 
-  ox@0.9.3(typescript@5.9.2)(zod@4.0.17):
+  ox@0.9.3(typescript@5.9.2)(zod@4.1.5):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
       '@noble/ciphers': 1.3.0
@@ -2078,7 +2078,7 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.0.9(typescript@5.9.2)(zod@4.0.17)
+      abitype: 1.0.9(typescript@5.9.2)(zod@4.1.5)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.9.2
@@ -2121,7 +2121,7 @@ snapshots:
 
   rfdc@1.4.1: {}
 
-  rocketh@0.14.1(typescript@5.9.2)(zod@4.0.17):
+  rocketh@0.14.1(typescript@5.9.2)(zod@4.1.5):
     dependencies:
       '@types/figlet': 1.7.0
       '@types/prompts': 2.4.9
@@ -2134,7 +2134,7 @@ snapshots:
       named-logs-console: 0.3.1
       prompts: 2.4.2
       tsx: 4.20.5
-      viem: 2.37.0(typescript@5.9.2)(zod@4.0.17)
+      viem: 2.37.0(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -2201,15 +2201,15 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  viem@2.37.0(typescript@5.9.2)(zod@4.0.17):
+  viem@2.37.0(typescript@5.9.2)(zod@4.1.5):
     dependencies:
       '@noble/curves': 1.9.1
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.0.8(typescript@5.9.2)(zod@4.0.17)
+      abitype: 1.0.8(typescript@5.9.2)(zod@4.1.5)
       isows: 1.0.7(ws@8.18.3)
-      ox: 0.9.3(typescript@5.9.2)(zod@4.0.17)
+      ox: 0.9.3(typescript@5.9.2)(zod@4.1.5)
       ws: 8.18.3
     optionalDependencies:
       typescript: 5.9.2
@@ -2238,4 +2238,4 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.0.17: {}
+  zod@4.1.5: {}
