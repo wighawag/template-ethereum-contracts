@@ -55,7 +55,7 @@ import artifacts from './generated/artifacts.js';
 export {artifacts};
 // ------------------------------------------------------------------------------------------------
 
-import {setup, loadAndExecuteDeployments as extensionLessLoadAndExecuteDeployments} from 'rocketh';
+import {setup} from 'rocketh';
 const {deployScript, loadAndExecuteDeployments} = setup<typeof extensions, typeof config.accounts, typeof config.data>(
 	extensions,
 );
