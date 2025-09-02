@@ -1,5 +1,5 @@
-import {Abi_GreetingsRegistry} from '@generated/types/GreetingsRegistry.js';
-import {loadAndExecuteDeployments} from '@rocketh';
+import {Abi_GreetingsRegistry} from '#generated/types/GreetingsRegistry.js';
+import {loadAndExecuteDeployments} from '#rocketh';
 import {EthereumProvider} from 'hardhat/types/providers';
 
 export function setupFixtures(provider: EthereumProvider) {
