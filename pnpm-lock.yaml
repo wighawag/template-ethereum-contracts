@@ -24,11 +24,11 @@ importers:
         specifier: ^0.14.0
         version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/doc':
-        specifier: ^0.14.2
-        version: 0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))
+        specifier: ^0.14.4
+        version: 0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/export':
-        specifier: ^0.14.2
-        version: 0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))
+        specifier: ^0.14.4
+        version: 0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/proxy':
         specifier: ^0.14.0
         version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
@@ -39,8 +39,8 @@ importers:
         specifier: ^0.14.0
         version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/verifier':
-        specifier: ^0.14.2
-        version: 0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))
+        specifier: ^0.14.4
+        version: 0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/viem':
         specifier: ^0.14.0
         version: 0.14.0(viem@2.37.1(typescript@5.9.2)(zod@4.1.5))
@@ -60,8 +60,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
       hardhat-deploy:
-        specifier: ^2.0.0-next.39
-        version: 2.0.0-next.39(hardhat@3.0.3)(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))
+        specifier: ^2.0.0-next.40
+        version: 2.0.0-next.40(hardhat@3.0.3)(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))
       ldenv:
         specifier: ^0.3.12
         version: 0.3.12
@@ -72,8 +72,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0(prettier@3.6.2)
       rocketh:
-        specifier: ^0.14.2
-        version: 0.14.2(typescript@5.9.2)(zod@4.1.5)
+        specifier: ^0.14.4
+        version: 0.14.4(typescript@5.9.2)(zod@4.1.5)
       set-defaults:
         specifier: ^0.0.5
         version: 0.0.5
@@ -515,17 +515,17 @@ packages:
   '@rocketh/deploy@0.14.0':
     resolution: {integrity: sha512-4uBIpKchoTZ9QSxyTYYT137+nI0beOlqkh10NWwNgBrQXPpFc51pDB2cDZkgzJpJ5Bzn5hL6klaEsVfPxmAvSA==}
 
-  '@rocketh/doc@0.14.2':
-    resolution: {integrity: sha512-uHr4YwF73PHPmT6mpD6KVIGqCkdyUglOOZ8BdhLEF58QMDzbrzAKKUqdwfDYghgTwrs1gbbgVtxS5uXW1603GA==}
+  '@rocketh/doc@0.14.4':
+    resolution: {integrity: sha512-YfZJhf2jx1xTAACMjulACem1HFsZ9ZI0HIlfrDrQnBcTARX2ygvai1R8pGOF/xD2mWSW1QHgtmOC+93sFAEzwQ==}
     hasBin: true
     peerDependencies:
-      rocketh: 0.14.2
+      rocketh: 0.14.4
 
-  '@rocketh/export@0.14.2':
-    resolution: {integrity: sha512-7rK3+k/w/AareZeMdquwx29FU+JuZiXSEZmbYCgRuwaVGYNQQ6GaB1bIRf6jWWDg+1Hxg2OcPNTd5lSiKNcEHQ==}
+  '@rocketh/export@0.14.4':
+    resolution: {integrity: sha512-n5/+Bbv1sl5mMWRK/9Unv6nDpPbENACIUw2a3OSNC5ttobFIJuAd5PhfpJpd2NMqi90lu3ET2FPLumRv00t9eQ==}
     hasBin: true
     peerDependencies:
-      rocketh: 0.14.2
+      rocketh: 0.14.4
 
   '@rocketh/proxy@0.14.0':
     resolution: {integrity: sha512-Dhj9/U/45NuCGCWoOOYPwQiMxA0bfHPnD8GOCwXOMJpXDJDpWDK6wPN/EyuOaG2rpmvy9JkpFf34y0rXBL9isQ==}
@@ -536,11 +536,11 @@ packages:
   '@rocketh/signer@0.14.0':
     resolution: {integrity: sha512-FQNpHoxXEkc2vDsns52cCNIZcG7CLY1iKPldCMsXWUfTF7iPK0c1/ICTRGz/vFcvsL5XUijyPPTslIdJnp1SnQ==}
 
-  '@rocketh/verifier@0.14.2':
-    resolution: {integrity: sha512-+4W+Il6ITaCU294MNJK1TSv1qe6PCEb+0wRXTKPWCLhIHtAMz8IWCjqAnrZjjcs6dAsXhvLKuXFUBf2IBpyn1g==}
+  '@rocketh/verifier@0.14.4':
+    resolution: {integrity: sha512-nfxigIPC3zXZ6ajJhxEYJ7zkm0nn3kNHRryY1HPOlhnAjwTwzELLzDP2YFutvhwRcaEGcQz5vIeQJEVAaFG4zw==}
     hasBin: true
     peerDependencies:
-      rocketh: 0.14.2
+      rocketh: 0.14.4
 
   '@rocketh/viem@0.14.0':
     resolution: {integrity: sha512-1RRVpCgPJrPQEIs9OUyVBzCzXNbhIME+HFJBLdYI4y4ol94otqcaTnoXC91bRLmTPb60fvfssKV4p8gK9pyUQw==}
@@ -861,11 +861,11 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  hardhat-deploy@2.0.0-next.39:
-    resolution: {integrity: sha512-DRypSR9qI2X+e9Oprm6+l3P8hWaFiWB7traqq1jhSkBlF4RUNixoILOxA/t+lRidIeakv9TCGlv8wGXYlWIzgg==}
+  hardhat-deploy@2.0.0-next.40:
+    resolution: {integrity: sha512-3L7gYyv9fiF5HfDR5mqJrHaXh63l/9tYqwPSw/YRTJLvLX1ij0NjhjHhNpSECAXgRc/HkXuwkw4vZNs4iUiBeQ==}
     peerDependencies:
       hardhat: ^3.0.0
-      rocketh: ^0.14.1
+      rocketh: ^0.14.4
 
   hardhat@3.0.3:
     resolution: {integrity: sha512-QQwkjc0xO+sXygcjAiwwBQAqXdhU5/FBPlXtb/DB5CuQQ60fHHbLwBK2axrwwoJcmDSEoifyXi9S+46Nw14hDg==}
@@ -1036,8 +1036,8 @@ packages:
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
 
-  rocketh@0.14.2:
-    resolution: {integrity: sha512-FR9Nz1rTmEv+zmZdK6IbzaJ5fJ78joth7bWCgzL8K5uU7t9ojPEXB+LzLzVGE/KvL4J1C1RYfjo20J9joauoIg==}
+  rocketh@0.14.4:
+    resolution: {integrity: sha512-nnLt74glSuEVqdiNL8DR0dPeHluWqK5GqmlKQ89TBsUyo3r8Iq04y+eEsZ6QAtsY4KZKdRoFLWQ8q4xFwj16oQ==}
     hasBin: true
 
   rxjs@7.8.2:
@@ -1533,25 +1533,25 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/doc@0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))':
+  '@rocketh/doc@0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       commander: 13.1.0
       ethers: 6.15.0
       fs-extra: 11.3.1
       handlebars: 4.7.8
-      rocketh: 0.14.2(typescript@5.9.2)(zod@4.1.5)
+      rocketh: 0.14.4(typescript@5.9.2)(zod@4.1.5)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@rocketh/export@0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))':
+  '@rocketh/export@0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       chalk: 5.4.1
       commander: 13.1.0
       fs-extra: 11.3.1
-      rocketh: 0.14.2(typescript@5.9.2)(zod@4.1.5)
+      rocketh: 0.14.4(typescript@5.9.2)(zod@4.1.5)
 
   '@rocketh/proxy@0.14.0(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
@@ -1584,7 +1584,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/verifier@0.14.2(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5))':
+  '@rocketh/verifier@0.14.4(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
       '@types/fs-extra': 11.0.4
       '@types/qs': 6.14.0
@@ -1593,7 +1593,7 @@ snapshots:
       fs-extra: 11.3.1
       ldenv: 0.3.12
       neoqs: 6.13.0
-      rocketh: 0.14.2(typescript@5.9.2)(zod@4.1.5)
+      rocketh: 0.14.4(typescript@5.9.2)(zod@4.1.5)
 
   '@rocketh/viem@0.14.0(viem@2.37.1(typescript@5.9.2)(zod@4.1.5))':
     dependencies:
@@ -1932,13 +1932,13 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.19.3
 
-  hardhat-deploy@2.0.0-next.39(hardhat@3.0.3)(rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5)):
+  hardhat-deploy@2.0.0-next.40(hardhat@3.0.3)(rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5)):
     dependencies:
       '@nomicfoundation/hardhat-zod-utils': 3.0.0(zod@4.1.5)
       '@types/debug': 4.1.12
       debug: 4.4.1
       hardhat: 3.0.3
-      rocketh: 0.14.2(typescript@5.9.2)(zod@4.1.5)
+      rocketh: 0.14.4(typescript@5.9.2)(zod@4.1.5)
       slash: 5.1.0
       zod: 4.1.5
     transitivePeerDependencies:
@@ -2121,7 +2121,7 @@ snapshots:
 
   rfdc@1.4.1: {}
 
-  rocketh@0.14.2(typescript@5.9.2)(zod@4.1.5):
+  rocketh@0.14.4(typescript@5.9.2)(zod@4.1.5):
     dependencies:
       '@types/figlet': 1.7.0
       '@types/prompts': 2.4.9
