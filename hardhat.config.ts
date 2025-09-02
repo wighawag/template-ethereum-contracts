@@ -29,22 +29,13 @@ const config: HardhatUserConfig = {
 	networks: addForkConfiguration(
 		// this add network for each respective env var found (ETH_NODE_URI_<network>)
 		// it will also read MNEMONIC_<network> to populate the accounts
-		// Note that if you set these env to be "SECRET" it will be like using:
+		// Note that if you set these env variable to have the value: "SECRET" it will be like using:
 		//  configVariable('SECRET_ETH_NODE_URI_<network>')
 		//  configVariable('SECRET_MNEMONIC_<network>')
 		addNetworksFromEnv({
 			hardhat: {
 				type: 'edr-simulated',
 				chainType: 'l1',
-				initialBaseFeePerGas: 0,
-			},
-			hardhatMainnet: {
-				type: 'edr-simulated',
-				chainType: 'l1',
-			},
-			hardhatOp: {
-				type: 'edr-simulated',
-				chainType: 'op',
 			},
 		}),
 	),
