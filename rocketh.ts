@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------------------------
 // Typed Config
 // ------------------------------------------------------------------------------------------------
-import type {ConfigOptions, UserConfig} from 'rocketh';
+import type {UserConfig} from 'rocketh';
 
 import {privateKey} from '@rocketh/signer'; // this one provide a protocol supporting private key as account
 
@@ -54,7 +54,7 @@ const extensions = {...deployExtension, ...readExecuteExtension, ...deployProxyE
 import artifacts from './generated/artifacts.js';
 export {artifacts};
 // ------------------------------------------------------------------------------------------------
-// we create the rocketh function we need by passing the extensions
+// we create the rocketh functions we need by passing the extensions to the setup function
 import {setup} from 'rocketh';
 const {deployScript, loadAndExecuteDeployments} = setup<typeof extensions, typeof config.accounts, typeof config.data>(
 	extensions,
@@ -65,4 +65,7 @@ import {setupHardhatDeploy} from 'hardhat-deploy/helpers';
 const {loadEnvironmentFromHardhat} = setupHardhatDeploy(extensions);
 // ------------------------------------------------------------------------------------------------
 // finally we export them
+// - loadAndExecuteDeployments can be used in tests to ensure deployed contracts are available there
+// - deployScript is the function used to create deploy script, see deploy/ folder
+// - loadEnvironmentFromHardhat can be used in scripts and reuse hardhat network handling without deploying the contracts
 export {loadAndExecuteDeployments, deployScript, loadEnvironmentFromHardhat};
