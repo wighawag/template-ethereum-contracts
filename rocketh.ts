@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------------------------
 // Typed Config
 // ------------------------------------------------------------------------------------------------
-import type {UserConfig} from 'rocketh';
+import type {ConfigOptions, UserConfig} from 'rocketh';
 
 import {privateKey} from '@rocketh/signer'; // this one provide a protocol too supporting private key as account
 
@@ -55,7 +55,9 @@ import artifacts from './generated/artifacts.js';
 export {artifacts};
 // ------------------------------------------------------------------------------------------------
 
-import {setup, loadAndExecuteDeployments} from 'rocketh';
-const deployScript = setup<typeof extensions, typeof config.accounts, typeof config.data>(extensions);
+import {setup, loadAndExecuteDeployments as extensionLessLoadAndExecuteDeployments} from 'rocketh';
+const {deployScript, loadAndExecuteDeployments} = setup<typeof extensions, typeof config.accounts, typeof config.data>(
+	extensions,
+);
 
 export {loadAndExecuteDeployments, deployScript};
