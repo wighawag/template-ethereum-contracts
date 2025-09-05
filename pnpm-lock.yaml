@@ -30,8 +30,8 @@ importers:
         specifier: ^0.14.5
         version: 0.14.5(rocketh@0.14.5(typescript@5.9.2)(zod@4.1.5))
       '@rocketh/proxy':
-        specifier: ^0.14.0
-        version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
+        specifier: ^0.14.1
+        version: 0.14.1(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/read-execute':
         specifier: ^0.14.0
         version: 0.14.0(typescript@5.9.2)(zod@4.1.5)
@@ -530,8 +530,8 @@ packages:
     peerDependencies:
       rocketh: 0.14.5
 
-  '@rocketh/proxy@0.14.0':
-    resolution: {integrity: sha512-Dhj9/U/45NuCGCWoOOYPwQiMxA0bfHPnD8GOCwXOMJpXDJDpWDK6wPN/EyuOaG2rpmvy9JkpFf34y0rXBL9isQ==}
+  '@rocketh/proxy@0.14.1':
+    resolution: {integrity: sha512-aNrMVeRH16LBrChSZGdgcOQA5ZQHtsJLKeZhcGgge0KQ7l1jKMWj+6mHgfYuXIxN86D4wcqSQRlX3y9efHFogw==}
 
   '@rocketh/read-execute@0.14.0':
     resolution: {integrity: sha512-+QhG2I34kg36FklCVotZdKp5UuNlq+AfnKka75wVJigdAn3+RSheYf9yhofT8tIGa4dv6p4LE5eett2HOmfENQ==}
@@ -1551,7 +1551,7 @@ snapshots:
       fs-extra: 11.3.1
       rocketh: 0.14.5(typescript@5.9.2)(zod@4.1.5)
 
-  '@rocketh/proxy@0.14.0(typescript@5.9.2)(zod@4.1.5)':
+  '@rocketh/proxy@0.14.1(typescript@5.9.2)(zod@4.1.5)':
     dependencies:
       '@rocketh/deploy': 0.14.0(typescript@5.9.2)(zod@4.1.5)
       '@rocketh/read-execute': 0.14.0(typescript@5.9.2)(zod@4.1.5)

@@ -11,7 +11,7 @@
 		"@rocketh/deploy": "^0.14.0",
 		"@rocketh/doc": "^0.14.5",
 		"@rocketh/export": "^0.14.5",
-		"@rocketh/proxy": "^0.14.0",
+		"@rocketh/proxy": "^0.14.1",
 		"@rocketh/read-execute": "^0.14.0",
 		"@rocketh/signer": "^0.14.0",
 		"@rocketh/verifier": "^0.14.5",
@@ -54,10 +54,10 @@
 		"test:watch": "wait-on ./generated && as-soon -w generated -w test hardhat test --no-compile",
 		"export": "ldenv rocketh-export -n @@MODE @@",
 		"export:ts": "ldenv rocketh-export -n @@MODE --ts @@",
-		"export-script-data": "ldenv rocketh-export -n @@MODE --ts ./scripts/data/contracts.ts @@",
-		"start": "zellij-launcher --layout zellij.kdl a $npm_package_name || zellij --layout zellij.kdl -s $npm_package_name",
-		"stop": "zellij kill-session $npm_package_name",
 		"format:check": "prettier --check .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"export-script-data": "ldenv rocketh-export -n @@MODE --ts ./scripts/data/contracts.ts @@",
+		"stop": "zellij kill-session $npm_package_name",
+    	"start": "zellij-launcher a $npm_package_name || zellij -n zellij.kdl -s $npm_package_name"
 	}
 }
