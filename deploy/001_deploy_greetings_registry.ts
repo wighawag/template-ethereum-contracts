@@ -1,15 +1,18 @@
-// we import what we need from the @rocketh alias, see ../rocketh.ts
-import {execute, artifacts} from '@rocketh';
+// we import what we need from the #rocketh alias, see ../rocketh.ts
+import {deployScript, artifacts} from '#rocketh';
+// import {createPublicClient, custom} from 'viem';
 
-export default execute(
+export default deployScript(
 	// this allow us to define our deploy function which takes as first argument an environment object
 	// This contaisn the function provided by the modules imported in 'rocketh.ts'
 	// along with other built-in functions and the named accounts
-	async ({deployViaProxy, namedAccounts}) => {
-		const {deployer, admin} = namedAccounts;
+	async (env) => {
+		const {deployer, admin} = env.namedAccounts;
+
+		// const client = env.viem.publicClient;
 
 		const prefix = 'proxy:';
-		await deployViaProxy(
+		const deployment = await env.deployViaProxy(
 			'GreetingsRegistry',
 			{
 				account: deployer,
@@ -24,6 +27,10 @@ export default execute(
 				},
 			},
 		);
+
+		const contract = env.viem.getContract(deployment);
+		const message = await contract.read.messages([deployer]);
+		console.log(message);
 	},
 	// execute takes as a second argument an options object where you can specify tags and dependencies
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
