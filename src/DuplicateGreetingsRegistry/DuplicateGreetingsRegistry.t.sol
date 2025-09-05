@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "src/DuplicateGreetingsRegistry/DuplicateGreetingsRegistry.sol";
+import "./DuplicateGreetingsRegistry.sol";
 
 contract DuplicateGreetingsRegistryTest is Test {
     uint256 testNumber;

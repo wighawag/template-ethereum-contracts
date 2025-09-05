@@ -1,8 +1,8 @@
-// we import what we need from the @rocketh alias, see ../rocketh.ts
-import {execute} from '@rocketh';
+// we import what we need from the #rocketh alias, see ../rocketh.ts
+import {deployScript} from '#rocketh';
 import artifacts from 'template-ethereum-contracts-deploy-export/artifacts';
 
-export default execute(
+export default deployScript(
 	// this allow us to define our deploy function which takes as first argument an environment object
 	// This contaisn the function provided by the modules imported in 'rocketh.ts'
 	// along with other built-in functions and the named accounts
