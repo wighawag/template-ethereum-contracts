@@ -17,10 +17,13 @@ export default deployScript(
 			{
 				account: deployer,
 				artifact: artifacts.GreetingsRegistry,
-				args: [prefix],
 			},
 			{
 				owner: admin,
+				execute: {
+					methodName: 'initialize',
+					args: [prefix],
+				},
 				linkedData: {
 					prefix,
 					admin,

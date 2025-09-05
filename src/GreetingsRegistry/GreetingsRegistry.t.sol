@@ -9,7 +9,7 @@ contract GreetingsRegistryTest is Test {
     GreetingsRegistry registry;
 
     function setUp() public {
-        registry = new GreetingsRegistry("");
+        registry = new GreetingsRegistry();
     }
 
     function test_setMessageWorks() public {

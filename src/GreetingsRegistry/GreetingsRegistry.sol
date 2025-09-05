@@ -14,7 +14,8 @@ contract GreetingsRegistry {
     /// @notice the greeting for each account
     mapping(address => string) public messages;
 
-    constructor(string memory prefix) {
+
+    function initialize(string memory prefix) external {
         _prefix = prefix;
     }
 
