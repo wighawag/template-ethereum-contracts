@@ -6,20 +6,6 @@ import type {UserConfig} from 'rocketh';
 import {privateKey} from '@rocketh/signer'; // this one provide a protocol supporting private key as account
 
 export const config = {
-	networks: {
-		hardhat: {
-			tags: ['local', 'memory', 'testnet'],
-		},
-		localhost: {
-			tags: ['local', 'testnet'],
-		},
-		sepolia: {
-			tags: ['live', 'testner'],
-		},
-		default: {
-			tags: ['live'],
-		},
-	},
 	accounts: {
 		deployer: {
 			default: 0,

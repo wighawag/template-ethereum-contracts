@@ -6,7 +6,7 @@ import HardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
 import HardhatKeystore from '@nomicfoundation/hardhat-keystore';
 
 import HardhatDeploy from 'hardhat-deploy';
-import {addForkConfiguration, addNetworksFromEnv} from 'hardhat-deploy/helpers';
+import {addForkConfiguration, addNetworksFromEnv, addNetworksFromKnownList} from 'hardhat-deploy/helpers';
 
 const config: HardhatUserConfig = {
 	plugins: [HardhatNodeTestRunner, HardhatViem, HardhatNetworkHelpers, HardhatKeystore, HardhatDeploy],
@@ -26,19 +26,24 @@ const config: HardhatUserConfig = {
 			},
 		},
 	},
-	networks: addForkConfiguration(
-		// this add network for each respective env var found (ETH_NODE_URI_<network>)
-		// it will also read MNEMONIC_<network> to populate the accounts
-		// Note that if you set these env variable to have the value: "SECRET" it will be like using:
-		//  configVariable('SECRET_ETH_NODE_URI_<network>')
-		//  configVariable('SECRET_MNEMONIC_<network>')
-		addNetworksFromEnv({
-			hardhat: {
-				type: 'edr-simulated',
-				chainType: 'l1',
-			},
-		}),
-	),
+	networks:
+		// This add the fork configuration for chosen network
+		addForkConfiguration(
+			// this add a network config for all known chain using kebab-cases names
+			addNetworksFromKnownList(
+				// this add network for each respective env var found (ETH_NODE_URI_<network>)
+				// it will also read MNEMONIC_<network> to populate the accounts
+				// Note that if you set these env variable to have the value: "SECRET" it will be like using:
+				//  configVariable('SECRET_ETH_NODE_URI_<network>')
+				//  configVariable('SECRET_MNEMONIC_<network>')
+				addNetworksFromEnv({
+					hardhat: {
+						type: 'edr-simulated',
+						chainType: 'l1',
+					},
+				}),
+			),
+		),
 	paths: {
 		sources: ['src'],
 	},
