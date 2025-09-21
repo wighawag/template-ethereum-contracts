@@ -3,6 +3,16 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"exports": {
+		"./deployments/*": "./deployments/*",
+		"./artifacts/*": "./generated/artifacts/*",
+		"./abis/*": "./generated/abis/*"
+	},
+	"files": [
+		"dist",
+		"deployments",
+		"generated"
+	],
 	"devDependencies": {
 		"@nomicfoundation/hardhat-keystore": "^3.0.1",
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.0",
