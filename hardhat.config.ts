@@ -6,10 +6,20 @@ import HardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
 import HardhatKeystore from '@nomicfoundation/hardhat-keystore';
 
 import HardhatDeploy from 'hardhat-deploy';
-import {addForkConfiguration, addNetworksFromEnv, addNetworksFromKnownList} from 'hardhat-deploy/helpers';
+import {
+	addForkConfiguration,
+	addNetworksFromEnv,
+	addNetworksFromKnownList,
+} from 'hardhat-deploy/helpers';
 
 const config: HardhatUserConfig = {
-	plugins: [HardhatNodeTestRunner, HardhatViem, HardhatNetworkHelpers, HardhatKeystore, HardhatDeploy],
+	plugins: [
+		HardhatNodeTestRunner,
+		HardhatViem,
+		HardhatNetworkHelpers,
+		HardhatKeystore,
+		HardhatDeploy,
+	],
 	solidity: {
 		profiles: {
 			default: {

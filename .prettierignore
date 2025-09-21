@@ -1,7 +1,8 @@
 ############################################
 # .gitignore
 #############################################
-node_modules
+/node_modules
+
 .vscode/*
 !*.default
 *.local
@@ -9,17 +10,21 @@ node_modules
 # rocketh
 generated
 deployments/localhost
+deployments/hardhat*
+deployments/lan
+_metadata
 
 # hardhat
 /coverage
 /coverage.json
-/coverage-data.json
+/.coverage-config.json
+/.coverage-data.json
 cache
 artifacts
-
 docs
-*.hbs
 
+.vscode/*
+!*.default
 #############################################
 deployments
 package.json
