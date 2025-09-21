@@ -40,18 +40,25 @@ const config: HardhatUserConfig = {
 		// This add the fork configuration for chosen network
 		addForkConfiguration(
 			// this add a network config for all known chain using kebab-cases names
+			// Note that MNEMONIC_<network> (or MNEMONIC if the other is not set) will
+			// be used for account
+			// Similarly ETH_NODE_URI_<network> will be used for rpcUrl
+			// Note that if you set these env variable to have the value: "SECRET" it will be like using:
+			//  configVariable('SECRET_ETH_NODE_URI_<network>')
+			//  configVariable('SECRET_MNEMONIC_<network>')
 			addNetworksFromKnownList(
 				// this add network for each respective env var found (ETH_NODE_URI_<network>)
 				// it will also read MNEMONIC_<network> to populate the accounts
-				// Note that if you set these env variable to have the value: "SECRET" it will be like using:
-				//  configVariable('SECRET_ETH_NODE_URI_<network>')
-				//  configVariable('SECRET_MNEMONIC_<network>')
-				addNetworksFromEnv({
-					hardhat: {
-						type: 'edr-simulated',
-						chainType: 'l1',
+				// And like above it will use configVariable if set to SECRET
+				addNetworksFromEnv(
+					// and you can add in your specific network here
+					{
+						default: {
+							type: 'edr-simulated',
+							chainType: 'l1',
+						},
 					},
-				}),
+				),
 			),
 		),
 	paths: {
