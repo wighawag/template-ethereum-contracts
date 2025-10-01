@@ -35,6 +35,7 @@ const config: HardhatUserConfig = {
 				},
 			},
 		},
+		npmFilesToBuild: ['@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol'],
 	},
 	networks:
 		// This add the fork configuration for chosen network
