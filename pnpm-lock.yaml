@@ -47,9 +47,6 @@ importers:
       '@rocketh/viem':
         specifier: ^0.15.0
         version: 0.15.0(viem@2.37.11(typescript@5.9.3)(zod@3.25.76))
-      '@slippy-lint/slippy':
-        specifier: ^0.2.0
-        version: 0.2.0
       '@types/node':
         specifier: ^24.6.2
         version: 24.6.2
@@ -83,6 +80,9 @@ importers:
       set-defaults:
         specifier: ^0.0.5
         version: 0.0.5
+      slippy:
+        specifier: ^0.3.0
+        version: 0.3.0
       tsx:
         specifier: ^4.20.6
         version: 4.20.6
@@ -441,8 +441,8 @@ packages:
   '@nomicfoundation/slang@1.2.0':
     resolution: {integrity: sha512-+04Z1RHbbz0ldDbHKQFOzveCdI9Rd3TZZu7fno5hHy3OsqTo9UK5Jgqo68wMvRovCO99POv6oCEyO7+urGeN8Q==}
 
-  '@nomicfoundation/slang@1.2.1':
-    resolution: {integrity: sha512-XQirzqDGxMnhOZtGPRLdc1F6UymU0N/lhXUcWsf6bqy29Pq+g6ougvbSTTCTXjgWXjBp6zQ1gaJmzWmMBvMgOw==}
+  '@nomicfoundation/slang@1.3.0':
+    resolution: {integrity: sha512-2PcwCF5cX2UjGi9cHd7E6XtLDaoyEVOTYt8WtOJ7GVpa68b+/sX0uFkb5/S67vxJb8eaVVFd2u6MTSVmE84QsQ==}
 
   '@nomicfoundation/solidity-analyzer-darwin-arm64@0.1.2':
     resolution: {integrity: sha512-JaqcWPDZENCvm++lFFGjrDd8mxtf+CtLd2MiXvMNTBD33dContTZ9TWETwNFwg7JTJT5Q9HEecH7FA+HTSsIUw==}
@@ -624,10 +624,6 @@ packages:
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
-
-  '@slippy-lint/slippy@0.2.0':
-    resolution: {integrity: sha512-vfRUzzqwZYTpQTzPJXxahfS4H33NrEPWPr4pziQwjEgOqFx4QGnspdJ+YvdX0QGNPJplsQVWGueaQgIinWTDsA==}
-    hasBin: true
 
   '@solidity-parser/parser@0.20.2':
     resolution: {integrity: sha512-rbu0bzwNvMcwAjH86hiEAcOeRI2EeK8zCkHDrFykh/Al8mvJeFmjy3UrE7GYQjNwOgbGUUtCn5/k8CB8zIu7QA==}
@@ -1155,6 +1151,10 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
+  slippy@0.3.0:
+    resolution: {integrity: sha512-OtVm7Xa4iA4UWmYO7f27CAfyp/UBCQKFSIKOOVrD6md9xqKrZpjCZzEg8X+BSeVxn0XYEYvELeLEBoU6+cDOqg==}
+    hasBin: true
+
   solidity-proxy@0.4.2:
     resolution: {integrity: sha512-HIU0Vaym6/d1tcJJeT+XCSgp5seqNg/2cIvltDJYu8V1ShRG9+56/YAR44aU/Rba0pjNljw3IusRDxy5amAM2A==}
 
@@ -1576,7 +1576,7 @@ snapshots:
     dependencies:
       '@bytecodealliance/preview2-shim': 0.17.2
 
-  '@nomicfoundation/slang@1.2.1':
+  '@nomicfoundation/slang@1.3.0':
     dependencies:
       '@bytecodealliance/preview2-shim': 0.17.2
 
@@ -1792,20 +1792,6 @@ snapshots:
   '@sentry/core@9.46.0': {}
 
   '@sinclair/typebox@0.27.8': {}
-
-  '@slippy-lint/slippy@0.2.0':
-    dependencies:
-      '@nomicfoundation/slang': 1.2.1
-      chalk: 5.6.2
-      debug: 4.4.3
-      fast-glob: 3.3.3
-      micromatch: 4.0.8
-      minimist: 1.2.8
-      semver: 7.7.2
-      workerpool: 9.3.4
-      zod: 4.1.11
-    transitivePeerDependencies:
-      - supports-color
 
   '@solidity-parser/parser@0.20.2': {}
 
@@ -2368,6 +2354,20 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@5.1.0: {}
+
+  slippy@0.3.0:
+    dependencies:
+      '@nomicfoundation/slang': 1.3.0
+      chalk: 5.6.2
+      debug: 4.4.3
+      fast-glob: 3.3.3
+      micromatch: 4.0.8
+      minimist: 1.2.8
+      semver: 7.7.2
+      workerpool: 9.3.4
+      zod: 4.1.11
+    transitivePeerDependencies:
+      - supports-color
 
   solidity-proxy@0.4.2: {}
 
