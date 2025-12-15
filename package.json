@@ -65,7 +65,7 @@
 		"format": "prettier --write .",
 		"lint": "slippy src/**/*.sol",
 		"---------------------- PRODUCTION ---------------------- ": "",
-		"docgen": "ldenv -m hardhat pnpm run deploy hardhat --save-deployments true --skip-prompts ~~ pnpm rocketh-doc -e @@MODE --except-suffix _Implementation,_Proxy,_Router,_Route ~~ @@",
+		"docgen": "ldenv -m default pnpm run deploy @@MODE --save-deployments true --skip-prompts ~~ pnpm rocketh-doc -e @@MODE --except-suffix _Implementation,_Proxy,_Router,_Route ~~ @@",
 		"execute": "ldenv -n HARDHAT_NETWORK tsx @@",
 		"deploy": "pnpm compile --build-profile production && ldenv hardhat --network @@MODE deploy @@",
 		"verify": "ldenv rocketh-verify -e @@MODE @@",
