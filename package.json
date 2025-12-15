@@ -46,7 +46,8 @@
 		"zellij-launcher": "^0.0.1"
 	},
 	"imports": {
-		"#rocketh": "./rocketh.js",
+		"#deploy": "./rocketh/deploy.js",
+		"#environment": "./rocketh/environment.js",
 		"#generated/*.js": "./generated/*.js"
 	},
 	"scripts": {
