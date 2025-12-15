@@ -1,3 +1,11 @@
 overrides:
+  '@rocketh/deploy': link:../rocketh/packages/rocketh-deploy
+  '@rocketh/doc': link:../rocketh/packages/rocketh-doc
+  '@rocketh/export': link:../rocketh/packages/rocketh-export
   '@rocketh/proxy': link:../rocketh/packages/rocketh-proxy
+  '@rocketh/read-execute': link:../rocketh/packages/rocketh-read-execute
+  '@rocketh/router': link:../rocketh/packages/rocketh-router
+  '@rocketh/signer': link:../rocketh/packages/rocketh-signer
+  '@rocketh/verifier': link:../rocketh/packages/rocketh-verifier
+  '@rocketh/viem': link:../rocketh/packages/rocketh-viem
   rocketh: link:../rocketh/packages/rocketh

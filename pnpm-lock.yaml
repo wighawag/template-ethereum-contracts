@@ -5,8 +5,16 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  rocketh: link:../rocketh/packages/rocketh
+  '@rocketh/deploy': link:../rocketh/packages/rocketh-deploy
+  '@rocketh/doc': link:../rocketh/packages/rocketh-doc
+  '@rocketh/export': link:../rocketh/packages/rocketh-export
   '@rocketh/proxy': link:../rocketh/packages/rocketh-proxy
+  '@rocketh/read-execute': link:../rocketh/packages/rocketh-read-execute
+  '@rocketh/router': link:../rocketh/packages/rocketh-router
+  '@rocketh/signer': link:../rocketh/packages/rocketh-signer
+  '@rocketh/verifier': link:../rocketh/packages/rocketh-verifier
+  rocketh: link:../rocketh/packages/rocketh
+  '@rocketh/viem': link:../rocketh/packages/rocketh-viem
 
 importers:
 
@@ -25,32 +33,32 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(hardhat@3.0.15)(viem@2.39.3(typescript@5.9.3)(zod@3.25.76))
       '@rocketh/deploy':
-        specifier: ^0.15.2
-        version: 0.15.2(typescript@5.9.3)(zod@3.25.76)
+        specifier: link:../rocketh/packages/rocketh-deploy
+        version: link:../rocketh/packages/rocketh-deploy
       '@rocketh/doc':
-        specifier: ^0.15.10
-        version: 0.15.10(rocketh@rocketh+packages+rocketh)
+        specifier: link:../rocketh/packages/rocketh-doc
+        version: link:../rocketh/packages/rocketh-doc
       '@rocketh/export':
-        specifier: ^0.15.10
-        version: 0.15.10(rocketh@rocketh+packages+rocketh)
+        specifier: link:../rocketh/packages/rocketh-export
+        version: link:../rocketh/packages/rocketh-export
       '@rocketh/proxy':
         specifier: link:../rocketh/packages/rocketh-proxy
         version: link:../rocketh/packages/rocketh-proxy
       '@rocketh/read-execute':
-        specifier: ^0.15.2
-        version: 0.15.2(typescript@5.9.3)(zod@3.25.76)
+        specifier: link:../rocketh/packages/rocketh-read-execute
+        version: link:../rocketh/packages/rocketh-read-execute
       '@rocketh/router':
-        specifier: ^0.15.11
-        version: 0.15.11(rocketh@rocketh+packages+rocketh)(typescript@5.9.3)(zod@3.25.76)
+        specifier: link:../rocketh/packages/rocketh-router
+        version: link:../rocketh/packages/rocketh-router
       '@rocketh/signer':
-        specifier: ^0.15.1
-        version: 0.15.1(typescript@5.9.3)(zod@3.25.76)
+        specifier: link:../rocketh/packages/rocketh-signer
+        version: link:../rocketh/packages/rocketh-signer
       '@rocketh/verifier':
-        specifier: ^0.15.13
-        version: 0.15.13(rocketh@rocketh+packages+rocketh)
+        specifier: link:../rocketh/packages/rocketh-verifier
+        version: link:../rocketh/packages/rocketh-verifier
       '@rocketh/viem':
-        specifier: ^0.15.1
-        version: 0.15.1(viem@2.39.3(typescript@5.9.3)(zod@3.25.76))
+        specifier: link:../rocketh/packages/rocketh-viem
+        version: link:../rocketh/packages/rocketh-viem
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
@@ -116,9 +124,6 @@ packages:
 
   '@actions/io@1.1.3':
     resolution: {integrity: sha512-wi9JjgKLYS7U/z8PPbco+PvTb/nRWjeoFlJ1Qer83k/3C5PHQi28hiVdeE2kHXmIL99mQFawx8qt/JPjZilJ8Q==}
-
-  '@adraffy/ens-normalize@1.10.1':
-    resolution: {integrity: sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==}
 
   '@adraffy/ens-normalize@1.11.1':
     resolution: {integrity: sha512-nhCBV3quEgesuf7c7KYfperqSS14T8bYuvJ8PcLJp6znkZpFc0AuW4qBtr8eKVyPPe/8RSr7sglCWPU5eaxwKQ==}
@@ -318,9 +323,6 @@ packages:
     resolution: {integrity: sha512-2I0gnIVPtfnMw9ee9h1dJG7tp81+8Ob3OJb3Mv37rx5L40/b0i7djjCVvGOVqc9AEIQyvyu1i6ypKdFw8R8gQw==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@noble/curves@1.2.0':
-    resolution: {integrity: sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==}
-
   '@noble/curves@1.4.2':
     resolution: {integrity: sha512-TavHr8qycMChk8UwMld0ZDRvatedkzWfH8IiaeGCfymOP5i0hSCozz9vHOL0nkwk7HRMlFnAiKpS2jrUmSybcw==}
 
@@ -331,10 +333,6 @@ packages:
   '@noble/curves@1.9.1':
     resolution: {integrity: sha512-k11yZxZg+t+gWvBbIswW0yoJlu8cHOC7dhunwOzoWH/mXGBiYyR4YY6hAEK/3EUs4UpB8la1RfdRpeGsFHkWsA==}
     engines: {node: ^14.21.3 || >=16}
-
-  '@noble/hashes@1.3.2':
-    resolution: {integrity: sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==}
-    engines: {node: '>= 16'}
 
   '@noble/hashes@1.4.0':
     resolution: {integrity: sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==}
@@ -554,43 +552,6 @@ packages:
     resolution: {integrity: sha512-dfUnCxiN9H4ap84DvD2ubjw+3vUNpstxa0TneY/Paat8a3R4uQZDLSvWjmznAY/DoahqTHl9V46HF/Zs3F29pg==}
     engines: {node: '>= 10.0.0'}
 
-  '@rocketh/deploy@0.15.2':
-    resolution: {integrity: sha512-qtBYaYDF2bNcv59bFhh1/7jo9tBxxh2w8FOZb9hT2s85AI7OyooVo8l5Jb9T+cB5fBqZEfrWrWCx/O0ASEVZ6A==}
-
-  '@rocketh/doc@0.15.10':
-    resolution: {integrity: sha512-sWyeqW//71lQ6uOCNvJZV9VVt3s/1P4Uj70VKZu85qHaCMIGr/zqPmqZq1B7l2bPqlsN+OkFGH2MzyJ7Wsloug==}
-    hasBin: true
-    peerDependencies:
-      rocketh: 0.15.10
-
-  '@rocketh/export@0.15.10':
-    resolution: {integrity: sha512-QFml+aw+QtyK5zWz6Jhx9f/ushgVWr+VFvJYYPLIvaUYspB1mSYfv/TjDnHIzPhZE//QdimP6eHLEnub4zbUlQ==}
-    hasBin: true
-    peerDependencies:
-      rocketh: 0.15.10
-
-  '@rocketh/read-execute@0.15.2':
-    resolution: {integrity: sha512-HKXyxZrMlmFS9wcbDwv5vB30Iy+MxpwaiOpYkMEsMF23dCBT84cUVETqx8DaUR8giWD6TKooLbE51o1gaAbFog==}
-
-  '@rocketh/router@0.15.11':
-    resolution: {integrity: sha512-bo5i9KmBsTGumqWtRx6Wp6lZUPYYdeNk3LLRPpKaB3nYoEl/+jEHUuEQkn1Fy3TaYuRKGB945Gdq/GHBqLXspQ==}
-    peerDependencies:
-      rocketh: 0.15.10
-
-  '@rocketh/signer@0.15.1':
-    resolution: {integrity: sha512-EjfWDXai2ckVViFbNqnE5VdfB5gpxzZ9L/dKk+TWTVHP8Naeia6pLhojLEZYjKo18QGT2UUk8AUcnVDLWWFsQA==}
-
-  '@rocketh/verifier@0.15.13':
-    resolution: {integrity: sha512-y0y0rHHDeMJk4dtGacNTje6AcROhROZQV9ZR7mXPjKHGkYhaFc2jJqUv5JePdAiPiM4Pn29SkbaTf1Kr0R5vdg==}
-    hasBin: true
-    peerDependencies:
-      rocketh: 0.15.10
-
-  '@rocketh/viem@0.15.1':
-    resolution: {integrity: sha512-0ms3MJoRNvokjkPLjpup225m7pqJ6xLSvt6mP9lrtqsZ31enE4/VHPwwQOxJ4ayrNY1ebf30Kqmp2FOPq82x2Q==}
-    peerDependencies:
-      viem: ^2.23.12
-
   '@scure/base@1.1.9':
     resolution: {integrity: sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg==}
 
@@ -631,23 +592,11 @@ packages:
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
-  '@types/fs-extra@11.0.4':
-    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
-
-  '@types/jsonfile@6.1.4':
-    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
-
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@22.7.5':
-    resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
-
   '@types/node@24.10.1':
     resolution: {integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==}
-
-  '@types/qs@6.14.0':
-    resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
 
   abitype@1.1.0:
     resolution: {integrity: sha512-6Vh4HcRxNMLA0puzPjM5GBgT4aAcFGKZzSgAXvuZ27shJP6NEpielTuqbBmZILR5/xd0PizkBGy5hReKz9jl5A==}
@@ -663,9 +612,6 @@ packages:
   adm-zip@0.4.16:
     resolution: {integrity: sha512-TFi4HBKSGfIKsK5YCkKaaFG2m4PEDyViZmEwof3MTIgzimHLto6muaHVpbrljdIvIrFZzEq/p4nafOeLcYegrg==}
     engines: {node: '>=0.3.0'}
-
-  aes-js@4.0.0-beta.5:
-    resolution: {integrity: sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -728,10 +674,6 @@ packages:
     resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
 
-  commander@14.0.2:
-    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
-    engines: {node: '>=20'}
-
   debug@4.4.1:
     resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
     engines: {node: '>=6.0'}
@@ -778,9 +720,6 @@ packages:
   earl@2.0.0:
     resolution: {integrity: sha512-je2x7VWHNN3kN5zqcUUeEEokHoL7HWwiOxCdlLi66LkMqUnLECVZGePdgBtrqLrUg25bHLFrM+bkBXwcI7f+EQ==}
 
-  eip-1193-signer@0.1.1:
-    resolution: {integrity: sha512-dEMgcibZnOccQDDQ5zA6hVvDSNCce7tfzu/E08cCd3fBhcX7Sh8P83YJKfd7f0XNUXJBQ0aJSO31eZ5Cic/Qpg==}
-
   enquirer@2.4.1:
     resolution: {integrity: sha512-rRqJg/6gd538VHvR3PSrdRBb/1Vy2YfzHqzvbhGIQpDRKIa4FgV/54b5Q1xYSxOOwKvjXweS26E0Q+nAMwp2pQ==}
     engines: {node: '>=8.6'}
@@ -815,10 +754,6 @@ packages:
 
   ethereum-cryptography@2.2.1:
     resolution: {integrity: sha512-r/W8lkHSiTLxUxW8Rf3u4HGB0xQweG2RyETjywylKZSzLWoWAijRz8WCuOtJ6wah+avllXBqZuk29HCCvhEIRg==}
-
-  ethers@6.15.0:
-    resolution: {integrity: sha512-Kf/3ZW54L4UT0pZtsY/rf+EkBU7Qi5nnhonjUb8yTXcxH3cdcWrV2cRyk0Xk/4jK6OoHhxxZHriyhje20If2hQ==}
-    engines: {node: '>=14.0.0'}
 
   eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
@@ -859,10 +794,6 @@ packages:
     resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
     engines: {node: '>= 6'}
 
-  fs-extra@11.3.2:
-    resolution: {integrity: sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==}
-    engines: {node: '>=14.14'}
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -889,14 +820,6 @@ packages:
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
-
-  graceful-fs@4.2.11:
-    resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-
-  handlebars@4.7.8:
-    resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
-    engines: {node: '>=0.4.7'}
-    hasBin: true
 
   hardhat-deploy@2.0.0-next.52:
     resolution: {integrity: sha512-2TnKamuM7hzhipOKgMzBn379xZvoAjAuEF+pwfqSN9Bavvf61193kURNdSNKBtksPCFoCGoxEoR9umB0QVrrsA==}
@@ -957,9 +880,6 @@ packages:
     resolution: {integrity: sha512-x7fpwxOkbhFCaJDJ8vb1fBY3DdSa4AlITaz+HHILQJzdPMnHEFjxPwVUi1ALIbcIxDE0PNe/0i7frnY8QnBQog==}
     engines: {node: '>=7.10.1'}
 
-  jsonfile@6.2.0:
-    resolution: {integrity: sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==}
-
   ldenv@0.3.16:
     resolution: {integrity: sha512-ShaNPPzgUi+iGj9bsQ0TPRm6MuOcPpc1NklL0/IzJsvB0OdHwWoPhmeTVR5z0oC3zzLebrojozo/nt8d2XTZbQ==}
     hasBin: true
@@ -1001,15 +921,6 @@ packages:
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
-
-  named-logs@0.3.2:
-    resolution: {integrity: sha512-rpgShWrH6NakMKUDK32Pn/FZyPl7QoQRleMekHKkbrExXDymb2wNm3/BUbdTG5f3v7Qa17imVkSWHOfNFhDIPw==}
-
-  neo-async@2.6.2:
-    resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
-
-  neoqs@6.13.0:
-    resolution: {integrity: sha512-IysBpjrEG9qiUb/IT6XrXSz2ASzBxLebp4s8/GBm7STYC315vMNqH0aWdRR+f7KvXK4aRlLcf5r2Z6dOTxQSrQ==}
 
   node-addon-api@7.1.1:
     resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
@@ -1100,13 +1011,6 @@ packages:
     resolution: {integrity: sha512-OtVm7Xa4iA4UWmYO7f27CAfyp/UBCQKFSIKOOVrD6md9xqKrZpjCZzEg8X+BSeVxn0XYEYvELeLEBoU6+cDOqg==}
     hasBin: true
 
-  solidity-proxy@0.4.2:
-    resolution: {integrity: sha512-HIU0Vaym6/d1tcJJeT+XCSgp5seqNg/2cIvltDJYu8V1ShRG9+56/YAR44aU/Rba0pjNljw3IusRDxy5amAM2A==}
-
-  source-map@0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
-    engines: {node: '>=0.10.0'}
-
   stackframe@1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
 
@@ -1121,9 +1025,6 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
-
-  tslib@2.7.0:
-    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
@@ -1142,14 +1043,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  uglify-js@3.19.3:
-    resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
-    engines: {node: '>=0.8.0'}
-    hasBin: true
-
-  undici-types@6.19.8:
-    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
-
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
@@ -1165,10 +1058,6 @@ packages:
     resolution: {integrity: sha512-hU/10obOIu62MGYjdskASR3CUAiYaFTtC9Pa6vHyf//mAipSvSQg6od2CnJswq7fvzNS3zJhxoRkgNVaHurWKw==}
     engines: {node: '>=18.17'}
 
-  universalify@2.0.1:
-    resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
-    engines: {node: '>= 10.0.0'}
-
   viem@2.39.3:
     resolution: {integrity: sha512-s11rPQRvUEdc5qHK3xT4fIk4qvgPAaLwaTFq+EbFlcJJD+Xn3R4mc9H6B6fquEiHl/mdsdbG/uKCnYpoNtHNHw==}
     peerDependencies:
@@ -1182,23 +1071,8 @@ packages:
     engines: {node: '>=20.0.0'}
     hasBin: true
 
-  wordwrap@1.0.0:
-    resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
-
   workerpool@9.3.4:
     resolution: {integrity: sha512-TmPRQYYSAnnDiEB0P/Ytip7bFGvqnSU6I2BcuSw7Hx+JSg/DsUi5ebYfc8GYaSdpuvOcEs6dXxPurOYpe9QFwg==}
-
-  ws@8.17.1:
-    resolution: {integrity: sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
 
   ws@8.18.3:
     resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
@@ -1239,8 +1113,6 @@ snapshots:
       undici: 5.29.0
 
   '@actions/io@1.1.3': {}
-
-  '@adraffy/ens-normalize@1.10.1': {}
 
   '@adraffy/ens-normalize@1.11.1': {}
 
@@ -1350,10 +1222,6 @@ snapshots:
 
   '@noble/ciphers@1.3.0': {}
 
-  '@noble/curves@1.2.0':
-    dependencies:
-      '@noble/hashes': 1.3.2
-
   '@noble/curves@1.4.2':
     dependencies:
       '@noble/hashes': 1.4.0
@@ -1365,8 +1233,6 @@ snapshots:
   '@noble/curves@1.9.1':
     dependencies:
       '@noble/hashes': 1.8.0
-
-  '@noble/hashes@1.3.2': {}
 
   '@noble/hashes@1.4.0': {}
 
@@ -1602,85 +1468,6 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.1
       '@parcel/watcher-win32-x64': 2.5.1
 
-  '@rocketh/deploy@0.15.2(typescript@5.9.3)(zod@3.25.76)':
-    dependencies:
-      named-logs: 0.3.2
-      viem: 2.39.3(typescript@5.9.3)(zod@3.25.76)
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-
-  '@rocketh/doc@0.15.10(rocketh@rocketh+packages+rocketh)':
-    dependencies:
-      '@types/fs-extra': 11.0.4
-      commander: 14.0.2
-      ethers: 6.15.0
-      fs-extra: 11.3.2
-      handlebars: 4.7.8
-      rocketh: link:../rocketh/packages/rocketh
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
-  '@rocketh/export@0.15.10(rocketh@rocketh+packages+rocketh)':
-    dependencies:
-      '@types/fs-extra': 11.0.4
-      chalk: 5.6.2
-      commander: 14.0.2
-      fs-extra: 11.3.2
-      rocketh: link:../rocketh/packages/rocketh
-
-  '@rocketh/read-execute@0.15.2(typescript@5.9.3)(zod@3.25.76)':
-    dependencies:
-      named-logs: 0.3.2
-      viem: 2.39.3(typescript@5.9.3)(zod@3.25.76)
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-
-  '@rocketh/router@0.15.11(rocketh@rocketh+packages+rocketh)(typescript@5.9.3)(zod@3.25.76)':
-    dependencies:
-      '@rocketh/deploy': 0.15.2(typescript@5.9.3)(zod@3.25.76)
-      ethers: 6.15.0
-      named-logs: 0.3.2
-      rocketh: link:../rocketh/packages/rocketh
-      solidity-proxy: 0.4.2
-      viem: 2.39.3(typescript@5.9.3)(zod@3.25.76)
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-
-  '@rocketh/signer@0.15.1(typescript@5.9.3)(zod@3.25.76)':
-    dependencies:
-      eip-1193-signer: 0.1.1(typescript@5.9.3)(zod@3.25.76)
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
-
-  '@rocketh/verifier@0.15.13(rocketh@rocketh+packages+rocketh)':
-    dependencies:
-      '@types/fs-extra': 11.0.4
-      '@types/qs': 6.14.0
-      chalk: 5.6.2
-      commander: 14.0.2
-      fs-extra: 11.3.2
-      ldenv: 0.3.16
-      neoqs: 6.13.0
-      rocketh: link:../rocketh/packages/rocketh
-
-  '@rocketh/viem@0.15.1(viem@2.39.3(typescript@5.9.3)(zod@3.25.76))':
-    dependencies:
-      named-logs: 0.3.2
-      viem: 2.39.3(typescript@5.9.3)(zod@3.25.76)
-
   '@scure/base@1.1.9': {}
 
   '@scure/base@1.2.6': {}
@@ -1725,26 +1512,11 @@ snapshots:
     dependencies:
       '@types/ms': 2.1.0
 
-  '@types/fs-extra@11.0.4':
-    dependencies:
-      '@types/jsonfile': 6.1.4
-      '@types/node': 24.10.1
-
-  '@types/jsonfile@6.1.4':
-    dependencies:
-      '@types/node': 24.10.1
-
   '@types/ms@2.1.0': {}
-
-  '@types/node@22.7.5':
-    dependencies:
-      undici-types: 6.19.8
 
   '@types/node@24.10.1':
     dependencies:
       undici-types: 7.16.0
-
-  '@types/qs@6.14.0': {}
 
   abitype@1.1.0(typescript@5.9.3)(zod@3.25.76):
     optionalDependencies:
@@ -1752,8 +1524,6 @@ snapshots:
       zod: 3.25.76
 
   adm-zip@0.4.16: {}
-
-  aes-js@4.0.0-beta.5: {}
 
   ansi-colors@4.1.3: {}
 
@@ -1814,8 +1584,6 @@ snapshots:
 
   commander@10.0.1: {}
 
-  commander@14.0.2: {}
-
   debug@4.4.1:
     dependencies:
       ms: 2.1.3
@@ -1843,15 +1611,6 @@ snapshots:
   earl@2.0.0:
     dependencies:
       error-stack-parser: 2.1.4
-
-  eip-1193-signer@0.1.1(typescript@5.9.3)(zod@3.25.76):
-    dependencies:
-      viem: 2.39.3(typescript@5.9.3)(zod@3.25.76)
-    transitivePeerDependencies:
-      - bufferutil
-      - typescript
-      - utf-8-validate
-      - zod
 
   enquirer@2.4.1:
     dependencies:
@@ -1915,19 +1674,6 @@ snapshots:
       '@scure/bip32': 1.4.0
       '@scure/bip39': 1.3.0
 
-  ethers@6.15.0:
-    dependencies:
-      '@adraffy/ens-normalize': 1.10.1
-      '@noble/curves': 1.2.0
-      '@noble/hashes': 1.3.2
-      '@types/node': 22.7.5
-      aes-js: 4.0.0-beta.5
-      tslib: 2.7.0
-      ws: 8.17.1
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   eventemitter3@5.0.1: {}
 
   fast-equals@5.2.2: {}
@@ -1962,12 +1708,6 @@ snapshots:
       hasown: 2.0.2
       mime-types: 2.1.35
 
-  fs-extra@11.3.2:
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.2.0
-      universalify: 2.0.1
-
   fsevents@2.3.3:
     optional: true
 
@@ -2000,17 +1740,6 @@ snapshots:
       is-glob: 4.0.3
 
   gopd@1.2.0: {}
-
-  graceful-fs@4.2.11: {}
-
-  handlebars@4.7.8:
-    dependencies:
-      minimist: 1.2.8
-      neo-async: 2.6.2
-      source-map: 0.6.1
-      wordwrap: 1.0.0
-    optionalDependencies:
-      uglify-js: 3.19.3
 
   hardhat-deploy@2.0.0-next.52(hardhat@3.0.15)(rocketh@rocketh+packages+rocketh):
     dependencies:
@@ -2095,12 +1824,6 @@ snapshots:
 
   json-stream-stringify@3.1.6: {}
 
-  jsonfile@6.2.0:
-    dependencies:
-      universalify: 2.0.1
-    optionalDependencies:
-      graceful-fs: 4.2.11
-
   ldenv@0.3.16:
     dependencies:
       dotenv: 16.6.1
@@ -2138,12 +1861,6 @@ snapshots:
   minimist@1.2.8: {}
 
   ms@2.1.3: {}
-
-  named-logs@0.3.2: {}
-
-  neo-async@2.6.2: {}
-
-  neoqs@6.13.0: {}
 
   node-addon-api@7.1.1: {}
 
@@ -2229,10 +1946,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  solidity-proxy@0.4.2: {}
-
-  source-map@0.6.1: {}
-
   stackframe@1.3.4: {}
 
   strip-ansi@6.0.1:
@@ -2247,8 +1960,6 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  tslib@2.7.0: {}
-
   tslib@2.8.1: {}
 
   tsx@4.20.6:
@@ -2262,11 +1973,6 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  uglify-js@3.19.3:
-    optional: true
-
-  undici-types@6.19.8: {}
-
   undici-types@7.16.0: {}
 
   undici@5.29.0:
@@ -2276,8 +1982,6 @@ snapshots:
   undici@6.21.3: {}
 
   undici@6.22.0: {}
-
-  universalify@2.0.1: {}
 
   viem@2.39.3(typescript@5.9.3)(zod@3.25.76):
     dependencies:
@@ -2306,11 +2010,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  wordwrap@1.0.0: {}
-
   workerpool@9.3.4: {}
-
-  ws@8.17.1: {}
 
   ws@8.18.3: {}
 
