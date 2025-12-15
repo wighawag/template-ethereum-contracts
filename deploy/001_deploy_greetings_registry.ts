@@ -1,5 +1,4 @@
-// we import what we need from the #deploy alias, see ../rocketh/deploy.ts
-import {deployScript, artifacts} from '#deploy';
+import {deployScript, artifacts} from '../rocketh/deploy.js';
 // import {createPublicClient, custom} from 'viem';
 
 export default deployScript(

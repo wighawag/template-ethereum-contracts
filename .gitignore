@@ -23,3 +23,5 @@ docs
 
 .vscode/*
 !*.default
+
+dist/
