@@ -1,4 +1,4 @@
-import {HardhatUserConfig, configVariable} from 'hardhat/config';
+import type {HardhatUserConfig} from 'hardhat/config';
 
 import HardhatNodeTestRunner from '@nomicfoundation/hardhat-node-test-runner';
 import HardhatViem from '@nomicfoundation/hardhat-viem';
@@ -56,6 +56,10 @@ const config: HardhatUserConfig = {
 						default: {
 							type: 'edr-simulated',
 							chainType: 'l1',
+							accounts: {
+								mnemonic:
+									process.env.MNEMONIC || undefined
+							},
 						},
 					},
 				),

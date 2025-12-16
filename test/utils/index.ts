@@ -1,11 +1,11 @@
 import {Abi_GreetingsRegistry} from '../../generated/abis/GreetingsRegistry.js';
-import {loadAndExecuteDeployments} from '../../rocketh/environment.js';
+import {loadAndExecuteDeploymentsFromFiles} from '../../rocketh/environment.js';
 import {EthereumProvider} from 'hardhat/types/providers';
 
 export function setupFixtures(provider: EthereumProvider) {
 	return {
 		async deployAll() {
-			const env = await loadAndExecuteDeployments({
+			const env = await loadAndExecuteDeploymentsFromFiles({
 				provider: provider,
 			});
 

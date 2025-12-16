@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // Typed Config
 // ----------------------------------------------------------------------------
-import type {UserConfig} from 'rocketh';
+import type {UserConfig} from 'rocketh/types';
 
 // this one provide a protocol supporting private key as account
 import {privateKey} from '@rocketh/signer';
