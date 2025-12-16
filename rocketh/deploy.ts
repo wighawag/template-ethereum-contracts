@@ -11,6 +11,3 @@ import {setupDeployScripts} from 'rocketh';
 const {deployScript} = setupDeployScripts<Extensions,Accounts,Data>(extensions);
 
 export {deployScript};
-
-
-
