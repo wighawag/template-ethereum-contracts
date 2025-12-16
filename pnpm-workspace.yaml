@@ -1,5 +1,2 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
-
-overrides:
-  hardhat-deploy: link:../hardhat-deploy/packages/hardhat-deploy
