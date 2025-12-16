@@ -1,5 +1,4 @@
-import {extensions} from './deploy.js';
-import type {Extensions, Accounts, Data} from './deploy.js'
+import {type Accounts, type Data, type Extensions, extensions} from './config.js';
 import {setupEnvironmentFromFiles} from '@rocketh/node';
 import {setupHardhatDeploy} from 'hardhat-deploy/helpers';
 
