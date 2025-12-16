@@ -5,6 +5,7 @@
 	"type": "module",
 	"exports": {
 		"./deploy/*": "./dist/deploy/*",
+		"./rocketh/*": "./dist/rocketh/*",
 		"./deployments/*": "./deployments/*",
 		"./artifacts/*": "./generated/artifacts/*",
 		"./abis/*": "./generated/abis/*"
