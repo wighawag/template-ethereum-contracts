@@ -24,7 +24,7 @@
 		"@rocketh/doc": "^0.17.0-next.0",
 		"@rocketh/export": "^0.17.0-next.0",
 		"@rocketh/node": "0.17.0-next.0",
-		"@rocketh/proxy": "^0.17.0-next.0",
+		"@rocketh/proxy": "^0.17.0-next.1",
 		"@rocketh/read-execute": "^0.17.0-next.0",
 		"@rocketh/router": "^0.17.0-next.0",
 		"@rocketh/signer": "^0.17.0-next.0",

@@ -36,8 +36,8 @@ importers:
         specifier: 0.17.0-next.0
         version: 0.17.0-next.0(rocketh@0.17.0-next.0(typescript@5.9.3)(zod@3.25.76))(typescript@5.9.3)(zod@3.25.76)
       '@rocketh/proxy':
-        specifier: ^0.17.0-next.0
-        version: 0.17.0-next.0(typescript@5.9.3)(zod@3.25.76)
+        specifier: ^0.17.0-next.1
+        version: 0.17.0-next.1(typescript@5.9.3)(zod@3.25.76)
       '@rocketh/read-execute':
         specifier: ^0.17.0-next.0
         version: 0.17.0-next.0(typescript@5.9.3)(zod@3.25.76)
@@ -587,8 +587,8 @@ packages:
     peerDependencies:
       rocketh: 0.17.0-next.0
 
-  '@rocketh/proxy@0.17.0-next.0':
-    resolution: {integrity: sha512-NMHaqBgecb90ZizZGGDNKKmQECAMOM30K/AlLw+lkQH0sjgA0wOub3k54PVzLI0Y8wp9pwrYv5nf+oTxSampFA==}
+  '@rocketh/proxy@0.17.0-next.1':
+    resolution: {integrity: sha512-RW6LGOpCga4tm/0vn8xJHdd+M/VTRFRVfjTQXlBzEaTT8rLH+yN3BB5Ltju04DEndb6dAdYV/Fwcb0DXZAwV+Q==}
 
   '@rocketh/read-execute@0.17.0-next.0':
     resolution: {integrity: sha512-1Ww1nAg2cpAKuZOyaQN9a4jJ3Rx/yDJx+31J8j0fwgfDoYVgXOV4XB//wAeYkhrxosElIJ1siYH8Orj3naFxlw==}
@@ -1706,7 +1706,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/proxy@0.17.0-next.0(typescript@5.9.3)(zod@3.25.76)':
+  '@rocketh/proxy@0.17.0-next.1(typescript@5.9.3)(zod@3.25.76)':
     dependencies:
       '@rocketh/deploy': 0.17.0-next.0(typescript@5.9.3)(zod@3.25.76)
       '@rocketh/read-execute': 0.17.0-next.0(typescript@5.9.3)(zod@3.25.76)
