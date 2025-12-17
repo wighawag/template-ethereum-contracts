@@ -26,6 +26,7 @@ export default deployScript(
 					prefix,
 					admin,
 				},
+				deterministicImplementation: true
 			},
 		);
 
