@@ -1,7 +1,6 @@
 {
 	"name": "template-ethereum-contracts",
 	"version": "0.0.0",
-	"private": true,
 	"type": "module",
 	"exports": {
 		"./deploy/*": "./dist/deploy/*",
