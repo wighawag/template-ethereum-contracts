@@ -68,6 +68,12 @@ const config: HardhatUserConfig = {
 	paths: {
 		sources: ['src'],
 	},
+	generateTypedArtifacts: {
+		destinations: [{
+			folder: './generated',
+			mode: 'typescript'
+		}]
+	}
 };
 
 export default config;

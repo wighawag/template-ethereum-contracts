@@ -36,7 +36,7 @@
 		"earl": "^2.0.0",
 		"forge-std": "github:foundry-rs/forge-std#v1.9.4",
 		"hardhat": "^3.1.0",
-		"hardhat-deploy": "^2.0.0-next.56",
+		"hardhat-deploy": "^2.0.0-next.57",
 		"ldenv": "^0.3.16",
 		"prettier": "^3.7.4",
 		"prettier-plugin-solidity": "^2.2.1",
