@@ -69,7 +69,7 @@
 		"deploy": "pnpm compile --build-profile production && ldenv hardhat --network @@MODE deploy @@",
 		"verify": "ldenv rocketh-verify -e @@MODE @@",
 		"export": "ldenv rocketh-export -e @@MODE @@",
-		"export:deploy-modules": "tsc",
+		"typescript": "tsc",
 		"---------------------- START ---------------------- ": "",
 		"stop": "zellij kill-session $npm_package_name",
 		"start": "zellij-launcher a $npm_package_name || zellij -n zellij.kdl -s $npm_package_name"
