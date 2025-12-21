@@ -7,6 +7,25 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@rocketh/deploy':
+        specifier: ^0.17.4
+        version: 0.17.4(typescript@5.9.3)(zod@3.25.76)
+      '@rocketh/proxy':
+        specifier: ^0.17.6
+        version: 0.17.6(typescript@5.9.3)(zod@3.25.76)
+      '@rocketh/read-execute':
+        specifier: ^0.17.2
+        version: 0.17.2(typescript@5.9.3)(zod@3.25.76)
+      '@rocketh/router':
+        specifier: ^0.17.6
+        version: 0.17.6(typescript@5.9.3)(zod@3.25.76)
+      '@rocketh/signer':
+        specifier: ^0.17.1
+        version: 0.17.1(typescript@5.9.3)(zod@3.25.76)
+      '@rocketh/viem':
+        specifier: ^0.17.1
+        version: 0.17.1(viem@2.43.2(typescript@5.9.3)(zod@3.25.76))
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.0.3
@@ -20,9 +39,6 @@ importers:
       '@nomicfoundation/hardhat-viem':
         specifier: ^3.0.1
         version: 3.0.1(hardhat@3.1.0)(viem@2.43.2(typescript@5.9.3)(zod@3.25.76))
-      '@rocketh/deploy':
-        specifier: ^0.17.4
-        version: 0.17.4(typescript@5.9.3)(zod@3.25.76)
       '@rocketh/doc':
         specifier: ^0.17.5
         version: 0.17.5(@rocketh/node@0.17.5(rocketh@0.17.5(typescript@5.9.3)(zod@3.25.76))(typescript@5.9.3)(zod@3.25.76))
@@ -32,24 +48,9 @@ importers:
       '@rocketh/node':
         specifier: ^0.17.5
         version: 0.17.5(rocketh@0.17.5(typescript@5.9.3)(zod@3.25.76))(typescript@5.9.3)(zod@3.25.76)
-      '@rocketh/proxy':
-        specifier: ^0.17.6
-        version: 0.17.6(typescript@5.9.3)(zod@3.25.76)
-      '@rocketh/read-execute':
-        specifier: ^0.17.2
-        version: 0.17.2(typescript@5.9.3)(zod@3.25.76)
-      '@rocketh/router':
-        specifier: ^0.17.6
-        version: 0.17.6(typescript@5.9.3)(zod@3.25.76)
-      '@rocketh/signer':
-        specifier: ^0.17.1
-        version: 0.17.1(typescript@5.9.3)(zod@3.25.76)
       '@rocketh/verifier':
         specifier: ^0.17.5
         version: 0.17.5(@rocketh/node@0.17.5(rocketh@0.17.5(typescript@5.9.3)(zod@3.25.76))(typescript@5.9.3)(zod@3.25.76))
-      '@rocketh/viem':
-        specifier: ^0.17.1
-        version: 0.17.1(viem@2.43.2(typescript@5.9.3)(zod@3.25.76))
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
