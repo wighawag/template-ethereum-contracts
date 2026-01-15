@@ -2,7 +2,7 @@ import hre from 'hardhat';
 import {Abi_GreetingsRegistry} from '../generated/abis/GreetingsRegistry.js';
 import { loadEnvironmentFromHardhat } from '../rocketh/environment.js';
 
-async function main() {
+async function main(args: string[]) {
 	const env = await loadEnvironmentFromHardhat({hre});
 	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
@@ -16,7 +16,8 @@ async function main() {
 	await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
 		functionName: 'setMessage',
-		args: ['hello'],
+		args: [args[0] || ''],
+		gas: 100000n
 	});
 
 	const after_messages = await env.read(GreetingsRegistry, {
@@ -25,4 +26,4 @@ async function main() {
 	});
 	console.log(after_messages);
 }
-main();
+main(process.argv.slice(2));

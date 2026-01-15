@@ -9,6 +9,11 @@ contract GreetingsRegistry {
     /// @param message the new greeting
     event MessageChanged(address indexed user, string message);
 
+
+    /// @notice happen when trying to set an invalid greeting
+    /// @param message the greeting
+    error InvalidMessage(string message);
+
     string internal _prefix;
 
     /// @notice the greeting for each account
@@ -21,6 +26,9 @@ contract GreetingsRegistry {
     /// @notice called to set your own greeting
     /// @param message the new greeting
     function setMessage(string calldata message) external {
+        if (bytes(message).length == 0) {
+            revert InvalidMessage(message);
+        }
         string memory actualMessage = string(
             abi.encodePacked(_prefix, message)
         );
