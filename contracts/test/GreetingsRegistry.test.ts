@@ -63,13 +63,13 @@ describe('GreetingsRegistry', function () {
 		const {env, GreetingsRegistry, unnamedAccounts} =
 			await networkHelpers.loadFixture(deployAll);
 		const greeter = unnamedAccounts[0];
-		await expect(env.execute(GreetingsRegistry, {
-			functionName: 'setMessage',
-			args: [''],
-			account: greeter,
-			gas: 1000000n
-		})).toBeRejectedWith(`custom error 'InvalidMessage("")'`);
-
-
+		await expect(
+			env.execute(GreetingsRegistry, {
+				functionName: 'setMessage',
+				args: [''],
+				account: greeter,
+				gas: 1000000n,
+			}),
+		).toBeRejectedWith(`custom error 'InvalidMessage("")'`);
 	});
 });

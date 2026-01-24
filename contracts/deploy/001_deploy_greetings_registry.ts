@@ -8,7 +8,7 @@ export default deployScript(
 	async (env) => {
 		const {deployer, admin} = env.namedAccounts;
 
-		console.log({deployer, admin})
+		console.log({deployer, admin});
 
 		// const client = env.viem.publicClient;
 
@@ -26,7 +26,7 @@ export default deployScript(
 					prefix,
 					admin,
 				},
-				deterministicImplementation: true
+				deterministicImplementation: true,
 			},
 		);
 

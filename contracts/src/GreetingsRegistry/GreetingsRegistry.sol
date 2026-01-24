@@ -9,7 +9,6 @@ contract GreetingsRegistry {
     /// @param message the new greeting
     event MessageChanged(address indexed user, string message);
 
-
     /// @notice happen when trying to set an invalid greeting
     /// @param message the greeting
     error InvalidMessage(string message);

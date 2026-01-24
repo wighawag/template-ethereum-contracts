@@ -57,8 +57,7 @@ const config: HardhatUserConfig = {
 							type: 'edr-simulated',
 							chainType: 'l1',
 							accounts: {
-								mnemonic:
-									process.env.MNEMONIC || undefined
+								mnemonic: process.env.MNEMONIC || undefined,
 							},
 						},
 					},
@@ -69,11 +68,13 @@ const config: HardhatUserConfig = {
 		sources: ['src'],
 	},
 	generateTypedArtifacts: {
-		destinations: [{
-			folder: './generated',
-			mode: 'typescript'
-		}]
-	}
+		destinations: [
+			{
+				folder: './generated',
+				mode: 'typescript',
+			},
+		],
+	},
 };
 
 export default config;

@@ -6,21 +6,20 @@ import type {UserConfig} from 'rocketh/types';
 // this one provide a protocol supporting private key as account
 import {privateKey} from '@rocketh/signer';
 
-
 // we define our config and export it as "config"
 export const config = {
-    accounts: {
-        deployer: {
-            default: 0,
-        },
-        admin: {
-            default: 1,
-        },
-    },
-    data: {},
-    signerProtocols: {
-        privateKey,
-    },
+	accounts: {
+		deployer: {
+			default: 0,
+		},
+		admin: {
+			default: 1,
+		},
+	},
+	data: {},
+	signerProtocols: {
+		privateKey,
+	},
 } as const satisfies UserConfig;
 
 // then we import each extensions we are interested in using in our deploy script or elsewhere

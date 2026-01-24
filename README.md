@@ -2,18 +2,20 @@
 
 A template for developing EVM smart contract using hardhat (v3) and hardhat-deploy (v2)
 
+It is setup as a monorepo so it is easy to add a web app or other components
+
 ## How to use it?
 
 ### Compile your contracts
 
 ```bash
-pnpm compile
+pnpm contracts:compile
 ```
 
 ### Test your contracts
 
 ```bash
-pnpm test
+pnpm contracts:test
 ```
 
 This will test both solidity and node test (as hardhat v3 does)
@@ -21,17 +23,17 @@ This will test both solidity and node test (as hardhat v3 does)
 ### watch for changes and rebuild automatically
 
 ```bash
-pnpm compile:watch
+pnpm contracts:compile:watch
 ```
 
 ### deploy your contract
 
 - on localhost
 
-  This assumes you have a local node running: `pnpm local_node`
+  This assumes you have a local node running: `pnpm contracts:local_node`
 
   ```bash
-  pnpm run deploy localhost
+  pnpm run contracts:deploy localhost
   ```
 
 - on a network of your choice
@@ -39,19 +41,19 @@ pnpm compile:watch
   Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it
 
   ```bash
-  pnpm run deploy <network>
+  pnpm run contracts:deploy <network>
   ```
 
 ### execute scripts
 
 ```bash
-pnpm execute <network name> scripts/setMessage.ts
+pnpm contracts:execute <network name> scripts/setMessage.ts "hello"
 ```
 
 or if you want to execute in a forked environment :
 
 ```bash
-pnpm fork:execute <network name> scripts/setMessage.ts "Hello world"
+pnpm contracts:fork:execute <network name> scripts/setMessage.ts "Hello world"
 ```
 
 ### zellij
@@ -64,16 +66,10 @@ Once installed simply run the following to get a local in-memory Ethereum node r
 pnpm start
 ```
 
-if you want to try Zellij without installing it, try this :
-
-```bash
-bash <(curl -L zellij.dev/launch) --layout zellij.kdl
-```
-
 In the shell in the upper pane, you execute the script as mentioned above
 
 ```bash
-pnpm execute localhost scripts/setMessage.ts "Hello everyone"
+pnpm contracts:execute localhost scripts/setMessage.ts "Hello everyone"
 ```
 
 ## Initial Setup
