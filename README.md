@@ -30,7 +30,7 @@ pnpm contracts:compile:watch
 
 - on localhost
 
-  This assumes you have a local node running: `pnpm contracts:local_node`
+  This assumes you have a local node running which can do by executing `pnpm contracts:local_node`
 
   ```bash
   pnpm run contracts:deploy localhost
@@ -38,7 +38,7 @@ pnpm contracts:compile:watch
 
 - on a network of your choice
 
-  Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it
+  Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it.
 
   ```bash
   pnpm run contracts:deploy <network>
