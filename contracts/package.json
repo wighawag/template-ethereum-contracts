@@ -30,7 +30,7 @@
 		"@rocketh/verifier": "^0.17.16",
 		"@rocketh/viem": "^0.17.5",
 		"@types/node": "^25.0.8",
-		"as-soon": "^0.0.11",
+		"as-soon": "^0.1.5",
 		"cross-var": "^1.1.0",
 		"earl": "^2.0.0",
 		"forge-std": "github:foundry-rs/forge-std#v1.9.4",

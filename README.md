@@ -22,6 +22,7 @@ This will test both solidity and node test (as hardhat v3 does)
 
 ### watch for changes and rebuild automatically
 
+> async: `run this in a separate terminal`
 ```bash
 pnpm contracts:compile:watch
 ```
@@ -30,29 +31,34 @@ pnpm contracts:compile:watch
 
 - on localhost
 
-  This assumes you have a local node running which can do by executing `pnpm contracts:local_node`
+  This assumes you have a local node running which can do by executing the following command:
+  
+  > async: `run this in a separate terminal`
+  ```bash
+  pnpm contracts:local_node
+  ```
 
   ```bash
-  pnpm run contracts:deploy localhost
+  pnpm contracts:deploy localhost --skip-prompts
   ```
 
 - on a network of your choice
 
   Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it.
 
-  ```bash
-  pnpm run contracts:deploy <network>
+  ```bash skip
+  pnpm contracts:deploy <network>
   ```
 
 ### execute scripts
 
-```bash
+```bash skip
 pnpm contracts:execute <network name> scripts/setMessage.ts "hello"
 ```
 
 or if you want to execute in a forked environment :
 
-```bash
+```bash skip
 pnpm contracts:fork:execute <network name> scripts/setMessage.ts "Hello world"
 ```
 
@@ -62,7 +68,7 @@ pnpm contracts:fork:execute <network name> scripts/setMessage.ts "Hello world"
 
 Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
 
-```bash
+```bash skip
 pnpm start
 ```
 
@@ -80,13 +86,13 @@ You need to have these installed
 
 - [pnpm](https://pnpm.io/)
 
-  ```bash
+  ```bash skip
   npm i -g pnpm
   ```
 
 Then you need to install the local dependencies with the following command:
 
-```bash
+```bash skip
 pnpm i
 ```
 
