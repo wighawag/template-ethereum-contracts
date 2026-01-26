@@ -1,6 +1,8 @@
 {
 	"compilerOptions": {
-		"lib": ["es2023"],
+		"lib": [
+			"es2023"
+		],
 		"module": "node16",
 		"target": "es2022",
 		"moduleResolution": "node16",
@@ -12,5 +14,10 @@
 		"declarationMap": true,
 		"outDir": "dist",
 		"rootDir": "."
-	}
+	},
+	"include": [
+		"deploy",
+		"generated",
+		"rocketh"
+	]
 }

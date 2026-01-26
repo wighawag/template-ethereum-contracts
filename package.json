@@ -30,7 +30,8 @@
     "contracts:build": "ldenv pnpm --filter ./contracts compile ~~ pnpm --filter ./contracts typescript ~~",
     "contracts:export": "pnpm --filter ./contracts export @@MODE @@",
     "---------------------- BUILD ----------------------": "",
-    "build": "ldenv --git -d localhost pnpm contracts:build @@MODE @@",
+    "test": "pnpm contracts:test",
+    "build": "pnpm contracts:build",
     "---------------------- START ----------------------": "",
     "stop": "pnpm run --filter ./contracts stop",
     "start": "pnpm run --filter ./contracts start"
