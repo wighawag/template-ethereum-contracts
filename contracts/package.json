@@ -5,14 +5,15 @@
 	"exports": {
 		"./deploy/*": "./dist/deploy/*",
 		"./rocketh/*": "./dist/rocketh/*",
+		"./artifacts/*": "./dist/generated/artifacts/*",
+		"./abis/*": "./dist/generated/abis/*",
 		"./deployments/*": "./deployments/*",
-		"./artifacts/*": "./generated/artifacts/*",
-		"./abis/*": "./generated/abis/*"
+		"./src/*": "./src/*"
 	},
 	"files": [
 		"dist",
-		"deployments",
-		"generated"
+		"src",
+		"deployments"
 	],
 	"devDependencies": {
 		"@nomicfoundation/hardhat-keystore": "^3.0.3",
