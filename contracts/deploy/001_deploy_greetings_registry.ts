@@ -1,18 +1,17 @@
 import {deployScript, artifacts} from '../rocketh/deploy.js';
-// import {createPublicClient, custom} from 'viem';
 
 export default deployScript(
-	// this allow us to define our deploy function which takes as first argument an environment object
-	// This contaisn the function provided by the modules imported in 'rocketh.ts'
-	// along with other built-in functions and the named accounts
 	async (env) => {
+		// Get named accounts configured in rocketh/config.ts
 		const {deployer, admin} = env.namedAccounts;
 
-		console.log({deployer, admin});
-
-		// const client = env.viem.publicClient;
-
+		// The prefix will be prepended to all messages
 		const prefix = 'proxy:';
+
+		// Deploy an upgradeable contract using a proxy pattern
+		// - The implementation is deployed deterministically
+		// - The proxy delegates to the implementation
+		// - The admin can upgrade the implementation later
 		const deployment = await env.deployViaProxy(
 			'GreetingsRegistry',
 			{
@@ -30,10 +29,12 @@ export default deployScript(
 			},
 		);
 
+		// Example: interact with the deployed contract using viem
 		const contract = env.viem.getContract(deployment);
 		const message = await contract.read.messages([deployer]);
-		console.log(message);
+		console.log(`Current message for deployer: "${message}"`);
 	},
-	// execute takes as a second argument an options object where you can specify tags and dependencies
+	// Tags allow selective deployment (e.g., --tags GreetingsRegistry)
+	// Dependencies can be specified with: dependencies: ['OtherContract']
 	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
 );

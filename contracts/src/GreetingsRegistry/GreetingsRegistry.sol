@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 /// @title Greetings Registry
 /// @notice let user set a greeting 1
 contract GreetingsRegistry {
-    /// @notice emitted whemever a user update its greeting
+    /// @notice emitted whenever a user updates their greeting
     /// @param user the account whose greeting was updated
     /// @param message the new greeting
     event MessageChanged(address indexed user, string message);

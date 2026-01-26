@@ -1,99 +1,385 @@
-# A template for EVM-based smart contract development
+# Ethereum Smart Contract Development Template
 
-A template for developing EVM smart contract using hardhat (v3) and hardhat-deploy (v2)
+A production-ready template for developing EVM smart contracts using [Hardhat v3](https://hardhat.org/) and [hardhat-deploy v2](https://github.com/wighawag/hardhat-deploy) with the [rocketh](https://github.com/wighawag/rocketh) deployment system.
 
-It is setup as a monorepo so it is easy to add a web app or other components
+## Why This Template?
 
-## How to use it?
+### hardhat-deploy + rocketh vs Ignition
 
-### Compile your contracts
+While Hardhat's official [Ignition](https://hardhat.org/ignition) plugin offers a robust deployment system, it comes with a rigid DSL that limits flexibility. This template uses **hardhat-deploy + rocketh** which provides:
+
+- **Hot Contract Replacement (HCR)**: The equivalent of HMR (Hot Module Replacement) for smart contracts. Edit your contracts and see changes live while developing your app or game. This uses proxy patterns with a set of conventions to make it work seamlessly.
+- **Intuitive Deployment Scripts**: Write deployment logic in plain TypeScript without learning a new DSL.
+- **Flexible Proxy Patterns**: Declarative proxy deployment with `deployViaProxy` for upgradeable contracts.
+- **Full Control**: Access to all deployment parameters and lifecycle hooks.
+
+### Monorepo Structure
+
+This template is organized as a monorepo, making it easy to:
+
+- Add a web frontend in a separate `web/` folder
+- Import contract artifacts, ABIs, and types from the `contracts` package
+- Share deployment information across packages
+- Publish contracts as an npm package for external consumption
+
+## Project Structure
+
+```
+.
+├── contracts/                    # Smart contracts package
+│   ├── src/                      # Solidity source files
+│   │   └── GreetingsRegistry/    # Contract organized by feature
+│   │       ├── GreetingsRegistry.sol    # Main contract
+│   │       └── GreetingsRegistry.t.sol  # Solidity tests (forge-style)
+│   ├── deploy/                   # Deployment scripts
+│   ├── deployments/              # Deployment artifacts per network
+│   ├── generated/                # Auto-generated artifacts and ABIs
+│   ├── rocketh/                  # Rocketh configuration
+│   │   ├── config.ts             # Account & extension configuration
+│   │   ├── deploy.ts             # Deploy script setup
+│   │   └── environment.ts        # Environment setup for tests/scripts
+│   ├── scripts/                  # Utility scripts
+│   └── test/                     # TypeScript tests
+│       └── utils/                # Test utilities
+├── package.json                  # Root monorepo configuration
+└── pnpm-workspace.yaml           # PNPM workspace definition
+```
+
+## Initial Setup
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+)
+- [pnpm](https://pnpm.io/)
+
+### Installation
+
+```bash
+pnpm i
+```
+
+We also recommend installing [Zellij](https://zellij.dev/) for an optimal development experience with `pnpm start`.
+
+## Usage
+
+### Compile Contracts
 
 ```bash
 pnpm contracts:compile
 ```
 
-### Test your contracts
+This runs both Solidity and TypeScript compilation.
+
+### Watch Mode (Auto-Rebuild)
+
+Run in a separate terminal for automatic recompilation on changes:
+
+> async: `run this in a separate terminal`
+
+```bash
+pnpm contracts:compile:watch
+```
+
+### Run Tests
 
 ```bash
 pnpm contracts:test
 ```
 
-This will test both solidity and node test (as hardhat v3 does)
+This runs both:
 
-### watch for changes and rebuild automatically
+- **Solidity tests** (forge-style, using `forge-std`)
+- **TypeScript tests** (using Node.js test runner with `earl` assertions)
+
+### Local Development
+
+Start a local Ethereum node:
 
 > async: `run this in a separate terminal`
+
 ```bash
-pnpm contracts:compile:watch
+pnpm contracts:local_node
 ```
 
-### deploy your contract
+Deploy to localhost:
 
-- on localhost
+```bash
+pnpm contracts:deploy localhost --skip-prompts
+```
 
-  This assumes you have a local node running which can do by executing the following command:
-  
-  > async: `run this in a separate terminal`
-  ```bash
-  pnpm contracts:local_node
-  ```
+### Deploy to Networks
 
-  ```bash
-  pnpm contracts:deploy localhost --skip-prompts
-  ```
-
-- on a network of your choice
-
-  Just make sure you have your .env.local setup, see [.env](.env) or if you use hardhat secret store, configure it.
-
-  ```bash skip
-  pnpm contracts:deploy <network>
-  ```
-
-### execute scripts
+1. Configure your environment variables in `.env.local`:
 
 ```bash skip
-pnpm contracts:execute <network name> scripts/setMessage.ts "hello"
+MNEMONIC_<network>="your mnemonic phrase"
+ETHERSCAN_API_KEY=<api-key>  # For verification
 ```
 
-or if you want to execute in a forked environment :
+Or use Hardhat's secret store for sensitive data.
+
+2. Deploy:
 
 ```bash skip
-pnpm contracts:fork:execute <network name> scripts/setMessage.ts "Hello world"
+pnpm contracts:deploy <network>
 ```
 
-### zellij
+### Execute Scripts
 
-[zellij](https://zellij.dev/) is a useful multiplexer (think tmux) for which we have included a [layout file](./zellij.kdl) to get started
+Run scripts against a deployed contract:
 
-Once installed simply run the following to get a local in-memory Ethereum node running along with the tests
+```bash skip
+pnpm contracts:execute <network> scripts/setMessage.ts "hello"
+```
+
+Or execute in a forked environment:
+
+```bash skip
+pnpm contracts:fork:execute <network> scripts/setMessage.ts "Hello world"
+```
+
+### Verify Contracts
+
+```bash skip
+pnpm contracts:verify <network>
+```
+
+## Zellij Development Environment
+
+[Zellij](https://zellij.dev/) is a terminal multiplexer (like tmux) with a preconfigured layout for this template.
+
+Start the full development environment:
 
 ```bash skip
 pnpm start
 ```
 
-In the shell in the upper pane, you execute the script as mentioned above
+This launches:
+
+- A local Ethereum node
+- Auto-compilation on file changes
+- Auto-deployment on changes
+- Auto-testing on changes
+- An interactive shell for running scripts
+
+## Configuration
+
+### Named Accounts
+
+Configure accounts in [`contracts/rocketh/config.ts`](contracts/rocketh/config.ts):
+
+```typescript skip
+export const config = {
+  accounts: {
+    deployer: { default: 0 }, // First account from mnemonic
+    admin: { default: 1 }, // Second account
+  },
+  // ...
+} as const satisfies UserConfig;
+```
+
+### Network Configuration
+
+Networks are configured in [`contracts/hardhat.config.ts`](contracts/hardhat.config.ts) using helper functions:
+
+- `addNetworksFromEnv()`: Auto-configure networks from `ETH_NODE_URI_*` environment variables
+- `addNetworksFromKnownList()`: Add configurations for well-known networks
+- `addForkConfiguration()`: Enable forking mode via `HARDHAT_FORK` env var
+
+### Rocketh Extensions
+
+Extensions provide deployment functionality. Configure in [`contracts/rocketh/config.ts`](contracts/rocketh/config.ts):
+
+```typescript skip
+import * as deployExtension from "@rocketh/deploy";
+import * as deployProxyExtension from "@rocketh/proxy";
+import * as readExecuteExtension from "@rocketh/read-execute";
+import * as viemExtension from "@rocketh/viem";
+
+const extensions = {
+  ...deployExtension, // Basic deploy function
+  ...readExecuteExtension, // read/execute helpers
+  ...deployProxyExtension, // deployViaProxy for upgradeable contracts
+  ...viemExtension, // viem client integration
+};
+```
+
+## Writing Deploy Scripts
+
+Deploy scripts are located in `contracts/deploy/` and are executed in order (prefixed with numbers):
+
+```typescript skip
+import { deployScript, artifacts } from "../rocketh/deploy.js";
+
+export default deployScript(
+  async (env) => {
+    const { deployer, admin } = env.namedAccounts;
+
+    // Deploy an upgradeable contract
+    const deployment = await env.deployViaProxy(
+      "GreetingsRegistry",
+      {
+        account: deployer,
+        artifact: artifacts.GreetingsRegistry,
+        args: ["prefix:"],
+      },
+      {
+        owner: admin,
+        linkedData: {
+          /* metadata stored with deployment */
+        },
+      },
+    );
+
+    // Interact with the deployed contract
+    const contract = env.viem.getContract(deployment);
+    const message = await contract.read.messages([deployer]);
+  },
+  { tags: ["GreetingsRegistry"] },
+);
+```
+
+## Writing Tests
+
+### TypeScript Tests
+
+Located in `contracts/test/`, using Node.js test runner and `earl` assertions:
+
+```typescript skip
+import { expect } from "earl";
+import { describe, it } from "node:test";
+import { network } from "hardhat";
+import { setupFixtures } from "./utils/index.js";
+
+const { provider, networkHelpers } = await network.connect();
+const { deployAll } = setupFixtures(provider);
+
+describe("GreetingsRegistry", function () {
+  it("should set and retrieve messages", async function () {
+    const { env, GreetingsRegistry, unnamedAccounts } =
+      await networkHelpers.loadFixture(deployAll);
+
+    const greeter = unnamedAccounts[0];
+    await env.execute(GreetingsRegistry, {
+      functionName: "setMessage",
+      args: ["hello"],
+      account: greeter,
+    });
+
+    const message = await env.read(GreetingsRegistry, {
+      functionName: "messages",
+      args: [greeter],
+    });
+    expect(message).toEqual("hello");
+  });
+});
+```
+
+### Solidity Tests
+
+Located alongside contracts with `.t.sol` extension, using forge-std:
+
+```solidity
+import {Test} from "forge-std/Test.sol";
+import {GreetingsRegistry} from "./GreetingsRegistry.sol";
+
+contract GreetingsRegistryTest is Test {
+    GreetingsRegistry internal registry;
+
+    function setUp() public {
+        registry = new GreetingsRegistry("");
+    }
+
+    function test_setMessageWorks() public {
+        registry.setMessage("hello");
+        assertEq(registry.messages(address(this)), "hello");
+    }
+}
+```
+
+## Linting
+
+Solidity linting is configured with [slippy](https://github.com/astrodevs-labs/slippy):
 
 ```bash
-pnpm contracts:execute localhost scripts/setMessage.ts "Hello everyone"
+pnpm contracts:lint
 ```
 
-## Initial Setup
+## Publishing & Consuming Contracts
 
-You need to have these installed
+### Package Exports
 
-- [nodejs](https://nodejs.org/en)
+The contracts package exposes multiple entry points:
 
-- [pnpm](https://pnpm.io/)
+```json
+{
+  "exports": {
+    "./deploy/*": "./dist/deploy/*",
+    "./rocketh/*": "./dist/rocketh/*",
+    "./artifacts/*": "./dist/generated/artifacts/*",
+    "./abis/*": "./dist/generated/abis/*",
+    "./deployments/*": "./deployments/*",
+    "./src/*": "./src/*"
+  }
+}
+```
 
-  ```bash skip
-  npm i -g pnpm
-  ```
+### Using in Another Package
 
-Then you need to install the local dependencies with the following command:
+```typescript skip
+// Import ABIs
+import { Abi_GreetingsRegistry } from "template-ethereum-contracts/abis/GreetingsRegistry.js";
+
+// Import deployment info
+import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/GreetingsRegistry.json";
+
+// Import Solidity sources (for inheritance or verification)
+// Reference: template-ethereum-contracts/src/GreetingsRegistry/GreetingsRegistry.sol
+```
+
+### Building for Publication
+
+```bash
+pnpm contracts:build
+```
+
+## Environment Variables
+
+| Variable                 | Description                                   |
+| ------------------------ | --------------------------------------------- |
+| `ETH_NODE_URI_<network>` | RPC endpoint for the network                  |
+| `MNEMONIC_<network>`     | Mnemonic for account derivation               |
+| `MNEMONIC`               | Fallback mnemonic if network-specific not set |
+| `ETHERSCAN_API_KEY`      | API key for contract verification             |
+
+Set `SECRET` as the value to use Hardhat's secret store:
 
 ```bash skip
-pnpm i
+ETH_NODE_URI_mainnet=SECRET  # Uses configVariable('SECRET_ETH_NODE_URI_mainnet')
 ```
 
-We also recommend installing [Zellij](https://zellij.dev/) to have your dev env setup in one go via `pnpm start`
+## Adding a Web Frontend
+
+Since this is a monorepo, you can easily add a web frontend:
+
+1. Create a `web/` directory with your frontend framework
+2. Add it to `pnpm-workspace.yaml`:
+   ```yaml
+   packages:
+     - "contracts"
+     - "web"
+   ```
+3. Import contracts in your frontend:
+
+   ```typescript skip
+   import { Abi_GreetingsRegistry } from "template-ethereum-contracts/abis/GreetingsRegistry.js";
+   ```
+
+4. Use the export script to generate deployment info:
+   ```bash skip
+   pnpm contracts:export <network> --ts ../web/src/lib/deployments.ts
+   ```
+
+## License
+
+MIT
