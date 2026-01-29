@@ -1,27 +1,28 @@
-import {BaseContract} from 'ethers';
-import hre from 'hardhat';
+import {Abi_SimpleERC20} from '../../generated/abis/SimpleERC20.js';
+import {Abi_GreetingsRegistry} from '../../generated/abis/GreetingsRegistry.js';
+import {loadAndExecuteDeploymentsFromFiles} from '../../rocketh/environment.js';
+import {EthereumProvider} from 'hardhat/types/providers';
 
-const {ethers} = hre;
+export function setupFixtures(provider: EthereumProvider) {
+	return {
+		async deployAll() {
+			const env = await loadAndExecuteDeploymentsFromFiles({
+				provider: provider,
+			});
 
-export async function setupUsers<T extends {[contractName: string]: BaseContract}>(
-	addresses: string[],
-	contracts: T,
-): Promise<({address: string} & T)[]> {
-	const users: ({address: string} & T)[] = [];
-	for (const address of addresses) {
-		users.push(await setupUser(address, contracts));
-	}
-	return users;
-}
+			// Deployment are inherently untyped since they can vary from
+			//  network or even be different from current artifacts so here
+			//  we type them manually assuming the artifact is still matching
+			const SimpleERC20 = env.get<Abi_SimpleERC20>('SimpleERC20');
+			const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
-export async function setupUser<T extends {[contractName: string]: BaseContract}>(
-	address: string,
-	contracts: T,
-): Promise<{address: string} & T> {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const user: any = {address};
-	for (const key of Object.keys(contracts)) {
-		user[key] = contracts[key].connect(await ethers.getSigner(address));
-	}
-	return user as {address: string} & T;
+			return {
+				env,
+				SimpleERC20,
+				GreetingsRegistry,
+				namedAccounts: env.namedAccounts,
+				unnamedAccounts: env.unnamedAccounts,
+			};
+		},
+	};
 }

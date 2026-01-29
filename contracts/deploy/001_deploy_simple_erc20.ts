@@ -1,19 +1,17 @@
-import {HardhatRuntimeEnvironment} from 'hardhat/types';
-import {DeployFunction} from 'hardhat-deploy/types';
-import {parseEther} from 'ethers';
+import {deployScript, artifacts} from '../rocketh/deploy.js';
+import {parseEther} from 'viem';
 
-const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-	const {deployments, getNamedAccounts} = hre;
-	const {deploy} = deployments;
+export default deployScript(
+	async (env) => {
+		const {deployer, simpleERC20Beneficiary} = env.namedAccounts;
 
-	const {deployer, simpleERC20Beneficiary} = await getNamedAccounts();
-
-	await deploy('SimpleERC20', {
-		from: deployer,
-		args: [simpleERC20Beneficiary, parseEther('1000000000')],
-		log: true,
-		autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
-	});
-};
-export default func;
-func.tags = ['SimpleERC20'];
+		await env.deploy('SimpleERC20', {
+			artifact: artifacts.SimpleERC20,
+			account: deployer,
+			args: [simpleERC20Beneficiary, parseEther('1000000000')],
+		});
+	},
+	{
+		tags: ['SimpleERC20'],
+	},
+);

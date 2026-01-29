@@ -1,5 +1,7 @@
-import {deployments, getUnnamedAccounts} from 'hardhat';
-const {execute} = deployments;
+import hre from 'hardhat';
+import {loadEnvironmentFromHardhat} from '../rocketh/environment.js';
+import {Abi_GreetingsRegistry} from '../generated/abis/GreetingsRegistry.js';
+
 // example script
 
 const args = process.argv.slice(2);
@@ -7,9 +9,19 @@ const account = args[0];
 const message = args[1];
 
 async function main() {
-	const accountAddress = isNaN(parseInt(account)) ? account : (await getUnnamedAccounts())[parseInt(account)];
+	const env = await loadEnvironmentFromHardhat({hre});
 
-	await execute('GreetingsRegistry', {from: accountAddress, log: true}, 'setMessage', message || 'hello');
+	const accountAddress = isNaN(parseInt(account))
+		? account
+		: env.unnamedAccounts[parseInt(account)];
+
+	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
+
+	await env.execute(GreetingsRegistry, {
+		account: accountAddress,
+		functionName: 'setMessage',
+		args: [message || 'hello'],
+	});
 }
 
 main()
