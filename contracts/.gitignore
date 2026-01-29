@@ -1,0 +1,15 @@
+cache/
+artifacts/
+
+coverage*
+typechain-types/
+
+node_modules/
+.env
+
+*.local
+generated/
+
+deployments/hardhat
+deployments/localhost
+
