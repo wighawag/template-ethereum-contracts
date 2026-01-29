@@ -18,12 +18,9 @@
     "hardhat": "^2.22.18",
     "hardhat-deploy": "^0.14.0",
     "hardhat-deploy-ethers": "^0.4.2",
-    "hardhat-deploy-tenderly": "^0.2.1",
-    "hardhat-gas-reporter": "^2.2.2",
     "mocha": "^11.1.0",
     "prettier": "^3.5.0",
     "prettier-plugin-solidity": "^1.4.2",
-    "solidity-coverage": "^0.8.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },

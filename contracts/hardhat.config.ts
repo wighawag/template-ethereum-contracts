@@ -4,8 +4,6 @@ import {HardhatUserConfig} from 'hardhat/types';
 import '@nomicfoundation/hardhat-chai-matchers';
 import '@nomicfoundation/hardhat-ethers';
 import '@typechain/hardhat';
-import 'hardhat-gas-reporter';
-import 'solidity-coverage';
 
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
@@ -67,12 +65,6 @@ const config: HardhatUserConfig = {
 	paths: {
 		sources: 'src',
 	},
-	gasReporter: {
-		currency: 'USD',
-		gasPrice: 100,
-		enabled: process.env.REPORT_GAS ? true : false,
-		coinmarketcap: process.env.COINMARKETCAP_API_KEY,
-	},
 	mocha: {
 		timeout: 0,
 	},
@@ -84,13 +76,8 @@ const config: HardhatUserConfig = {
 					hardhat: ['deployments/' + process.env.HARDHAT_FORK],
 					localhost: ['deployments/' + process.env.HARDHAT_FORK],
 				},
-		  }
+			}
 		: undefined,
-
-	tenderly: {
-		project: 'template-ethereum-contracts',
-		username: process.env.TENDERLY_USERNAME as string,
-	},
 };
 
 export default config;
