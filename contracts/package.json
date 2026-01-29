@@ -20,6 +20,7 @@
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.3",
 		"@nomicfoundation/hardhat-node-test-runner": "^3.0.8",
 		"@nomicfoundation/hardhat-viem": "^3.0.1",
+		"@openzeppelin/contracts": "^4.9.2",
 		"@rocketh/deploy": "^0.17.9",
 		"@rocketh/doc": "^0.17.18",
 		"@rocketh/export": "^0.17.18",

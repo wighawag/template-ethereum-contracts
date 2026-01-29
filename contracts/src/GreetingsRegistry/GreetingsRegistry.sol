@@ -1,33 +1,26 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity 0.8.17;
 
-/// @title Greetings Registry
-/// @notice let user set a greeting 1
-contract GreetingsRegistry {
-    /// @notice emitted whenever a user updates their greeting
-    /// @param user the account whose greeting was updated
-    /// @param message the new greeting
+import "@rocketh/proxy/solc_0_8/ERC1967/Proxied.sol";
+import "hardhat/console.sol";
+
+contract GreetingsRegistry is Proxied {
     event MessageChanged(address indexed user, string message);
 
-    /// @notice happen when trying to set an invalid greeting
-    /// @param message the greeting
-    error InvalidMessage(string message);
-
+    mapping(address => string) public messages;
     string internal _prefix;
 
-    /// @notice the greeting for each account
-    mapping(address => string) public messages;
-
-    constructor(string memory prefix) {
+    function postUpgrade(string memory prefix) public proxied {
         _prefix = prefix;
     }
 
-    /// @notice called to set your own greeting
-    /// @param message the new greeting
+    constructor(string memory prefix) {
+        // the proxied modifier from `hardhat-deploy` ensure postUpgrade effect can only be used once when the contract is deployed without proxy
+        // by calling that function in the constructor we ensure the contract behave the same whether it is deployed through a proxy or not.
+        postUpgrade(prefix);
+    }
+
     function setMessage(string calldata message) external {
-        if (bytes(message).length == 0) {
-            revert InvalidMessage(message);
-        }
         string memory actualMessage = string(
             abi.encodePacked(_prefix, message)
         );

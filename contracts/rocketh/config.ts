@@ -1,10 +1,14 @@
 // ----------------------------------------------------------------------------
 // Typed Config
 // ----------------------------------------------------------------------------
-import type { EnhancedEnvironment, UnknownDeployments, UserConfig } from 'rocketh/types';
+import type {
+	EnhancedEnvironment,
+	UnknownDeployments,
+	UserConfig,
+} from 'rocketh/types';
 
 // this one provide a protocol supporting private key as account
-import { privateKey } from '@rocketh/signer';
+import {privateKey} from '@rocketh/signer';
 
 // we define our config and export it as "config"
 export const config = {
@@ -12,7 +16,7 @@ export const config = {
 		deployer: {
 			default: 0,
 		},
-		admin: {
+		simpleERC20Beneficiary: {
 			default: 1,
 		},
 	},
@@ -41,13 +45,18 @@ const extensions = {
 	...deployProxyExtension,
 	...viemExtension,
 };
-export { extensions };
+export {extensions};
 
 // then we also export the types that our config ehibit so other can use it
 
 type Extensions = typeof extensions;
 type Accounts = typeof config.accounts;
 type Data = typeof config.data;
-type Environment = EnhancedEnvironment<Accounts, Data, UnknownDeployments, Extensions>
+type Environment = EnhancedEnvironment<
+	Accounts,
+	Data,
+	UnknownDeployments,
+	Extensions
+>;
 
-export type { Extensions, Accounts, Data, Environment };
+export type {Extensions, Accounts, Data, Environment};

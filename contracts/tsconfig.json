@@ -1,8 +1,6 @@
 {
 	"compilerOptions": {
-		"lib": [
-			"es2023"
-		],
+		"lib": ["es2023"],
 		"module": "node16",
 		"target": "es2022",
 		"moduleResolution": "node16",
@@ -15,8 +13,5 @@
 		"outDir": "dist",
 		"rootDir": "."
 	},
-	"include": [
-		"deploy",
-		"generated"
-	]
+	"include": ["deploy", "generated"]
 }
