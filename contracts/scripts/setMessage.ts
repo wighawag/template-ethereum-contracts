@@ -13,12 +13,14 @@ async function main(args: string[]) {
 
 	console.log(`before: ${before_messages}`);
 
-	await env.execute(GreetingsRegistry, {
+	const tx = await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
 		functionName: 'setMessage',
 		args: [args[0] || ''],
 		gas: 100000n,
 	});
+
+	console.log(`tx: ${tx.transactionHash}`);
 
 	const after_messages = await env.read(GreetingsRegistry, {
 		functionName: 'messages',
