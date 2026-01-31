@@ -11,7 +11,7 @@ async function main(args: string[]) {
 		args: [env.namedAccounts.deployer],
 	});
 
-	console.log(before_messages);
+	console.log(`before: ${before_messages}`);
 
 	await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
@@ -24,6 +24,6 @@ async function main(args: string[]) {
 		functionName: 'messages',
 		args: [env.namedAccounts.deployer],
 	});
-	console.log(after_messages);
+	console.log(`after: ${after_messages}`);
 }
 main(process.argv.slice(2));
