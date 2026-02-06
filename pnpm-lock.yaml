@@ -40,13 +40,13 @@ importers:
         version: 0.18.0(typescript@5.9.3)(zod@4.3.6)
       '@rocketh/doc':
         specifier: ^0.18.0
-        version: 0.18.0(typescript@5.9.3)(zod@4.3.6)
+        version: 0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(typescript@5.9.3)(zod@4.3.6)
       '@rocketh/export':
         specifier: ^0.18.0
-        version: 0.18.0(rocketh@0.18.0(typescript@5.9.3)(zod@4.3.6))(typescript@5.9.3)(zod@4.3.6)
+        version: 0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(rocketh@0.18.0(typescript@5.9.3)(zod@4.3.6))(typescript@5.9.3)(zod@4.3.6)
       '@rocketh/node':
-        specifier: link:../../rocketh/packages/rocketh-node
-        version: link:../../rocketh/packages/rocketh-node
+        specifier: link:../rocketh/packages/rocketh-node
+        version: link:../rocketh/packages/rocketh-node
       '@rocketh/proxy':
         specifier: ^0.18.0
         version: 0.18.0(typescript@5.9.3)(zod@4.3.6)
@@ -61,7 +61,7 @@ importers:
         version: 0.18.0(typescript@5.9.3)(zod@4.3.6)
       '@rocketh/verifier':
         specifier: ^0.18.0
-        version: 0.18.0(typescript@5.9.3)(zod@4.3.6)
+        version: 0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(typescript@5.9.3)(zod@4.3.6)
       '@rocketh/viem':
         specifier: ^0.18.0
         version: 0.18.0(typescript@5.9.3)(viem@2.45.1(typescript@5.9.3)(zod@4.3.6))(zod@4.3.6)
@@ -85,7 +85,7 @@ importers:
         version: 3.1.7
       hardhat-deploy:
         specifier: ^2.0.0-next.66
-        version: 2.0.0-next.72(hardhat@3.1.7)
+        version: 2.0.0-next.72(@rocketh/node@rocketh+packages+rocketh-node)(hardhat@3.1.7)
       ldenv:
         specifier: ^0.3.16
         version: 0.3.16
@@ -2276,9 +2276,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/doc@0.18.0(typescript@5.9.3)(zod@4.3.6)':
+  '@rocketh/doc@0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(typescript@5.9.3)(zod@4.3.6)':
     dependencies:
       '@rocketh/core': 0.18.0(typescript@5.9.3)(zod@4.3.6)
+      '@rocketh/node': link:rocketh/packages/rocketh-node
       '@types/fs-extra': 11.0.4
       abitype: 1.2.3(typescript@5.9.3)(zod@4.3.6)
       commander: 14.0.3
@@ -2291,9 +2292,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/export@0.18.0(rocketh@0.18.0(typescript@5.9.3)(zod@4.3.6))(typescript@5.9.3)(zod@4.3.6)':
+  '@rocketh/export@0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(rocketh@0.18.0(typescript@5.9.3)(zod@4.3.6))(typescript@5.9.3)(zod@4.3.6)':
     dependencies:
       '@rocketh/core': 0.18.0(typescript@5.9.3)(zod@4.3.6)
+      '@rocketh/node': link:rocketh/packages/rocketh-node
       '@types/fs-extra': 11.0.4
       abitype: 1.2.3(typescript@5.9.3)(zod@4.3.6)
       chalk: 5.6.2
@@ -2362,9 +2364,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@rocketh/verifier@0.18.0(typescript@5.9.3)(zod@4.3.6)':
+  '@rocketh/verifier@0.18.0(@rocketh/node@rocketh+packages+rocketh-node)(typescript@5.9.3)(zod@4.3.6)':
     dependencies:
       '@rocketh/core': 0.18.0(typescript@5.9.3)(zod@4.3.6)
+      '@rocketh/node': link:rocketh/packages/rocketh-node
       '@types/fs-extra': 11.0.4
       '@types/qs': 6.14.0
       chalk: 5.6.2
@@ -3336,9 +3339,10 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.19.3
 
-  hardhat-deploy@2.0.0-next.72(hardhat@3.1.7):
+  hardhat-deploy@2.0.0-next.72(@rocketh/node@rocketh+packages+rocketh-node)(hardhat@3.1.7):
     dependencies:
       '@nomicfoundation/hardhat-zod-utils': 3.0.1(zod@4.3.6)
+      '@rocketh/node': link:rocketh/packages/rocketh-node
       commander: 14.0.3
       hardhat: 3.1.7
       named-logs: 0.4.1
