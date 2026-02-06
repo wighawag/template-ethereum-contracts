@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@rocketh/node": "^0.18.2",
     "ldenv": "^0.3.16",
     "set-defaults": "^0.0.5",
     "syncpack": "^13.0.4",
