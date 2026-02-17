@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "./IGreetingsRegistry.sol";
+import {IGreetingsRegistry} from "./IGreetingsRegistry.sol";
 
 /// @title Greetings Registry
 /// @notice let user set a greeting 1
