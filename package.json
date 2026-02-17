@@ -3,18 +3,15 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@rocketh/node": "^0.18.2",
+    "@rocketh/node": "^0.18.7",
     "ldenv": "^0.3.16",
     "set-defaults": "^0.0.5",
-    "syncpack": "^13.0.4",
     "zellij-launcher": "^0.0.1"
   },
   "scripts": {
     "prepare": "set-defaults .",
     "preinstall": "npx only-allow pnpm",
     "cleandep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
-    "---------------------- INSTALL ----------------------": "",
-    "sync-deps": "syncpack fix-mismatches",
     "---------------------- FORMAT ----------------------": "",
     "format": "pnpm -r format",
     "format:check": "pnpm -r format:check",
