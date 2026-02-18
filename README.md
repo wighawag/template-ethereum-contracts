@@ -9,9 +9,9 @@ A production-ready template for developing EVM smart contracts using [Hardhat v3
 While Hardhat's official [Ignition](https://hardhat.org/ignition) plugin offers a robust deployment system, it comes with a rigid DSL that limits flexibility. This template uses **hardhat-deploy + rocketh** which provides:
 
 - **Hot Contract Replacement (HCR)**: The equivalent of HMR (Hot Module Replacement) for smart contracts. Edit your contracts and see changes live while developing your app or game. This uses proxy patterns with a set of conventions to make it work seamlessly.
-- **Intuitive Deployment Scripts**: Write deployment logic in plain TypeScript without learning a new DSL.
+- **Intuitive Deployment Scripts**: Write deployment logic in plain TypeScript.
 - **Flexible Proxy Patterns**: Declarative proxy deployment with `deployViaProxy` for upgradeable contracts.
-- **Full Control**: Access to all deployment parameters and lifecycle hooks.
+- **Universal Deploy Scripts**: Thanks to rocketh, the deploy script can run in any environment, nide, browser, etc...
 
 ### Monorepo Structure
 
@@ -28,9 +28,6 @@ This template is organized as a monorepo, making it easy to:
 .
 ├── contracts/                    # Smart contracts package
 │   ├── src/                      # Solidity source files
-│   │   └── GreetingsRegistry/    # Contract organized by feature
-│   │       ├── GreetingsRegistry.sol    # Main contract
-│   │       └── GreetingsRegistry.t.sol  # Solidity tests (forge-style)
 │   ├── deploy/                   # Deployment scripts
 │   ├── deployments/              # Deployment artifacts per network
 │   ├── generated/                # Auto-generated artifacts and ABIs
@@ -40,7 +37,6 @@ This template is organized as a monorepo, making it easy to:
 │   │   └── environment.ts        # Environment setup for tests/scripts
 │   ├── scripts/                  # Utility scripts
 │   └── test/                     # TypeScript tests
-│       └── utils/                # Test utilities
 ├── package.json                  # Root monorepo configuration
 └── pnpm-workspace.yaml           # PNPM workspace definition
 ```
