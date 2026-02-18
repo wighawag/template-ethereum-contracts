@@ -1,15 +1,15 @@
-import { expect } from 'earl';
-import { describe, it } from 'node:test';
-import { network } from 'hardhat';
-import { setupFixtures } from './utils/index.js';
+import {expect} from 'earl';
+import {describe, it} from 'node:test';
+import {network} from 'hardhat';
+import {setupFixtures} from './utils/index.js';
 
-const { provider, networkHelpers } = await network.connect();
-const { deployAll } = setupFixtures(provider);
+const {provider, networkHelpers} = await network.connect();
+const {deployAll} = setupFixtures(provider);
 
 describe('GreetingsRegistry', function () {
 	describe('messages', function () {
 		it('should return empty string for accounts that have not set a message', async function () {
-			const { env, GreetingsRegistry, unnamedAccounts } =
+			const {env, GreetingsRegistry, unnamedAccounts} =
 				await networkHelpers.loadFixture(deployAll);
 			const user = unnamedAccounts[0];
 
@@ -24,7 +24,7 @@ describe('GreetingsRegistry', function () {
 
 	describe('setMessage', function () {
 		it('should store the message for the caller', async function () {
-			const { env, GreetingsRegistry, unnamedAccounts } =
+			const {env, GreetingsRegistry, unnamedAccounts} =
 				await networkHelpers.loadFixture(deployAll);
 			const prefix = '';
 			const greetingToSet = 'hello world';
@@ -46,7 +46,7 @@ describe('GreetingsRegistry', function () {
 		});
 
 		it('should allow different users to set different messages', async function () {
-			const { env, GreetingsRegistry, unnamedAccounts } =
+			const {env, GreetingsRegistry, unnamedAccounts} =
 				await networkHelpers.loadFixture(deployAll);
 			const prefix = '';
 			const user1 = unnamedAccounts[0];
@@ -80,7 +80,7 @@ describe('GreetingsRegistry', function () {
 		});
 
 		it('should allow updating an existing message', async function () {
-			const { env, GreetingsRegistry, unnamedAccounts } =
+			const {env, GreetingsRegistry, unnamedAccounts} =
 				await networkHelpers.loadFixture(deployAll);
 			const user = unnamedAccounts[0];
 			const prefix = '';
@@ -108,7 +108,7 @@ describe('GreetingsRegistry', function () {
 		});
 
 		it('should revert when setting an empty message', async function () {
-			const { env, GreetingsRegistry, unnamedAccounts } =
+			const {env, GreetingsRegistry, unnamedAccounts} =
 				await networkHelpers.loadFixture(deployAll);
 			const user = unnamedAccounts[0];
 

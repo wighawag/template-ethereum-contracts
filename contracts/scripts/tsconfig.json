@@ -4,10 +4,6 @@
 		"noEmit": true,
 		"rootDir": ".."
 	},
-	"include": [
-		"**/*",
-		"../generated/**/*",
-		"../rocketh/**/*"
-	],
+	"include": ["**/*", "../generated/**/*", "../rocketh/**/*"],
 	"exclude": []
 }
