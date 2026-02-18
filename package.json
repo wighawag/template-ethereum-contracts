@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@rocketh/node": "^0.18.7",
+    "@rocketh/node": "^0.19.1",
     "ldenv": "^0.3.16",
     "set-defaults": "^0.0.5",
     "zellij-launcher": "^0.0.1"
