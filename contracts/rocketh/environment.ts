@@ -13,15 +13,16 @@ import * as artifacts from '../generated/artifacts/index.js';
 export {artifacts};
 
 // useful for test and scripts, uses file-system
-const {loadAndExecuteDeploymentsFromFiles} = setupEnvironmentFromFiles<
-	Extensions,
-	Accounts,
-	Data
->(extensions);
+const {loadAndExecuteDeploymentsFromFiles, loadEnvironmentFromFiles} =
+	setupEnvironmentFromFiles<Extensions, Accounts, Data>(extensions);
 const {loadEnvironmentFromHardhat} = setupHardhatDeploy<
 	Extensions,
 	Accounts,
 	Data
 >(extensions);
 
-export {loadEnvironmentFromHardhat, loadAndExecuteDeploymentsFromFiles};
+export {
+	loadEnvironmentFromHardhat,
+	loadEnvironmentFromFiles,
+	loadAndExecuteDeploymentsFromFiles,
+};
