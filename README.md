@@ -94,7 +94,7 @@ Start a local Ethereum node:
 > async: `run this in a separate terminal`
 
 ```bash
-pnpm contracts:local_node
+pnpm contracts:node:local
 ```
 
 Deploy to localhost:
