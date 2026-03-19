@@ -27,7 +27,9 @@ contract GreetingsRegistryTest is Test {
     // ==================== getLastMessages Tests ====================
 
     function test_getLastMessages_emptyRegistry() public view {
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
         assertEq(messages.length, 0);
     }
 
@@ -35,7 +37,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(alice);
         registry.setMessage("hello from alice");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
         assertEq(messages.length, 1);
         assertEq(messages[0].account, alice);
         assertEq(messages[0].message, "hello from alice");
@@ -51,7 +55,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(charlie);
         registry.setMessage("hello from charlie");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
         assertEq(messages.length, 3);
         // Messages should be in reverse order (most recent first)
         assertEq(messages[0].account, charlie);
@@ -72,7 +78,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(charlie);
         registry.setMessage("hello from charlie");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(2);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            2
+        );
         // The limit should cap the number of returned messages
         assertEq(messages.length, 2);
         // Should return the 2 most recent messages
@@ -110,7 +118,9 @@ contract GreetingsRegistryTest is Test {
         registry.setMessage("third message");
 
         // The linked list should only have one entry for alice
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
 
         // Count messages from alice
         uint256 aliceCount = 0;
@@ -150,7 +160,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(charlie);
         registry.setMessage("charlie msg 1");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
 
         // Should have 3 unique messages (one per account)
         assertEq(messages.length, 3);
@@ -198,7 +210,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(alice);
         registry.setMessage("alice third");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
 
         // Should have exactly 3 messages (one per account)
         assertEq(messages.length, 3);
@@ -231,7 +245,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(alice);
         registry.setMessage("alice updated");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
 
         // Alice should now be at the front of the list
         assertEq(messages[0].account, alice);
@@ -245,7 +261,9 @@ contract GreetingsRegistryTest is Test {
         vm.prank(alice);
         registry.setMessage("message at 1000");
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
         assertEq(messages[0].timestamp, timestamp1);
 
         uint256 timestamp2 = 2000;
@@ -261,10 +279,14 @@ contract GreetingsRegistryTest is Test {
         // Test many sequential updates from same account
         for (uint256 i = 0; i < 10; i++) {
             vm.prank(alice);
-            registry.setMessage(string(abi.encodePacked("message ", vm.toString(i))));
+            registry.setMessage(
+                string(abi.encodePacked("message ", vm.toString(i)))
+            );
         }
 
-        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(20);
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            20
+        );
 
         // Should only have 1 message in the list
         assertEq(messages.length, 1);
@@ -281,7 +303,8 @@ contract GreetingsRegistryTest is Test {
         string memory message = prefixedRegistry.messages(alice);
         assertEq(message, "PREFIX: hello");
 
-        GreetingsRegistry.Message[] memory messages = prefixedRegistry.getLastMessages(10);
+        GreetingsRegistry.Message[] memory messages = prefixedRegistry
+            .getLastMessages(10);
         assertEq(messages[0].message, "PREFIX: hello");
     }
 }
