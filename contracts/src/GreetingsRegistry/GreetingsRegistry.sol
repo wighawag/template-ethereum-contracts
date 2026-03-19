@@ -23,9 +23,9 @@ contract GreetingsRegistry is IGreetingsRegistry {
         string message;
         uint256 timestamp;
     }
-    mapping(address => uint256) _accountToMessage;
-    mapping(uint256 => MessagePointer) _messages;
-    uint256 _lastMessage;
+    mapping(address => uint256) internal _accountToMessage;
+    mapping(uint256 => MessagePointer) internal _messages;
+    uint256 internal _lastMessage;
 
     constructor(string memory prefix) {
         _prefix = prefix;

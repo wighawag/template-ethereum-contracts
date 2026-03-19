@@ -26,4 +26,5 @@ export default {
 		'sort-members': 'off',
 		'sort-modifiers': 'error',
 	},
+	ignores: ['src/**/*.t.sol'],
 };
