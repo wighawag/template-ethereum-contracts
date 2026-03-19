@@ -17,11 +17,60 @@ contract GreetingsRegistry is IGreetingsRegistry {
 
     string internal _prefix;
 
-    /// @notice the greeting for each account
-    mapping(address => string) public messages;
+    struct MessagePointer {
+        uint256 previous;
+        address account;
+        string message;
+        uint256 timestamp;
+    }
+    mapping(address => uint256) _accountToMessage;
+    mapping(uint256 => MessagePointer) _messages;
+    uint256 _lastMessage;
 
     constructor(string memory prefix) {
         _prefix = prefix;
+    }
+
+    struct Message {
+        address account;
+        string message;
+        uint256 timestamp;
+    }
+
+    /// @notice the greeting for each account
+    function messages(address account) external view returns (string memory) {
+        return _messages[_accountToMessage[account]].message;
+    }
+
+    function getLastMessages(
+        uint256 limit
+    ) external view returns (Message[] memory messagesToReturn) {
+        uint256 currentMessageId = _lastMessage;
+        if (currentMessageId != 0 && limit > 0) {
+            Message[] memory tmpMessages = new Message[](limit);
+            uint256 numMessages = 0;
+            while (currentMessageId != 0) {
+                MessagePointer memory message = _messages[currentMessageId];
+                if (message.account == address(0)) {
+                    currentMessageId = 0;
+                    break;
+                }
+                tmpMessages[numMessages] = Message({
+                    account: message.account,
+                    message: message.message,
+                    timestamp: message.timestamp
+                });
+                numMessages++;
+                if (numMessages == limit) {
+                    break;
+                }
+                currentMessageId = message.previous;
+            }
+            messagesToReturn = new Message[](numMessages);
+            for (uint256 i = 0; i < numMessages; i++) {
+                messagesToReturn[i] = tmpMessages[i];
+            }
+        }
     }
 
     /// @notice called to set your own greeting
@@ -33,7 +82,31 @@ contract GreetingsRegistry is IGreetingsRegistry {
         string memory actualMessage = string(
             abi.encodePacked(_prefix, message)
         );
-        messages[msg.sender] = actualMessage;
+
+        uint256 messageId = _lastMessage + 1;
+
+        uint256 previousMessageFromAccount = _accountToMessage[msg.sender];
+        if (previousMessageFromAccount != 0) {
+            // if the account already had a message
+            // get its prior
+            uint256 prior = _messages[previousMessageFromAccount].previous;
+            if (prior != 0) {
+                // shift the prior
+                _messages[previousMessageFromAccount] = _messages[prior];
+                delete _messages[prior];
+            } else {
+                delete _messages[previousMessageFromAccount];
+            }
+        }
+
+        _messages[messageId] = MessagePointer({
+            previous: _lastMessage,
+            account: msg.sender,
+            message: actualMessage,
+            timestamp: block.timestamp
+        });
+        _accountToMessage[msg.sender] = messageId;
+        _lastMessage = messageId;
         emit MessageChanged(msg.sender, actualMessage);
     }
 }
