@@ -91,8 +91,10 @@ contract GreetingsRegistry is IGreetingsRegistry {
             // get its prior
             uint256 prior = _messages[previousMessageFromAccount].previous;
             if (prior != 0) {
-                // shift the prior
+                // shift the prior message to the slot being vacated
+                address priorAccount = _messages[prior].account;
                 _messages[previousMessageFromAccount] = _messages[prior];
+                _accountToMessage[priorAccount] = previousMessageFromAccount;
                 delete _messages[prior];
             } else {
                 delete _messages[previousMessageFromAccount];

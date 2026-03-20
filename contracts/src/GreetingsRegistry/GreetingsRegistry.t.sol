@@ -294,6 +294,68 @@ contract GreetingsRegistryTest is Test {
         assertEq(messages[0].message, "message 9");
     }
 
+    /// @notice Test for the bug where shifting a message during update
+    /// would leave orphaned entries causing duplicate accounts in getLastMessages.
+    /// Scenario:
+    /// 1. A sets message 1 (slot 1)
+    /// 2. B sets message 2 (slot 2, prev: 1)
+    /// 3. C sets message 3 (slot 3, prev: 2)
+    /// 4. B sets message 4 - this shifts A's message from slot 1 to slot 2
+    ///    BUG: _accountToMessage[A] was not updated, still points to deleted slot 1
+    /// 5. A sets message 5 - since _accountToMessage[A] = 1 (deleted), A's message
+    ///    at slot 2 is NOT removed, causing A to appear twice
+    function test_shiftedMessageAccountMappingUpdated() public {
+        // Step 1: A sets message
+        vm.prank(alice);
+        registry.setMessage("alice first");
+
+        // Step 2: B sets message
+        vm.prank(bob);
+        registry.setMessage("bob first");
+
+        // Step 3: C sets message
+        vm.prank(charlie);
+        registry.setMessage("charlie first");
+
+        // Step 4: B updates - this should shift alice's message
+        vm.prank(bob);
+        registry.setMessage("bob second");
+
+        // Step 5: A updates - this MUST remove A's shifted message
+        vm.prank(alice);
+        registry.setMessage("alice second");
+
+        // Verify: each account should appear exactly once
+        GreetingsRegistry.Message[] memory messages = registry.getLastMessages(
+            10
+        );
+
+        uint256 aliceCount = 0;
+        uint256 bobCount = 0;
+        uint256 charlieCount = 0;
+
+        for (uint256 i = 0; i < messages.length; i++) {
+            if (messages[i].account == alice) {
+                aliceCount++;
+                // Should be the latest message
+                assertEq(messages[i].message, "alice second");
+            } else if (messages[i].account == bob) {
+                bobCount++;
+                assertEq(messages[i].message, "bob second");
+            } else if (messages[i].account == charlie) {
+                charlieCount++;
+                assertEq(messages[i].message, "charlie first");
+            }
+        }
+
+        // CRITICAL: Each account must appear exactly once
+        // Before the fix, alice would appear twice
+        assertEq(aliceCount, 1, "Alice should appear exactly once");
+        assertEq(bobCount, 1, "Bob should appear exactly once");
+        assertEq(charlieCount, 1, "Charlie should appear exactly once");
+        assertEq(messages.length, 3, "Should have exactly 3 messages");
+    }
+
     function test_prefixIsApplied() public {
         GreetingsRegistry prefixedRegistry = new GreetingsRegistry("PREFIX: ");
 
