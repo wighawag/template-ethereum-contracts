@@ -101,7 +101,7 @@ contract GreetingsRegistry is IGreetingsRegistry, Proxied {
             // get its prior
             uint256 prior = _messages[previousMessageFromAccount].previous;
             if (prior != 0) {
-                // shift the prior message to the slot being vacated
+                // Move prior message's data into the vacated slot and update its mapping
                 address priorAccount = _messages[prior].account;
                 _messages[previousMessageFromAccount] = _messages[prior];
                 _accountToMessage[priorAccount] = previousMessageFromAccount;

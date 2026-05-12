@@ -8,9 +8,9 @@ contract GreetingsRegistryTest is Test {
     uint256 internal testNumber;
     GreetingsRegistry internal registry;
 
-    address alice = address(0x1);
-    address bob = address(0x2);
-    address charlie = address(0x3);
+    address internal alice = address(0x1);
+    address internal bob = address(0x2);
+    address internal charlie = address(0x3);
 
     function setUp() public {
         registry = new GreetingsRegistry("");
