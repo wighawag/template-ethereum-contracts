@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Test} from "forge-std/Test.sol";
-import {GreetingsRegistry} from "./GreetingsRegistry.sol";
+import {GreetingsRegistry} from "src/GreetingsRegistry/GreetingsRegistry.sol";
 
 contract GreetingsRegistryTest is Test {
     uint256 internal testNumber;
@@ -368,5 +368,51 @@ contract GreetingsRegistryTest is Test {
         GreetingsRegistry.Message[] memory messages = prefixedRegistry
             .getLastMessages(10);
         assertEq(messages[0].message, "PREFIX: hello");
+    }
+
+    // ==================== Storage layout ====================
+
+    /// @notice This contract's state must stay in the slots it already occupies.
+    ///
+    /// It is live behind an ERC-1967 proxy, so the storage belongs to the proxy
+    /// and outlives any implementation deployed against it. A slot shift would
+    /// not lose the greetings, it would reinterpret them: whatever sat at a slot
+    /// before is read back as whatever the new layout says lives there.
+    ///
+    /// Nothing in the source shows that happening. Declaring a state variable
+    /// above the existing ones, reordering them, or inheriting a base contract
+    /// that declares state of its own all move the whole layout down while every
+    /// line that reads it still compiles and still looks right. Hence this.
+    function test_storageLayoutIsWhatTheProxyExpects() public {
+        GreetingsRegistry prefixed = new GreetingsRegistry("PREFIX: ");
+
+        // A short string lives inline in its slot: the bytes left-aligned, and
+        // twice the length in the lowest byte. `_prefix` is declared first, so
+        // this is slot 0 or the layout has moved.
+        bytes32 slot0 = vm.load(address(prefixed), bytes32(0));
+        assertEq(bytes8(slot0), bytes8(bytes("PREFIX: ")));
+        assertEq(uint8(uint256(slot0)), 16);
+
+        vm.prank(alice);
+        prefixed.setMessage("hello");
+
+        // `_accountToMessage` is declared next, so alice's entry is at the slot
+        // a mapping at index 1 puts it, and holds the id of her only message.
+        assertEq(
+            uint256(
+                vm.load(
+                    address(prefixed),
+                    keccak256(abi.encode(alice, uint256(1)))
+                )
+            ),
+            1
+        );
+
+        // `_messages` takes index 2, and `_lastMessage` is the plain word after
+        // it, now holding that same id.
+        assertEq(uint256(vm.load(address(prefixed), bytes32(uint256(3)))), 1);
+
+        // Writing a greeting left the prefix where it was.
+        assertEq(vm.load(address(prefixed), bytes32(0)), slot0);
     }
 }

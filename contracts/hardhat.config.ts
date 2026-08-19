@@ -79,7 +79,15 @@ const config: HardhatUserConfig = {
 			),
 		),
 	paths: {
+		// `src` is production code only. Tests live under `test`, split by the
+		// language they are written in: Solidity tests exercise a contract from
+		// inside the EVM (cheatcodes, storage slots, fuzzing), TypeScript ones
+		// exercise it the way the app does, across the ABI boundary.
 		sources: ['src'],
+		tests: {
+			solidity: 'test/solidity',
+			nodejs: 'test/js',
+		},
 	},
 	generateTypedArtifacts: {
 		destinations: [

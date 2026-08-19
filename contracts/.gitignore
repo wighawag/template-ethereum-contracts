@@ -4,6 +4,7 @@
 
 # rocketh
 generated
+/exports
 deployments/localhost
 deployments/hardhat*
 deployments/lan
@@ -20,3 +21,5 @@ artifacts
 docs
 
 dist/
+
+purgatory.db

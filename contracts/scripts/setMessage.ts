@@ -3,6 +3,10 @@ import {Abi_GreetingsRegistry} from '../generated/abis/GreetingsRegistry.js';
 import {loadEnvironmentFromHardhat} from '../rocketh/environment.js';
 
 async function main(args: string[]) {
+	const message = args[0];
+
+	console.log({message});
+
 	const env = await loadEnvironmentFromHardhat({hre});
 	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
@@ -16,8 +20,8 @@ async function main(args: string[]) {
 	const tx = await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
 		functionName: 'setMessage',
-		args: [args[0] || ''],
-		gas: 100000n,
+		args: [message || ''],
+		gas: 1000000n,
 	});
 
 	console.log(`tx: ${tx.transactionHash}`);

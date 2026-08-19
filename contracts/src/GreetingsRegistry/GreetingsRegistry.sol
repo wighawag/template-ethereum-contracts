@@ -6,6 +6,13 @@ import {Proxied} from "@rocketh/proxy/solc_0_8/ERC1967/Proxied.sol";
 
 /// @title Greetings Registry
 /// @notice let user set a greeting
+///
+/// A greeting belongs to the account that sent it: every write reads
+/// `msg.sender` and files the greeting under it, so the sender and the greeter
+/// are always the same address.
+///
+/// The registry keeps one greeting per account, and threads them into a list so
+/// the most recent ones can be read back in order without an indexer.
 contract GreetingsRegistry is IGreetingsRegistry, Proxied {
     /// @notice emitted whenever a user updates their greeting
     /// @param user the account whose greeting was updated
@@ -86,6 +93,10 @@ contract GreetingsRegistry is IGreetingsRegistry, Proxied {
     /// @notice called to set your own greeting
     /// @param message the new greeting
     function setMessage(string calldata message) external {
+        _setMessage(msg.sender, message);
+    }
+
+    function _setMessage(address user, string calldata message) internal {
         if (bytes(message).length == 0) {
             revert InvalidMessage(message);
         }
@@ -95,7 +106,7 @@ contract GreetingsRegistry is IGreetingsRegistry, Proxied {
 
         uint256 messageId = _lastMessage + 1;
 
-        uint256 previousMessageFromAccount = _accountToMessage[msg.sender];
+        uint256 previousMessageFromAccount = _accountToMessage[user];
         if (previousMessageFromAccount != 0) {
             // if the account already had a message
             // get its prior
@@ -113,12 +124,12 @@ contract GreetingsRegistry is IGreetingsRegistry, Proxied {
 
         _messages[messageId] = MessagePointer({
             previous: _lastMessage,
-            account: msg.sender,
+            account: user,
             message: actualMessage,
             timestamp: block.timestamp
         });
-        _accountToMessage[msg.sender] = messageId;
+        _accountToMessage[user] = messageId;
         _lastMessage = messageId;
-        emit MessageChanged(msg.sender, actualMessage);
+        emit MessageChanged(user, actualMessage);
     }
 }
