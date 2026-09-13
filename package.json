@@ -2,6 +2,7 @@
   "name": "template-ethereum-contracts-monorepo",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.28.1",
   "devDependencies": {
     "ldenv": "^0.6.0",
     "set-defaults": "^0.0.5",
