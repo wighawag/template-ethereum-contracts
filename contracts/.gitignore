@@ -3,6 +3,7 @@
 *.local
 
 # rocketh
+fork-batch.json
 generated
 /exports
 deployments/localhost

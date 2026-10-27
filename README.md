@@ -140,6 +140,52 @@ pnpm contracts:fork:execute <network> scripts/setMessage.ts "Hello world"
 pnpm contracts:verify <network>
 ```
 
+### Rehearse a Safe-owned upgrade on a fork
+
+This branch makes a Safe the owner of the `GreetingsRegistry` proxy on Sepolia (`admin` in `contracts/rocketh/config.ts`). Deploying is unchanged, since the deployer creates the proxy. Upgrading is not: the upgrade call has to come from the Safe, and rocketh holds no key for it. A fork rehearsal runs that upgrade against a copy of Sepolia, impersonating the Safe, so you see the whole upgrade succeed and get the exact transactions the Safe will have to send.
+
+The Safe configured here is an existing Sepolia Safe that is not ours, which is enough to rehearse. A proxy deployed for real with it as owner can never be upgraded for real: put your own Safe in `SEPOLIA_SAFE` before going further than a rehearsal.
+
+You need [anvil](https://getfoundry.sh/) and `ETH_NODE_URI_sepolia` in `contracts/.env.local` (a plain URL: `fork:node` hands it to anvil, so the `SECRET` form does not work there).
+
+1. Deploy for real, with the Safe as owner. `--reset` starts Sepolia's records afresh, because the proxy recorded on `main` has another owner and rocketh refuses to change an owner itself:
+
+   ```bash skip
+   pnpm contracts:deploy sepolia --reset
+   ```
+
+2. Change the contract. Here, set `prefix` in `contracts/deploy/001_deploy_greetings_registry.ts` to something new (`'v2: '`): the implementation changes, so the proxy needs an upgrade, which only the Safe can do.
+
+3. Start a fork of Sepolia, in its own terminal. It listens on `http://127.0.0.1:8545`:
+
+   ```bash skip
+   pnpm contracts:fork:node sepolia
+   ```
+
+4. Give the Safe some ETH on the fork. On a fork the impersonated Safe sends the upgrade itself, so it pays the gas; for real, whoever submits the Safe transaction does. Most Safes hold no ETH:
+
+   ```bash skip
+   cast rpc anvil_setBalance 0x04b9DaEE7F474C02953Fa442Aa754B0e6faCD672 0xDE0B6B3A7640000 --rpc-url http://127.0.0.1:8545
+   ```
+
+5. Rehearse:
+
+   ```bash skip
+   pnpm contracts:fork:rehearse sepolia
+   ```
+
+   The run reads `deployments/sepolia`, writes nothing back, deploys the new implementation from anvil's first account, and executes the upgrade as the Safe. Every transaction it sent is written, in order, to `contracts/fork-batch.json`. The ones marked `"signability": "impersonated"` are what the Safe has to execute for real.
+
+   Restart anvil (step 3) before rehearsing again: once anvil has impersonated an address it lists it as one of its own accounts, and a second run on the same node then labels the Safe's transactions `"node"` instead of `"impersonated"`.
+
+6. Upgrade for real. The run deploys the new implementation, then stops at the upgrade and prints the Safe transaction (`to` and `data`). Execute it from the Safe (in the Safe app, with the Transaction Builder), paste its hash when asked, and the run continues:
+
+   ```bash skip
+   pnpm contracts:deploy sepolia
+   ```
+
+7. Run it once more. There is nothing left to do, so it sends nothing.
+
 ## Zellij Development Environment
 
 [Zellij](https://zellij.dev/) is a terminal multiplexer (like tmux) with a preconfigured layout for this template.

@@ -62,6 +62,8 @@
 		"compile:watch": "as-soon -w src pnpm compile",
 		"fork:execute": "ldenv tsx @=HARDHAT_FORK=@@MODE @@",
 		"fork:deploy": "ldenv pnpm @=HARDHAT_FORK=@@MODE hardhat --network fork deploy --report-gas-used @@",
+		"fork:node": "ldenv anvil --fork-url @@ETH_NODE_URI_:MODE @=FORK_NETWORK=@@MODE @@",
+		"fork:rehearse": "hardhat compile --quiet && ldenv rocketh --write-transactions fork-batch.json -e @@MODE --is-fork @@",
 		"deploy:dev": "ldenv -d localhost pnpm :deploy:dev+export @@",
 		"deploy:watch": "wait-on ./generated && ldenv -m localhost pnpm as-soon -w generated -w deploy pnpm run deploy:dev @@MODE @@",
 		"test": "hardhat test",

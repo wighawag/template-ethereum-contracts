@@ -19,6 +19,8 @@
     "contracts:node:local": "ldenv pnpm run --filter ./contracts node:local",
     "contracts:deploy": "ldenv pnpm run --filter ./contracts deploy @@MODE @@",
     "contracts:fork:deploy": "ldenv pnpm run --filter ./contracts fork:deploy @@MODE @@",
+    "contracts:fork:node": "ldenv pnpm run --filter ./contracts fork:node @@MODE @@",
+    "contracts:fork:rehearse": "ldenv pnpm run --filter ./contracts fork:rehearse @@MODE @@",
     "contracts:test": "ldenv pnpm run --filter ./contracts test",
     "contracts:lint": "pnpm --filter ./contracts lint",
     "contracts:execute": "ldenv pnpm run --filter ./contracts execute @@MODE @@",
