@@ -45,6 +45,10 @@ import * as readExecuteExtension from '@rocketh/read-execute';
 import * as deployProxyExtension from '@rocketh/proxy';
 // this one provide a viem handle to clients and contracts
 import * as viemExtension from '@rocketh/viem';
+// this one provide catchUnknownSigner: wrap a call whose `from` rocketh cannot sign for
+//  (a Safe or multisig that owns your contracts) and get the transaction back to execute
+//  on it, instead of the run stopping there. See https://rocketh.dev/documentation/unknown-signers/
+import * as unknownSignerExtension from '@rocketh/unknown-signer';
 
 // and export them as a unified object
 const extensions = {
@@ -52,6 +56,7 @@ const extensions = {
 	...readExecuteExtension,
 	...deployProxyExtension,
 	...viemExtension,
+	...unknownSignerExtension,
 };
 export {extensions};
 

@@ -56,6 +56,9 @@ importers:
       '@rocketh/signer':
         specifier: ^0.20.2
         version: 0.20.2(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/unknown-signer':
+        specifier: ^0.19.14
+        version: 0.19.14(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/verifier':
         specifier: ^0.19.31
         version: 0.19.31(@rocketh/node@0.22.2(rocketh@0.25.1(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
@@ -743,6 +746,9 @@ packages:
 
   '@rocketh/signer@0.20.2':
     resolution: {integrity: sha512-7QPSO6S9lOQMr2wME0Ay9k/GcZ1gcsrGRHSgeh7F/wTW3JUXijw9QJ+8BdNIoSVcZTdDyyC8bmNfT8ukQPs3Hw==}
+
+  '@rocketh/unknown-signer@0.19.14':
+    resolution: {integrity: sha512-jXRHKUJzoXwdHgCQZd4YURSIicDOOh5GzvgBEYvj9SmbhOY4kiRqT9oDlZE+5F2B7ZpkCFmjggFdTvjV1VP93w==}
 
   '@rocketh/verifier@0.19.31':
     resolution: {integrity: sha512-K2FuTmNkfIg8Ur3WPXAc7R6dm7dbwu7mcx+iuOJfe7UteRxi8nKwr931+l0zhiE22OVwu6sGv4BR5dCq87W5OA==}
@@ -2078,6 +2084,15 @@ snapshots:
       '@eip-1193/signer': 0.4.1(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/core': 0.25.1(typescript@6.0.3)(zod@3.25.76)
       eip-1193: 0.7.4
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
+
+  '@rocketh/unknown-signer@0.19.14(typescript@6.0.3)(zod@3.25.76)':
+    dependencies:
+      '@rocketh/core': 0.25.1(typescript@6.0.3)(zod@3.25.76)
     transitivePeerDependencies:
       - bufferutil
       - typescript

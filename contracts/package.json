@@ -28,6 +28,7 @@
 		"@rocketh/read-execute": "^0.22.2",
 		"@rocketh/router": "^0.20.3",
 		"@rocketh/signer": "^0.20.2",
+		"@rocketh/unknown-signer": "^0.19.14",
 		"@rocketh/verifier": "^0.19.31",
 		"@rocketh/viem": "^0.20.2",
 		"@types/node": "^26.6.5",
