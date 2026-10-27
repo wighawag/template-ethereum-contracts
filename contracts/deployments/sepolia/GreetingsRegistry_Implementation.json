@@ -1,5 +1,5 @@
 {
-  "address": "0xf6241602d17D28A395A98533D51fC3685205B2c1",
+  "address": "0x9b3de05d8091d678411E6dee4a36777F72c938C1",
   "abi": [
     {
       "inputs": [
@@ -312,15 +312,16 @@
     "notice": "let user set a greeting A greeting belongs to the account that sent it: every write reads `msg.sender` and files the greeting under it, so the sender and the greeter are always the same address. The registry keeps one greeting per account, and threads them into a list so the most recent ones can be read back in order without an indexer.",
     "version": 1
   },
-  "argsData": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000",
+  "argsData": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000476323a2000000000000000000000000000000000000000000000000000000000",
   "transaction": {
-    "hash": "0xc48a035fd7b9fb9c38485ca62e95f3132a17a184afead711e2aaada2be2c91e7",
-    "nonce": "0x349",
+    "hash": "0x7fa46b86a8a0579b17ccd2c9fadaa9dd226c3df418a994a8a1c8b8956ad9346b",
+    "nonce": "0x34b",
     "origin": "0x61c461ecc993aadeb7e4b47e96d1b8cc37314b20"
   },
   "receipt": {
-    "blockHash": "0x1329091964136903c60ff74f82f8395b5a533cfddc9709c4dc8cc50f29537511",
-    "blockNumber": "0xb72a95",
-    "transactionIndex": "0x7"
-  }
+    "blockHash": "0x3c13adab36665ce6b8ee7a049e871c05e7e7cc4a262e60faa2140f8a027ebafc",
+    "blockNumber": "0xb72af0",
+    "transactionIndex": "0x28"
+  },
+  "numDeployments": 2
 }
