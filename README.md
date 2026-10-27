@@ -144,11 +144,11 @@ pnpm contracts:verify <network>
 
 This branch makes a Safe the owner of the `GreetingsRegistry` proxy on Sepolia (`admin` in `contracts/rocketh/config.ts`). Deploying is unchanged, since the deployer creates the proxy. Upgrading is not: the upgrade call has to come from the Safe, and rocketh holds no key for it. A fork rehearsal runs that upgrade against a copy of Sepolia, impersonating the Safe, so you see the whole upgrade succeed and get the exact transactions the Safe will have to send.
 
-The Safe configured here is an existing Sepolia Safe that is not ours, which is enough to rehearse. A proxy deployed for real with it as owner can never be upgraded for real: put your own Safe in `SEPOLIA_SAFE` before going further than a rehearsal.
+The Safe is created by the deploy scripts themselves (`contracts/deploy/000_deploy_safe.ts`), through Safe's own factory (v1.4.1), so it is a regular Safe that the Safe app shows to its owner. Its owner is account 1 of the project mnemonic, with a threshold of 1, and both are set in `contracts/rocketh/safe.ts`. Its address follows from those parameters, which is how `contracts/rocketh/config.ts` can name it as `admin` before it exists. Change the owners there (before the first deployment) to use your own keys.
 
 You need [anvil](https://getfoundry.sh/) and `ETH_NODE_URI_sepolia` in `contracts/.env.local` (a plain URL: `fork:node` hands it to anvil, so the `SECRET` form does not work there).
 
-1. Deploy for real, with the Safe as owner. `--reset` starts Sepolia's records afresh, because the proxy recorded on `main` has another owner and rocketh refuses to change an owner itself:
+1. Deploy for real. This creates the Safe, then a new `GreetingsRegistry` proxy owned by it. `--reset` starts Sepolia's records afresh on this branch (`main` keeps its own), because the proxy recorded there has another owner and rocketh refuses to change an owner itself. The deployer (account 0) pays for both, so it needs some Sepolia ETH:
 
    ```bash skip
    pnpm contracts:deploy sepolia --reset
@@ -172,7 +172,7 @@ You need [anvil](https://getfoundry.sh/) and `ETH_NODE_URI_sepolia` in `contract
 
    The Safe holds no ETH, and on a fork it is the Safe that sends (and so pays for) its calls. `whenForked: {fundImpersonatedAccounts: true}` in `contracts/rocketh/config.ts` has rocketh lend it the ETH for each transaction and take it back once mined, so its balance ends where it would have been. You can rehearse again on the same anvil node: the upgrade is then already done on the fork, so restart anvil to rehearse it from scratch.
 
-5. Upgrade for real. The run deploys the new implementation, then stops at the upgrade and prints the Safe transaction (`to` and `data`). Execute it from the Safe (in the Safe app, with the Transaction Builder), paste its hash when asked, and the run continues:
+5. Upgrade for real. The run deploys the new implementation, then stops at the upgrade and prints the Safe transaction (`to` and `data`). Open the Safe in the Safe app with account 1 of the mnemonic (its owner), execute that transaction with the Transaction Builder, paste its hash when asked, and the run continues:
 
    ```bash skip
    pnpm contracts:deploy sepolia

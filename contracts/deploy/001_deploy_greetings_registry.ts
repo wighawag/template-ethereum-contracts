@@ -37,5 +37,9 @@ export default deployScript(
 	},
 	// Tags allow selective deployment (e.g., --tags GreetingsRegistry)
 	// Dependencies can be specified with: dependencies: ['OtherContract']
-	{tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy']},
+	// on a network with a Safe, `admin` IS that Safe, so it has to exist first
+	{
+		tags: ['GreetingsRegistry', 'GreetingsRegistry_deploy'],
+		dependencies: ['Safe'],
+	},
 );
