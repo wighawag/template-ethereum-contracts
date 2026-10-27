@@ -41,6 +41,12 @@ export const config = {
 		//  but a hardhat fork (`HARDHAT_FORK=sepolia`) reports 31337 and needs this line.
 		sepolia: {
 			chain: 11155111,
+			whenForked: {
+				// On a fork the impersonated Safe sends its own calls, so it would pay their gas,
+				//  which it never does for real and usually cannot (a Safe holds no ETH). rocketh
+				//  lends it the ETH for each transaction and takes it back once mined.
+				fundImpersonatedAccounts: true,
+			},
 		},
 	},
 	data: {},

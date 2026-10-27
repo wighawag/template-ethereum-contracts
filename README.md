@@ -162,13 +162,7 @@ You need [anvil](https://getfoundry.sh/) and `ETH_NODE_URI_sepolia` in `contract
    pnpm contracts:fork:node sepolia
    ```
 
-4. Give the Safe some ETH on the fork. On a fork the impersonated Safe sends the upgrade itself, so it pays the gas; for real, whoever submits the Safe transaction does. Most Safes hold no ETH:
-
-   ```bash skip
-   cast rpc anvil_setBalance 0x04b9DaEE7F474C02953Fa442Aa754B0e6faCD672 0xDE0B6B3A7640000 --rpc-url http://127.0.0.1:8545
-   ```
-
-5. Rehearse:
+4. Rehearse:
 
    ```bash skip
    pnpm contracts:fork:rehearse sepolia
@@ -176,15 +170,15 @@ You need [anvil](https://getfoundry.sh/) and `ETH_NODE_URI_sepolia` in `contract
 
    The run reads `deployments/sepolia`, writes nothing back, deploys the new implementation from anvil's first account, and executes the upgrade as the Safe. Every transaction it sent is written, in order, to `contracts/fork-batch.json`. The ones marked `"signability": "impersonated"` are what the Safe has to execute for real.
 
-   Restart anvil (step 3) before rehearsing again: once anvil has impersonated an address it lists it as one of its own accounts, and a second run on the same node then labels the Safe's transactions `"node"` instead of `"impersonated"`.
+   The Safe holds no ETH, and on a fork it is the Safe that sends (and so pays for) its calls. `whenForked: {fundImpersonatedAccounts: true}` in `contracts/rocketh/config.ts` has rocketh lend it the ETH for each transaction and take it back once mined, so its balance ends where it would have been. You can rehearse again on the same anvil node: the upgrade is then already done on the fork, so restart anvil to rehearse it from scratch.
 
-6. Upgrade for real. The run deploys the new implementation, then stops at the upgrade and prints the Safe transaction (`to` and `data`). Execute it from the Safe (in the Safe app, with the Transaction Builder), paste its hash when asked, and the run continues:
+5. Upgrade for real. The run deploys the new implementation, then stops at the upgrade and prints the Safe transaction (`to` and `data`). Execute it from the Safe (in the Safe app, with the Transaction Builder), paste its hash when asked, and the run continues:
 
    ```bash skip
    pnpm contracts:deploy sepolia
    ```
 
-7. Run it once more. There is nothing left to do, so it sends nothing.
+6. Run it once more. There is nothing left to do, so it sends nothing.
 
 ## Zellij Development Environment
 
