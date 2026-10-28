@@ -142,6 +142,27 @@ pnpm contracts:fork:execute <network> scripts/setMessage.ts "Hello world"
 pnpm contracts:verify <network>
 ```
 
+### Example: a proxied contract with no constructor, only an initializer
+
+This branch shows `deployViaProxy` with a contract that has no constructor at all. On `main`, `GreetingsRegistry` takes its prefix both in a constructor (for a plain deployment) and in an `init` function (for the proxy). Here the constructor is gone and the prefix is set by `initialize(string prefix)` (in `contracts/src/GreetingsRegistry/GreetingsRegistry.sol`), guarded by `asProxyInitialiser` from `@rocketh/proxy`, so it can only run through a proxy, once, and after that only from the proxy admin.
+
+The deploy script (`contracts/deploy/001_deploy_greetings_registry.ts`) deploys the implementation without `args` and tells the proxy which function to call, and with what, through `execute`:
+
+```typescript skip
+execute: {
+	methodName: 'initialize',
+	args: [prefix],
+},
+```
+
+The proxy calls it in the transaction that deploys it, so the contract is never left uninitialised. Since the implementation takes no constructor arguments, its bytecode and its deterministic address do not depend on the prefix. The Solidity tests deploy the contract behind a minimal ERC-1967 proxy (`TestProxy` in `contracts/test/solidity/GreetingsRegistry/GreetingsRegistry.t.sol`), because `initialize` refuses to run anywhere else.
+
+Try it on the in-memory network:
+
+```bash
+pnpm contracts:deploy default
+```
+
 ## Zellij Development Environment
 
 [Zellij](https://zellij.dev/) is a terminal multiplexer (like tmux) with a preconfigured layout for this template.
