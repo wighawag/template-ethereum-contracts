@@ -22,7 +22,7 @@ importers:
     dependencies:
       template-ethereum-contracts-deploy-export:
         specifier: file:../../template-ethereum-contracts-deploy-export/contracts/package.tgz
-        version: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(typescript@6.0.3)(zod@3.25.76)
+        version: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
@@ -1386,8 +1386,11 @@ packages:
     engines: {node: '>=8'}
 
   template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz:
-    resolution: {integrity: sha512-LK2YJJJVl2zdw0/zJ0qpdgN3t83h+3nVogwDZSTc8uA8H1n30KsS75J3KH9vesIGHFfDYcx58F4EUSv7ctBOYA==, tarball: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz}
+    resolution: {integrity: sha512-z25R1i+R8rJL3aL4b9aIeWl4Fz0DHbk9PZ4FguEhQ+8zeiCRcZlZStaQdIfCQ1gD8AP/iOmU3eSwV8aFtbkS+A==, tarball: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz}
     version: 0.0.3
+    peerDependencies:
+      rocketh: ^0.26.0
+      viem: ^2.57.12
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -2815,7 +2818,7 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(typescript@6.0.3)(zod@3.25.76):
+  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76):
     dependencies:
       '@rocketh/deploy': 0.22.4(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/proxy': 0.21.4(typescript@6.0.3)(zod@3.25.76)
