@@ -1,8 +1,12 @@
 import hre from 'hardhat';
-import {loadEnvironmentFromHardhat} from '#rocketh';
-import {Abi_GreetingsRegistry} from '#generated/abis/GreetingsRegistry.js';
+import {Abi_GreetingsRegistry} from '../generated/abis/GreetingsRegistry.js';
+import {loadEnvironmentFromHardhat} from '../rocketh/environment.js';
 
-async function main() {
+async function main(args: string[]) {
+	const message = args[0];
+
+	console.log({message});
+
 	const env = await loadEnvironmentFromHardhat({hre});
 	const GreetingsRegistry = env.get<Abi_GreetingsRegistry>('GreetingsRegistry');
 
@@ -11,18 +15,21 @@ async function main() {
 		args: [env.namedAccounts.deployer],
 	});
 
-	console.log(before_messages);
+	console.log(`before: ${before_messages}`);
 
-	await env.execute(GreetingsRegistry, {
+	const tx = await env.execute(GreetingsRegistry, {
 		account: env.namedAccounts.deployer,
 		functionName: 'setMessage',
-		args: ['hello'],
+		args: [message || ''],
+		gas: 1000000n,
 	});
+
+	console.log(`tx: ${tx.transactionHash}`);
 
 	const after_messages = await env.read(GreetingsRegistry, {
 		functionName: 'messages',
 		args: [env.namedAccounts.deployer],
 	});
-	console.log(after_messages);
+	console.log(`after: ${after_messages}`);
 }
-main();
+main(process.argv.slice(2));

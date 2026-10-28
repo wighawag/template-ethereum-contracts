@@ -1,4 +1,4 @@
-import {HardhatUserConfig, configVariable} from 'hardhat/config';
+import type {HardhatUserConfig} from 'hardhat/config';
 
 import HardhatNodeTestRunner from '@nomicfoundation/hardhat-node-test-runner';
 import HardhatViem from '@nomicfoundation/hardhat-viem';
@@ -6,6 +6,7 @@ import HardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
 import HardhatKeystore from '@nomicfoundation/hardhat-keystore';
 
 import HardhatDeploy from 'hardhat-deploy';
+import HardhatExternalArtifactsPlugin from 'hardhat-external-artifacts';
 import {
 	addForkConfiguration,
 	addNetworksFromEnv,
@@ -19,6 +20,7 @@ const config: HardhatUserConfig = {
 		HardhatNetworkHelpers,
 		HardhatKeystore,
 		HardhatDeploy,
+		HardhatExternalArtifactsPlugin,
 	],
 	solidity: {
 		profiles: {
@@ -56,13 +58,47 @@ const config: HardhatUserConfig = {
 						default: {
 							type: 'edr-simulated',
 							chainType: 'l1',
+							accounts: {
+								mnemonic: process.env.MNEMONIC || undefined,
+							},
+						},
+						local: {
+							type: 'edr-simulated',
+							chainType: 'l1',
+							accounts: {
+								mnemonic: process.env.MNEMONIC || undefined,
+							},
+							// this prevent EDR from not mining tx that fails
+							throwOnTransactionFailures: false,
+							mining: {
+								interval: 3000,
+							},
 						},
 					},
 				),
 			),
 		),
 	paths: {
+		// `src` is production code only. Tests live under `test`, split by the
+		// language they are written in: Solidity tests exercise a contract from
+		// inside the EVM (cheatcodes, storage slots, fuzzing), TypeScript ones
+		// exercise it the way the app does, across the ABI boundary.
 		sources: ['src'],
+		tests: {
+			solidity: 'test/solidity',
+			nodejs: 'test/js',
+		},
+	},
+	generateTypedArtifacts: {
+		destinations: [
+			{
+				folder: './generated',
+				mode: 'typescript',
+			},
+		],
+	},
+	externalArtifacts: {
+		modules: ['@rocketh/proxy/artifacts'],
 	},
 };
 
