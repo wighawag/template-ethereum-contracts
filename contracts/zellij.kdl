@@ -5,13 +5,15 @@ layout {
 		}
 		pane split_direction="vertical" {
 			pane name="local node" command="pnpm"  {
-				args "local_node"
+				args "node:local"
 			}
 			pane name="watch and compile" command="pnpm"  {
 				args "compile:watch"
 			}
 			pane name="watch and deploy" command="pnpm"  {
-				args "deploy:watch"
+				// the export target is mandatory: rocketh-export fails when given no --ts/--js/--json.
+				// keep it OUT of the watched folders (generated, deploy) or the watcher re-triggers itself.
+				args "deploy:watch" "localhost" "--ts" "./exports/deployments.ts"
 			}
 		}
 		pane split_direction="vertical" {
