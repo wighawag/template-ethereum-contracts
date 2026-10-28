@@ -34,8 +34,8 @@ Every live branch has a pull request that merges `main` into it (`main` was 4 co
 | `examples/proxy-no-constructor-but-initializer` | 94 | #25 | `deployViaProxy` of a contract with no constructor: `execute: {methodName: 'initialize', args}`, guarded by `asProxyInitialiser` |
 | `examples/npmFilesToBuild` | 94 | #26 | Hardhat's `solidity.npmFilesToBuild`: an artifact for an npm Solidity file nothing imports (OpenZeppelin `ERC1967Proxy`) |
 | `examples/hardhat-connection-access` | 124 | #27 | `getHardhatConnection(env)` from `hardhat-deploy` in a deploy script, and passing `extra: {connection}` from a test fixture |
-| `examples/deploy-export` | 113 | #28 | Only the package name now: `main` already exports deploy scripts, artifacts and ABIs. Kept as what `deploy-import` consumes |
-| `examples/deploy-import` | 113 | #29 | Running another package's deploy script, artifacts and ABIs as one's own (needs a `deploy-export` checkout beside it) |
+| `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: runtime imports declared as `dependencies` (on `main` they are `devDependencies`), and `pnpm contracts:pack` |
+| `examples/deploy-import` | 113 | #29 | Installing that package from its tarball (hoisting off) and running its deploy script, artifacts and ABIs as one's own |
 | `examples/ens-import` | 133 | #30 | Deploying from the artifacts an npm package ships (ENS), with the metadata read from its build info. It was a wip that never ran |
 
 Frozen, untouched: `examples/old-template-for-hardhat-deploy-v1-comparison`, `examples/old-template-migration-to-v2-by-ai`.
@@ -55,7 +55,7 @@ Settled by how `examples/safe-owned-upgrade` is already maintained: `main` is me
 
 A GitHub Actions job, run on every push to `main` (and by hand), that for each live branch merges `main` into a scratch branch, runs that branch's checks, and reports. It never pushes to an `examples/*` branch itself.
 
-- **The list and the checks live on `work`**, in a manifest such as `work/examples.json`, one entry per live branch: its name, the commands that prove it, and anything it needs beside it. `examples/deploy-import` needs `examples/deploy-export` cloned next to it as `template-ethereum-contracts-deploy-export` and built first; `examples/safe-owned-upgrade` would add the fork rehearsal against a local anvil once that runs without a Sepolia RPC. Adding or freezing a branch is then a change on `work`, not on `main`.
+- **The list and the checks live on `work`**, in a manifest such as `work/examples.json`, one entry per live branch: its name, the commands that prove it, and anything it needs beside it. `examples/deploy-import` needs `examples/deploy-export` cloned next to it as `template-ethereum-contracts-deploy-export` and packed first (`pnpm contracts:pack`), then a plain `pnpm i` (a frozen install keeps a stale copy of the tarball); `examples/safe-owned-upgrade` would add the fork rehearsal against a local anvil once that runs without a Sepolia RPC. Adding or freezing a branch is then a change on `work`, not on `main`.
 - **The trigger has to be a file on `main`**, because GitHub only runs `push` and `schedule` workflows from the branch that holds them, and `work` is not where `main`'s pushes land. Keep it a thin dispatcher: guarded with `if: github.repository == 'wighawag/template-ethereum-contracts'`, it checks out `work` and runs the manifest, so a project created from the template gets a file that does nothing. The alternative that keeps `main` clean is a weekly scheduled job in another repository (rocketh's docs CI), at the cost of a cross-repository token.
 - **Per branch**: `git merge --no-edit origin/main` on a scratch branch. A conflict is a failure, reported by name, with no attempt to resolve it. Otherwise run the manifest's commands (`pnpm i`, `pnpm contracts:build`, `pnpm test`, `pnpm contracts:deploy default`, plus the branch's own). Only in-memory networks or a node the job starts itself; never a real network.
 - **Reporting**: green merges open (or update) a pull request `update/<name>` into that example branch, so a maintainer merges it in one click, the way #25 to #30 were made. A conflict or a failing check opens (or updates) one issue per branch, naming the branch, the step and the log, and closes it when the branch is green again. Auto-merging green PRs is a later option, once the checks are trusted.
@@ -72,7 +72,7 @@ Each part is a separate decision; the dispatcher on `main` needs the maintainer'
 ## Open questions
 
 1. **Where does the trigger live?** A guarded dispatcher on `main` (travels to every project made from the template, inert there) or a scheduled job elsewhere (clean `main`, cross-repository credential).
-2. **Is `examples/deploy-export` still worth a branch?** After the merge it differs from `main` only by its package name. Options: keep it as the package `examples/deploy-import` consumes, or delete it and point `deploy-import` at a `main` checkout.
+2. **Does the dependency fix belong on `main`?** `main`'s contracts package declares its runtime imports as `devDependencies`, so every project made from the template publishes a package that breaks once installed (`examples/deploy-export` shows the fix). If it lands on `main`, `examples/deploy-export` differs from `main` only by its name again, and `deploy-import` could consume a packed `main` instead.
 3. **Which other branches stay live?** In particular `examples/ens-import` and `examples/npmFilesToBuild`, now that both run.
 
 ## Found while updating
