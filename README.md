@@ -343,6 +343,18 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 pnpm contracts:build
 ```
 
+### Example: export deploy scripts for another project (with `examples/deploy-import`)
+
+This branch is the exporting half of a pair: [`examples/deploy-import`](https://github.com/wighawag/template-ethereum-contracts/tree/examples/deploy-import) is a second project that installs this one and runs its deploy scripts as its own. Everything the export needs is on `main` now (the package exports above, built by `pnpm contracts:build`), so all this branch changes is the package name, `template-ethereum-contracts-deploy-export`, which is the name the importing project depends on.
+
+Build what the importing project consumes:
+
+```bash
+pnpm contracts:build
+```
+
+This writes `contracts/dist`, whose `deploy/001_deploy_greetings_registry.js` is reachable as `template-ethereum-contracts-deploy-export/deploy/001_deploy_greetings_registry.js` and its artifacts as `template-ethereum-contracts-deploy-export/artifacts/index.js`. See `examples/deploy-import` for the other side.
+
 ## Environment Variables
 
 | Variable                 | Description                                   |
