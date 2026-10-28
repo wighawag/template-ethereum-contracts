@@ -34,7 +34,7 @@ Every live branch has had `main` merged into it (`main` was 4 commits further on
 | `examples/proxy-no-constructor-but-initializer` | 94 | #25, #32 | `deployViaProxy` of a contract with no constructor: `execute: {methodName: 'initialize', args}`, guarded by `asProxyInitialiser` |
 | `examples/npmFilesToBuild` | 94 | #26 | Hardhat's `solidity.npmFilesToBuild`: an artifact for an npm Solidity file nothing imports (OpenZeppelin `ERC1967Proxy`) |
 | `examples/hardhat-connection-access` | 124 | #27 | `getHardhatConnection(env)` from `hardhat-deploy` in a deploy script, and passing `extra: {connection}` from a test fixture |
-| `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: runtime imports declared as `dependencies` (on `main` they are `devDependencies`), and `pnpm contracts:pack` |
+| `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: what its compiled files import is declared (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`; on `main` all are `devDependencies`), and `pnpm contracts:pack` |
 | `examples/deploy-import` | 113 | #29 | Installing that package from its tarball (hoisting off) and running its deploy script, artifacts and ABIs as one's own |
 | `examples/ens-import` | 133 | #30 | Deploying from the artifacts an npm package ships (ENS), with the metadata read from its build info. It was a wip that never ran |
 
@@ -77,5 +77,5 @@ Each part is a separate decision; the dispatcher on `main` needs the maintainer'
 
 ## Found while updating
 
-- rocketh imports every file of a `scripts` folder. A package built with `tsc` (as `main` is: `declaration`, `sourceMap`) has `.d.ts` and `.js.map` files next to each deploy script, so `scripts: ['node_modules/<pkg>/dist/deploy', 'deploy']`, which rocketh's "Share contracts between projects" guide documents, fails with `ReferenceError: _default is not defined`. `examples/deploy-import` re-exports the script from a file of its own instead. Also, rocketh sorts all script paths together, so the order of the folders in `scripts` does not decide which runs first; `dependencies` does.
+- rocketh imports every file of a `scripts` folder. A package built with `tsc` (as `main` is: `declaration`, `sourceMap`) has `.d.ts` and `.js.map` files next to each deploy script, so `scripts: ['node_modules/<pkg>/dist/deploy', 'deploy']`, which rocketh's "Share contracts between projects" guide documents, fails with `ReferenceError: _default is not defined`. `examples/deploy-import` re-exports the script from a file of its own instead. Also, rocketh sorts all script paths together, so the order of the folders in `scripts` does not decide which runs first; `dependencies` does. Both are now a rocketh backlog task, `script-folders-load-only-scripts-in-listed-order` (wighawag/rocketh#230); once it ships, `examples/deploy-import` can list the package's folder in `scripts` instead of re-exporting the script.
 - The repository's CI workflow cannot install `examples/deploy-import` on its own, since it links to a sibling checkout.
