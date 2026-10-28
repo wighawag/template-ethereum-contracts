@@ -343,6 +343,31 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 pnpm contracts:build
 ```
 
+### Example: deploy contracts from an npm package's artifacts (ENS)
+
+A package does not have to be compiled by you to be deployed by you. `@ensdomains/ens-contracts` ships the Hardhat artifacts of its own build, and this branch deploys a minimal ENS from them, next to `GreetingsRegistry`: `contracts/deploy/002_deploy_ens.ts` deploys `ENSRegistry`, a `ReverseRegistrar` that owns `addr.reverse` (the `UniversalResolver` claims its reverse record when it is deployed), a `GatewayProvider` and the `UniversalResolver`.
+
+`contracts/rocketh/ens.ts` turns an ENS artifact into what rocketh expects. A Hardhat 3 artifact carries the ABI and the bytecode but not the compiler metadata, which rocketh keeps in the deployment record (verification needs it), so `loadENSArtifact` reads it from the build info the artifact names:
+
+```typescript skip
+const UniversalResolver = loadENSArtifact(
+	'contracts/universalResolver/UniversalResolver.sol/UniversalResolver.json',
+);
+await env.deploy('UniversalResolver', {
+	account: deployer,
+	artifact: UniversalResolver,
+	args: [admin, registry.address, batchGatewayProvider.address],
+});
+```
+
+One dependency of `@ensdomains/ens-contracts`, `clones-with-immutable-args`, is fetched from git and needs a build script to install. Nothing here uses it, so `pnpm-workspace.yaml` removes it with an override rather than allowing that script.
+
+Try it on the in-memory network:
+
+```bash
+pnpm contracts:deploy default
+```
+
 ## Environment Variables
 
 | Variable                 | Description                                   |
