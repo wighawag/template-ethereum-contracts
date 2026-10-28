@@ -15,22 +15,28 @@
 		"src",
 		"deployments"
 	],
+	"dependencies": {
+		"@rocketh/deploy": "^0.22.4",
+		"@rocketh/proxy": "^0.21.4",
+		"@rocketh/read-execute": "^0.23.0",
+		"@rocketh/signer": "^0.20.3",
+		"@rocketh/unknown-signer": "^0.20.0",
+		"@rocketh/viem": "^0.20.3"
+	},
+	"peerDependencies": {
+		"rocketh": "^0.26.0",
+		"viem": "^2.57.12"
+	},
 	"devDependencies": {
 		"@nomicfoundation/hardhat-keystore": "^3.1.2",
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.12",
 		"@nomicfoundation/hardhat-node-test-runner": "^3.1.2",
 		"@nomicfoundation/hardhat-viem": "^3.1.0",
-		"@rocketh/deploy": "^0.22.4",
 		"@rocketh/doc": "^0.19.32",
 		"@rocketh/export": "^0.20.4",
 		"@rocketh/node": "^0.22.3",
-		"@rocketh/proxy": "^0.21.4",
-		"@rocketh/read-execute": "^0.23.0",
 		"@rocketh/router": "^0.20.4",
-		"@rocketh/signer": "^0.20.3",
-		"@rocketh/unknown-signer": "^0.20.0",
 		"@rocketh/verifier": "^0.19.32",
-		"@rocketh/viem": "^0.20.3",
 		"@types/node": "^26.6.5",
 		"as-soon": "^0.1.6",
 		"earl": "^2.0.0",
@@ -78,6 +84,7 @@
 		"verify": "ldenv rocketh-verify -e @@MODE @@",
 		"export": "ldenv rocketh-export -e @@MODE @@",
 		"typescript": "tsc && tsc -p test/js",
+		"pack:local": "pnpm compile && pnpm typescript && pnpm pack --out package.tgz",
 		"---------------------- START ---------------------- ": "",
 		"stop": "zellij kill-session $npm_package_name",
 		"start": "zellij-launcher a $npm_package_name || zellij -n zellij.kdl -s $npm_package_name"
