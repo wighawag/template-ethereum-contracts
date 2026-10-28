@@ -38,12 +38,6 @@ importers:
       '@rocketh/viem':
         specifier: ^0.20.3
         version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
-      rocketh:
-        specifier: ^0.26.0
-        version: 0.26.0(typescript@6.0.3)(zod@3.25.76)
-      viem:
-        specifier: ^2.57.12
-        version: 2.57.12(typescript@6.0.3)(zod@3.25.76)
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
@@ -108,6 +102,9 @@ importers:
       purgatory:
         specifier: ^0.0.8
         version: 0.0.8(@libsql/core@0.17.4)(hono@4.13.14)(typescript@6.0.3)(zod@3.25.76)
+      rocketh:
+        specifier: ^0.26.0
+        version: 0.26.0(typescript@6.0.3)(zod@3.25.76)
       set-defaults:
         specifier: ^0.0.5
         version: 0.0.5
@@ -120,6 +117,9 @@ importers:
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
+      viem:
+        specifier: ^2.57.12
+        version: 2.57.12(typescript@6.0.3)(zod@3.25.76)
       wait-on:
         specifier: ^9.5.1
         version: 9.5.1

@@ -21,7 +21,9 @@
 		"@rocketh/read-execute": "^0.23.0",
 		"@rocketh/signer": "^0.20.3",
 		"@rocketh/unknown-signer": "^0.20.0",
-		"@rocketh/viem": "^0.20.3",
+		"@rocketh/viem": "^0.20.3"
+	},
+	"peerDependencies": {
 		"rocketh": "^0.26.0",
 		"viem": "^2.57.12"
 	},
@@ -47,10 +49,12 @@
 		"prettier": "^3.9.10",
 		"prettier-plugin-solidity": "^2.4.1",
 		"purgatory": "^0.0.8",
+		"rocketh": "^0.26.0",
 		"set-defaults": "^0.0.5",
 		"slippy": "^0.3.1",
 		"tsx": "^4.23.15",
 		"typescript": "~6.0.3",
+		"viem": "^2.57.12",
 		"wait-on": "^9.5.1",
 		"zellij-launcher": "^0.0.1"
 	},
