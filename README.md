@@ -343,17 +343,19 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 pnpm contracts:build
 ```
 
-### Example: export deploy scripts for another project (with `examples/deploy-import`)
+### Example: a contracts package another project can install (with `examples/deploy-import`)
 
-This branch is the exporting half of a pair: [`examples/deploy-import`](https://github.com/wighawag/template-ethereum-contracts/tree/examples/deploy-import) is a second project that installs this one and runs its deploy scripts as its own. Everything the export needs is on `main` now (the package exports above, built by `pnpm contracts:build`), so all this branch changes is the package name, `template-ethereum-contracts-deploy-export`, which is the name the importing project depends on.
+This branch is the exporting half of a pair: [`examples/deploy-import`](https://github.com/wighawag/template-ethereum-contracts/tree/examples/deploy-import) is a second project that installs this package and runs its deploy script as its own. `main` already exports the deploy scripts, the `rocketh` folder, the artifacts and the ABIs (above). What it does not do is make the package work once installed somewhere else, and that is what this branch adds:
 
-Build what the importing project consumes:
+- **Runtime dependencies are `dependencies`.** The compiled `dist/rocketh` and `dist/deploy` import `rocketh`, `@rocketh/deploy`, `@rocketh/proxy`, `@rocketh/read-execute`, `@rocketh/signer`, `@rocketh/unknown-signer` and `@rocketh/viem` (which needs `viem`). On `main` they are all `devDependencies`, which a consumer never installs. It can still work by accident, when the consumer happens to have the same packages and its package manager hoists them, and then fails with `Cannot find package '@rocketh/signer'` anywhere else.
+- **`pnpm contracts:pack`** builds the package and writes `contracts/package.tgz`, exactly what `npm publish` would upload, so the importing project installs the real package rather than linking to this folder.
+- The package is named `template-ethereum-contracts-deploy-export`, the name the importing project depends on.
 
 ```bash
-pnpm contracts:build
+pnpm contracts:pack
 ```
 
-This writes `contracts/dist`, whose `deploy/001_deploy_greetings_registry.js` is reachable as `template-ethereum-contracts-deploy-export/deploy/001_deploy_greetings_registry.js` and its artifacts as `template-ethereum-contracts-deploy-export/artifacts/index.js`. See `examples/deploy-import` for the other side.
+Its deploy script is then reachable as `template-ethereum-contracts-deploy-export/deploy/001_deploy_greetings_registry.js`, its artifacts as `template-ethereum-contracts-deploy-export/artifacts/index.js`. See `examples/deploy-import` for the other side.
 
 ## Environment Variables
 
