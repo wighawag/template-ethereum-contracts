@@ -7,7 +7,7 @@ blockedBy: []
 
 ## Why
 
-The `examples/*` branches are worked examples, each a small change on top of `main` (1 to 6 commits of its own). They stay branches on purpose, to keep `main` simple. The rocketh documentation is about to be written from them (rocketh spec `documentation-information-architecture`, which links each guide to the comparison `compare/main...examples/<name>`), and a guide may only link to a branch that is kept current against `main` and checked, by a mechanism that lives in this repository and is tracked here, on `work`.
+The `examples/*` branches are worked examples, each a small change on top of `main` (1 to 6 commits of its own). They stay branches on purpose, to keep `main` simple. The rocketh documentation is about to be written from them (rocketh spec `documentation-information-architecture`, which links each guide to the comparison `compare/main...examples/<name>`), and a guide may only link to a branch that is kept current against `main` and checked, by a mechanism that lives in this repository and is tracked here, on `work` (the rule as the rocketh spec states it today; open question 1 asks whether a job elsewhere would do).
 
 Measured 2026-10-27 with GitHub's compare API:
 
@@ -27,7 +27,7 @@ Nothing tells anyone when a branch falls behind or stops building, so they drift
 
 ## Status (2026-10-28)
 
-Every live branch has had `main` merged into it (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
+The six branches below have had `main` merged into them (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
 
 | Branch | Behind before | PR | What it demonstrates |
 | --- | --- | --- | --- |
@@ -37,6 +37,8 @@ Every live branch has had `main` merged into it (`main` was 4 commits further on
 | `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: what its compiled files import is declared (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`; on `main` all are `devDependencies`), and `pnpm contracts:pack` |
 | `examples/deploy-import` | 113 | #29 | Installing that package from its tarball (hoisting off) and running its deploy script, artifacts and ABIs as one's own |
 | `examples/ens-import` | 133 | #30 | Deploying from the artifacts an npm package ships (ENS), with the metadata read from its build info. It was a wip that never ran |
+
+Also live, maintained separately and not part of this update: `examples/safe-owned-upgrade`, 2 behind `main` on 2026-10-28 (`main`'s README link to the rocketh.dev pages, #23).
 
 Frozen, untouched: `examples/old-template-for-hardhat-deploy-v1-comparison`, `examples/old-template-migration-to-v2-by-ai`.
 
@@ -56,9 +58,9 @@ Settled by how `examples/safe-owned-upgrade` is already maintained: `main` is me
 A GitHub Actions job, run on every push to `main` (and by hand), that for each live branch merges `main` into a scratch branch, runs that branch's checks, and reports. It never pushes to an `examples/*` branch itself.
 
 - **The list and the checks live on `work`**, in a manifest such as `work/examples.json`, one entry per live branch: its name, the commands that prove it, and anything it needs beside it. `examples/deploy-import` needs `examples/deploy-export` cloned next to it as `template-ethereum-contracts-deploy-export` and packed first (`pnpm contracts:pack`), then a plain `pnpm i` (a frozen install keeps a stale copy of the tarball); `examples/safe-owned-upgrade` would add the fork rehearsal against a local anvil once that runs without a Sepolia RPC. Adding or freezing a branch is then a change on `work`, not on `main`.
-- **The trigger has to be a file on `main`**, because GitHub only runs `push` and `schedule` workflows from the branch that holds them, and `work` is not where `main`'s pushes land. Keep it a thin dispatcher: guarded with `if: github.repository == 'wighawag/template-ethereum-contracts'`, it checks out `work` and runs the manifest, so a project created from the template gets a file that does nothing. The alternative that keeps `main` clean is a weekly scheduled job in another repository (rocketh's docs CI), at the cost of a cross-repository token.
+- **The trigger has to be a file on `main`**, because GitHub only runs `push` and `schedule` workflows from the branch that holds them, and `work` is not where `main`'s pushes land. Keep it a thin dispatcher: guarded with `if: github.repository == 'wighawag/template-ethereum-contracts'`, it checks out `work` and runs the manifest, so a project created from the template gets a file that does nothing. The alternative that keeps `main` clean is a weekly scheduled job in another repository (rocketh's docs CI), at the cost of a cross-repository token; it would not meet the rocketh spec's rule as written, which asks for a mechanism in this repository, so choosing it means changing that rule too.
 - **Per branch**: `git merge --no-edit origin/main` on a scratch branch. A conflict is a failure, reported by name, with no attempt to resolve it. Otherwise run the manifest's commands (`pnpm i`, `pnpm contracts:build`, `pnpm test`, `pnpm contracts:deploy default`, plus the branch's own). Only in-memory networks or a node the job starts itself; never a real network.
-- **Reporting**: green merges open (or update) a pull request `update/<name>` into that example branch, so a maintainer merges it in one click, the way #25 to #30 were made. A conflict or a failing check opens (or updates) one issue per branch, naming the branch, the step and the log, and closes it when the branch is green again. Auto-merging green PRs is a later option, once the checks are trusted.
+- **Reporting**: green merges open (or update) a pull request `update/<name>` into that example branch, so a maintainer merges it in one click, the way #25 to #30 and #32 were made. A conflict or a failing check opens (or updates) one issue per branch, naming the branch, the step and the log, and closes it when the branch is green again. Auto-merging green PRs is a later option, once the checks are trusted.
 
 Each part is a separate decision; the dispatcher on `main` needs the maintainer's approval before it exists.
 
