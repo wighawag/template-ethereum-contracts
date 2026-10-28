@@ -28,6 +28,7 @@
     "contracts:compile:watch": "ldenv pnpm --filter ./contracts compile:watch",
     "contracts:build": "ldenv pnpm --filter ./contracts compile ~~ pnpm --filter ./contracts typescript ~~",
     "contracts:export": "pnpm --filter ./contracts export @@MODE @@",
+    "contracts:pack": "pnpm --filter ./contracts pack:local",
     "---------------------- BUILD ----------------------": "",
     "test": "pnpm contracts:test",
     "build": "pnpm contracts:build",
