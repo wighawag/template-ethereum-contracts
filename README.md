@@ -240,10 +240,11 @@ export default deployScript(
       {
         account: deployer,
         artifact: artifacts.GreetingsRegistry,
-        args: ["prefix:"],
+        // no constructor args on this branch: the proxy calls `initialize`
       },
       {
         owner: admin,
+        execute: { methodName: "initialize", args: ["prefix:"] },
         linkedData: {
           /* metadata stored with deployment */
         },
@@ -306,7 +307,17 @@ contract GreetingsRegistryTest is Test {
     GreetingsRegistry internal registry;
 
     function setUp() public {
-        registry = new GreetingsRegistry("");
+        // on this branch `initialize` only runs through a proxy, so the test
+        // deploys one (TestProxy, a minimal ERC-1967 proxy in the test file)
+        GreetingsRegistry implementation = new GreetingsRegistry();
+        registry = GreetingsRegistry(
+            address(
+                new TestProxy(
+                    address(implementation),
+                    abi.encodeCall(GreetingsRegistry.initialize, (""))
+                )
+            )
+        );
     }
 
     function test_setMessageWorks() public {
