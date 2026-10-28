@@ -1,6 +1,8 @@
 # Ethereum Smart Contract Development Template
 
-A production-ready template for developing EVM smart contracts using [Hardhat v3](https://hardhat.org/) and [hardhat-deploy v2](https://github.com/wighawag/hardhat-deploy) with the [rocketh](https://github.com/wighawag/rocketh) deployment system.
+A production-ready template for developing EVM smart contracts using [Hardhat v3](https://hardhat.org/) and [hardhat-deploy v2](https://rocketh.dev/hardhat-deploy/) with the [rocketh](https://rocketh.dev/documentation/) deployment system.
+
+The documentation of what this template uses is at [rocketh.dev/hardhat-deploy](https://rocketh.dev/hardhat-deploy/), whose guides are written from this template.
 
 ## Why This Template?
 
@@ -8,7 +10,7 @@ A production-ready template for developing EVM smart contracts using [Hardhat v3
 
 While Hardhat's official [Ignition](https://hardhat.org/ignition) plugin offers a robust deployment system, it comes with a rigid DSL that limits flexibility. This template uses **hardhat-deploy + rocketh** which provides:
 
-- **Hot Contract Replacement (HCR)**: The equivalent of HMR (Hot Module Replacement) for smart contracts. Edit your contracts and see changes live while developing your app or game. This uses proxy patterns with a set of conventions to make it work seamlessly.
+- **Hot Contract Replacement (HCR)**: The equivalent of HMR (Hot Module Replacement) for smart contracts. Edit your contracts and see changes live while developing your app or game. This uses proxy patterns with a set of conventions to make it work seamlessly (see [Development workflow](https://rocketh.dev/hardhat-deploy/development-workflow/)).
 - **Intuitive Deployment Scripts**: Write deployment logic in plain TypeScript.
 - **Flexible Proxy Patterns**: Declarative proxy deployment with `deployViaProxy` for upgradeable contracts.
 - **Universal Deploy Scripts**: Thanks to rocketh, the deploy script can run in any environment, nide, browser, etc...
@@ -45,7 +47,7 @@ This template is organized as a monorepo, making it easy to:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18+)
+- [Node.js](https://nodejs.org/) (v22+)
 - [pnpm](https://pnpm.io/)
 
 ### Installation
@@ -68,7 +70,7 @@ This runs both Solidity and TypeScript compilation.
 
 ### Watch Mode (Auto-Rebuild)
 
-Run in a separate terminal for automatic recompilation on changes:
+Run in a separate terminal for automatic recompilation on changes. Together with the redeploy watcher of the contracts package (`pnpm deploy:watch localhost --ts ./exports/deployments.ts` in `contracts/`, which `pnpm start` runs for you), this is Hot Contract Replacement, see [Development workflow](https://rocketh.dev/hardhat-deploy/development-workflow/):
 
 > async: `run this in a separate terminal`
 
@@ -162,7 +164,7 @@ This launches:
 
 ### Named Accounts
 
-Configure accounts in [`contracts/rocketh/config.ts`](contracts/rocketh/config.ts):
+Configure accounts in [`contracts/rocketh/config.ts`](contracts/rocketh/config.ts) (see [Named accounts and signers](https://rocketh.dev/documentation/named-accounts/)):
 
 ```typescript skip
 export const config = {
@@ -176,7 +178,7 @@ export const config = {
 
 ### Network Configuration
 
-Networks are configured in [`contracts/hardhat.config.ts`](contracts/hardhat.config.ts) using helper functions:
+Networks are configured in [`contracts/hardhat.config.ts`](contracts/hardhat.config.ts) using helper functions (see [Networks and accounts from the environment](https://rocketh.dev/hardhat-deploy/networks/)):
 
 - `addNetworksFromEnv()`: Auto-configure networks from `ETH_NODE_URI_*` environment variables
 - `addNetworksFromKnownList()`: Add configurations for well-known networks
@@ -202,7 +204,7 @@ const extensions = {
 
 ## Writing Deploy Scripts
 
-Deploy scripts are located in `contracts/deploy/` and are executed in order (prefixed with numbers):
+Deploy scripts are located in `contracts/deploy/` and are executed in order (prefixed with numbers, see [Deploy scripts](https://rocketh.dev/documentation/deploy-scripts/)):
 
 ```typescript skip
 import { deployScript, artifacts } from "../rocketh/deploy.js";
@@ -239,7 +241,7 @@ export default deployScript(
 
 ### TypeScript Tests
 
-Located in `contracts/test/`, using Node.js test runner and `earl` assertions:
+Located in `contracts/test/`, using Node.js test runner and `earl` assertions (see [Tests with Hardhat fixtures](https://rocketh.dev/hardhat-deploy/tests/)):
 
 ```typescript skip
 import { expect } from "earl";
@@ -302,6 +304,8 @@ pnpm contracts:lint
 ```
 
 ## Publishing & Consuming Contracts
+
+See [Share contracts between projects](https://rocketh.dev/documentation/sharing-contracts/).
 
 ### Package Exports
 
