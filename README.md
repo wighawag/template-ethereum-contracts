@@ -343,6 +343,25 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 pnpm contracts:build
 ```
 
+### Example: run another project's deploy scripts (with `examples/deploy-export`)
+
+This branch is the importing half of a pair. It depends on the contracts package of [`examples/deploy-export`](https://github.com/wighawag/template-ethereum-contracts/tree/examples/deploy-export), named `template-ethereum-contracts-deploy-export`, and uses its artifacts, its ABIs and its deploy script as if they were its own. Its own contract is `DuplicateGreetingsRegistry`, so everything named `GreetingsRegistry` here comes from the other package.
+
+- `contracts/deploy/000_deploy_greetings_registry_from_package.ts` re-exports the other package's deploy script, so it runs in this project's run, with its own `deployScript` and extensions, against this project's network and named accounts.
+- `contracts/deploy/001_deploy_greetings_registry.ts` deploys a second registry, `GreetingsRegistryFromImport`, from the imported artifact, after the imported script (`dependencies: ['GreetingsRegistry']`).
+- The tests and `contracts/scripts/setMessage.ts` type `GreetingsRegistry` with the imported ABI.
+
+The dependency is a link to a local checkout, so clone `examples/deploy-export` next to this checkout, under the name `template-ethereum-contracts-deploy-export`, and build it first:
+
+```bash skip
+git clone -b examples/deploy-export https://github.com/wighawag/template-ethereum-contracts.git ../template-ethereum-contracts-deploy-export
+(cd ../template-ethereum-contracts-deploy-export && pnpm i && pnpm contracts:build)
+pnpm i
+pnpm contracts:deploy default
+```
+
+Listing the other package's folder in `scripts` in `contracts/rocketh/config.ts` (`'node_modules/template-ethereum-contracts-deploy-export/dist/deploy'`) would run all its scripts without naming them, but rocketh imports every file in that folder, and the build puts `.d.ts` and `.js.map` files next to each script, so that fails today. Re-exporting each script avoids it.
+
 ## Environment Variables
 
 | Variable                 | Description                                   |
