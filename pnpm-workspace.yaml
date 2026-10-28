@@ -1,2 +1,6 @@
-overrides:
-  template-ethereum-contracts: link:../template-ethereum-contracts
+packages:
+  - "contracts"
+
+# Nothing the project does not declare is reachable: the package it imports
+# must bring its own dependencies, as it would for any other consumer.
+hoist: false
