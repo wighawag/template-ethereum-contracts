@@ -1,0 +1,8 @@
+packages:
+  - "contracts"
+
+overrides:
+  # @ensdomains/ens-contracts depends on a git-hosted package that needs a build
+  # script to install. ens-import only uses ENS's compiled artifacts, which do not
+  # need it, so it is left out rather than allowed to run scripts.
+  "@ensdomains/ens-contracts>clones-with-immutable-args": "-"
