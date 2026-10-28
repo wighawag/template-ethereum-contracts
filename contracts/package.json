@@ -22,7 +22,7 @@
 		"@rocketh/signer": "^0.20.3",
 		"@rocketh/unknown-signer": "^0.20.0",
 		"@rocketh/viem": "^0.20.3",
-		"template-ethereum-contracts-deploy-export": "file:../../template-ethereum-contracts-deploy-export/contracts/package.tgz"
+		"template-ethereum-contracts": "file:../../template-ethereum-contracts-main/contracts/package.tgz"
 	},
 	"peerDependencies": {
 		"rocketh": "^0.26.0",

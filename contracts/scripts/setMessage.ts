@@ -1,5 +1,5 @@
 import hre from 'hardhat';
-import {Abi_GreetingsRegistry} from 'template-ethereum-contracts-deploy-export/abis/GreetingsRegistry.js';
+import {Abi_GreetingsRegistry} from 'template-ethereum-contracts/abis/GreetingsRegistry.js';
 import {loadEnvironmentFromHardhat} from '../rocketh/environment.js';
 
 async function main(args: string[]) {
