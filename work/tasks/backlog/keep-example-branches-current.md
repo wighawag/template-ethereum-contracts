@@ -27,11 +27,11 @@ Nothing tells anyone when a branch falls behind or stops building, so they drift
 
 ## Status (2026-10-28)
 
-Every live branch has a pull request that merges `main` into it (`main` was 4 commits further on, hence the higher counts), ported to the `contracts/` monorepo layout and checked with install, compile, tests and an in-memory deploy. None is merged.
+Every live branch has had `main` merged into it (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
 
 | Branch | Behind before | PR | What it demonstrates |
 | --- | --- | --- | --- |
-| `examples/proxy-no-constructor-but-initializer` | 94 | #25 | `deployViaProxy` of a contract with no constructor: `execute: {methodName: 'initialize', args}`, guarded by `asProxyInitialiser` |
+| `examples/proxy-no-constructor-but-initializer` | 94 | #25, #32 | `deployViaProxy` of a contract with no constructor: `execute: {methodName: 'initialize', args}`, guarded by `asProxyInitialiser` |
 | `examples/npmFilesToBuild` | 94 | #26 | Hardhat's `solidity.npmFilesToBuild`: an artifact for an npm Solidity file nothing imports (OpenZeppelin `ERC1967Proxy`) |
 | `examples/hardhat-connection-access` | 124 | #27 | `getHardhatConnection(env)` from `hardhat-deploy` in a deploy script, and passing `extra: {connection}` from a test fixture |
 | `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: runtime imports declared as `dependencies` (on `main` they are `devDependencies`), and `pnpm contracts:pack` |
@@ -43,7 +43,7 @@ Frozen, untouched: `examples/old-template-for-hardhat-deploy-v1-comparison`, `ex
 ## What
 
 1. **Classify every branch** as *live* (kept current with `main`) or *frozen* (a snapshot that must not move). The two `old-template-*` branches are frozen; a frozen branch says so at the top of its README. A branch that is neither worth keeping current nor frozen is deleted.
-2. **Bring every live branch up to date** by merging `main` into it, resolving by intent (done, see Status, pending review).
+2. **Bring every live branch up to date** by merging `main` into it, resolving by intent (done, see Status).
 3. **Keep them current mechanically** (proposal below).
 4. **Give each live branch a check that proves its point**, not only that it compiles. Baseline for all: install, compile, test, deploy to the in-memory network. Per branch, the thing it demonstrates.
 
