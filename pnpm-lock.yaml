@@ -23,6 +23,9 @@ importers:
 
   contracts:
     dependencies:
+      '@ensdomains/ens-contracts':
+        specifier: ^1.7.0
+        version: 1.7.0(typescript@6.0.3)
       '@rocketh/deploy':
         specifier: ^0.22.4
         version: 0.22.4(typescript@6.0.3)(zod@3.25.76)
@@ -42,9 +45,6 @@ importers:
         specifier: ^0.20.3
         version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
     devDependencies:
-      '@ensdomains/ens-contracts':
-        specifier: ^1.7.0
-        version: 1.7.0(typescript@6.0.3)
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
         version: 3.1.2(hardhat@3.21.1)

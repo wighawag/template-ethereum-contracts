@@ -16,6 +16,7 @@
 		"deployments"
 	],
 	"dependencies": {
+		"@ensdomains/ens-contracts": "^1.7.0",
 		"@rocketh/deploy": "^0.22.4",
 		"@rocketh/proxy": "^0.21.4",
 		"@rocketh/read-execute": "^0.23.0",
@@ -28,7 +29,6 @@
 		"viem": "^2.57.12"
 	},
 	"devDependencies": {
-		"@ensdomains/ens-contracts": "^1.7.0",
 		"@nomicfoundation/hardhat-keystore": "^3.1.2",
 		"@nomicfoundation/hardhat-network-helpers": "^3.0.12",
 		"@nomicfoundation/hardhat-node-test-runner": "^3.1.2",
