@@ -142,6 +142,19 @@ pnpm contracts:fork:execute <network> scripts/setMessage.ts "Hello world"
 pnpm contracts:verify <network>
 ```
 
+### Example: compile a Solidity file from an npm package with `npmFilesToBuild`
+
+Hardhat only compiles the files under `contracts/src` and what they import. A contract that ships in an npm package and that none of your sources import gets no artifact, so a deploy script has nothing to deploy it from. This branch adds one setting to `contracts/hardhat.config.ts` that tells Hardhat to compile such a file anyway:
+
+```typescript skip
+solidity: {
+	// ...
+	npmFilesToBuild: ['@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol'],
+},
+```
+
+with `@openzeppelin/contracts` added to `contracts/package.json`. After `pnpm contracts:compile`, `ERC1967Proxy` is in `contracts/generated/artifacts` next to `GreetingsRegistry`, so a deploy script reaches it as `artifacts.ERC1967Proxy` from `../rocketh/deploy.js`, like any of your own contracts.
+
 ## Zellij Development Environment
 
 [Zellij](https://zellij.dev/) is a terminal multiplexer (like tmux) with a preconfigured layout for this template.
