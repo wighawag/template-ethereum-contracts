@@ -1,7 +1,7 @@
 import {deployScript} from '../rocketh/deploy.js';
 // The artifacts of the package we depend on: this project has no
 // GreetingsRegistry source of its own (its contract is DuplicateGreetingsRegistry).
-import * as importedArtifacts from 'template-ethereum-contracts-deploy-export/artifacts/index.js';
+import * as importedArtifacts from 'template-ethereum-contracts/artifacts/index.js';
 
 export default deployScript(
 	async (env) => {

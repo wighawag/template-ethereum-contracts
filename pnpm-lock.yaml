@@ -20,9 +20,27 @@ importers:
 
   contracts:
     dependencies:
-      template-ethereum-contracts-deploy-export:
-        specifier: file:../../template-ethereum-contracts-deploy-export/contracts/package.tgz
-        version: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
+      '@rocketh/deploy':
+        specifier: ^0.22.4
+        version: 0.22.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/proxy':
+        specifier: ^0.21.4
+        version: 0.21.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/read-execute':
+        specifier: ^0.23.0
+        version: 0.23.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/signer':
+        specifier: ^0.20.3
+        version: 0.20.3(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/unknown-signer':
+        specifier: ^0.20.0
+        version: 0.20.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/viem':
+        specifier: ^0.20.3
+        version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
+      template-ethereum-contracts:
+        specifier: file:../../template-ethereum-contracts-main/contracts/package.tgz
+        version: file:../template-ethereum-contracts-main/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
@@ -36,9 +54,6 @@ importers:
       '@nomicfoundation/hardhat-viem':
         specifier: ^3.1.0
         version: 3.1.0(hardhat@3.21.1)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))
-      '@rocketh/deploy':
-        specifier: ^0.22.4
-        version: 0.22.4(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/doc':
         specifier: ^0.19.32
         version: 0.19.32(@rocketh/node@0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
@@ -48,27 +63,12 @@ importers:
       '@rocketh/node':
         specifier: ^0.22.3
         version: 0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/proxy':
-        specifier: ^0.21.4
-        version: 0.21.4(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/read-execute':
-        specifier: ^0.23.0
-        version: 0.23.0(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/router':
         specifier: ^0.20.4
         version: 0.20.4(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/signer':
-        specifier: ^0.20.3
-        version: 0.20.3(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/unknown-signer':
-        specifier: ^0.20.0
-        version: 0.20.0(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/verifier':
         specifier: ^0.19.32
         version: 0.19.32(@rocketh/node@0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/viem':
-        specifier: ^0.20.3
-        version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.5
@@ -1385,8 +1385,8 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz:
-    resolution: {integrity: sha512-z25R1i+R8rJL3aL4b9aIeWl4Fz0DHbk9PZ4FguEhQ+8zeiCRcZlZStaQdIfCQ1gD8AP/iOmU3eSwV8aFtbkS+A==, tarball: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz}
+  template-ethereum-contracts@file:../template-ethereum-contracts-main/contracts/package.tgz:
+    resolution: {integrity: sha512-X/YvSrjUqcbJBIW3V0T1EDzPnJiztveJsPYypnknT21LaQFxtd+NBH7Qu7q2eAnjPTyzvmFdmFScWIHs3S2aKw==, tarball: file:../template-ethereum-contracts-main/contracts/package.tgz}
     version: 0.0.3
     peerDependencies:
       rocketh: ^0.26.0
@@ -2818,7 +2818,7 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76):
+  template-ethereum-contracts@file:../template-ethereum-contracts-main/contracts/package.tgz(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76):
     dependencies:
       '@rocketh/deploy': 0.22.4(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/proxy': 0.21.4(typescript@6.0.3)(zod@3.25.76)

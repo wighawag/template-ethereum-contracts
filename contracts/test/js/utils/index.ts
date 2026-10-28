@@ -1,5 +1,5 @@
 // the ABI comes from the package we depend on, whose deploy script deploys it
-import {Abi_GreetingsRegistry} from 'template-ethereum-contracts-deploy-export/abis/GreetingsRegistry.js';
+import {Abi_GreetingsRegistry} from 'template-ethereum-contracts/abis/GreetingsRegistry.js';
 import {loadAndExecuteDeploymentsFromFiles} from '../../../rocketh/environment.js';
 import {EthereumProvider} from 'hardhat/types/providers';
 
