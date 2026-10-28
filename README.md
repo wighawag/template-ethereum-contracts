@@ -142,6 +142,8 @@ pnpm contracts:verify <network>
 
 ### Rehearse a Safe-owned upgrade on a fork
 
+The whole flow is explained step by step, with what each step does and why, in [A Safe-owned project, end to end](https://rocketh.dev/documentation/safe-owned-project/), which follows this branch.
+
 This branch makes a Safe the owner of the `GreetingsRegistry` proxy on Sepolia (`admin` in `contracts/rocketh/config.ts`). Deploying is unchanged, since the deployer creates the proxy. Upgrading is not: the upgrade call has to come from the Safe, and rocketh holds no key for it. A fork rehearsal runs that upgrade against a copy of Sepolia, impersonating the Safe, so you see the whole upgrade succeed and get the exact transactions the Safe will have to send.
 
 The Safe is created by the deploy scripts themselves (`contracts/deploy/000_deploy_safe.ts`), through Safe's own factory (v1.4.1), so it is a regular Safe that the Safe app shows to its owner. Its owner is account 1 of the project mnemonic, with a threshold of 1, and both are set in `contracts/rocketh/safe.ts`. Its address follows from those parameters, which is how `contracts/rocketh/config.ts` can name it as `admin` before it exists. Change the owners there (before the first deployment) to use your own keys.
