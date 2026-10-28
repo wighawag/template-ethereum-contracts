@@ -27,18 +27,19 @@ Nothing tells anyone when a branch falls behind or stops building, so they drift
 
 ## Status (2026-10-28)
 
-The six branches below have had `main` merged into them (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
+The five branches below, and `examples/deploy-export` (#28, since retired), had `main` merged into them (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
 
 | Branch | Behind before | PR | What it demonstrates |
 | --- | --- | --- | --- |
 | `examples/proxy-no-constructor-but-initializer` | 94 | #25, #32 | `deployViaProxy` of a contract with no constructor: `execute: {methodName: 'initialize', args}`, guarded by `asProxyInitialiser` |
 | `examples/npmFilesToBuild` | 94 | #26 | Hardhat's `solidity.npmFilesToBuild`: an artifact for an npm Solidity file nothing imports (OpenZeppelin `ERC1967Proxy`) |
 | `examples/hardhat-connection-access` | 124 | #27 | `getHardhatConnection(env)` from `hardhat-deploy` in a deploy script, and passing `extra: {connection}` from a test fixture |
-| `examples/deploy-export` | 113 | #28 | A contracts package that works once installed: what its compiled files import is declared (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`; on `main` all are `devDependencies`), and `pnpm contracts:pack` |
-| `examples/deploy-import` | 113 | #29 | Installing that package from its tarball (hoisting off) and running its deploy script, artifacts and ABIs as one's own |
+| `examples/deploy-import` | 113 | #29, #41 | Installing `main`'s contracts package from its packed tarball (hoisting off) and running its deploy script, artifacts and ABIs as one's own |
 | `examples/ens-import` | 133 | #30 | Deploying from the artifacts an npm package ships (ENS), with the metadata read from its build info. It was a wip that never ran |
 
-Also live: `examples/safe-owned-upgrade`. It was 2 behind `main` (#23, the README links to the rocketh.dev pages) and was brought current the same way by #33, so it too is 0 behind `main` as of 2026-10-28.
+Also live: `examples/safe-owned-upgrade`. It was 2 behind `main` (#23, the README links to the rocketh.dev pages) and #33 merged `main` into it.
+
+Then #35 put on `main` what `examples/deploy-export` (#28) had shown: the contracts package declares what its compiled files import (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`) and `pnpm contracts:pack` writes it as a tarball. `main` was merged into every live branch again (#36 to #41; `examples/ens-import` also moved `@ensdomains/ens-contracts` to `dependencies`), `examples/deploy-import` switched to installing `main`'s packed package, and `examples/deploy-export`, now identical to `main` but for its name, was deleted. All six live branches are 0 behind `main` as of 2026-10-28.
 
 Frozen, untouched: `examples/old-template-for-hardhat-deploy-v1-comparison`, `examples/old-template-migration-to-v2-by-ai`.
 
@@ -55,14 +56,14 @@ Settled by how `examples/safe-owned-upgrade` is already maintained: `main` is me
 
 ### Proposed mechanism
 
-A GitHub Actions job, run on every push to `main` (and by hand), that for each live branch merges `main` into a scratch branch, runs that branch's checks, and reports. It never pushes to an `examples/*` branch itself.
+A check, run regularly (or after each merge into `main`) by whatever trigger open question 1 settles, that for each live branch merges `main` into a scratch branch, runs that branch's checks, and reports. It never pushes to an `examples/*` branch itself.
 
-- **The list and the checks live on `work`**, in a manifest such as `work/examples.json`, one entry per live branch: its name, the commands that prove it, and anything it needs beside it. `examples/deploy-import` needs `examples/deploy-export` cloned next to it as `template-ethereum-contracts-deploy-export` and packed first (`pnpm contracts:pack`), then a plain `pnpm i` (a frozen install keeps a stale copy of the tarball); `examples/safe-owned-upgrade` would add the fork rehearsal against a local anvil once that runs without a Sepolia RPC. Adding or freezing a branch is then a change on `work`, not on `main`.
-- **The trigger has to be a file on `main`**, because GitHub only runs `push` and `schedule` workflows from the branch that holds them, and `work` is not where `main`'s pushes land. Keep it a thin dispatcher: guarded with `if: github.repository == 'wighawag/template-ethereum-contracts'`, it checks out `work` and runs the manifest, so a project created from the template gets a file that does nothing. The alternative that keeps `main` clean is a weekly scheduled job in another repository (rocketh's docs CI), at the cost of a cross-repository token; it would not meet the rocketh spec's rule as written, which asks for a mechanism in this repository, so choosing it means changing that rule too.
+- **The list and the checks live on `work`**, in a manifest such as `work/examples.json`, one entry per live branch: its name, the commands that prove it, and anything it needs beside it. `examples/deploy-import` needs `main` cloned next to it as `template-ethereum-contracts-main` and packed first (`pnpm contracts:pack`), then a plain `pnpm i` (a frozen install keeps a stale copy of the tarball); `examples/safe-owned-upgrade` would add the fork rehearsal against a local anvil once that runs without a Sepolia RPC. Adding or freezing a branch is then a change on `work`, not on `main`.
+- **The trigger cannot live on `work`**: GitHub only runs scheduled workflows from the default branch, and a workflow on `work` only reacts to pushes to `work`. A workflow on `main`, even guarded to this repository, is rejected (decision below), so the trigger is either outside this repository or a person. See open question 1.
 - **Per branch**: `git merge --no-edit origin/main` on a scratch branch. A conflict is a failure, reported by name, with no attempt to resolve it. Otherwise run the manifest's commands (`pnpm i`, `pnpm contracts:build`, `pnpm test`, `pnpm contracts:deploy default`, plus the branch's own). Only in-memory networks or a node the job starts itself; never a real network.
-- **Reporting**: green merges open (or update) a pull request `update/<name>` into that example branch, so a maintainer merges it in one click, the way #25 to #30, #32 and #33 were made. A conflict or a failing check opens (or updates) one issue per branch, naming the branch, the step and the log, and closes it when the branch is green again. Auto-merging green PRs is a later option, once the checks are trusted.
+- **Reporting**: green merges open (or update) a pull request `update/<name>` into that example branch, so a maintainer merges it in one click, the way #25 to #41 were made. A conflict or a failing check opens (or updates) one issue per branch, naming the branch, the step and the log, and closes it when the branch is green again. Auto-merging green PRs is a later option, once the checks are trusted.
 
-Each part is a separate decision; the dispatcher on `main` needs the maintainer's approval before it exists.
+Each part is a separate decision, and nothing is built before the maintainer picks the trigger.
 
 ## Acceptance
 
@@ -71,13 +72,23 @@ Each part is a separate decision; the dispatcher on `main` needs the maintainer'
 - A change to `main` that breaks a live branch's merge or checks is reported within one run, naming the branch, and leaves the branch untouched.
 - The mechanism and the list of live branches are documented where a maintainer will find them (here, and in the manifest).
 
+## Decisions (2026-10-28)
+
+- **No workflow on `main` for this.** Every file on `main` is copied into each project created from the template, and a maintenance workflow there, even one guarded to do nothing elsewhere, is clutter for everyone who clones it.
+- **The dependency fix belongs on `main`** (done, #35): a published contracts package must work once installed.
+- **Live branches:** `examples/proxy-no-constructor-but-initializer`, `examples/npmFilesToBuild`, `examples/hardhat-connection-access`, `examples/deploy-import`, `examples/ens-import`, `examples/safe-owned-upgrade`. `examples/deploy-export` is retired (deleted) since #35 made it identical to `main` but for its name. Frozen: the two `old-template-*` branches.
+
 ## Open questions
 
-1. **Where does the trigger live?** A guarded dispatcher on `main` (travels to every project made from the template, inert there) or a scheduled job elsewhere (clean `main`, cross-repository credential).
-2. **Does the dependency fix belong on `main`?** `main`'s contracts package declares its runtime imports as `devDependencies`, so every project made from the template publishes a package that breaks once installed (`examples/deploy-export` shows the fix). If it lands on `main`, `examples/deploy-export` differs from `main` only by its name again, and `deploy-import` could consume a packed `main` instead.
-3. **Which other branches stay live?** In particular `examples/ens-import` and `examples/npmFilesToBuild`, now that both run.
+1. **What triggers the check, given that it cannot be a workflow on `main` or `work`?** In each option the manifest and the check script live on `work`.
+   - (d) a weekly scheduled job in the rocketh repository that clones this public repository, runs the manifest, and opens or updates an issue there per broken branch. It needs no credential for this repository; the update PRs stay a manual or agent step.
+   - (e) as (d), but the job also opens the `update/<name>` PRs here, which needs a token with push access to this repository stored in rocketh.
+   - (c) no automation: the script is run by hand (or by an agent) after each merge into `main`, which depends on someone remembering.
+   (d) and (e) put the trigger outside this repository, so the rocketh spec's rule (the mechanism lives in this repository) has to become "the manifest and checks live on this repository's `work` branch; the trigger may run elsewhere".
 
 ## Found while updating
 
 - rocketh imports every file of a `scripts` folder. A package built with `tsc` (as `main` is: `declaration`, `sourceMap`) has `.d.ts` and `.js.map` files next to each deploy script, so `scripts: ['node_modules/<pkg>/dist/deploy', 'deploy']`, which rocketh's "Share contracts between projects" guide documents, fails with `ReferenceError: _default is not defined`. `examples/deploy-import` re-exports the script from a file of its own instead. Also, rocketh sorts all script paths together, so the order of the folders in `scripts` does not decide which runs first; `dependencies` does. Both are now a rocketh backlog task, `script-folders-load-only-scripts-in-listed-order` (wighawag/rocketh#230); once it ships, `examples/deploy-import` can list the package's folder in `scripts` instead of re-exporting the script.
-- The repository's CI workflow cannot install `examples/deploy-import` on its own, since it links to a sibling checkout.
+- The repository's CI workflow cannot install `examples/deploy-import` on its own, since it installs a packed `main` from a sibling checkout.
+- `examples/hardhat-connection-access`'s deploy script imports `hardhat-deploy`, which the published package does not declare as a dependency. By #35's rule it should, if that example's package were ever published; its README already says the script needs Hardhat.
+- `examples/ens-import`'s published package would also need ENS's git-hosted `clones-with-immutable-args` dependency; the override that removes it lives in that branch's workspace file and does not travel with the package.
