@@ -271,8 +271,11 @@ import { describe, it } from "node:test";
 import { network } from "hardhat";
 import { setupFixtures } from "./utils/index.js";
 
-const { provider, networkHelpers } = await network.connect();
-const { deployAll } = setupFixtures(provider);
+// the fixture takes the whole connection: it passes it to the deploy scripts
+// as `extra: {connection}`, where getHardhatConnection finds it
+const connection = await network.connect();
+const { networkHelpers } = connection;
+const { deployAll } = setupFixtures(connection);
 
 describe("GreetingsRegistry", function () {
   it("should set and retrieve messages", async function () {
