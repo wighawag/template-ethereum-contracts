@@ -19,6 +19,25 @@ importers:
         version: 0.0.1
 
   contracts:
+    dependencies:
+      '@rocketh/deploy':
+        specifier: ^0.22.4
+        version: 0.22.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/proxy':
+        specifier: ^0.21.4
+        version: 0.21.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/read-execute':
+        specifier: ^0.23.0
+        version: 0.23.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/signer':
+        specifier: ^0.20.3
+        version: 0.20.3(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/unknown-signer':
+        specifier: ^0.20.0
+        version: 0.20.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/viem':
+        specifier: ^0.20.3
+        version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
@@ -32,9 +51,6 @@ importers:
       '@nomicfoundation/hardhat-viem':
         specifier: ^3.1.0
         version: 3.1.0(hardhat@3.21.1)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))
-      '@rocketh/deploy':
-        specifier: ^0.22.4
-        version: 0.22.4(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/doc':
         specifier: ^0.19.32
         version: 0.19.32(@rocketh/node@0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
@@ -44,27 +60,12 @@ importers:
       '@rocketh/node':
         specifier: ^0.22.3
         version: 0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/proxy':
-        specifier: ^0.21.4
-        version: 0.21.4(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/read-execute':
-        specifier: ^0.23.0
-        version: 0.23.0(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/router':
         specifier: ^0.20.4
         version: 0.20.4(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/signer':
-        specifier: ^0.20.3
-        version: 0.20.3(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/unknown-signer':
-        specifier: ^0.20.0
-        version: 0.20.0(typescript@6.0.3)(zod@3.25.76)
       '@rocketh/verifier':
         specifier: ^0.19.32
         version: 0.19.32(@rocketh/node@0.22.3(rocketh@0.26.0(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76))(typescript@6.0.3)(zod@3.25.76)
-      '@rocketh/viem':
-        specifier: ^0.20.3
-        version: 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.5

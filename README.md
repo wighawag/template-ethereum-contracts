@@ -385,6 +385,17 @@ import GreetingsRegistry from "template-ethereum-contracts/deployments/sepolia/G
 pnpm contracts:build
 ```
 
+To see exactly what a consumer installs, `pnpm contracts:pack` builds the package and writes it as `contracts/package.tgz`, the file `npm publish` would upload.
+
+### Dependencies of the Published Package
+
+The compiled `rocketh` folder and deploy scripts import rocketh at runtime, so `contracts/package.json` declares what they need for the projects that install the package:
+
+- the rocketh extensions (`@rocketh/deploy`, `@rocketh/proxy`, `@rocketh/read-execute`, `@rocketh/signer`, `@rocketh/unknown-signer`, `@rocketh/viem`) are `dependencies`: they are this package's choice, and its deploy scripts run with them;
+- `rocketh` and `viem` are `peerDependencies` (and `devDependencies`, for working on the package): the deploy scripts run against the environment the consumer's rocketh creates, so they use the consumer's copy, and a consumer on an incompatible rocketh gets an `unmet peer` warning at install instead of a second rocketh.
+
+Anything else stays a `devDependency`. When you add an extension in `contracts/rocketh/config.ts`, add it to `dependencies`.
+
 ## Environment Variables
 
 | Variable                 | Description                                   |
