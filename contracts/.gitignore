@@ -23,3 +23,6 @@ docs
 dist/
 
 purgatory.db
+
+# the package as a consumer installs it, see pack:local
+package.tgz
