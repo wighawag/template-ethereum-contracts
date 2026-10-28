@@ -27,7 +27,7 @@ Nothing tells anyone when a branch falls behind or stops building, so they drift
 
 ## Status (2026-10-28)
 
-The six branches below have had `main` merged into them (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
+The five branches below, and `examples/deploy-export` (#28, since retired), had `main` merged into them (`main` was 4 commits further on than in the table above, hence the higher counts), ported to the `contracts/` monorepo layout, reviewed, checked with install, compile, tests and an in-memory deploy, and merged. Each is 0 behind `main` as of 2026-10-28.
 
 | Branch | Behind before | PR | What it demonstrates |
 | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ The six branches below have had `main` merged into them (`main` was 4 commits fu
 
 Also live: `examples/safe-owned-upgrade`. It was 2 behind `main` (#23, the README links to the rocketh.dev pages) and #33 merged `main` into it.
 
-Then #35 put on `main` what `examples/deploy-export` (#28) had shown: the contracts package declares what its compiled files import (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`) and `pnpm contracts:pack` writes it as a tarball. `main` was merged into every live branch again (#36 to #41; `examples/ens-import` also moved `@ensdomains/ens-contracts` to `dependencies`), `examples/deploy-import` switched to installing `main`'s packed package, and `examples/deploy-export`, now identical to `main` but for its name, was deleted. All seven live branches are 0 behind `main` as of 2026-10-28.
+Then #35 put on `main` what `examples/deploy-export` (#28) had shown: the contracts package declares what its compiled files import (the `@rocketh/*` extensions as `dependencies`, `rocketh` and `viem` as `peerDependencies`) and `pnpm contracts:pack` writes it as a tarball. `main` was merged into every live branch again (#36 to #41; `examples/ens-import` also moved `@ensdomains/ens-contracts` to `dependencies`), `examples/deploy-import` switched to installing `main`'s packed package, and `examples/deploy-export`, now identical to `main` but for its name, was deleted. All six live branches are 0 behind `main` as of 2026-10-28.
 
 Frozen, untouched: `examples/old-template-for-hardhat-deploy-v1-comparison`, `examples/old-template-migration-to-v2-by-ai`.
 
