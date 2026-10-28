@@ -21,8 +21,8 @@ importers:
   contracts:
     dependencies:
       template-ethereum-contracts-deploy-export:
-        specifier: link:../../template-ethereum-contracts-deploy-export/contracts
-        version: link:../../template-ethereum-contracts-deploy-export/contracts
+        specifier: file:../../template-ethereum-contracts-deploy-export/contracts/package.tgz
+        version: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(typescript@6.0.3)(zod@3.25.76)
     devDependencies:
       '@nomicfoundation/hardhat-keystore':
         specifier: ^3.1.2
@@ -1384,6 +1384,10 @@ packages:
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
+
+  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz:
+    resolution: {integrity: sha512-LK2YJJJVl2zdw0/zJ0qpdgN3t83h+3nVogwDZSTc8uA8H1n30KsS75J3KH9vesIGHFfDYcx58F4EUSv7ctBOYA==, tarball: file:../template-ethereum-contracts-deploy-export/contracts/package.tgz}
+    version: 0.0.3
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -2810,6 +2814,22 @@ snapshots:
   supports-color@7.2.0:
     dependencies:
       has-flag: 4.0.0
+
+  template-ethereum-contracts-deploy-export@file:../template-ethereum-contracts-deploy-export/contracts/package.tgz(typescript@6.0.3)(zod@3.25.76):
+    dependencies:
+      '@rocketh/deploy': 0.22.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/proxy': 0.21.4(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/read-execute': 0.23.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/signer': 0.20.3(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/unknown-signer': 0.20.0(typescript@6.0.3)(zod@3.25.76)
+      '@rocketh/viem': 0.20.3(typescript@6.0.3)(viem@2.57.12(typescript@6.0.3)(zod@3.25.76))(zod@3.25.76)
+      rocketh: 0.26.0(typescript@6.0.3)(zod@3.25.76)
+      viem: 2.57.12(typescript@6.0.3)(zod@3.25.76)
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
 
   to-regex-range@5.0.1:
     dependencies:

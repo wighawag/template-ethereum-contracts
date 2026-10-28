@@ -16,7 +16,7 @@
 		"deployments"
 	],
 	"dependencies": {
-		"template-ethereum-contracts-deploy-export": "link:../../template-ethereum-contracts-deploy-export/contracts"
+		"template-ethereum-contracts-deploy-export": "file:../../template-ethereum-contracts-deploy-export/contracts/package.tgz"
 	},
 	"devDependencies": {
 		"@nomicfoundation/hardhat-keystore": "^3.1.2",
