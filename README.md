@@ -142,6 +142,28 @@ pnpm contracts:fork:execute <network> scripts/setMessage.ts "Hello world"
 pnpm contracts:verify <network>
 ```
 
+### Example: reach the Hardhat connection from a deploy script
+
+A deploy script receives rocketh's environment, which knows nothing about Hardhat. When it runs under hardhat-deploy (`pnpm contracts:deploy <network>`), the Hardhat network connection travels with it, and `getHardhatConnection` from `hardhat-deploy` gets it back. This branch uses it in `contracts/deploy/001_deploy_greetings_registry.ts` to read the network name and to get a public client from hardhat-viem:
+
+```typescript skip
+import {getHardhatConnection} from 'hardhat-deploy';
+
+// inside the deploy function
+const connection = getHardhatConnection(env);
+console.log(connection.networkName);
+const client = await connection.viem.getPublicClient();
+console.log(await client.getChainId());
+```
+
+It is a plain function, called with the environment, not a rocketh extension. The price is that the script now needs Hardhat: `getHardhatConnection` throws when there is no connection, so the script no longer runs where rocketh runs without Hardhat. Tests execute the deploy scripts through `loadAndExecuteDeploymentsFromFiles` rather than through hardhat-deploy, so the fixture in `contracts/test/js/utils/index.ts` passes the connection itself, as `extra: {connection}`, which is where `getHardhatConnection` looks.
+
+Try it on the in-memory network, which prints `default` and `31337`:
+
+```bash
+pnpm contracts:deploy default
+```
+
 ## Zellij Development Environment
 
 [Zellij](https://zellij.dev/) is a terminal multiplexer (like tmux) with a preconfigured layout for this template.
