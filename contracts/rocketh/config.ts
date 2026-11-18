@@ -65,9 +65,17 @@ import * as readExecuteExtension from '@rocketh/read-execute';
 import * as deployProxyExtension from '@rocketh/proxy';
 // this one provide a viem handle to clients and contracts
 import * as viemExtension from '@rocketh/viem';
-// this one provide catchUnknownSigner: wrap a call whose `from` rocketh cannot sign for
-//  (a Safe or multisig that owns your contracts) and get the transaction back to execute
-//  on it, instead of the run stopping there. See https://rocketh.dev/documentation/unknown-signers/
+// this one provide withUnknownSignerPolicy, to choose for one call what happens when its `from`
+//  is an account rocketh cannot sign for (a Safe or multisig that owns your contracts).
+//  rocketh handles such a call itself, with or without this extension: from a terminal it
+//  pauses, prints the transaction, and you paste back the hash once you executed it
+//  (https://rocketh.dev/documentation/unknown-signers/#the-default-rocketh-asks-you-execute-the-run-continues);
+//  unattended it defers, and a `guard` makes the re-run converge
+//  (https://rocketh.dev/documentation/unknown-signers/#what-makes-the-re-run-converge);
+//  and a fork rehearsal with --write-transactions gives you every Safe-owned step as one batch
+//  (https://rocketh.dev/documentation/safe-owned-project/#4-rehearse-on-a-fork).
+//  It also provides catchUnknownSigner, kept for scripts ported from hardhat-deploy v1
+//  (https://rocketh.dev/hardhat-deploy/migration/#catch-unknown-signer).
 import * as unknownSignerExtension from '@rocketh/unknown-signer';
 
 // and export them as a unified object
